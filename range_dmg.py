@@ -6,7 +6,7 @@ tier_oh = 92
 ammo_dmg = 950
 armor_bonus = 200
 
-def calculate_dmg():
+def compute_range_dmg():
     if style == '2h':
         ability_damage = 3.75 * range_level + min(14.4 * tier_2h, 1.5 * ammo_dmg) + 1.5 * armor_bonus
         print(ability_damage)
@@ -21,4 +21,4 @@ def calculate_dmg():
     else:
         print('type shit in right nerd')
 
-calculate_dmg()
+compute_range_dmg()
