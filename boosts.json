@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Elder overload",
+        "level": 5,
+        "level_percent": 0.17,
+        "dmg_percent": 0
+    },
+    {
+        "name": "Supreme overload",
+        "level": 4,
+        "level_percent": 0.16,
+        "dmg_percent": 0
+    },
+    {
+        "name": "Overload",
+        "level": 3,
+        "level_percent": 0.15,
+        "dmg_percent": 0
+    },
+    {
+        "name": "Super warmaster",
+        "level": 2,
+        "level_percent": 0.12,
+        "dmg_percent": 0
+    },
+    {
+        "name": "Extreme warmaster",
+        "level": 3,
+        "level_percent": 0.15,
+        "dmg_percent": 0
+    },
+    {
+        "name": "Berserk",
+        "level": 10,
+        "level_percent": 0.1,
+        "dmg_percent": 0.1
+    },
+    {
+        "name": "Maniacal",
+        "level": 10,
+        "level_percent": 0.1,
+        "dmg_percent": 0.1
+    },
+    {
+        "name": "Reckless",
+        "level": 10,
+        "level_percent": 0.1,
+        "dmg_percent": 0.1
+    },
+    {
+        "name": "Mahjarrat",
+        "level": 0,
+        "level_percent": 0,
+        "dmg_percent": 0.5
+    },
+    {
+        "name": "Berserk essence",
+        "level": 0,
+        "level_percent": 0,
+        "dmg_percent": 0.5
+    },
+    {
+        "name": "Vuln",
+        "level": 0,
+        "level_percent": 0,
+        "dmg_percent": 0.1
+    }
+]
