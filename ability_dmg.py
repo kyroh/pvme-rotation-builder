@@ -9,12 +9,12 @@ class ComputeAbilityDamage:
         with open('boosts.json', 'r') as b:
             self.boosts = json.load(b)
 
-        #self.mh_input = input('Enter your mainhand weapon:\n')
-        #self.oh_input = input('Enter your offhand weapon: \n')
+        self.mh_input = input('Enter your mainhand weapon:\n')
+        self.oh_input = input('Enter your offhand weapon: \n')
         self.th_input = input('Enter your 2h weapon: \n')
         self.base_magic_level = float(input('Enter your magic level:\n'))
-        #self.base_range_level = float(input('Enter your range level:\n'))
-        #self.base_strength_level = float(input('Enter your strength level:\n'))
+        self.base_range_level = float(input('Enter your range level:\n'))
+        self.base_strength_level = float(input('Enter your strength level:\n'))
         self.aura_input = input('Enter your aura:\n')
         self.potion_input = input('Select your potion:\n')
         self.bonus = 0
