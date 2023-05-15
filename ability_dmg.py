@@ -1,3 +1,10 @@
+#
+# Author - kyroh
+# 
+# This source code is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International license found in the LICENSE file in the root directory of this source tree.
+# 
+#
+
 import json
 import math
 
@@ -8,6 +15,9 @@ class ComputeAbilityDamage:
         
         with open('boosts.json', 'r') as b:
             self.boosts = json.load(b)
+            
+        with open('abilities.json', 'r') as a:
+            self.abilities = json.load(a)
 
         self.mh_input = input('Enter your mainhand weapon:\n')
         self.oh_input = input('Enter your offhand weapon: \n')
@@ -148,10 +158,10 @@ class ComputeAbilityDamage:
         return base_ability_dmg
     
     def ms_ability_dmg(self):
-        levels = self.calculate_levels()
-        magic_level = levels[0]
-        range_level = levels[1]
-        strength_level = levels[2]
+        boosted_levels = self.calculate_levels()
+        boosted_magic_level = boosted_levels[0]
+        boosted_range_level = boosted_levels[1]
+        boosted_strength_level = boosted_levels[2]
         
         mh = None 
         
@@ -162,32 +172,55 @@ class ComputeAbilityDamage:
         if mh is None:
             pass
         if mh['style'] == 'magic':
-            base_ability_dmg = math.floor(2.5 * magic_level) + mh['dmg'] + self.bonus
+            base_ability_dmg = math.floor(2.5 * boosted_magic_level) + mh['dmg'] + self.bonus
         elif mh['style'] == 'range':
-            base_ability_dmg = math.floor(2.5 * range_level) + mh['dmg'] + self.bonus
+            base_ability_dmg = math.floor(2.5 * boosted_range_level) + mh['dmg'] + self.bonus
         elif mh['style'] == 'melee':
-            base_ability_dmg = math.floor(2.5 * strength_level) + mh['dmg'] + self.bonus
+            base_ability_dmg = math.floor(2.5 * boosted_strength_level) + mh['dmg'] + self.bonus
         else:
             pass
         return base_ability_dmg
     
     def casting_weapon(self):
-        weapon_type = int(input('Select which weapons you will be casting with:\n1.Dual wield\n2.Two-hand\n3.Mainhand shield\n'))
-        if weapon_type == 1:
+        weapon_type = (input(f'Select which weapons you will be casting with:\n1.Dual wield\n2.Two hand\n3.Mainhand shield\n'))
+        if weapon_type == '1':
             base_ability_dmg = self.dw_ability_dmg()
-        elif weapon_type == 2:
+        elif weapon_type == '2':
             base_ability_dmg = self.th_ability_dmg()
-        elif weapon_type == 3:
+        elif weapon_type == '3':
             base_ability_dmg = self.ms_ability_dmg()
         else:
             pass 
-        return base_ability_dmg        
+        return base_ability_dmg
+    
+    def casting_style(self):
+        weapon_type = (input(f'Select which weapons you will be casting with:\n1.magic\n2.range\n3.melee\n'))
+        if weapon_type == '1':
+            style = '1'
+        elif weapon_type == '2':
+            style = '2'
+        elif weapon_type == '3':
+            style = '3'
+        else:
+            pass 
+        return style
     
     def net_ability_dmg(self):
         base_ability_dmg = self.casting_weapon()
+        style = self.casting_style()
+        boosted_levels = self.calculate_levels()
+        boosted_magic_level = boosted_levels[0]
+        boosted_range_level = boosted_levels[1]
+        boosted_strength_level = boosted_levels[2]
         
-        #values hard coded for testing purposes
-        ability_dmg = math.floor(base_ability_dmg * 1.12 * 1.1 * 1.57)
+        if style == '1':
+            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_magic_level - self.base_magic_level) * 8
+        elif style == '2':
+            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_range_level - self.base_range_level) * 8
+        elif style == '3':
+            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_strength_level - self.base_strength_level) * 8
+        else:
+            pass
         return ability_dmg
     
     def hexhunter(self):
@@ -200,6 +233,19 @@ class ComputeAbilityDamage:
         elif self.th_input == 'Terrasaur maul':
             hexhunter = 3
         return hexhunter
+    
+    def cast(self):
+        pass
+    
+    def prayer(self):
+        pass
+    
+    def aura_passive(self):
+        pass
+    
+    def sunshine(self):
+        pass
+    
 
 test = ComputeAbilityDamage()
 test_dmg = test.net_ability_dmg()
