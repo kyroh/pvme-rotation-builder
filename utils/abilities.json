@@ -1,5 +1,10 @@
 [
     {
-        "name": ""
+        "name": "db",
+        "min":  0.376,
+        "max": 1.88,
+        "type": "standard",
+        "style": "magic",
+        "type_n": "basic"
     }
 ]

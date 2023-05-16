@@ -3,8 +3,9 @@
 # 
 # This source code is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International license found in the LICENSE file in the root directory of this source tree.
 # 
-#test
+#
 
+import random
 import os
 import json
 import math
@@ -28,7 +29,9 @@ class StandardAbility:
         self.base_strength_level = 99
         self.aura_input = 'None'
         self.potion_input = 'None'
-        self.bonus = 0
+        self.bonus = 12
+        self.ability_input = input('Enter and ability to cast:\n')
+        self.prayer_input = 'None'
 
     def aura_level_boost(self):
         boost = None
@@ -43,9 +46,9 @@ class StandardAbility:
         strength_boost_percent = 0
         if boost['magic_level_percent'] != 0:
             magic_boost_percent = self.base_magic_level * boost['magic_level_percent']
-        elif boost['range_level_percent'] != 0:
+        if boost['range_level_percent'] != 0:
             range_boost_percent = self.base_range_level * boost['range_level_percent']
-        elif boost['strength_level_percent'] != 0:
+        if boost['strength_level_percent'] != 0:
             strength_boost_percent = self.base_strength_level * boost['strength_level_percent']
         else:
             pass
@@ -92,8 +95,7 @@ class StandardAbility:
         return total_levels
     
     def dw_ability_dmg(self):
-        boost = StandardAbility()
-        levels = boost.calculate_levels()
+        levels = self.calculate_levels()
         magic_level = levels[0]
         range_level = levels[1]
         strength_level = levels[2]
@@ -182,53 +184,98 @@ class StandardAbility:
             pass
         return base_ability_dmg
     
-    def casting_weapon(self):
-        weapon_type = (input(f'Select which weapons you will be casting with:\n1.Dual wield\n2.Two hand\n3.Mainhand shield\n'))
-        if weapon_type == '1':
-            base_ability_dmg = self.dw_ability_dmg()
-        elif weapon_type == '2':
-            base_ability_dmg = self.th_ability_dmg()
-        elif weapon_type == '3':
-            base_ability_dmg = self.ms_ability_dmg()
-        else:
-            pass 
-        return base_ability_dmg
-    
-    def casting_style(self):
-        weapon_type = (input(f'Select which weapons you will be casting with:\n1.magic\n2.range\n3.melee\n'))
-        if weapon_type == '1':
-            style = '1'
-        elif weapon_type == '2':
-            style = '2'
-        elif weapon_type == '3':
-            style = '3'
-        else:
-            pass 
-        return style
-    
-    def dpl_fixed(self):
-        base_ability_dmg = self.casting_weapon
-
-    def dpl_var(self): 
-        pass
-
-    def net_ability_dmg(self):
-        base_ability_dmg = self.casting_weapon()
-        style = self.casting_style()
-        boosted_levels = self.calculate_levels()
-        boosted_magic_level = boosted_levels[0]
-        boosted_range_level = boosted_levels[1]
-        boosted_strength_level = boosted_levels[2]
+    def standard_ability(self):
+        ability = None
         
-        if style == '1':
-            ability_dmg = math.floor(((base_ability_dmg * 1.88) + (boosted_magic_level - self.base_magic_level) * 8))
-        elif style == '2':
-            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_range_level - self.base_range_level) * 8
-        elif style == '3':
-            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_strength_level - self.base_strength_level) * 8
+        for a in self.abilities:
+            if a['name'] == self.ability_input:
+                ability = a
+                break
+        if ability is None:
+            pass
+        if ability['type'] == 'standard':
+            min_dmg = ability['min']
+            max_dmg = ability['max']
         else:
             pass
-        return ability_dmg
+        return [min_dmg, max_dmg]
+    
+    def df(self):
+        base_ability_dmg = self.th_ability_dmg()
+        style = 'magic'
+        min_max = self.standard_ability()
+        prayer_boost = self.prayer_dmg()
+        magic_prayer = prayer_boost[0]
+        range_prayer = prayer_boost[1]
+        melee_prayer = prayer_boost[2]
+        min_dmg = min_max[0]
+        
+        if style == 'magic':
+            df = math.floor(base_ability_dmg * (min_dmg * (1 + magic_prayer)))
+        elif style == 'range':
+            df = base_ability_dmg * (min_dmg * (1 + range_prayer))
+        elif style == 'melee':
+            df = base_ability_dmg * (min_dmg * (1 + melee_prayer))
+        else:
+            pass
+        return df
+    
+    def dv(self):
+        base_ability_dmg = self.th_ability_dmg()
+        style = 'magic'
+        min_max = self.standard_ability()
+        prayer_boost = self.prayer_dmg()
+        magic_prayer = prayer_boost[0]
+        range_prayer = prayer_boost[1]
+        melee_prayer = prayer_boost[2]
+        min_dmg = min_max[0]
+        max_dmg = min_max[1]
+        
+        if style == 'magic':
+            dv = math.floor(base_ability_dmg * ((max_dmg - min_dmg) * (1 + magic_prayer)))
+        elif style == 'range':
+            dv = base_ability_dmg * ((max_dmg - min_dmg) * (1 + range_prayer))
+        elif style == 'melee':
+            dv = base_ability_dmg * ((max_dmg - min_dmg) * (1 + melee_prayer))
+        else:
+            pass
+        return dv
+    
+    def dpl_f(self):
+        df = self.df()
+        style = 'magic'
+        levels = self.calculate_levels()
+        boosted_magic = levels[0]
+        boosted_range = levels[1]
+        boosted_strength = levels[2]
+        
+        if style == 'magic':
+            dpl_f = math.floor(df + (4 * max(0, boosted_magic - self.base_magic_level)))
+        elif style == 'range':
+            dpl_f = math.floor(df + (4 * max(0, boosted_range - self.base_range_level)))
+        elif style == 'melee':
+            dpl_f = math.floor(df + (4 * max(0, boosted_strength - self.base_strength_level)))
+        else:
+            pass
+        return dpl_f
+    
+    def dpl_v(self):
+        dv = self.dv()
+        style = 'magic'
+        levels = self.calculate_levels()
+        boosted_magic = levels[0]
+        boosted_range = levels[1]
+        boosted_strength = levels[2]
+        
+        if style == 'magic':
+            dpl_v = math.floor(dv + (4 * max(0, boosted_magic - self.base_magic_level)))
+        elif style == 'range':
+            dpl_v = math.floor(dv + (4 * max(0, boosted_range - self.base_range_level)))
+        elif style == 'melee':
+            dpl_v = math.floor(dv + (4 * max(0, boosted_strength - self.base_strength_level)))
+        else:
+            pass
+        return dpl_v
     
     def hexhunter(self):
         hexhunter = 0
@@ -241,16 +288,52 @@ class StandardAbility:
             hexhunter = 3
         return hexhunter
     
-    def prayer(self):
-        pass
+    def prayer_dmg(self):
+        boost = None
+        for b in self.boosts:
+            if b['name'] == self.prayer_input:
+                boost = b
+                break
+        if boost is None:
+            pass
+        
+        prayer_dmg = [b["magic_dmg_percent"], b["range_dmg_percent"], b["strength_dmg_percent"]]
+        
+        return prayer_dmg
     
     def aura_passive(self):
-        pass
+        boost = None
+        for b in self.boosts:
+            if b['name'] == self.aura_input:
+                boost = b
+                break
+        if boost is None:
+            pass
+        magic_dmg_percent = 1
+        range_dmg_percent = 1
+        strength_dmg_percent = 1
+        if boost['magic_dmg_percent'] != 0:
+            magic_dmg_percent = 1 + boost['magic_dmg_percent']
+        if boost['range_dmg_percent'] != 0:
+            range_dmg_percent = 1 + boost['range_dmg_percent']
+        if boost['strength_dmg_percent'] != 0:
+            strength_dmg_percent = 1 + boost['strength_dmg_percent']
+        else:
+            pass
+        return [magic_dmg_percent, range_dmg_percent, strength_dmg_percent]
     
     def sunshine(self):
         pass
     
+    def roll_dmg(self):
+        dpl_v = self.dpl_v()
+        dpl_f = self.dpl_f()
+        min_dmg = dpl_f
+        max_dmg = dpl_f + dpl_v
+        
+        roll = random.randint(min_dmg,max_dmg)
+        
+        return roll
 
-test = StandardAbility()
-test_dmg = test.net_ability_dmg()
-print(test_dmg)
+
+        
