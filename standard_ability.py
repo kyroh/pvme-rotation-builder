@@ -5,18 +5,19 @@
 # 
 #
 
+import os
 import json
 import math
 
 class StandardAbility:
     def __init__(self):
-        with open('utils/weapons.json', 'r') as w:
+        with open(os.path.join('utils', 'weapons.json'), 'r') as w:
             self.weapons = json.load(w)
         
-        with open('utils/boosts.json', 'r') as b:
+        with open(os.path.join('utils', 'boosts.json'), 'r') as b:
             self.boosts = json.load(b)
-            
-        with open('utils/abilities.json', 'r') as a:
+
+        with open(os.path.join('utils', 'abilities.json'), 'r') as a:
             self.abilities = json.load(a)
 
         self.mh_input = 'Wand of the praesul'
