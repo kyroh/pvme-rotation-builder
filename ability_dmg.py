@@ -214,7 +214,7 @@ class ComputeAbilityDamage:
         boosted_strength_level = boosted_levels[2]
         
         if style == '1':
-            ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_magic_level - self.base_magic_level) * 8
+            ability_dmg = math.floor(((base_ability_dmg * 1.12 * 1.57) + (boosted_magic_level - self.base_magic_level) * 8) * 1.1)
         elif style == '2':
             ability_dmg = math.floor(base_ability_dmg * 1.12) + math.floor(boosted_range_level - self.base_range_level) * 8
         elif style == '3':
