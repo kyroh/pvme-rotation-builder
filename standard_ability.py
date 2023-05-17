@@ -23,7 +23,7 @@ class StandardAbility:
 
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
-        self.th_input = 'Staff of Sliske'
+        self.th_input = 'Noxious staff'
         self.base_magic_level = 99
         self.base_range_level = 99
         self.base_strength_level = 99
@@ -32,6 +32,8 @@ class StandardAbility:
         self.bonus = 12
         self.ability_input = input('Enter and ability to cast:\n')
         self.prayer_input = 'None'
+        self.precise_rank = 6
+        self.equilibrium_rank = 4
 
     def aura_level_boost(self):
         boost = None
@@ -213,9 +215,9 @@ class StandardAbility:
         if style == 'magic':
             df = math.floor(base_ability_dmg * (min_dmg * (1 + magic_prayer)))
         elif style == 'range':
-            df = base_ability_dmg * (min_dmg * (1 + range_prayer))
+            df = math.floor(base_ability_dmg * (min_dmg * (1 + range_prayer)))
         elif style == 'melee':
-            df = base_ability_dmg * (min_dmg * (1 + melee_prayer))
+            df = math.floor(base_ability_dmg * (min_dmg * (1 + melee_prayer)))
         else:
             pass
         return df
@@ -234,9 +236,9 @@ class StandardAbility:
         if style == 'magic':
             dv = math.floor(base_ability_dmg * ((max_dmg - min_dmg) * (1 + magic_prayer)))
         elif style == 'range':
-            dv = base_ability_dmg * ((max_dmg - min_dmg) * (1 + range_prayer))
+            dv = math.floor(base_ability_dmg * ((max_dmg - min_dmg) * (1 + range_prayer)))
         elif style == 'melee':
-            dv = base_ability_dmg * ((max_dmg - min_dmg) * (1 + melee_prayer))
+            dv = math.floor(base_ability_dmg * ((max_dmg - min_dmg) * (1 + melee_prayer)))
         else:
             pass
         return dv
@@ -335,5 +337,62 @@ class StandardAbility:
         
         return roll
 
-
+    def precise(self):
+        dpl_f = self.dpl_f()
+        dpl_v = self.dpl_v()
+        max_dmg = dpl_f + dpl_v
+        rank = self.precise_rank
+        precise = rank * 0.015
         
+        if self.precise_rank == '0':
+            pr_f = 0
+        else:
+            pr_f = math.floor(max_dmg * precise)
+        return pr_f
+    
+    def equilibrium(self):
+        dpl_f= self.dpl_f()
+        dpl_v = self.dpl_v()
+        rank = self.equilibrium_rank
+        modifier_min = rank * 0.03
+        modifier_max = rank * 0.04
+        bonus = math.floor(modifier_min * dpl_v)
+        reduct = math.floor(modifier_max * dpl_v)
+        
+        if self.equilibrium_rank == '0':
+            equilibrium_f = dpl_f
+            equilibrium_v = dpl_v
+        else:
+            equilibrium_f = math.floor(modifier_min * dpl_v)
+            equilibrium_v = math.floor(modifier_max * dpl_v)
+        return [equilibrium_f, equilibrium_v]
+    
+    def floor(self):
+        dpl_f = self.dpl_f()
+        pr_f = self.precise()
+        equilibrium = self.equilibrium()
+        eq_f = equilibrium[0]
+   
+        floor = dpl_f + pr_f + eq_f
+        
+        return floor
+    
+    def ceil(self):
+        equilibrium = self.equilibrium()
+        eq_f = equilibrium[0]
+        eq_v = equilibrium[1]
+        dpl_f = self.dpl_f()
+        dpl_v = self.dpl_v()
+        
+        ceil = eq_f + dpl_f + dpl_v - eq_v
+        
+        return ceil
+    
+test = StandardAbility()
+
+dmg = test.th_ability_dmg()
+
+print(dmg)
+
+
+
