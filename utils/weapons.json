@@ -3,186 +3,186 @@
         "name": "Wand of the praesul",
         "type": "mh",
         "style": "magic",
-        "dmg": 883
+        "dmg_tier": 92
     },
     {
         "name": "Imperium core",
         "type": "oh",
         "style": "magic",
-        "dmg": 441
+        "dmg_tier": 92
     },
     {
         "name": "Seismic wand",
         "type": "mh",
         "style": "magic",
-        "dmg": 864
+        "dmg_tier": 90
     },
     {
         "name": "Seismic singularity",
         "type": "oh",
         "style": "magic",
-        "dmg": 432
+        "dmg_tier": 90
     },
     {
         "name": "Cywir wand",
         "type": "mh",
         "style": "magic",
-        "dmg": 768
+        "dmg_tier": 80
     },
     {
         "name": "Cywir orb",
         "type": "oh",
         "style": "magic",
-        "dmg": 384
+        "dmg_tier": 80
     },
     {
         "name": "Fractured staff of Armadyl",
         "type": "2h",
         "style": "magic",
-        "dmg": 1368
+        "dmg_tier": 95
     },
     {
         "name": "Inquisitor staff",
         "type": "2h",
         "style": "magic",
-        "dmg": 1152
+        "dmg_tier": 80
     },
     {
         "name": "Staff of Sliske",
         "type": "2h",
         "style": "magic",
-        "dmg": 1324
+        "dmg_tier": 92
     },
     {
         "name": "Noxious staff",
         "type": "2h",
         "style": "magic",
-        "dmg": 1296
+        "dmg_tier": 90
     },
     {
         "name": "Bow of the Last Guardian",
         "type": "2h",
         "style": "range",
-        "dmg": 1368
+        "dmg_tier": 95
     },
     {
         "name": "Eldritch crossbow",
         "type": "2h",
         "style": "range",
-        "dmg": 1324
+        "dmg_tier": 92
     },
     {
         "name": "Seren godbow",
         "type": "2h",
         "style": "range",
-        "dmg": 1324
+        "dmg_tier": 92
     },
     {
         "name": "Noxious longbow",
         "type": "2h",
         "style": "range",
-        "dmg": 1296
+        "dmg_tier": 90
     },
     {
         "name": "Hexhunter bow",
         "type": "2h",
         "style": "range",
-        "dmg": 1152
+        "dmg_tier": 80
     },
     {
         "name": "Blightbound crossbow",
         "type": "mh",
         "style": "range",
-        "dmg": 883
+        "dmg_tier": 92
     },
     {
         "name": "Off-hand blightbound crossbow",
         "type": "oh",
         "style": "range",
-        "dmg": 441
+        "dmg_tier": 92
     },
     {
         "name": "Ascension crossbow",
         "type": "mh",
         "style": "range",
-        "dmg": 864
+        "dmg_tier": 92
     },
     {
         "name": "Off-hand ascension crossbow",
         "type": "oh",
         "style": "range",
-        "dmg": 432
+        "dmg_tier": 92
     },
     {
         "name": "Ek-ZekKil",
         "type": "2h",
         "style": "melee",
-        "dmg": 1368
+        "dmg_tier": 95
     },
     {
         "name": "Zaros godsword",
         "type": "2h",
         "style": "melee",
-        "dmg": 1324
+        "dmg_tier": 92
     },
     {
         "name": "Masterwork spear of annihilation",
         "type": "2h",
         "style": "melee",
-        "dmg": 1324
+        "dmg_tier": 92
     },
     {
         "name": "Noxious scyth",
         "type": "2h",
         "style": "melee",
-        "dmg": 1296
+        "dmg_tier": 90
     },
     {
         "name": "Terrasaur maul",
         "type": "2h",
         "style": "melee",
-        "dmg": 1152
+        "dmg_tier": 80
     },
     {
         "name": "Dark shard of Leng",
         "type": "mh",
         "style": "melee",
-        "dmg": 912
+        "dmg_tier": 95
     },
     {
         "name": "Dark sliver of Leng",
         "type": "oh",
         "style": "melee",
-        "dmg": 456
+        "dmg_tier": 95
     },
     {
         "name": "Khopesh of elidinis",
         "type": "oh",
         "style": "melee",
-        "dmg": 441
+        "dmg_tier": 92
     },
     {
         "name": "Khopesh of tumeken",
         "type": "mh",
         "style": "melee",
-        "dmg": 883
+        "dmg_tier": 92
     },
     {
         "name": "Abyssal scourge",
         "type": "mh",
         "style": "melee",
-        "dmg": 883
+        "dmg_tier": 92
     },
     {
         "name": "Drygore variant",
         "type": "mh",
         "style": "melee",
-        "dmg": 864
+        "dmg_tier": 90
     },
     {
         "name": "Off-hand drygore variant",
         "type": "oh",
         "style": "melee",
-        "dmg": 432
+        "dmg_tier": 90
     }
 ]

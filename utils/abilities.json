@@ -3,16 +3,16 @@
         "name": "db",
         "min":  0.376,
         "max": 1.88,
-        "type": "standard",
+        "type_n": "standard",
         "style": "magic",
-        "type_n": "basic"
+        "class_n": "basic"
     },
     {
         "name": "wrack",
         "min":  0.4,
         "max": 1.4,
-        "type": "standard",
+        "type_n": "standard",
         "style": "magic",
-        "type_n": "basic"
+        "class_n": "basic"
     }
 ]
