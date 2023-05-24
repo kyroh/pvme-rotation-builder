@@ -301,14 +301,14 @@ class StandardAbility:
         variable = dmg_values[1]
         
         if self.style == 'magic':
-            dpl_f = math.floor(fixed + (self.boosted_magic_level - self.base_magic_level * 4))
-            dpl_v = math.floor(variable + (self.boosted_magic_level - self.base_magic_level * 4))
+            dpl_f = math.floor(fixed + (self.boosted_magic_level - self.base_magic_level) * 4)
+            dpl_v = math.floor(variable + (self.boosted_magic_level - self.base_magic_level) * 4)
         elif self.style == 'range':
-            dpl_f = math.floor(fixed + (self.boosted_range_level - self.base_range_level * 4))
-            dpl_v = math.floor(variable + (self.boosted_range_level - self.base_range_level * 4))
+            dpl_f = math.floor(fixed + (self.boosted_range_level - self.base_range_level) * 4)
+            dpl_v = math.floor(variable + (self.boosted_range_level - self.base_range_level) * 4)
         elif self.style == 'melee':
-            dpl_f = math.floor(fixed + (self.boosted_melee_level - self.base_melee_level * 4))
-            dpl_v = math.floor(variable + (self.boosted_melee_level - self.base_melee_level * 4))
+            dpl_f = math.floor(fixed + (self.boosted_melee_level - self.base_melee_level) * 4)
+            dpl_v = math.floor(variable + (self.boosted_melee_level - self.base_melee_level) * 4)
         else:
             pass
         return [dpl_f, dpl_v]
