@@ -25,7 +25,7 @@ class StandardAbility:
         self.ability_input = 'db'
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
-        self.th_input = 'Staff of Sliske'
+        self.th_input = 'Fractured staff of Armadyl'
         self.type = '2h'
         self.bonus = 12
         self.spell_input = 99
@@ -33,10 +33,10 @@ class StandardAbility:
         self.base_range_level = 99
         self.base_strength_level = 99
         self.aura_input = 'None'
-        self.potion_input = 'None'
+        self.potion_input = 'Elder overload'
         self.prayer_input = 'None'
-        self.precise_rank = 0
-        self.equilibrium_rank = 0
+        self.precise_rank = 6
+        self.equilibrium_rank = 2
         
         # Variables from methods
         self.boosted_levels = self.calculate_levels()
@@ -279,8 +279,9 @@ class StandardAbility:
     # Computes the dmg range of an abil after precise
     def precise(self):
         rank = self.precise_rank
-        fixed = self.fixed()
-        variable = self.variable()
+        dmg_values = self.dpl()
+        fixed = dmg_values[0]
+        variable = dmg_values[1]
         precise = 0.015 * (fixed + variable) * rank
         p_f = math.floor(fixed + precise)
         p_v = math.floor(variable - precise)
@@ -296,9 +297,8 @@ class StandardAbility:
         return [e_f, e_v]
     
     def dpl(self):
-        dmg_values = self.equilibrium()
-        fixed = dmg_values[0]
-        variable = dmg_values[1]
+        fixed = self.fixed()
+        variable = self.variable()
         
         if self.style == 'magic':
             dpl_f = math.floor(fixed + (self.boosted_magic_level - self.base_magic_level) * 4)
@@ -367,6 +367,8 @@ class StandardAbility:
     
 test = StandardAbility()
 
+dmg = test.equilibrium()
 
+print(dmg)
 
 
