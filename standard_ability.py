@@ -246,64 +246,73 @@ class StandardAbility:
         style = abil['style']
         class_n = abil['class_n']
         type_n = abil['type_n']
-        min_dmg = abil['min_dmg']
-        max_dmg = abil['max_dmg']
+        min_dmg = abil['min']
+        max_dmg = abil['max']
         return [style, class_n, type_n, min_dmg, max_dmg]
     
     # Computes dmg floor with prayer modifier
-    def df(self):
-        df = 0
+    def fixed(self):
+        fixed = 0
         
         if self.style == 'magic':
-            df = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.magic_prayer)))
+            fixed = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.magic_prayer)))
         elif self.style == 'range':
-            df = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.range_prayer)))
+            fixed = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.range_prayer)))
         elif self.style == 'melee':
-            df = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.melee_prayer)))
+            fixed = math.floor(self.ability_dmg * (self.min_dmg * (1 + self.melee_prayer)))
         else:
             pass
-        return df
+        return fixed
     
     # Computes variable dmg with prayer modifier
-    def dv(self):
+    def variable(self):
         if self.style == 'magic':
-            dv = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.magic_prayer)))
+            variable = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.magic_prayer)))
         elif self.style == 'range':
-            dv = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.range_prayer)))
+            variable = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.range_prayer)))
         elif self.style == 'melee':
-            dv = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.melee_prayer)))
+            variable = math.floor(self.ability_dmg * ((self.max_dmg - self.min_dmg) * (1 + self.melee_prayer)))
         else:
             pass
-        return dv
+        return variable
     
-    # Computes damage per level floor from df
-    def dpl_f(self):
-        df = self.df()
+    # Computes the dmg range of an abil after precise
+    def precise(self):
+        rank = self.precise_rank
+        fixed = self.fixed()
+        variable = self.variable()
+        precise = 0.015 * (fixed + variable) * rank
+        p_f = math.floor(fixed + precise)
+        p_v = math.floor(variable - precise)
+        return [p_f, p_v]
+        
+    # Computes the dmg range of an abil after equilibrium
+    def equilibrium(self):
+        precise = self.precise()
+        fixed = precise[0]
+        variable = precise[1]
+        e_f = math.floor(fixed + (0.03 * variable * self.equilibrium_rank))
+        e_v = math.floor(variable - (0.04 * variable * self.equilibrium_rank))
+        return [e_f, e_v]
+    
+    def dpl(self):
+        dmg_values = self.equilibrium()
+        fixed = dmg_values[0]
+        variable = dmg_values[1]
         
         if self.style == 'magic':
-            dpl_f = math.floor(df + (4 * max(0, self.base_magic_level - self.base_magic_level)))
+            dpl_f = math.floor(fixed + (self.boosted_magic_level - self.base_magic_level * 4))
+            dpl_v = math.floor(fixed + (self.boosted_magic_level - self.base_magic_level * 4))
         elif self.style == 'range':
-            dpl_f = math.floor(df + (4 * max(0, self.boosted_range_level - self.base_range_level)))
+            dpl_f = math.floor(fixed + (self.boosted_range_level - self.base_range_level * 4))
+            dpl_v = math.floor(fixed + (self.boosted_range_level - self.base_range_level * 4))
         elif self.style == 'melee':
-            dpl_f = math.floor(df + (4 * max(0, self.boosted_strength_level - self.base_strength_level)))
+            dpl_f = math.floor(fixed + (self.boosted_melee_level - self.base_melee_level * 4))
+            dpl_v = math.floor(fixed + (self.boosted_melee_level - self.base_melee_level * 4))
         else:
             pass
-        return dpl_f
-    
-    # Computes variable damager per level from dv
-    def dpl_v(self):
-        dv = self.dv()
-
-        if self.style == 'magic':
-            dpl_v = math.floor(dv + (4 * max(0, self.boosted_magic_level - self.base_magic_level)))
-        elif self.style == 'range':
-            dpl_v = math.floor(dv + (4 * max(0, self.boosted_range_level - self.base_range_level)))
-        elif self.style == 'melee':
-            dpl_v = math.floor(dv + (4 * max(0, self.boosted_strength_level - self.base_strength_level)))
-        else:
-            pass
-        return dpl_v
-    
+        return [dpl_f, dpl_v]
+        
     # Helper function to check hexhunter effect
     def hexhunter(self):
         hexhunter = 0
@@ -355,67 +364,9 @@ class StandardAbility:
     # Computes the dmg boost from ultimates and specs
     def sunshine(self):
         pass
-
-    # Computes the dmg range of an abil after precise
-    def precise(self):
-        dpl_f = self.dpl_f()
-        dpl_v = self.dpl_v()
-        max_dmg = dpl_f + dpl_v
-        rank = self.precise_rank
-        precise = rank * 0.015
-        
-        if self.precise_rank == '0':
-            pr_f = 0
-        else:
-            pr_f = math.floor(max_dmg * precise)
-        return pr_f
-    
-    # Computes the dmg range of an abil after equilibrium
-    def equilibrium(self):
-        dpl_f= self.dpl_f()
-        dpl_v = self.dpl_v()
-        rank = self.equilibrium_rank
-        modifier_min = rank * 0.03
-        modifier_max = rank * 0.04
-        bonus = math.floor(modifier_min * dpl_v)
-        reduct = math.floor(modifier_max * dpl_v)
-        
-        if self.equilibrium_rank == '0':
-            equilibrium_f = dpl_f
-            equilibrium_v = dpl_v
-        else:
-            equilibrium_f = math.floor(modifier_min * dpl_v)
-            equilibrium_v = math.floor(modifier_max * dpl_v)
-        return [equilibrium_f, equilibrium_v]
-    
-    # Computes the net dmg floor from all player boosts
-    def floor(self):
-        dpl_f = self.dpl_f()
-        pr_f = self.precise()
-        equilibrium = self.equilibrium()
-        eq_f = equilibrium[0]
-   
-        floor = dpl_f + pr_f + eq_f
-        
-        return floor
-    
-    # Computes the net dmg ceil from all player boosts
-    def ceil(self):
-        equilibrium = self.equilibrium()
-        eq_f = equilibrium[0]
-        eq_v = equilibrium[1]
-        dpl_f = self.dpl_f()
-        dpl_v = self.dpl_v()
-        
-        ceil = eq_f + dpl_f + dpl_v - eq_v
-        
-        return ceil
     
 test = StandardAbility()
 
-dmg = test.ceil()
-
-print(dmg)
 
 
 
