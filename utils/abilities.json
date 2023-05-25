@@ -1,14 +1,15 @@
 [
     {
         "name": "dragon breath",
-        "type_n": "DRAGON_BREATH"
+        "type_n": "DRAGON_BREATH",
+        "style": "magic"
     },
     {
         "name": "wrack",
         "min":  0.4,
         "max": 1.4,
         "cd": 5,
-        "type_n": "SINGLE_HIT_ABIL",
+        "type_n": "WRACK",
         "style": "magic"
     },
     {
@@ -26,11 +27,12 @@
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "magic",
-        "class_n": "ult"
+        "class_n": "ULT"
     },
     {
         "name": "igneous omnipower",
-        "type_n": "IGNEOUS_OMNI"
+        "type_n": "IGNEOUS_OMNI",
+        "style": "magic"
     },
     {
         "name": "deep impact",
@@ -39,7 +41,7 @@
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "magic",
-        "class_n": "thresh"
+        "class_n": "THRESH"
     },
     {
         "name": "sonic wave",
@@ -58,10 +60,14 @@
         "style": "magic"
     },
     {
-        "name": "concentrated blast"
+        "name": "concentrated blast",
+        "type_n": "CONC",
+        "style": "magic"
     },
     {
-        "name": "greater concentrated blast"
+        "name": "greater concentrated blast",
+        "type_n": "CONC",
+        "style": "magic"
     },
     {
         "name": "horror",
@@ -70,7 +76,7 @@
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "magic",
-        "class_n": "thresh"
+        "class_n": "THRESH"
     },
     {
         "name": "combust",
@@ -82,7 +88,8 @@
     },
     {
         "name": "detonate",
-        "type_n": "DETO"
+        "type_n": "DETO",
+        "style": "magic"
     },
     {
         "name": "chain",
@@ -102,19 +109,28 @@
     },
     {
         "name": "wild magic",
-        "type": "WILD_MAGIC"
+        "type": "WILD_MAGIC",
+        "style": "magic"
     },
     {
-        "name": "magma tempest"
+        "name": "magma tempest",
+        "type_n": "MAGMA",
+        "style": "magic"
     },
     {
-        "name": "metamorphosis"
+        "name": "metamorphosis",
+        "type": "BUFF_ABILITY",
+        "style": "magic"
     },
     {
-        "name": "sunshine"
+        "name": "sunshine",
+        "type_n": "PF_DMG_ULT",
+        "style": "magic"
     },
     {
-        "name": "greater sunshine"
+        "name": "greater sunshine",
+        "type_n": "DMG_ULT",
+        "style": "magic"
     },
     {
         "name": "asphyxiate",
@@ -123,6 +139,173 @@
         "cd": 34,
         "type_n": "QUAD_CHANNELED",
         "style": "magic",
-        "class_n": "thresh"
+        "class_n": "THRESH"
+    },
+    {
+        "name": "tsunami",
+        "min":  2.00,
+        "max": 3.00,
+        "cd": 100,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic",
+        "class_n": "ULT"
+    },
+    {
+        "name": "corruption blast",
+        "type_n": "CORRUPT",
+        "style": "magic"
+    },
+    {
+        "name": "smoke tendrils",
+        "type_n": "SMOKE_TEND",
+        "style": "magic"
+    },
+    {
+        "name": "piercing shot",
+        "type_n": "PIERCING",
+        "style": "range"
+    },
+    {
+        "name": "binding shot",
+        "min":  0.2,
+        "max": 1.0,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "needle strike",
+        "type_n": "NEEDLE",
+        "style": "range"
+    },
+    {
+        "name": "snipe",
+        "type_n": "SNIPE",
+        "style": "range"
+    },
+    {
+        "name": "dazing shot",
+        "min":  0.314,
+        "max": 1.57,
+        "cd": 9,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "mutated dazing shot",
+        "min":  0.314,
+        "max": 1.57,
+        "cd": 9,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "dazing shot",
+        "min":  0.314,
+        "max": 1.57,
+        "cd": 9,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "tight bindings",
+        "min":  0.4,
+        "max": 2.0,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "range",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "demoralise",
+        "min":  0.2,
+        "max": 1.0,
+        "cd": 25,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "rout",
+        "min":  0.4,
+        "max": 2.0,
+        "cd": 25,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "ricochet",
+        "min":  0.2,
+        "max": 0.1,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range"
+    },
+    {
+        "name": "greater ricochet",
+        "type_n": "GRICO",
+        "style": "range"
+    },
+    {
+        "name": "snapshot",
+        "type_n": "SNAPSHOT",
+        "style": "range"
+    },
+    {
+        "name": "bombardment",
+        "min":  0.438,
+        "max": 2.19,
+        "cd": 50,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "range",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "incendiary shot",
+        "type_n": "INCEND",
+        "style": "range"
+    },
+    {
+        "name": "deadshot",
+        "type_n": "DEADSHOT",
+        "style": "range"
+    },
+    {
+        "name": "unload",
+        "type_n": "UNLOAD",
+        "style": "range"
+    },
+    {
+        "name": "corruption shot",
+        "type_n": "CORRUPT",
+        "style": "range"
+    },
+    {
+        "name": "fragmentation shot",
+        "min":  0.2,
+        "max": 0.37,
+        "cd": 25,
+        "type_n": "BLEED",
+        "style": "range"
+    },
+    {
+        "name": "death swiftness",
+        "type_n": "PF_DMG_ULT",
+        "style": "range"
+    },
+    {
+        "name": "greater death swiftness",
+        "type_n": "DMG_ULT",
+        "style": "range"
+    },
+    {
+        "name": "shadow tendrils",
+        "type_n": "SHADOW_TEND",
+        "style": "range"
+    },
+    {
+        "name": "rapid fire",
+        "type_n": "RAPID",
+        "style": "range"
     }
 ]
