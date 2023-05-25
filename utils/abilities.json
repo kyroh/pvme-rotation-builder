@@ -2,163 +2,164 @@
     {
         "name": "dragon breath",
         "type_n": "DRAGON_BREATH",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "wrack",
-        "min":  0.4,
+        "min": 0.4,
         "max": 1.4,
         "cd": 5,
-        "type_n": "WRACK",
-        "style": "magic"
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "impact",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.00,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "omnipower",
-        "min":  2.0,
+        "min": 2.0,
         "max": 4.0,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic",
+        "style": "MAGIC",
         "class_n": "ULT"
     },
     {
         "name": "igneous omnipower",
         "type_n": "IGNEOUS_OMNI",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "deep impact",
-        "min":  0.4,
+        "min": 0.4,
         "max": 2.0,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "magic",
+        "style": "MAGIC",
         "class_n": "THRESH"
     },
     {
         "name": "sonic wave",
-        "min":  0.314,
+        "min": 0.314,
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "shock",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "concentrated blast",
         "type_n": "CONC",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "greater concentrated blast",
         "type_n": "CONC",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "horror",
-        "min":  0.4,
+        "min": 0.4,
         "max": 2.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic",
+        "style": "MAGIC",
         "class_n": "THRESH"
     },
     {
         "name": "combust",
-        "min":  0.2,
+        "min": 0.2,
         "max": 0.37,
         "cd": 25,
         "type_n": "BLEED",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "detonate",
         "type_n": "DETO",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "chain",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.0,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "greater chain",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.0,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
-        "name": "wild magic",
+        "name": "wild MAGIC",
         "type": "WILD_MAGIC",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "magma tempest",
         "type_n": "MAGMA",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "metamorphosis",
         "type": "BUFF_ABIL",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "sunshine",
         "type_n": "PF_DMG_ULT",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "greater sunshine",
         "type_n": "DMG_ULT",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "asphyxiate",
-        "min":  0.376,
+        "min": 0.376,
         "max": 1.88,
         "cd": 34,
         "type_n": "QUAD_CHANNELED",
-        "style": "magic",
+        "style": "MAGIC",
         "class_n": "THRESH"
     },
     {
         "name": "tsunami",
-        "min":  2.00,
+        "min": 2.00,
         "max": 3.00,
         "cd": 100,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "magic",
+        "style": "MAGIC",
         "class_n": "ULT"
     },
     {
         "name": "corruption blast",
         "type_n": "CORRUPT",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "smoke tendrils",
         "type_n": "SMOKE_TEND",
-        "style": "magic"
+        "style": "MAGIC"
     },
     {
         "name": "piercing shot",
@@ -167,7 +168,7 @@
     },
     {
         "name": "binding shot",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.0,
         "cd": 25,
         "type_n": "FLANK_ABIL",
@@ -185,7 +186,7 @@
     },
     {
         "name": "dazing shot",
-        "min":  0.314,
+        "min": 0.314,
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
@@ -193,7 +194,7 @@
     },
     {
         "name": "mutated dazing shot",
-        "min":  0.314,
+        "min": 0.314,
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
@@ -201,7 +202,7 @@
     },
     {
         "name": "dazing shot",
-        "min":  0.314,
+        "min": 0.314,
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
@@ -209,7 +210,7 @@
     },
     {
         "name": "tight bindings",
-        "min":  0.4,
+        "min": 0.4,
         "max": 2.0,
         "cd": 25,
         "type_n": "FLANK_ABIL",
@@ -218,7 +219,7 @@
     },
     {
         "name": "demoralise",
-        "min":  0.2,
+        "min": 0.2,
         "max": 1.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
@@ -226,7 +227,7 @@
     },
     {
         "name": "rout",
-        "min":  0.4,
+        "min": 0.4,
         "max": 2.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
@@ -235,7 +236,7 @@
     },
     {
         "name": "ricochet",
-        "min":  0.2,
+        "min": 0.2,
         "max": 0.1,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
@@ -253,7 +254,7 @@
     },
     {
         "name": "bombardment",
-        "min":  0.438,
+        "min": 0.438,
         "max": 2.19,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
@@ -271,6 +272,11 @@
         "style": "range"
     },
     {
+        "name": "igneous deadshot",
+        "type_n": "IGNEOUS_DS",
+        "style": "range"
+    },
+    {
         "name": "unload",
         "type_n": "UNLOAD",
         "style": "range"
@@ -282,7 +288,7 @@
     },
     {
         "name": "fragmentation shot",
-        "min":  0.2,
+        "min": 0.2,
         "max": 0.37,
         "cd": 25,
         "type_n": "BLEED",
@@ -307,5 +313,62 @@
         "name": "rapid fire",
         "type_n": "RAPID",
         "style": "range"
+    },
+    {
+        "name": "slice",
+        "type_n": "SLICE",
+        "style": "melee"
+    },
+    {
+        "name": "smash",
+        "min": 0.314,
+        "max": 0.157,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "melee"
+    },
+    {
+        "name": "havoc",
+        "type_n": "HAVOC",
+        "style": "melee"
+    },
+    {
+        "name": "sever",
+        "min": 0.376,
+        "max": 1.88,
+        "cd": 25,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "melee"
+    },
+    {
+        "name": "backhand",
+        "min": 0.2,
+        "max": 1.00,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "melee"
+    },
+    {
+        "name": "forceful backhand",
+        "min": 0.4,
+        "max": 2.00,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "melee",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "overpower",
+        "min": 2.00,
+        "max": 4.00,
+        "cd": 50,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "melee",
+        "class_n": "ULT"
+    },
+    {
+        "name": "igneous overpower",
+        "type_n": "IGNEOUS_OP",
+        "style": "melee"
     }
 ]
