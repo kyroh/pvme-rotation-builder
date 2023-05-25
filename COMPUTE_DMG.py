@@ -35,7 +35,7 @@ class StandardAbility:
         self.prayer_input = 'None'
         self.precise_rank = 6
         self.equilibrium_rank = 2
-        self.sunshine = 'INACTIVE '
+        self.sunshine = 'INACTIVE'
         self.death_swiftness = 'INACTIVE'
         self.berserk = 'INACTIVE'
         self.zgs_spec = 'INACTIVE'
@@ -280,8 +280,8 @@ class StandardAbility:
             fixed += int(0.25 * variable)
             variable -= int(0.5 * variable) 
         else:
-            fixed += 0.03 * variable * self.equilibrium_rank
-            variable -= 0.04 * variable * self.equilibrium_rank
+            fixed += int(0.03 * variable * self.equilibrium_rank)
+            variable -= int(0.04 * variable * self.equilibrium_rank)
         return [fixed, variable]
     
     # Computes dmg per level and outputs new fixed and variable dmg
