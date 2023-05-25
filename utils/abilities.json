@@ -119,7 +119,7 @@
     },
     {
         "name": "metamorphosis",
-        "type": "BUFF_ABILITY",
+        "type": "BUFF_ABIL",
         "style": "magic"
     },
     {

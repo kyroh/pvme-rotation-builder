@@ -371,6 +371,11 @@ class StandardAbility:
         variable = dmg_values[1]
         pass
 
-test = StandardAbility()
+class BleedAbility:
+    pass
+
+class ChanneledABility:
+    pass
+
 
 
