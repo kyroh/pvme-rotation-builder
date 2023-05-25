@@ -184,5 +184,11 @@
         "type": "oh",
         "style": "melee",
         "dmg_tier": 90
+    },
+    {
+        "name": "Crystal staff",
+        "type": "2h",
+        "style": "magic",
+        "dmg_tier": 70
     }
 ]

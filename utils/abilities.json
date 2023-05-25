@@ -1,18 +1,128 @@
 [
     {
-        "name": "db",
-        "min":  0.376,
-        "max": 1.88,
-        "type_n": "standard",
-        "style": "magic",
-        "class_n": "basic"
+        "name": "dragon breath",
+        "type_n": "DRAGON_BREATH"
     },
     {
         "name": "wrack",
         "min":  0.4,
         "max": 1.4,
-        "type_n": "standard",
+        "cd": 5,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "impact",
+        "min":  0.2,
+        "max": 1.00,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "omnipower",
+        "min":  2.0,
+        "max": 4.0,
+        "cd": 50,
+        "type_n": "SINGLE_HIT_ABIL",
         "style": "magic",
-        "class_n": "basic"
+        "class_n": "ult"
+    },
+    {
+        "name": "igneous omnipower",
+        "type_n": "IGNEOUS_OMNI"
+    },
+    {
+        "name": "deep impact",
+        "min":  0.4,
+        "max": 2.0,
+        "cd": 25,
+        "type_n": "FLANK_ABIL",
+        "style": "magic",
+        "class_n": "thresh"
+    },
+    {
+        "name": "sonic wave",
+        "min":  0.314,
+        "max": 1.57,
+        "cd": 9,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "shock",
+        "min":  0.2,
+        "max": 1.0,
+        "cd": 25,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "concentrated blast"
+    },
+    {
+        "name": "greater concentrated blast"
+    },
+    {
+        "name": "horror",
+        "min":  0.4,
+        "max": 2.0,
+        "cd": 25,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic",
+        "class_n": "thresh"
+    },
+    {
+        "name": "combust",
+        "min":  0.2,
+        "max": 0.37,
+        "cd": 25,
+        "type_n": "BLEED",
+        "style": "magic"
+    },
+    {
+        "name": "detonate",
+        "type_n": "DETO"
+    },
+    {
+        "name": "chain",
+        "min":  0.2,
+        "max": 1.0,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "greater chain",
+        "min":  0.2,
+        "max": 1.0,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "magic"
+    },
+    {
+        "name": "wild magic",
+        "type": "WILD_MAGIC"
+    },
+    {
+        "name": "magma tempest"
+    },
+    {
+        "name": "metamorphosis"
+    },
+    {
+        "name": "sunshine"
+    },
+    {
+        "name": "greater sunshine"
+    },
+    {
+        "name": "asphyxiate",
+        "min":  0.376,
+        "max": 1.88,
+        "cd": 34,
+        "type_n": "QUAD_CHANNELED",
+        "style": "magic",
+        "class_n": "thresh"
     }
 ]

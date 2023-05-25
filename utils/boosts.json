@@ -192,7 +192,7 @@
         "strength_dmg_percent": 0.12
     },
     {
-        "name": "T95",
+        "name": "Turmoil",
         "magic_level_boost": 0,
         "range_level_boost": 0,
         "strength_level_boost": 0,
@@ -201,6 +201,30 @@
         "strength_level_percent": 0,
         "magic_dmg_percent": 0,
         "range_dmg_percent": 0,
+        "strength_dmg_percent": 0.10
+    },
+    {
+        "name": "Torment",
+        "magic_level_boost": 0,
+        "range_level_boost": 0,
+        "strength_level_boost": 0,
+        "magic_level_percent": 0,
+        "range_level_percent": 0,
+        "strength_level_percent": 0,
+        "magic_dmg_percent": 0.10,
+        "range_dmg_percent": 0,
+        "strength_dmg_percent": 0
+    },
+    {
+        "name": "Anguish",
+        "magic_level_boost": 0,
+        "range_level_boost": 0,
+        "strength_level_boost": 0,
+        "magic_level_percent": 0,
+        "range_level_percent": 0,
+        "strength_level_percent": 0,
+        "magic_dmg_percent": 0,
+        "range_dmg_percent": 0.10,
         "strength_dmg_percent": 0
     }
 ]
