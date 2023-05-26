@@ -23,14 +23,14 @@ class StandardAbility:
         self.ability_input = 'wrack'
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
-        self.th_input = 'Fractured staff of Armadyl'
+        self.th_input = 'Inquisitor staff'
         self.type = '2h'
         self.bonus = 12
         self.spell_input = 99
         self.base_magic_level = 99
         self.base_range_level = 99
         self.base_strength_level = 99
-        self.aura_input = 'Maniacal'
+        self.aura_input = 'None'
         self.potion_input = 'None'
         self.prayer_input = 'None'
         self.precise_rank = 6
@@ -355,7 +355,7 @@ class StandardAbility:
                 variable += int(variable * boost['magic_dmg_percent'])
             else:
                 pass
-        return [fixed, variable]    
+        return [fixed, variable]
        
     
     # Computes the dmg boost from ultimates and specs
@@ -366,20 +366,20 @@ class StandardAbility:
         
         if self.ability_input != 'BLEED':
             if self.sunshine == 'ACTIVE' and self.style == 'MAGIC' or self.death_swiftness == 'ACTIVE' and self.style == 'RANGE':
-                fixed *= 1.5
-                variable *= 1.5
+                fixed += int(fixed * 0.5)
+                variable += int(variable * 0.5)
             elif self.berserk == 'ACTIVE' and self.style == 'MELEE':
-                fixed *= 2.0
-                variable *= 2.0
+                fixed += int(fixed * 2.0)
+                variable += (variable * 2.0)
             elif self.zgs_spec == 'ACTIVE' and self.style == 'MELEE':
-                fixed *= 1.25
-                variable *= 1.25
+                fixed += (fixed * 1.25)
+                variable += (variable * 1.25)
             else:
                 pass
             
         else:
             pass
-        return [int(fixed), int(variable)]
+        return [fixed, variable]
 
 class BleedAbility:
     pass
