@@ -70,9 +70,6 @@ class StandardAbility:
                 break
         if boost is None:
             pass
-        magic_boost_percent = 0
-        range_boost_percent = 0
-        strength_boost_percent = 0
         if boost['magic_level_percent'] != 0:
             magic_boost_percent = self.base_magic_level * boost['magic_level_percent']
         if boost['range_level_percent'] != 0:
@@ -92,12 +89,6 @@ class StandardAbility:
                 break
         if boost is None:
             pass
-        magic_boost_percent = 0
-        range_boost_percent = 0
-        strength_boost_percent = 0
-        magic_boost = 0
-        range_boost = 0
-        strength_boost = 0
         if boost['magic_level_percent'] != 0:
             magic_boost_percent = self.base_magic_level * boost['magic_level_percent']
         if boost['range_level_percent'] != 0:
@@ -127,11 +118,6 @@ class StandardAbility:
     
     # Computes base ability dmg for dual wield weapons
     def dw_ability_dmg(self):
-        mh = None
-        oh = None
-        mh_ability_dmg = 0
-        oh_ability_dmg = 0
-        base_ability_dmg = 0
         
         for w in self.weapons:
             if w['name'] == self.mh_input:
@@ -168,9 +154,6 @@ class StandardAbility:
    
     # Computes base ability dmg for 2h weapon
     def th_ability_dmg(self):
-        th = None
-        base_ability_dmg = 0 
-        
         for w in self.weapons:
             if w['name'] == self.th_input:
                 th = w
@@ -189,9 +172,6 @@ class StandardAbility:
     
     # Computes base ability dmg for Mainhand + no-offhand
     def ms_ability_dmg(self):
-        mh = None
-        mh_ability_dmg = 0
-        
         for w in self.weapons:
             if w['name'] == self.mh_input:
                 mh = w
@@ -208,8 +188,6 @@ class StandardAbility:
     
     # Helper function to identify which weapons you're casting with and return the proper base ability dmg
     def base_ability_dmg(self):
-        base_ability_dmg = 0
-        
         if self.type == '2h':
             base_ability_dmg = self.th_ability_dmg()
         elif self.type == 'dw':
@@ -222,7 +200,6 @@ class StandardAbility:
     
     # Helper function to identify the combat style and type of ability casted
     def get_abil_params(self):
-        
         for a in self.abilities:
             if a['name'] == self.ability_input:
                 abil = a
@@ -236,8 +213,6 @@ class StandardAbility:
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
-        fixed = 0
-        
         if self.style == 'MAGIC':
             fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + self.magic_prayer))
         elif self.style == 'RANGE':
@@ -304,8 +279,6 @@ class StandardAbility:
         
     # Helper function to check hexhunter effect
     def hexhunter(self):
-        hexhunter = 0
-        
         if self.th_input == 'Inquisitor staff':
             hexhunter = 1
         elif self.th_input == 'Hexhunter bow':
