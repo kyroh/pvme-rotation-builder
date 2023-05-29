@@ -85,7 +85,8 @@
         "max": 0.37,
         "cd": 25,
         "type_n": "BLEED",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "detonate",

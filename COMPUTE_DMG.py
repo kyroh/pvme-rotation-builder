@@ -20,10 +20,10 @@ class StandardAbility:
             self.abilities = json.load(a)
 
         # Variables from GUI inputs
-        self.ability_input = 'wrack'
+        self.ability_input = 'combust'
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
-        self.th_input = 'Inquisitor staff'
+        self.th_input = 'Fractured staff of Armadyl'
         self.type = '2h'
         self.bonus = 12
         self.spell_input = 99
@@ -31,10 +31,10 @@ class StandardAbility:
         self.base_range_level = 99
         self.base_strength_level = 99
         self.aura_input = 'None'
-        self.potion_input = 'None'
+        self.potion_input = 'Elder overload'
         self.prayer_input = 'None'
-        self.precise_rank = 6
-        self.equilibrium_rank = 2
+        self.precise_rank = 0
+        self.equilibrium_rank = 0
         self.sunshine = 'INACTIVE'
         self.death_swiftness = 'INACTIVE'
         self.berserk = 'INACTIVE'
@@ -382,16 +382,61 @@ class StandardAbility:
         return [fixed, variable]
 
 class BleedAbility:
-    pass
+    def __init__(self):
+        standard = StandardAbility()
+
+        self.base_magic_level = standard.base_magic_level
+        self.base_range_level = standard.base_range_level
+        self.base_strength_level = standard.base_strength_level
+
+        self.ability_dmg = standard.base_ability_dmg()
+
+        self.abil_params = standard.get_abil_params()
+        self.style = self.abil_params[0]
+        self.class_n = self.abil_params[1]
+        self.type_n = self.abil_params[2]
+        self.min_dmg = self.abil_params[3]
+        self.max_dmg = self.abil_params[4]
+
+        self.boosted_levels = standard.calculate_levels()
+        self.boosted_magic_level = self.boosted_levels[0]
+        self.boosted_range_level = self.boosted_levels[1]
+        self.boosted_strength_level = self.boosted_levels[2]
+
+    def fixed(self):
+        fixed = 0
+        
+        if self.style == 'MAGIC':
+            fixed = int(int(self.ability_dmg * self.min_dmg))
+        elif self.style == 'RANGE':
+            fixed = int(int(self.ability_dmg * self.min_dmg))
+        elif self.style == 'MELEE':
+            fixed = int(int(self.ability_dmg * self.min_dmg))
+        else:
+            pass
+        return fixed
+    
+    # Computes variable dmg with prayer modifier
+    def variable(self):
+        if self.style == 'MAGIC':
+            variable = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
+        elif self.style == 'RANGE':
+            variable = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
+        elif self.style == 'MELEE':
+            variable = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
+        else:
+            pass
+        return variable
 
 class ChanneledABility:
     pass
 
-test = StandardAbility()
+test = BleedAbility() 
 
-dmg = test.aura_passive()
+fixed = test.fixed()
 
-print(dmg)
+print(fixed)
+
 
 
 
