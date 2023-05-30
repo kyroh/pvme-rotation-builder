@@ -21,8 +21,8 @@ class StandardAbility:
 
         # Variables from GUI inputs
         self.ability_input = 'combust'
-        self.mh_input = 'Wand of the praesul'
-        self.oh_input = 'Imperium core'
+        self.mh_input = 'None'
+        self.oh_input = 'None'
         self.th_input = 'Fractured staff of Armadyl'
         self.type = '2h'
         self.bonus = 12
@@ -31,7 +31,7 @@ class StandardAbility:
         self.base_range_level = 99
         self.base_strength_level = 99
         self.aura_input = 'None'
-        self.potion_input = 'Elder overload'
+        self.potion_input = 'None'
         self.prayer_input = 'None'
         self.precise_rank = 0
         self.equilibrium_rank = 0
@@ -382,6 +382,7 @@ class StandardAbility:
         return [fixed, variable]
 
 class BleedAbility:
+    
     def __init__(self):
         standard = StandardAbility()
 
@@ -427,15 +428,21 @@ class BleedAbility:
         else:
             pass
         return variable
+    
+    def walkedbleeds(self):
+        
+        pass
 
 class ChanneledABility:
-    pass
+    pass 
 
 test = BleedAbility() 
 
 fixed = test.fixed()
+var = test.variable()
 
 print(fixed)
+print(var)
 
 
 

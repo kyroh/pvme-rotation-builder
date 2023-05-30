@@ -1,8 +1,12 @@
 [
     {
         "name": "dragon breath",
+        "min": 0.376,
+        "max": 0.188,
+        "cd": 17,
         "type_n": "DRAGON_BREATH",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "wrack",
@@ -19,7 +23,8 @@
         "max": 1.00,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "omnipower",
@@ -32,8 +37,12 @@
     },
     {
         "name": "igneous omnipower",
+        "min": 0.9,
+        "max": 1.8,
+        "cd": 50,
         "type_n": "IGNEOUS_OMNI",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "OTH"
     },
     {
         "name": "deep impact",
@@ -50,7 +59,8 @@
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "shock",
@@ -58,7 +68,8 @@
         "max": 1.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "concentrated blast",
@@ -82,7 +93,7 @@
     {
         "name": "combust",
         "min": 0.2,
-        "max": 0.37,
+        "max": 0.376,
         "cd": 25,
         "type_n": "BLEED",
         "style": "MAGIC",
@@ -290,7 +301,7 @@
     {
         "name": "fragmentation shot",
         "min": 0.2,
-        "max": 0.37,
+        "max": 0.376,
         "cd": 25,
         "type_n": "BLEED",
         "style": "range"
@@ -371,5 +382,23 @@
         "name": "igneous overpower",
         "type_n": "IGNEOUS_OP",
         "style": "melee"
+    },
+    {
+        "name": "dismember",
+        "min": 0.2,
+        "max": 0.376,
+        "cd": 25,
+        "type_n": "BLEED",
+        "style": "MELEE",
+        "class_n": "BASIC"
+    },
+    {
+        "name": "slaughter",
+        "min": 0.2,
+        "max": 0.5,
+        "cd": 50,
+        "type_n": "BLEED",
+        "style": "MELEE",
+        "class_n": "THRESH"
     }
 ]
