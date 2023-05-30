@@ -392,17 +392,15 @@ class BleedAbility:
 
         self.ability_dmg = standard.base_ability_dmg()
 
-        self.abil_params = standard.get_abil_params()
-        self.style = self.abil_params[0]
-        self.class_n = self.abil_params[1]
-        self.type_n = self.abil_params[2]
-        self.min_dmg = self.abil_params[3]
-        self.max_dmg = self.abil_params[4]
-
-        self.boosted_levels = standard.calculate_levels()
-        self.boosted_magic_level = self.boosted_levels[0]
-        self.boosted_range_level = self.boosted_levels[1]
-        self.boosted_strength_level = self.boosted_levels[2]
+        self.style = standard.style
+        self.class_n = standard.class_n
+        self.type_n = standard.type_n
+        self.min_dmg = standard.min_dmg
+        self.max_dmg = standard.max_dmg
+        
+        self.boosted_magic_level = standard.boosted_magic_level
+        self.boosted_range_level = standard.boosted_range_level
+        self.boosted_strength_level = standard.boosted_strength_level
 
     def fixed(self):
         fixed = 0
@@ -428,6 +426,9 @@ class BleedAbility:
         else:
             pass
         return variable
+    
+    def hits(self):
+        pass
     
     def walkedbleeds(self):
         

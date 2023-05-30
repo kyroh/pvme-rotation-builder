@@ -73,13 +73,21 @@
     },
     {
         "name": "concentrated blast",
+        "min": 0,
+        "max": 0,
+        "cd": 9,
         "type_n": "CONC",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "greater concentrated blast",
+        "min": 0,
+        "max": 0,
+        "cd": 9,
         "type_n": "CONC",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "horror",
@@ -118,12 +126,17 @@
         "max": 1.0,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "MAGIC"
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "wild MAGIC",
-        "type": "WILD_MAGIC",
-        "style": "MAGIC"
+        "min": 0.5,
+        "max": 2.15,
+        "cd": 34,
+        "type_n": "WILD_MAGIC",
+        "style": "MAGIC",
+        "class_n": "THRESH"
     },
     {
         "name": "magma tempest",
@@ -176,7 +189,7 @@
     {
         "name": "piercing shot",
         "type_n": "PIERCING",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "binding shot",
@@ -184,17 +197,17 @@
         "max": 1.0,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "needle strike",
         "type_n": "NEEDLE",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "snipe",
         "type_n": "SNIPE",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "dazing shot",
@@ -202,7 +215,7 @@
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "mutated dazing shot",
@@ -210,7 +223,7 @@
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "dazing shot",
@@ -218,7 +231,7 @@
         "max": 1.57,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "tight bindings",
@@ -226,7 +239,7 @@
         "max": 2.0,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "range",
+        "style": "RANGE",
         "class_n": "THRESH"
     },
     {
@@ -235,7 +248,7 @@
         "max": 1.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "rout",
@@ -243,7 +256,7 @@
         "max": 2.0,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range",
+        "style": "RANGE",
         "class_n": "THRESH"
     },
     {
@@ -252,17 +265,17 @@
         "max": 0.1,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "greater ricochet",
         "type_n": "GRICO",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "snapshot",
         "type_n": "SNAPSHOT",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "bombardment",
@@ -270,33 +283,33 @@
         "max": 2.19,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "range",
+        "style": "RANGE",
         "class_n": "THRESH"
     },
     {
         "name": "incendiary shot",
         "type_n": "INCEND",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "deadshot",
         "type_n": "DEADSHOT",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "igneous deadshot",
         "type_n": "IGNEOUS_DS",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "unload",
         "type_n": "UNLOAD",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "corruption shot",
         "type_n": "CORRUPT",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "fragmentation shot",
@@ -304,32 +317,32 @@
         "max": 0.376,
         "cd": 25,
         "type_n": "BLEED",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "death swiftness",
         "type_n": "PF_DMG_ULT",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "greater death swiftness",
         "type_n": "DMG_ULT",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "shadow tendrils",
         "type_n": "SHADOW_TEND",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "rapid fire",
         "type_n": "RAPID",
-        "style": "range"
+        "style": "RANGE"
     },
     {
         "name": "slice",
         "type_n": "SLICE",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "smash",
@@ -337,12 +350,12 @@
         "max": 0.157,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "havoc",
         "type_n": "HAVOC",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "sever",
@@ -350,7 +363,7 @@
         "max": 1.88,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "backhand",
@@ -358,7 +371,7 @@
         "max": 1.00,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "forceful backhand",
@@ -366,7 +379,7 @@
         "max": 2.00,
         "cd": 25,
         "type_n": "FLANK_ABIL",
-        "style": "melee",
+        "style": "MELEE",
         "class_n": "THRESH"
     },
     {
@@ -375,13 +388,13 @@
         "max": 4.00,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "melee",
+        "style": "MELEE",
         "class_n": "ULT"
     },
     {
         "name": "igneous overpower",
         "type_n": "IGNEOUS_OP",
-        "style": "melee"
+        "style": "MELEE"
     },
     {
         "name": "dismember",
