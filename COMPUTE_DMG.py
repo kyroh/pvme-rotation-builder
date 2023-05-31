@@ -22,7 +22,7 @@ class StandardAbility:
             self.abilities = json.load(a)
 
         # Variables from GUI inputs
-        self.ability_input = 'blood tendrils'
+        self.ability_input = 'slaughter'
         self.mh_input = 'None'
         self.oh_input = 'None'
         self.th_input = 'Zaros godsword'
@@ -33,7 +33,7 @@ class StandardAbility:
         self.base_range_level = 99
         self.base_strength_level = 99
         self.aura_input = 'None'
-        self.potion_input = 'None'
+        self.potion_input = 'Elder overload'
         self.prayer_input = 'None'
         self.precise_rank = 0
         self.equilibrium_rank = 0
@@ -42,7 +42,7 @@ class StandardAbility:
         self.berserk = 'INACTIVE'
         self.zgs_spec = 'INACTIVE'
         self.sim = 10000
-        self.dmg_output = 'MAX'
+        self.dmg_output = 'MIN'
         
         # Variables from methods
         self.boosted_levels = self.calculate_levels()
@@ -437,7 +437,11 @@ class BleedAbility:
         total = 0
         
         if self.name == 'combust' or self.name == 'fragmentation shot' or self.name == 'dismember' or self.name == 'slaughter':
-            pass
+            for _ in range(self.sim):
+                random_num = random.randint(1,100)
+                dmg = int((self.ability_dmg * max(((random_num * (1.88 + 0.2 * self.lunging_rank)) / 100), 1)) / 5)
+                total += dmg
+                avg_dmg = int(total / self.sim)
         else:
             for _ in range(self.sim):
                 random_num = random.randint(min_dmg, max_dmg)
@@ -496,7 +500,20 @@ class BleedAbility:
         return hits
     
     def walk(self):
-         pass
+        walk = False
+        hits = self.hits()
+
+        for bleed in self.bleeds:
+            if bleed['name'] == self.name:
+                abil = bleed
+                break
+        multiplier = abil['walk']  
+
+        if walk == True:
+            hits = [entry * multiplier for entry in hits]
+        else:
+            pass
+        return hits
 
 class ChanneledABility:
     pass 
@@ -507,7 +524,7 @@ class OnHitEffects:
 
 test = BleedAbility() 
 
-avg = test.hits()
+avg = test.walk()
 
 print(avg)
 
