@@ -1,0 +1,65 @@
+[
+    {
+        "name": "combust",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 2
+    },
+    {
+        "name": "ruin_combust",
+        "hits": 7,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 2
+    },
+    {
+        "name": "fragmentation shot",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 2
+    },
+    {
+        "name": "dismember",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 0
+    },
+    {
+        "name": "slaughter",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 3
+    },
+    {
+        "name": "corruption shot",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0.2,
+        "walk": 0
+    },
+    {
+        "name": "corruption blast",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0.2,
+        "walk": 0
+    },
+    {
+        "name": "blood tendrils",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0.5,
+        "walk": 0
+    },
+    {
+        "name": "massacre",
+        "hits": 5,
+        "frequency": 2,
+        "dmg_decay": 0,
+        "walk": 0
+    }
+]

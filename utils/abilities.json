@@ -178,8 +178,12 @@
     },
     {
         "name": "corruption blast",
-        "type_n": "CORRUPT",
-        "style": "MAGIC"
+        "min": 0.33,
+        "max": 1.0,
+        "cd": 25,
+        "type_n": "BLEED",
+        "style": "MAGIC",
+        "class_n": "BASIC"
     },
     {
         "name": "smoke tendrils",
