@@ -471,41 +471,26 @@ class BleedAbility:
         else:
             if self.name == 'corruption shot' or self.name == 'corruption blast':
                 if self.dmg_output == 'MIN':
-                    hit_1 = min_dmg
-                    hit_2 = hit_1 - int(hit_1 * 0.2)
-                    hit_3 = hit_2 - int(hit_2 * 0.2)
-                    hit_4 = hit_3 - int(hit_3 * 0.2)
-                    hit_5 = hit_4 - int(hit_4 * 0.2)
-                    hits = [hit_1, hit_2, hit_3, hit_4, hit_5]
+                    reduce = int(dmg_decay * min_dmg)
+                    hits = [min_dmg - i * reduce for i in range(hit_count)]
                 elif self.dmg_output == 'AVG':
-                    hit_1 = avg_dmg
-                    hit_2 = hit_1 - int(hit_1 * 0.2)
-                    hit_3 = hit_2 - int(hit_2 * 0.2)
-                    hit_4 = hit_3 - int(hit_3 * 0.2)
-                    hit_5 = hit_4 - int(hit_4 * 0.2)
-                    hits = [hit_1, hit_2, hit_3, hit_4, hit_5]
+                    reduce = int(dmg_decay * avg_dmg)
+                    hits = [avg_dmg - i * reduce for i in range(hit_count)]
                 elif self.dmg_output == 'MAX':
-                    hit_1 = max_dmg
-                    hit_2 = hit_1 - int(hit_1 * 0.2)
-                    hit_3 = hit_2 - int(hit_2 * 0.2)
-                    hit_4 = hit_3 - int(hit_3 * 0.2)
-                    hit_5 = hit_4 - int(hit_4 * 0.2)
-                    hits = [hit_1, hit_2, hit_3, hit_4, hit_5]
+                    reduce = int(dmg_decay * max_dmg)
+                    hits = [max_dmg - i * reduce for i in range(hit_count)]
                 else:
                     pass
             elif self.name == 'blood tendrils':
                 if self.dmg_output == 'MIN':
-                    hit_1 = min_dmg
-                    hit_n = min_dmg - int(min_dmg * 0.5)
-                    hits = [hit_1, hit_n, hit_n, hit_n, hit_n]
+                    reduce = int(dmg_decay * min_dmg)
+                    hits = [min_dmg] + [min_dmg - reduce] * (hit_count - 1)
                 elif self.dmg_output == 'AVG':
-                    hit_1 = avg_dmg
-                    hit_n = avg_dmg - int(avg_dmg * 0.5)
-                    hits = [hit_1, hit_n, hit_n, hit_n, hit_n]
+                    reduce = int(dmg_decay * avg_dmg)
+                    hits = [avg_dmg] + [avg_dmg - reduce] * (hit_count - 1)
                 elif self.dmg_output == 'MAX':
-                    hit_1 = max_dmg
-                    hit_n = max_dmg - int(max_dmg * 0.5)
-                    hits = [hit_1, hit_n, hit_n, hit_n, hit_n]
+                    reduce = int(dmg_decay * max_dmg)
+                    hits = [max_dmg] + [max_dmg - reduce] * (hit_count - 1)
             else:
                 pass
         return hits
