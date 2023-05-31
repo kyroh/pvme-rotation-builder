@@ -22,10 +22,10 @@ class StandardAbility:
             self.abilities = json.load(a)
 
         # Variables from GUI inputs
-        self.ability_input = 'corruption blast'
+        self.ability_input = 'blood tendrils'
         self.mh_input = 'None'
         self.oh_input = 'None'
-        self.th_input = 'Staff of Sliske'
+        self.th_input = 'Zaros godsword'
         self.type = '2h'
         self.bonus = 12
         self.spell_input = 99

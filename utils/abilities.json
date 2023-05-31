@@ -417,5 +417,14 @@
         "type_n": "BLEED",
         "style": "MELEE",
         "class_n": "THRESH"
+    },
+    {
+        "name": "blood tendrils",
+        "min": 0.36,
+        "max": 1.8,
+        "cd": 75,
+        "type_n": "BLEED",
+        "style": "MELEE",
+        "class_n": "THRESH"
     }
 ]
