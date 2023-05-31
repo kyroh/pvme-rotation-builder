@@ -12,7 +12,10 @@ import json
 
 class Inputs:
     def __init__(self):
-        self.ability_input = 'slaughter'
+        with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
+            self.abilities = json.load(a)
+
+        self.ability_input = 'blood tendrils'
         self.mh_input = 'None'
         self.oh_input = 'None'
         self.th_input = 'Zaros godsword'
@@ -30,17 +33,15 @@ class Inputs:
         self.lunging_rank = 0
         self.dmg_output = 'MIN'
 
-        self.ability_info = self.get_abil_params()
+        self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
         self.min_dmg = self.abil_params[1]
         self.max_dmg = self.abil_params[2]
         self.style = self.abil_params[3]
         self.type_n = self.abil_params[4]
         self.class_n = self.abil_params[5]
-
     
     def get_abil_params(self):
-        
         for a in self.abilities:
             if a['name'] == self.ability_input:
                 abil = a
@@ -60,9 +61,6 @@ class StandardAbility:
         
         with open(os.path.join('utils', 'BOOSTS.json'), 'r') as b:
             self.boosts = json.load(b)
-
-        with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
-            self.abilities = json.load(a)
 
         # Variables from GUI inputs
         inputs = Inputs()
@@ -356,7 +354,7 @@ class StandardAbility:
         fixed = dmg[0]
         var = dmg[1]
         
-        if self.sunshine == 'ACTIVE' and self.style == 'MAGIC' or self.death_swiftness == 'ACTIVE' and self.style == 'RANGE' or self.berserk == 'ACTIVE' and self.style == 'MELEE' or self.zgs_spec == 'ACTIVE' and self.style == 'MELEE':
+        if self.sunshine == True and self.style == 'MAGIC' or self.death_swiftness == True and self.style == 'RANGE' or self.berserk == True and self.style == 'MELEE' or self.zgs_spec == True and self.style == 'MELEE':
             pass
         else:
             for b in self.boosts:
@@ -421,12 +419,12 @@ class BleedAbility:
 
         self.ability_dmg = standard.base_ability_dmg()
 
-        self.name = standard.name
-        self.style = standard.style
-        self.class_n = standard.class_n
-        self.type_n = standard.type_n
-        self.min_dmg = standard.min_dmg
-        self.max_dmg = standard.max_dmg
+        self.name = inputs.name
+        self.style = inputs.style
+        self.class_n = inputs.class_n
+        self.type_n = inputs.type_n
+        self.min_dmg = inputs.min_dmg
+        self.max_dmg = inputs.max_dmg
         
         self.boosted_magic_level = standard.boosted_magic_level
         self.boosted_range_level = standard.boosted_range_level
@@ -517,13 +515,13 @@ class BleedAbility:
             elif self.name == 'blood tendrils':
                 if self.dmg_output == 'MIN':
                     reduce = int(dmg_decay * min_dmg)
-                    hits = [min_dmg] + [min_dmg - reduce] * (hit_count - 1)
+                    hits = [reduce] + [min_dmg] * (hit_count - 1)
                 elif self.dmg_output == 'AVG':
                     reduce = int(dmg_decay * avg_dmg)
-                    hits = [avg_dmg] + [avg_dmg - reduce] * (hit_count - 1)
+                    hits = [reduce] + [avg_dmg] * (hit_count - 1)
                 elif self.dmg_output == 'MAX':
                     reduce = int(dmg_decay * max_dmg)
-                    hits = [max_dmg] + [max_dmg - reduce] * (hit_count - 1)
+                    hits = [reduce] + [max_dmg] * (hit_count - 1)
             else:
                 pass
         return hits
@@ -553,9 +551,10 @@ class OnHitEffects:
 
 test = BleedAbility() 
 
-avg = test.walk()
 
-print(avg)
+dmg = test.hits()
+
+print(dmg)
 
 
 

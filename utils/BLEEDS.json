@@ -52,7 +52,7 @@
         "name": "blood tendrils",
         "hits": 5,
         "frequency": 2,
-        "dmg_decay": 0.5,
+        "dmg_decay": 2,
         "walk": 0
     },
     {
