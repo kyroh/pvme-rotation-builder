@@ -10,18 +10,8 @@ import random
 import os
 import json
 
-class StandardAbility:
+class Inputs:
     def __init__(self):
-        with open(os.path.join('utils', 'WEAPONS.json'), 'r') as w:
-            self.weapons = json.load(w)
-        
-        with open(os.path.join('utils', 'BOOSTS.json'), 'r') as b:
-            self.boosts = json.load(b)
-
-        with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
-            self.abilities = json.load(a)
-
-        # Variables from GUI inputs
         self.ability_input = 'slaughter'
         self.mh_input = 'None'
         self.oh_input = 'None'
@@ -37,12 +27,66 @@ class StandardAbility:
         self.prayer_input = 'None'
         self.precise_rank = 0
         self.equilibrium_rank = 0
-        self.sunshine = 'INACTIVE'
-        self.death_swiftness = 'INACTIVE'
-        self.berserk = 'INACTIVE'
-        self.zgs_spec = 'INACTIVE'
-        self.sim = 10000
+        self.lunging_rank = 0
         self.dmg_output = 'MIN'
+
+        self.ability_info = self.get_abil_params()
+        self.name = self.abil_params[0]
+        self.min_dmg = self.abil_params[1]
+        self.max_dmg = self.abil_params[2]
+        self.style = self.abil_params[3]
+        self.type_n = self.abil_params[4]
+        self.class_n = self.abil_params[5]
+
+    
+    def get_abil_params(self):
+        
+        for a in self.abilities:
+            if a['name'] == self.ability_input:
+                abil = a
+                break
+        style = abil['style']
+        class_n = abil['class_n']
+        type_n = abil['type_n']
+        min_dmg = abil['min']
+        max_dmg = abil['max']
+        name = abil['name']
+        return [name, min_dmg, max_dmg, style, type_n, class_n]
+
+class StandardAbility:
+    def __init__(self):
+        with open(os.path.join('utils', 'WEAPONS.json'), 'r') as w:
+            self.weapons = json.load(w)
+        
+        with open(os.path.join('utils', 'BOOSTS.json'), 'r') as b:
+            self.boosts = json.load(b)
+
+        with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
+            self.abilities = json.load(a)
+
+        # Variables from GUI inputs
+        inputs = Inputs()
+        self.ability_input = inputs.ability_input
+        self.mh_input = inputs.mh_input
+        self.oh_input = inputs.oh_input
+        self.th_input = inputs.th_input
+        self.type = inputs.type
+        self.bonus = inputs.bonus
+        self.spell_input = inputs.spell_input
+        self.base_magic_level = inputs.base_magic_level
+        self.base_range_level = inputs.base_range_level
+        self.base_strength_level = inputs.base_strength_level
+        self.aura_input = inputs.aura_input
+        self.potion_input = inputs.potion_input
+        self.prayer_input = inputs.prayer_input
+        self.precise_rank = inputs.precise_rank
+        self.equilibrium_rank = inputs.equilibrium_rank
+        self.dmg_output = inputs.dmg_output
+        self.sunshine = False
+        self.death_swiftness = False
+        self.berserk = False
+        self.zgs_spec = False
+        self.sim = 10000
         
         # Variables from methods
         self.boosted_levels = self.calculate_levels()
@@ -50,13 +94,12 @@ class StandardAbility:
         self.boosted_range_level = self.boosted_levels[1]
         self.boosted_strength_level = self.boosted_levels[2]
         
-        self.abil_params = self.get_abil_params()
-        self.style = self.abil_params[0]
-        self.class_n = self.abil_params[1]
-        self.type_n = self.abil_params[2]
-        self.min_dmg = self.abil_params[3]
-        self.max_dmg = self.abil_params[4]
-        self.name = self.abil_params[5]
+        self.style = inputs.style
+        self.class_n = inputs.class_n
+        self.type_n = inputs.type_n
+        self.min_dmg = inputs.min_dmg
+        self.max_dmg = inputs.max_dmg
+        self.ability_name = inputs.name
         
         self.ability_dmg = self.base_ability_dmg()
         
@@ -238,21 +281,6 @@ class StandardAbility:
             pass
         return base_ability_dmg
     
-    # Helper function to identify the combat style and type of ability casted
-    def get_abil_params(self):
-        
-        for a in self.abilities:
-            if a['name'] == self.ability_input:
-                abil = a
-                break
-        style = abil['style']
-        class_n = abil['class_n']
-        type_n = abil['type_n']
-        min_dmg = abil['min']
-        max_dmg = abil['max']
-        name = abil['name']
-        return [style, class_n, type_n, min_dmg, max_dmg, name]
-    
     # Computes dmg floor with prayer modifier
     def fixed(self):
         fixed = 0
@@ -357,13 +385,13 @@ class StandardAbility:
         var = dmg_values[1]
         
         if self.ability_input != 'BLEED':
-            if self.sunshine == 'ACTIVE' and self.style == 'MAGIC' or self.death_swiftness == 'ACTIVE' and self.style == 'RANGE':
+            if self.sunshine == True and self.style == 'MAGIC' or self.death_swiftness == True and self.style == 'RANGE':
                 fixed += int(fixed * 0.5)
                 var += int(var * 0.5)
-            elif self.berserk == 'ACTIVE' and self.style == 'MELEE':
+            elif self.berserk == True and self.style == 'MELEE':
                 fixed += int(fixed * 2.0)
                 var += int(var * 2.0)
-            elif self.zgs_spec == 'ACTIVE' and self.style == 'MELEE':
+            elif self.zgs_spec == True and self.style == 'MELEE':
                 fixed += int(fixed * 1.25)
                 var += int(var * 1.25)
             else:
@@ -380,15 +408,16 @@ class BleedAbility:
             self.bleeds = json.load(bleed)
             
         standard = StandardAbility()
+        inputs = Inputs()
 
-        self.dmg_output = standard.dmg_output
+        self.dmg_output = inputs.dmg_output
         self.sim = standard.sim
         
         self.lunging_rank = 0
             
-        self.base_magic_level = standard.base_magic_level
-        self.base_range_level = standard.base_range_level
-        self.base_strength_level = standard.base_strength_level
+        self.base_magic_level = inputs.base_magic_level
+        self.base_range_level = inputs.base_range_level
+        self.base_strength_level = inputs.base_strength_level
 
         self.ability_dmg = standard.base_ability_dmg()
 
