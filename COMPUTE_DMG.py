@@ -30,10 +30,10 @@ class Inputs:
             'neck': 'None'
         }
             
-        self.ability_input = 'blood tendrils'
+        self.ability_input = 'wrack'
         self.mh_input = 'None'
         self.oh_input = 'None'
-        self.th_input = 'Zaros godsword'
+        self.th_input = 'Staff of Sliske'
         self.type = '2h'
         self.bonus = self.compute_bonus()
         self.magic_bonus = self.bonus[0]
@@ -168,25 +168,16 @@ class StandardAbility:
     
     # Computes your boosted level from aura for ability dmg computation
     def aura_level_boost(self):
-        boost = None
-        for b in self.boosts:
-            if b['name'] == self.aura_input:
-                boost = b
-                break
+        boost = next((b for b in self.boosts if b['name'] == self.aura_input), None)
         if boost is None:
-            pass
-        magic_boost_percent = 0
-        range_boost_percent = 0
-        strength_boost_percent = 0
-        if boost['magic_level_percent'] != 0:
-            magic_boost_percent = self.base_magic_level * boost['magic_level_percent']
-        if boost['range_level_percent'] != 0:
-            range_boost_percent = self.base_range_level * boost['range_level_percent']
-        if boost['strength_level_percent'] != 0:
-            strength_boost_percent = self.base_strength_level * boost['strength_level_percent']
-        else:
-            pass
+            return [0, 0, 0]
+
+        magic_boost_percent = self.base_magic_level * boost.get('magic_level_percent', 0)
+        range_boost_percent = self.base_range_level * boost.get('range_level_percent', 0)
+        strength_boost_percent = self.base_strength_level * boost.get('strength_level_percent', 0)
+
         return [magic_boost_percent, range_boost_percent, strength_boost_percent]
+
 
     # Computes your boosted level from potions for ability dmg computation
     def potion_level_boost(self):
@@ -316,28 +307,30 @@ class StandardAbility:
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
-        fixed = 0
+        prayer_map = {
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
+        }
         
-        if self.style == 'MAGIC':
-            fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + self.magic_prayer))
-        elif self.style == 'RANGE':
-            fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + self.range_prayer))
-        elif self.style == 'MELEE':
-            fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + self.melee_prayer))
+        if self.style in prayer_map:
+            fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + prayer_map[self.style]))
         else:
-            pass
+            fixed = 0
         return fixed
     
     # Computes var dmg with prayer modifier
     def var(self):
-        if self.style == 'MAGIC':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)) * (1 + self.magic_prayer))
-        elif self.style == 'RANGE':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)) * (1 + self.range_prayer))
-        elif self.style == 'MELEE':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)) * (1 + self.melee_prayer))
+        prayer_map = {
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
+        }
+        
+        if self.style in prayer_map:
+            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)) * (1 + prayer_map[self.style]))
         else:
-            pass
+            var = 0
         return var
     
     # Computes the dmg range of an abil after precise
@@ -368,71 +361,73 @@ class StandardAbility:
     def dpl(self):
         fixed = self.fixed()
         var = self.var()
+    
+        if self.style in ('MAGIC', 'RANGE', 'MELEE'):
+            if self.style == 'MAGIC':
+                base_level = self.base_magic_level
+                boosted_level = self.boosted_magic_level
+            elif self.style == 'RANGE':
+                base_level = self.base_range_level
+                boosted_level = self.boosted_range_level
+            elif self.style == 'MELEE':
+                base_level = self.base_melee_level
+                boosted_level = self.boosted_melee_level
+            else:
+                pass
         
-        if self.style == 'MAGIC':
-            fixed += int((self.boosted_magic_level - self.base_magic_level) * 4)
-            var += int((self.boosted_magic_level - self.base_magic_level) * 4)
-        elif self.style == 'RANGE':
-            fixed += int((self.boosted_range_level - self.base_range_level) * 4)
-            var += int((self.boosted_range_level - self.base_range_level) * 4)
-        elif self.style == 'MELEE':
-            fixed += int((self.boosted_melee_level - self.base_melee_level) * 4)
-            var += int((self.boosted_melee_level - self.base_melee_level) * 4)
-        else:
-            pass
+            level_difference = boosted_level - base_level
+            fixed += int(level_difference * 4)
+            var += int(level_difference * 4)
+        
         return [fixed, var]
+
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
-        # check if mani passive buff still applies if you're standing in a DS but using magic
         dmg = self.dmg_boost()
         fixed = dmg[0]
         var = dmg[1]
-        
-        if self.sunshine == True and self.style == 'MAGIC' or self.death_swiftness == True and self.style == 'RANGE' or self.berserk == True and self.style == 'MELEE' or self.zgs_spec == True and self.style == 'MELEE':
+    
+        if self.style == 'MAGIC' and (self.sunshine or self.death_swiftness):
+            pass
+        elif self.style == 'RANGE' and self.death_swiftness:
+            pass
+        elif self.style == 'MELEE' and (self.berserk or self.zgs_spec):
             pass
         else:
+            boost = None
             for b in self.boosts:
                 if b['name'] == self.aura_input:
                     boost = b
                     break
-            if boost is None:
-                pass
-            if self.style == 'MAGIC':
+            if boost is not None:
                 fixed += int(fixed * boost['magic_dmg_percent'])
                 var += int(var * boost['magic_dmg_percent'])
-            elif self.style == 'RANGE':
-                fixed += int(fixed * boost['magic_dmg_percent'])
-                var += int(var * boost['magic_dmg_percent'])
-            elif self.style == 'MELEE':
-                fixed += int(fixed * boost['magic_dmg_percent'])
-                var += int(var * boost['magic_dmg_percent'])
-            else:
-                pass
+    
         return [fixed, var]
+
     
     # Computes the dmg boost from ultimates and specs
     def dmg_boost(self):
         dmg_values = self.equilibrium()
         fixed = dmg_values[0]
         var = dmg_values[1]
-        
+    
         if self.ability_input != 'BLEED':
-            if self.sunshine == True and self.style == 'MAGIC' or self.death_swiftness == True and self.style == 'RANGE':
-                fixed += int(fixed * 0.5)
-                var += int(var * 0.5)
-            elif self.berserk == True and self.style == 'MELEE':
-                fixed += int(fixed * 2.0)
-                var += int(var * 2.0)
-            elif self.zgs_spec == True and self.style == 'MELEE':
-                fixed += int(fixed * 1.25)
-                var += int(var * 1.25)
+            if (self.sunshine and self.style == 'MAGIC') or (self.death_swiftness and self.style == 'RANGE'):
+                boost_multiplier = 0.5
+            elif self.berserk and self.style == 'MELEE':
+                boost_multiplier = 2.0
+            elif self.zgs_spec and self.style == 'MELEE':
+                boost_multiplier = 1.25
             else:
-                pass
-            
-        else:
-            pass
+                boost_multiplier = 1.0
+        
+            fixed += int(fixed * boost_multiplier)
+            var += int(var * boost_multiplier)
+        
         return [fixed, var]
+
 
 class BleedAbility:
     
@@ -467,26 +462,12 @@ class BleedAbility:
 
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
-        if self.style == 'MAGIC':
-            fixed = int(int(self.ability_dmg * self.min_dmg))
-        elif self.style == 'RANGE':
-            fixed = int(int(self.ability_dmg * self.min_dmg))
-        elif self.style == 'MELEE':
-            fixed = int(int(self.ability_dmg * self.min_dmg))
-        else:
-            pass
+        fixed = int(int(self.ability_dmg * self.min_dmg))
         return fixed
     
     # Computes var dmg without prayer because bleeds make sense
     def var(self):
-        if self.style == 'MAGIC':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
-        elif self.style == 'RANGE':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
-        elif self.style == 'MELEE':
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
-        else:
-            pass
+        var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
         return var
     
     # Simulates the abil n times and returns the average
@@ -590,10 +571,10 @@ class OnHitEffects:
     pass
 
 
-test = BleedAbility() 
+test = StandardAbility() 
 
 
-dmg = test.hits()
+dmg = test.aura_passive()
 
 print(dmg)
 
