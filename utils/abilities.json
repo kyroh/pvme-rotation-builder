@@ -163,7 +163,7 @@
         "fixed": 0.376,
         "var": 1.504,
         "cd": 34,
-        "type_n": "QUAD_CHANNELED",
+        "type_n": "CHANNELED",
         "style": "MAGIC",
         "class_n": "THRESH"
     },
@@ -304,7 +304,7 @@
     },
     {
         "name": "corruption shot",
-        "type_n": "CORRUPT",
+        "type_n": "BLEED",
         "style": "RANGE"
     },
     {
@@ -389,7 +389,7 @@
     },
     {
         "name": "igneous overpower",
-        "type_n": "IGNEOUS_OP",
+        "type_n": "CHANNELED",
         "style": "MELEE"
     },
     {
