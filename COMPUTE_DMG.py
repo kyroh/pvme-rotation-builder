@@ -30,10 +30,10 @@ class Inputs:
             'neck': 'None'
         }
             
-        self.ability_input = 'wrack'
+        self.ability_input = 'blood tendrils'
         self.mh_input = 'None'
         self.oh_input = 'None'
-        self.th_input = 'Staff of Sliske'
+        self.th_input = 'Zaros godsword'
         self.type = '2h'
         self.bonus = self.compute_bonus()
         self.magic_bonus = self.bonus[0]
@@ -49,12 +49,12 @@ class Inputs:
         self.precise_rank = 6
         self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.dmg_output = 'MIN'
+        self.dmg_output = 'AVG'
 
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
-        self.min_dmg = self.abil_params[1]
-        self.max_dmg = self.abil_params[2]
+        self.fixed_dmg = self.abil_params[1]
+        self.var_dmg = self.abil_params[2]
         self.style = self.abil_params[3]
         self.type_n = self.abil_params[4]
         self.class_n = self.abil_params[5]
@@ -67,10 +67,10 @@ class Inputs:
         style = abil['style']
         class_n = abil['class_n']
         type_n = abil['type_n']
-        min_dmg = abil['min']
-        max_dmg = abil['max']
+        fixed_dmg = abil['fixed']
+        var_dmg = abil['var']
         name = abil['name']
-        return [name, min_dmg, max_dmg, style, type_n, class_n]
+        return [name, fixed_dmg, var_dmg, style, type_n, class_n]
     
     def compute_bonus(self):
         bonus = [0, 0, 0]
@@ -126,7 +126,7 @@ class StandardAbility:
         self.precise_rank = inputs.precise_rank
         self.equilibrium_rank = inputs.equilibrium_rank
         self.dmg_output = inputs.dmg_output
-        self.sunshine = False
+        self.sunshine = True
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
@@ -141,8 +141,8 @@ class StandardAbility:
         self.style = inputs.style
         self.class_n = inputs.class_n
         self.type_n = inputs.type_n
-        self.min_dmg = inputs.min_dmg
-        self.max_dmg = inputs.max_dmg
+        self.fixed_dmg = inputs.fixed_dmg
+        self.var_dmg = inputs.var_dmg
         self.ability_name = inputs.name
         
         self.ability_dmg = self.base_ability_dmg()
@@ -314,7 +314,7 @@ class StandardAbility:
         }
         
         if self.style in prayer_map:
-            fixed = int(int(self.ability_dmg * self.min_dmg) * (1 + prayer_map[self.style]))
+            fixed = int(int(self.ability_dmg * self.fixed_dmg) * (1 + prayer_map[self.style]))
         else:
             fixed = 0
         return fixed
@@ -328,7 +328,7 @@ class StandardAbility:
         }
         
         if self.style in prayer_map:
-            var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)) * (1 + prayer_map[self.style]))
+            var = int(int(self.ability_dmg * self.var_dmg) * (1 + prayer_map[self.style]))
         else:
             var = 0
         return var
@@ -387,23 +387,23 @@ class StandardAbility:
         dmg = self.dmg_boost()
         fixed = dmg[0]
         var = dmg[1]
-    
-        if self.style == 'MAGIC' and (self.sunshine or self.death_swiftness):
-            pass
-        elif self.style == 'RANGE' and self.death_swiftness:
-            pass
-        elif self.style == 'MELEE' and (self.berserk or self.zgs_spec):
-            pass
+        
+        boost = None
+        for b in self.boosts:
+            if b['name'] == self.aura_input:
+                boost = b
+                break
+        if self.style == 'MAGIC' and self.sunshine == False:
+            fixed += int(fixed * boost['magic_dmg_percent'])
+            var += int(var * boost['magic_dmg_percent'])
+        elif self.style == 'RANGE' and self.death_swiftness == False:
+            fixed += int(fixed * boost['range_dmg_percent'])
+            var += int(var * boost['range_dmg_percent'])
+        elif self.style == 'MELEE' and (self.berserk == False or self.zgs_spec == False):
+            fixed += int(fixed * boost['strength_dmg_percent'])
+            var += int(var * boost['strength_dmg_percent'])
         else:
-            boost = None
-            for b in self.boosts:
-                if b['name'] == self.aura_input:
-                    boost = b
-                    break
-            if boost is not None:
-                fixed += int(fixed * boost['magic_dmg_percent'])
-                var += int(var * boost['magic_dmg_percent'])
-    
+            pass
         return [fixed, var]
 
     
@@ -414,14 +414,14 @@ class StandardAbility:
         var = dmg_values[1]
     
         if self.ability_input != 'BLEED':
-            if (self.sunshine and self.style == 'MAGIC') or (self.death_swiftness and self.style == 'RANGE'):
+            if (self.sunshine == True and self.style == 'MAGIC') or (self.death_swiftness == True and self.style == 'RANGE'):
                 boost_multiplier = 0.5
-            elif self.berserk and self.style == 'MELEE':
+            elif self.berserk == True and self.style == 'MELEE':
                 boost_multiplier = 2.0
-            elif self.zgs_spec and self.style == 'MELEE':
+            elif self.zgs_spec == True and self.style == 'MELEE':
                 boost_multiplier = 1.25
             else:
-                boost_multiplier = 1.0
+                boost_multiplier = 0
         
             fixed += int(fixed * boost_multiplier)
             var += int(var * boost_multiplier)
@@ -453,8 +453,8 @@ class BleedAbility:
         self.style = inputs.style
         self.class_n = inputs.class_n
         self.type_n = inputs.type_n
-        self.min_dmg = inputs.min_dmg
-        self.max_dmg = inputs.max_dmg
+        self.fixed_dmg = inputs.fixed_dmg
+        self.var_dmg = inputs.var_dmg
         
         self.boosted_magic_level = standard.boosted_magic_level
         self.boosted_range_level = standard.boosted_range_level
@@ -462,12 +462,12 @@ class BleedAbility:
 
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
-        fixed = int(int(self.ability_dmg * self.min_dmg))
+        fixed = int(self.ability_dmg * self.fixed_dmg)
         return fixed
     
     # Computes var dmg without prayer because bleeds make sense
     def var(self):
-        var = int(int(self.ability_dmg * (self.max_dmg - self.min_dmg)))
+        var = int(self.ability_dmg * self.var_dmg)
         return var
     
     # Simulates the abil n times and returns the average
@@ -475,7 +475,6 @@ class BleedAbility:
         fixed = self.fixed()
         var = self.var()
         max_dmg = fixed + var
-        min_dmg = fixed
         avg_dmg = 0
         total = 0
         
@@ -487,7 +486,7 @@ class BleedAbility:
                 avg_dmg = int(total / self.sim)
         else:
             for _ in range(self.sim):
-                random_num = random.randint(min_dmg, max_dmg)
+                random_num = random.randint(fixed, max_dmg)
                 total += random_num
             avg_dmg = int(total / self.sim)
         return avg_dmg
@@ -495,8 +494,8 @@ class BleedAbility:
     def hits(self):
         avg_dmg = self.avg_dmg()
         var = self.var()
-        min_dmg = self.fixed()
-        max_dmg = min_dmg + var
+        fixed = self.fixed()
+        max_dmg = fixed + var
         hits = []
         
         for bleed in self.bleeds:
@@ -508,7 +507,7 @@ class BleedAbility:
         
         if dmg_decay == 0:
             if self.dmg_output == 'MIN':
-                hits = [min_dmg] * hit_count
+                hits = [fixed] * hit_count
             elif self.dmg_output == 'AVG':
                 hits = [avg_dmg] * hit_count
             elif self.dmg_output == 'MAX':
@@ -535,14 +534,17 @@ class BleedAbility:
                     pass
             elif self.name == 'blood tendrils':
                 if self.dmg_output == 'MIN':
-                    secondary_hits = int(min_dmg / (2 * (5 / 36)))
-                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
+                    small_hit = int(36 / 20 * fixed)
+                    large_hit = small_hit * 2
+                    hits = [large_hit] + [small_hit] * (hit_count - 1)
                 elif self.dmg_output == 'AVG':
-                    secondary_hits = int(avg_dmg / (2 * (5 / 36)))
-                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
+                    small_hit = int((int((36 / 20 * fixed) + (36 / 20 * var)) + int(36 / 20 * fixed)) / 2)
+                    large_hit = small_hit * 2
+                    hits = [large_hit] + [small_hit] * (hit_count - 1)
                 elif self.dmg_output == 'MAX':
-                    secondary_hits = int(max_dmg / (2 * (5 / 36)))
-                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
+                    small_hit = int((36 / 20 * fixed) + (36 / 20 * var))
+                    large_hit = small_hit * 2
+                    hits = [large_hit] + [small_hit] * (hit_count - 1)
             else:
                 pass
         return [hits]
@@ -571,10 +573,10 @@ class OnHitEffects:
     pass
 
 
-test = StandardAbility() 
+test = BleedAbility() 
 
 
-dmg = test.aura_passive()
+dmg = test.hits()
 
 print(dmg)
 

@@ -1,8 +1,8 @@
 [
     {
         "name": "dragon breath",
-        "min": 0.376,
-        "max": 0.188,
+        "fixed": 0.376,
+        "var": 1.504,
         "cd": 17,
         "type_n": "DRAGON_BREATH",
         "style": "MAGIC",
@@ -10,8 +10,8 @@
     },
     {
         "name": "wrack",
-        "min": 0.4,
-        "max": 1.4,
+        "fixed": 0.400,
+        "var": 1.000,
         "cd": 5,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -19,8 +19,8 @@
     },
     {
         "name": "impact",
-        "min": 0.2,
-        "max": 1.00,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "MAGIC",
@@ -28,8 +28,8 @@
     },
     {
         "name": "omnipower",
-        "min": 2.0,
-        "max": 4.0,
+        "fixed": 2.000,
+        "var": 2.000,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -37,8 +37,8 @@
     },
     {
         "name": "igneous omnipower",
-        "min": 0.9,
-        "max": 1.8,
+        "fixed": 0.900,
+        "var": 0.900,
         "cd": 50,
         "type_n": "IGNEOUS_OMNI",
         "style": "MAGIC",
@@ -46,8 +46,8 @@
     },
     {
         "name": "deep impact",
-        "min": 0.4,
-        "max": 2.0,
+        "fixed": 0.400,
+        "var": 1.600,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "MAGIC",
@@ -55,8 +55,8 @@
     },
     {
         "name": "sonic wave",
-        "min": 0.314,
-        "max": 1.57,
+        "fixed": 0.314,
+        "var": 1.256,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -64,8 +64,8 @@
     },
     {
         "name": "shock",
-        "min": 0.2,
-        "max": 1.0,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -73,8 +73,8 @@
     },
     {
         "name": "concentrated blast",
-        "min": 0,
-        "max": 0,
+        "fixed": 0.000,
+        "var": 0.000,
         "cd": 9,
         "type_n": "CONC",
         "style": "MAGIC",
@@ -82,8 +82,8 @@
     },
     {
         "name": "greater concentrated blast",
-        "min": 0,
-        "max": 0,
+        "fixed": 0.000,
+        "var": 0.000,
         "cd": 9,
         "type_n": "CONC",
         "style": "MAGIC",
@@ -91,8 +91,8 @@
     },
     {
         "name": "horror",
-        "min": 0.4,
-        "max": 2.0,
+        "fixed": 0.400,
+        "var": 1.600,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -100,8 +100,8 @@
     },
     {
         "name": "combust",
-        "min": 0.2,
-        "max": 0.376,
+        "fixed": 0.200,
+        "var": 0.176,
         "cd": 25,
         "type_n": "BLEED",
         "style": "MAGIC",
@@ -114,16 +114,16 @@
     },
     {
         "name": "chain",
-        "min": 0.2,
-        "max": 1.0,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC"
     },
     {
         "name": "greater chain",
-        "min": 0.2,
-        "max": 1.0,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -131,8 +131,8 @@
     },
     {
         "name": "wild MAGIC",
-        "min": 0.5,
-        "max": 2.15,
+        "fixed": 0.500,
+        "var": 1.650,
         "cd": 34,
         "type_n": "WILD_MAGIC",
         "style": "MAGIC",
@@ -160,8 +160,8 @@
     },
     {
         "name": "asphyxiate",
-        "min": 0.376,
-        "max": 1.88,
+        "fixed": 0.376,
+        "var": 1.504,
         "cd": 34,
         "type_n": "QUAD_CHANNELED",
         "style": "MAGIC",
@@ -169,8 +169,8 @@
     },
     {
         "name": "tsunami",
-        "min": 2.00,
-        "max": 3.00,
+        "fixed": 2.000,
+        "var": 1.000,
         "cd": 100,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
@@ -178,8 +178,8 @@
     },
     {
         "name": "corruption blast",
-        "min": 0.33,
-        "max": 1.0,
+        "fixed": 0.330,
+        "var": 0.670,
         "cd": 25,
         "type_n": "BLEED",
         "style": "MAGIC",
@@ -197,8 +197,8 @@
     },
     {
         "name": "binding shot",
-        "min": 0.2,
-        "max": 1.0,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "RANGE"
@@ -215,32 +215,24 @@
     },
     {
         "name": "dazing shot",
-        "min": 0.314,
-        "max": 1.57,
+        "fixed": 0.314,
+        "var": 1.256,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE"
     },
     {
         "name": "mutated dazing shot",
-        "min": 0.314,
-        "max": 1.57,
-        "cd": 9,
-        "type_n": "SINGLE_HIT_ABIL",
-        "style": "RANGE"
-    },
-    {
-        "name": "dazing shot",
-        "min": 0.314,
-        "max": 1.57,
+        "fixed": 0.314,
+        "var": 1.256,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE"
     },
     {
         "name": "tight bindings",
-        "min": 0.4,
-        "max": 2.0,
+        "fixed": 0.400,
+        "var": 1.600,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "RANGE",
@@ -248,16 +240,16 @@
     },
     {
         "name": "demoralise",
-        "min": 0.2,
-        "max": 1.0,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE"
     },
     {
         "name": "rout",
-        "min": 0.4,
-        "max": 2.0,
+        "fixed": 0.400,
+        "var": 1.600,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE",
@@ -265,8 +257,8 @@
     },
     {
         "name": "ricochet",
-        "min": 0.2,
-        "max": 0.1,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE"
@@ -283,8 +275,8 @@
     },
     {
         "name": "bombardment",
-        "min": 0.438,
-        "max": 2.19,
+        "fixed": 0.438,
+        "var": 1.752,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "RANGE",
@@ -317,8 +309,8 @@
     },
     {
         "name": "fragmentation shot",
-        "min": 0.2,
-        "max": 0.376,
+        "fixed": 0.2,
+        "var": 0.176,
         "cd": 25,
         "type_n": "BLEED",
         "style": "RANGE"
@@ -350,8 +342,8 @@
     },
     {
         "name": "smash",
-        "min": 0.314,
-        "max": 0.157,
+        "fixed": 0.314,
+        "var": 1.256,
         "cd": 17,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MELEE"
@@ -363,24 +355,24 @@
     },
     {
         "name": "sever",
-        "min": 0.376,
-        "max": 1.88,
+        "fixed": 0.376,
+        "var": 1.504,
         "cd": 25,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MELEE"
     },
     {
         "name": "backhand",
-        "min": 0.2,
-        "max": 1.00,
+        "fixed": 0.200,
+        "var": 0.800,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "MELEE"
     },
     {
         "name": "forceful backhand",
-        "min": 0.4,
-        "max": 2.00,
+        "fixed": 0.400,
+        "var": 1.600,
         "cd": 25,
         "type_n": "FLANK_ABIL",
         "style": "MELEE",
@@ -388,8 +380,8 @@
     },
     {
         "name": "overpower",
-        "min": 2.00,
-        "max": 4.00,
+        "fixed": 2.000,
+        "var": 2.000,
         "cd": 50,
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MELEE",
@@ -402,8 +394,8 @@
     },
     {
         "name": "dismember",
-        "min": 0.2,
-        "max": 0.376,
+        "fixed": 0.200,
+        "var": 0.176,
         "cd": 25,
         "type_n": "BLEED",
         "style": "MELEE",
@@ -411,8 +403,8 @@
     },
     {
         "name": "slaughter",
-        "min": 0.2,
-        "max": 0.5,
+        "fixed": 0.200,
+        "var": 0.300,
         "cd": 50,
         "type_n": "BLEED",
         "style": "MELEE",
@@ -420,8 +412,8 @@
     },
     {
         "name": "blood tendrils",
-        "min": 0.05,
-        "max": 0.25,
+        "fixed": 0.100,
+        "var": 0.400,
         "cd": 75,
         "type_n": "BLEED",
         "style": "MELEE",
