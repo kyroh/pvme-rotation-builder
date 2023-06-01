@@ -15,23 +15,41 @@ class Inputs:
         with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
             self.abilities = json.load(a)
 
-        self.ability_input = 'blood tendrils'
+        with open(os.path.join('utils', 'GEAR.json'), 'r') as g:
+            self.gear = json.load(g)
+        
+        self.reaper_crew = 12
+        self.gear_input = {
+            'helm': 'None',
+            'body': 'Elite tectonic',
+            'legs': 'Elite tectonic',
+            'boots': 'None',
+            'gloves': 'None',
+            'cape': 'None',
+            'ring': 'Reavers',
+            'neck': 'Essence of finality (or)'
+        }
+            
+        self.ability_input = 'corruption blast'
         self.mh_input = 'None'
         self.oh_input = 'None'
-        self.th_input = 'Zaros godsword'
+        self.th_input = 'Staff of Sliske'
         self.type = '2h'
-        self.bonus = 12
+        self.bonus = self.compute_bonus()
+        self.magic_bonus = self.bonus[0]
+        self.range_bonus = self.bonus[1]
+        self.melee_bonus = self.bonus[2]
         self.spell_input = 99
         self.base_magic_level = 99
         self.base_range_level = 99
         self.base_strength_level = 99
         self.aura_input = 'None'
-        self.potion_input = 'Elder overload'
+        self.potion_input = 'None'
         self.prayer_input = 'None'
         self.precise_rank = 0
         self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.dmg_output = 'MIN'
+        self.dmg_output = 'AVG'
 
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
@@ -53,7 +71,25 @@ class Inputs:
         max_dmg = abil['max']
         name = abil['name']
         return [name, min_dmg, max_dmg, style, type_n, class_n]
-
+    
+    def compute_bonus(self):
+        bonus = [0, 0, 0]
+        for item in self.gear:
+            if item['name'] == self.gear_input['helm'] and item['slot'] == 'helm':
+                bonus[0] += item['magic_bonus']
+                bonus[1] += item['range_bonus']
+                bonus[2] += item['melee_bonus']
+            elif item['name'] == self.gear_input['body'] and item['slot'] == 'body':
+                bonus[0] += item['magic_bonus']
+                bonus[1] += item['range_bonus']
+                bonus[2] += item['melee_bonus']
+            elif item['name'] == self.gear_input['legs'] and item['slot'] == 'legs':
+                bonus[0] += item['magic_bonus']
+                bonus[1] += item['range_bonus']
+                bonus[2] += item['melee_bonus']
+        return [bonus[0] + self.reaper_crew, bonus[1] + self.reaper_crew, bonus[2] + self.reaper_crew]       
+            
+                
 class StandardAbility:
     def __init__(self):
         with open(os.path.join('utils', 'WEAPONS.json'), 'r') as w:
@@ -69,7 +105,9 @@ class StandardAbility:
         self.oh_input = inputs.oh_input
         self.th_input = inputs.th_input
         self.type = inputs.type
-        self.bonus = inputs.bonus
+        self.magic_bonus = inputs.magic_bonus
+        self.range_bonus = inputs.range_bonus
+        self.melee_bonus = inputs.melee_bonus
         self.spell_input = inputs.spell_input
         self.base_magic_level = inputs.base_magic_level
         self.base_range_level = inputs.base_range_level
@@ -199,11 +237,11 @@ class StandardAbility:
         if mh is None:
             pass
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.magic_bonus)
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.range_bonus)
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.melee_bonus)
         else:
             pass
         
@@ -214,11 +252,11 @@ class StandardAbility:
         if oh is None:
             pass
         elif oh['style'] == 'MAGIC':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.magic_bonus)))
         elif oh['style'] == 'RANGE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.range_bonus)))
         elif oh['style'] == 'MELEE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + self.bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + self.melee_bonus)))
         else:
             pass
         
@@ -237,11 +275,11 @@ class StandardAbility:
         if th is None:
             pass
         if th['style'] == 'MAGIC':
-            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.bonus)
+            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.magic_bonus)
         elif th['style'] == 'RANGE':
-            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.bonus)
+            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.range_bonus)
         elif th['style'] == 'MELEE':
-            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * self.bonus)
+            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * self.melee_bonus)
         else:
             pass
         return base_ability_dmg
@@ -256,11 +294,11 @@ class StandardAbility:
                 mh = w
                 break
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.magic_bonus)
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.range_bonus)
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.melee_bonus)
         else:
             pass
         return mh_ability_dmg
@@ -502,14 +540,19 @@ class BleedAbility:
         else:
             if self.name == 'corruption shot' or self.name == 'corruption blast':
                 if self.dmg_output == 'MIN':
-                    reduce = int(dmg_decay * min_dmg)
-                    hits = [min_dmg - i * reduce for i in range(hit_count)]
+                    last_hit = int(self.ability_dmg * 0.067)
+                    for i in range(1, hit_count + 1):
+                        hits.append(last_hit * i)
                 elif self.dmg_output == 'AVG':
-                    reduce = int(dmg_decay * avg_dmg)
-                    hits = [avg_dmg - i * reduce for i in range(hit_count)]
+                    last_hit_min = int(self.ability_dmg * 0.067)
+                    last_hit_max = int(self.ability_dmg * 0.067 * 3)
+                    last_hit = int((last_hit_min + last_hit_max) / 2)
+                    for i in range(1, hit_count + 1):
+                        hits.append(last_hit * i)
                 elif self.dmg_output == 'MAX':
-                    reduce = int(dmg_decay * max_dmg)
-                    hits = [max_dmg - i * reduce for i in range(hit_count)]
+                    last_hit = int(self.ability_dmg * 0.067 * 3)
+                    for i in range(1, hit_count + 1):
+                        hits.append(last_hit * i)
                 else:
                     pass
             elif self.name == 'blood tendrils':
@@ -549,10 +592,10 @@ class OnHitEffects:
     pass
 
 
-test = BleedAbility() 
+test = StandardAbility() 
 
 
-dmg = test.hits()
+dmg = test.base_ability_dmg()
 
 print(dmg)
 

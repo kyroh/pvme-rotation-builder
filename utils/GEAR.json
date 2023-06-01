@@ -1,0 +1,154 @@
+[
+    {
+        "name": "Elite tectonic",
+        "slot": "helm",
+        "tier": 92,
+        "magic_bonus": 24,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Elite tectonic",
+        "slot": "body",
+        "tier": 92,
+        "magic_bonus": 36,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Elite tectonic",
+        "slot": "legs",
+        "tier": 92,
+        "magic_bonus": 31,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Elite sirenic",
+        "slot": "helm",
+        "tier": 92,
+        "magic_bonus": 0,
+        "range_bonus": 24,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Elite sirenic",
+        "slot": "body",
+        "tier": 92,
+        "magic_bonus": 0,
+        "range_bonus": 36,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Elite sirenic",
+        "slot": "legs",
+        "tier": 92,
+        "magic_bonus": 0,
+        "range_bonus": 31,
+        "melee_bonus": 0
+    },
+    {
+        "name": "Vestments of havoc",
+        "slot": "helm",
+        "tier": 92,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 28
+    },
+    {
+        "name": "Vestments of havoc",
+        "slot": "body",
+        "tier": 95,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 42
+    },
+    {
+        "name": "Vestments of havoc",
+        "slot": "legs",
+        "tier": 95,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 37
+    },
+    {
+        "name": "Vestments of havoc",
+        "slot": "boots",
+        "tier": 95,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 19
+    },
+    {
+        "name": "tectonic",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 23.2,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "tectonic",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 34.8,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "tectonic",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 29,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "sirenic",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 23.2,
+        "melee_bonus": 0
+    },
+    {
+        "name": "sirenic",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 34.8,
+        "melee_bonus": 0
+    },
+    {
+        "name": "sirenic",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 29,
+        "melee_bonus": 0
+    },
+    {
+        "name": "None",
+        "slot": "helm",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "None",
+        "slot": "body",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    },
+    {
+        "name": "None",
+        "slot": "legs",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0
+    }
+]
