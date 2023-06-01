@@ -420,8 +420,8 @@
     },
     {
         "name": "blood tendrils",
-        "min": 0.18,
-        "max": 0.9,
+        "min": 0.05,
+        "max": 0.25,
         "cd": 75,
         "type_n": "BLEED",
         "style": "MELEE",

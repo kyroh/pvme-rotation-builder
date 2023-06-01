@@ -18,22 +18,22 @@ class Inputs:
         with open(os.path.join('utils', 'GEAR.json'), 'r') as g:
             self.gear = json.load(g)
         
-        self.reaper_crew = 12
+        self.reaper_crew = True
         self.gear_input = {
             'helm': 'None',
-            'body': 'Elite tectonic',
-            'legs': 'Elite tectonic',
+            'body': 'None',
+            'legs': 'None',
             'boots': 'None',
             'gloves': 'None',
             'cape': 'None',
-            'ring': 'Reavers',
-            'neck': 'Essence of finality (or)'
+            'ring': 'None',
+            'neck': 'None'
         }
             
-        self.ability_input = 'corruption blast'
+        self.ability_input = 'blood tendrils'
         self.mh_input = 'None'
         self.oh_input = 'None'
-        self.th_input = 'Staff of Sliske'
+        self.th_input = 'Zaros godsword'
         self.type = '2h'
         self.bonus = self.compute_bonus()
         self.magic_bonus = self.bonus[0]
@@ -46,10 +46,10 @@ class Inputs:
         self.aura_input = 'None'
         self.potion_input = 'None'
         self.prayer_input = 'None'
-        self.precise_rank = 0
+        self.precise_rank = 6
         self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.dmg_output = 'AVG'
+        self.dmg_output = 'MIN'
 
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
@@ -74,20 +74,28 @@ class Inputs:
     
     def compute_bonus(self):
         bonus = [0, 0, 0]
+        gear_slots = {
+            'helm': 'helm',
+            'body': 'body',
+            'legs': 'legs',
+            'boots': 'boots',
+            'gloves': 'gloves',
+            'neck': 'neck',
+            'cape': 'cape'
+        }
+
         for item in self.gear:
-            if item['name'] == self.gear_input['helm'] and item['slot'] == 'helm':
+            slot = item['slot']
+            if item['name'] == self.gear_input.get(gear_slots.get(slot)):
                 bonus[0] += item['magic_bonus']
                 bonus[1] += item['range_bonus']
                 bonus[2] += item['melee_bonus']
-            elif item['name'] == self.gear_input['body'] and item['slot'] == 'body':
-                bonus[0] += item['magic_bonus']
-                bonus[1] += item['range_bonus']
-                bonus[2] += item['melee_bonus']
-            elif item['name'] == self.gear_input['legs'] and item['slot'] == 'legs':
-                bonus[0] += item['magic_bonus']
-                bonus[1] += item['range_bonus']
-                bonus[2] += item['melee_bonus']
-        return [bonus[0] + self.reaper_crew, bonus[1] + self.reaper_crew, bonus[2] + self.reaper_crew]       
+           
+        if self.reaper_crew == True:
+            bonus[0] += 12
+            bonus[1] += 12
+            bonus[2] += 12
+        return bonus    
             
                 
 class StandardAbility:
@@ -182,36 +190,25 @@ class StandardAbility:
 
     # Computes your boosted level from potions for ability dmg computation
     def potion_level_boost(self):
-        boost = None
-        for b in self.boosts:
-            if b['name'] == self.potion_input:
-                boost = b
-                break
+        boost = next((b for b in self.boosts if b['name'] == self.potion_input), None)
         if boost is None:
-            pass
-        magic_boost_percent = 0
-        range_boost_percent = 0
-        strength_boost_percent = 0
-        magic_boost = 0
-        range_boost = 0
-        strength_boost = 0
-        if boost['magic_level_percent'] != 0:
-            magic_boost_percent = self.base_magic_level * boost['magic_level_percent']
-        if boost['range_level_percent'] != 0:
-            range_boost_percent = self.base_range_level * boost['range_level_percent']
-        if boost['strength_level_percent'] != 0:
-            strength_boost_percent = self.base_strength_level * boost['strength_level_percent']
-        if boost['magic_level_boost'] != 0:
-            magic_boost = boost['magic_level_boost']
-        if boost['range_level_boost'] != 0:
-            range_boost = boost['range_level_boost']
-        if boost['strength_level_boost'] != 0:
-            strength_boost = boost['strength_level_boost']
-        net_magic_boost = magic_boost_percent + strength_boost
-        net_range_boost = range_boost_percent + range_boost
-        net_strength_boost = strength_boost_percent + magic_boost
+            return [0, 0, 0]
+
+        boost_values = {
+            'magic_level_percent': self.base_magic_level * boost.get('magic_level_percent', 0),
+            'range_level_percent': self.base_range_level * boost.get('range_level_percent', 0),
+            'strength_level_percent': self.base_strength_level * boost.get('strength_level_percent', 0),
+            'magic_level_boost': boost.get('magic_level_boost', 0),
+            'range_level_boost': boost.get('range_level_boost', 0),
+            'strength_level_boost': boost.get('strength_level_boost', 0)
+        }
+
+        net_magic_boost = boost_values['magic_level_percent'] + boost_values['strength_level_boost']
+        net_range_boost = boost_values['range_level_percent'] + boost_values['range_level_boost']
+        net_strength_boost = boost_values['strength_level_percent'] + boost_values['magic_level_boost']
+
         return [net_magic_boost, net_range_boost, net_strength_boost]
-    
+
     # Takes all boosts and appends it to your magic level for net boosted level
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
@@ -348,10 +345,10 @@ class StandardAbility:
         dmg_values = self.dpl()
         fixed = dmg_values[0]
         var = dmg_values[1]
-        precise = 0.015 * (fixed + var) * self.precise_rank
+        precise = int(0.015 * (fixed + var) * self.precise_rank)
         fixed += precise
         var -= precise
-        return [int(fixed), int(var)]
+        return [(fixed), (var)]
         
     # Computes the dmg range of an abil after equilibrium
     def equilibrium(self):
@@ -557,17 +554,18 @@ class BleedAbility:
                     pass
             elif self.name == 'blood tendrils':
                 if self.dmg_output == 'MIN':
-                    reduce = int(dmg_decay * min_dmg)
-                    hits = [reduce] + [min_dmg] * (hit_count - 1)
+                    secondary_hits = int(min_dmg / (2 * (5 / 36)))
+                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
                 elif self.dmg_output == 'AVG':
-                    reduce = int(dmg_decay * avg_dmg)
-                    hits = [reduce] + [avg_dmg] * (hit_count - 1)
+                    secondary_hits = int(avg_dmg / (2 * (5 / 36)))
+                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
                 elif self.dmg_output == 'MAX':
-                    reduce = int(dmg_decay * max_dmg)
-                    hits = [reduce] + [max_dmg] * (hit_count - 1)
+                    secondary_hits = int(max_dmg / (2 * (5 / 36)))
+                    hits = [secondary_hits * 2] + [secondary_hits] * (hit_count - 1)
             else:
                 pass
-        return hits
+        return [hits]
+
     
     def walk(self):
         walk = False
@@ -592,10 +590,10 @@ class OnHitEffects:
     pass
 
 
-test = StandardAbility() 
+test = BleedAbility() 
 
 
-dmg = test.base_ability_dmg()
+dmg = test.hits()
 
 print(dmg)
 
