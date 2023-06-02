@@ -1157,7 +1157,7 @@
         "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 15,
+        "melee_bonus": 15.0,
         "augment": "False"
     },
     {
@@ -1167,6 +1167,249 @@
         "magic_bonus": 0,
         "range_bonus": 0,
         "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Comp",
+        "slot": "Cape",
+        "tier": 85,
+        "magic_bonus": 31.5,
+        "range_bonus": 31.5,
+        "melee_bonus": 31.5,
+        "augment": "False"
+    },
+    {
+        "name": "Igneous",
+        "slot": "Cape",
+        "tier": 85,
+        "magic_bonus": 43.0,
+        "range_bonus": 43.0,
+        "melee_bonus": 43.0,
+        "augment": "False"
+    },
+    {
+        "name": "Tokhaar",
+        "slot": "Cape",
+        "tier": 75,
+        "magic_bonus": 33.5,
+        "range_bonus": 33.5,
+        "melee_bonus": 33.5,
+        "augment": "False"
+    },
+    {
+        "name": "God cape",
+        "slot": "Cape",
+        "tier": 55,
+        "magic_bonus": 31.5,
+        "range_bonus": 31.5,
+        "melee_bonus": 31.5,
+        "augment": "False"
+    },
+    {
+        "name": "Max cape",
+        "slot": "Cape",
+        "tier": 85,
+        "magic_bonus": 31.5,
+        "range_bonus": 31.5,
+        "melee_bonus": 31.5,
+        "augment": "False"
+    },
+    {
+        "name": "Fire Cape",
+        "slot": "Cape",
+        "tier": 55,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 26.3,
+        "augment": "False"
+    },
+    {
+        "name": "Skillcape",
+        "slot": "Cape",
+        "tier": 80,
+        "magic_bonus": 21.6,
+        "range_bonus": 21.6,
+        "melee_bonus": 21.6,
+        "augment": "False"
+    },
+    {
+        "name": "Reavers",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 27.7,
+        "range_bonus": 27.7,
+        "melee_bonus": 27.7,
+        "augment": "False"
+    },
+    {
+        "name": "Channelers",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 30.4,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Stalkers",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 30.4,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Champions",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 30.4,
+        "augment": "False"
+    },
+    {
+        "name": "Death",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 25.2,
+        "range_bonus": 25.2,
+        "melee_bonus": 25.2,
+        "augment": "False"
+    },
+    {
+        "name": "Death (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 27.7,
+        "range_bonus": 27.7,
+        "melee_bonus": 27.7,
+        "augment": "False"
+    },
+    {
+        "name": "Asylum surgeon",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 21.0,
+        "range_bonus": 21.0,
+        "melee_bonus": 21.0,
+        "augment": "False"
+    },
+    {
+        "name": "Asylum surgeon (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 23.4,
+        "range_bonus": 23.4,
+        "melee_bonus": 23.4,
+        "augment": "False"
+    },
+    {
+        "name": "Vigour",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 12.0,
+        "range_bonus": 12.0,
+        "melee_bonus": 12.0,
+        "augment": "False"
+    },
+    {
+        "name": "Seer",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 17.3,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Berserker",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 12.0,
+        "range_bonus": 12.0,
+        "melee_bonus": 12.0,
+        "augment": "False"
+    },
+    {
+        "name": "Archer",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 17.3,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Warrior",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 17.3,
+        "augment": "False"
+    },
+    {
+        "name": "Seer (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 25.2,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Berserker (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 17.3,
+        "range_bonus": 17.3,
+        "melee_bonus": 17.3,
+        "augment": "False"
+    },
+    {
+        "name": "Archer (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 25.2,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Warrior (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 25.2,
+        "augment": "False"
+    },
+    {
+        "name": "LOTD",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 17.3,
+        "range_bonus": 17.3,
+        "melee_bonus": 17.3,
+        "augment": "False"
+    },
+    {
+        "name": "LOTD (i)",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 19.8,
+        "range_bonus": 19.8,
+        "melee_bonus": 19.8,
+        "augment": "False"
+    },
+    {
+        "name": "Sixth Age",
+        "slot": "Ring",
+        "tier": 0,
+        "magic_bonus": 21.0,
+        "range_bonus": 21.0,
+        "melee_bonus": 21.0,
         "augment": "False"
     }
 ]
