@@ -5,7 +5,8 @@
         "tier": 92,
         "magic_bonus": 24,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "False"
     },
     {
         "name": "Elite tectonic",
@@ -13,7 +14,8 @@
         "tier": 92,
         "magic_bonus": 36,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
         "name": "Elite tectonic",
@@ -21,7 +23,8 @@
         "tier": 92,
         "magic_bonus": 31,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
         "name": "Elite sirenic",
@@ -29,7 +32,8 @@
         "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 24,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "False"
     },
     {
         "name": "Elite sirenic",
@@ -37,7 +41,8 @@
         "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 36,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
         "name": "Elite sirenic",
@@ -45,7 +50,8 @@
         "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 31,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
         "name": "Vestments of havoc",
@@ -53,7 +59,8 @@
         "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 28
+        "melee_bonus": 28,
+        "augment": "False"
     },
     {
         "name": "Vestments of havoc",
@@ -61,7 +68,8 @@
         "tier": 95,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 42
+        "melee_bonus": 42,
+        "augment": "True"
     },
     {
         "name": "Vestments of havoc",
@@ -69,7 +77,8 @@
         "tier": 95,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 37
+        "melee_bonus": 37,
+        "augment": "True"
     },
     {
         "name": "Vestments of havoc",
@@ -77,78 +86,980 @@
         "tier": 95,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 19
+        "melee_bonus": 19,
+        "augment": "False"
     },
     {
-        "name": "tectonic",
+        "name": "Tectonic",
         "slot": "helm",
         "tier": 90,
         "magic_bonus": 23.2,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "False"
     },
     {
-        "name": "tectonic",
+        "name": "Tectonic",
         "slot": "body",
         "tier": 90,
         "magic_bonus": 34.8,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
-        "name": "tectonic",
+        "name": "Tectonic",
         "slot": "legs",
         "tier": 90,
         "magic_bonus": 29,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
-        "name": "sirenic",
+        "name": "Sirenic",
         "slot": "helm",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 23.2,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "False"
     },
     {
-        "name": "sirenic",
+        "name": "Sirenic",
         "slot": "body",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 34.8,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
-        "name": "sirenic",
+        "name": "Sirenic",
         "slot": "legs",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 29,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
-        "name": "None",
+        "name": "Pernix",
         "slot": "helm",
         "tier": 0,
         "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0
+        "range_bonus": 20.3,
+        "melee_bonus": 0,
+        "augment": "False"
     },
     {
-        "name": "None",
+        "name": "Pernix",
         "slot": "body",
         "tier": 0,
         "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0
+        "range_bonus": 30.5,
+        "melee_bonus": 0,
+        "augment": "True"
     },
     {
-        "name": "None",
+        "name": "Pernix",
         "slot": "legs",
         "tier": 0,
         "magic_bonus": 0,
+        "range_bonus": 25.4,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Pernix",
+        "slot": "boots",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 12.7,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Pernix",
+        "slot": "gloves",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 12.7,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Virtus",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 20.3,
         "range_bonus": 0,
-        "melee_bonus": 0
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Virtus",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 30.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Virtus",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 25.4,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Virtus",
+        "slot": "boots",
+        "tier": 80,
+        "magic_bonus": 12.7,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Virtus gloves",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 12.7,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Torva",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 20.3,
+        "augment": "False"
+    },
+    {
+        "name": "Torva",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 30.5,
+        "augment": "True"
+    },
+    {
+        "name": "Torva",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 25.4,
+        "augment": "True"
+    },
+    {
+        "name": "Torva",
+        "slot": "boots",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 12.7,
+        "augment": "False"
+    },
+    {
+        "name": "Torva",
+        "slot": "gloves",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Subjugation",
+        "slot": "helm",
+        "tier": 70,
+        "magic_bonus": 17.7,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Subjugation",
+        "slot": "body",
+        "tier": 70,
+        "magic_bonus": 26.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Subjugation",
+        "slot": "legs",
+        "tier": 70,
+        "magic_bonus": 22.1,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Subjugation",
+        "slot": "boots",
+        "tier": 70,
+        "magic_bonus": 11,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Subjugation",
+        "slot": "gloves",
+        "tier": 70,
+        "magic_bonus": 11,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Armadyl",
+        "slot": "helm",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 17.7,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Armadyl",
+        "slot": "body",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 26.5,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Armadyl",
+        "slot": "legs",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 22.1,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Armadyl",
+        "slot": "boots",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 11,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Armadyl",
+        "slot": "gloves",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 11,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Bandos",
+        "slot": "helm",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 17.7,
+        "augment": "False"
+    },
+    {
+        "name": "Bandos",
+        "slot": "body",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 26.5,
+        "augment": "True"
+    },
+    {
+        "name": "Bandos",
+        "slot": "legs",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 22.1,
+        "augment": "True"
+    },
+    {
+        "name": "Bandos",
+        "slot": "boots",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 11,
+        "augment": "False"
+    },
+    {
+        "name": "Bandos",
+        "slot": "gloves",
+        "tier": 70,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 11,
+        "augment": "False"
+    },
+    {
+        "name": "Zaros",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 20.3,
+        "augment": "False"
+    },
+    {
+        "name": "Zaros",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 30.5,
+        "augment": "True"
+    },
+    {
+        "name": "Zaros",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 25.4,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Zaros",
+        "slot": "helm",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 21.6,
+        "augment": "False"
+    },
+    {
+        "name": "Refined Zaros",
+        "slot": "body",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 32.5,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Zaros",
+        "slot": "legs",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 27.1,
+        "augment": "True"
+    },
+    {
+        "name": "Seren",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 20.3,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Seren",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 30.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Seren",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 25.4,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Seren",
+        "slot": "helm",
+        "tier": 85,
+        "magic_bonus": 21.6,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Refined Seren",
+        "slot": "body",
+        "tier": 85,
+        "magic_bonus": 32.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Seren",
+        "slot": "legs",
+        "tier": 85,
+        "magic_bonus": 27.1,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Zamorak",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 20.3,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Zamorak",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 30.5,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Zamorak",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 25.4,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Zamorak",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 21.6,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Refined Zamorak",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 32.5,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Refined Zamorak",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 27.1,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Sliske",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Sliske",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Sliske",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto primeval",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Achto primeval",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto primeval",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto Tempest",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Achto Tempest",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto Tempest",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto Teralith",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Achto Teralith",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Achto Teralith",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Cryptbloom",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Cryptbloom",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Cryptbloom",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Zuriel",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 20.3,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Zuriel",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 30.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Zuriel",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 25.4,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Zuriel",
+        "slot": "helm",
+        "tier": 85,
+        "magic_bonus": 22.4,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Superior Zuriel",
+        "slot": "body",
+        "tier": 85,
+        "magic_bonus": 33.6,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Zuriel",
+        "slot": "legs",
+        "tier": 85,
+        "magic_bonus": 28,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Morrigan",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 20.3,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Morrigan",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 30.5,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Morrigan",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 25.4,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Morrigan",
+        "slot": "helm",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 22.4,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Superior Morrigan",
+        "slot": "body",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 33.6,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Morrigan",
+        "slot": "legs",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 28,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "Ancient Warrior",
+        "slot": "helm",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 20.3,
+        "augment": "False"
+    },
+    {
+        "name": "Ancient Warrior",
+        "slot": "body",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 30.5,
+        "augment": "True"
+    },
+    {
+        "name": "Ancient Warrior",
+        "slot": "legs",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 25.4,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Ancient Warrior",
+        "slot": "helm",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 22.4,
+        "augment": "False"
+    },
+    {
+        "name": "Superior Ancient Warrior",
+        "slot": "body",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 33.6,
+        "augment": "True"
+    },
+    {
+        "name": "Superior Ancient Warrior",
+        "slot": "legs",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 28,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "helm",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "",
+        "slot": "body",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
+    },
+    {
+        "name": "",
+        "slot": "legs",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "True"
     }
 ]
+
