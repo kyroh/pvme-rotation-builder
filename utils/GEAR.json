@@ -873,8 +873,116 @@
         "augment": "True"
     },
     {
-        "name": "",
-        "slot": "helm",
+        "name": "Deathtouch",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 14.5,
+        "range_bonus": 14.5,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced Kerapac",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 14.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Kerapac",
+        "slot": "gloves",
+        "tier": 85,
+        "magic_bonus": 13.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced nightmare gauntlets",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 14.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Nightmare gauntlets",
+        "slot": "gloves",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 13.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Passage",
+        "slot": "gloves",
+        "tier": 85,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 13.5,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced passage",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Celestial",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 14.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Ascension",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 14.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Trimmed masterwork",
+        "slot": "gloves",
+        "tier": 92,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 15,
+        "augment": "False"
+    },
+    {
+        "name": "Masterwork",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Razorback",
+        "slot": "gloves",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Achto primeval",
+        "slot": "gloves",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -882,26 +990,8 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "helm",
+        "name": "Achto tempest",
+        "slot": "gloves",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -909,26 +999,8 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "helm",
+        "name": "Achto teralith",
+        "slot": "gloves",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -936,26 +1008,116 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
+        "name": "Cinderbane",
+        "slot": "gloves",
+        "tier": 85,
+        "magic_bonus": 11,
+        "range_bonus": 11,
+        "melee_bonus": 11,
+        "augment": "False"
+    },
+    {
+        "name": "Spellcaster",
+        "slot": "gloves",
+        "tier": 80,
         "magic_bonus": 0,
         "range_bonus": 0,
         "melee_bonus": 0,
-        "augment": "True"
+        "augment": "False"
     },
     {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
+        "name": "Swift",
+        "slot": "gloves",
+        "tier": 80,
         "magic_bonus": 0,
         "range_bonus": 0,
         "melee_bonus": 0,
-        "augment": "True"
+        "augment": "False"
     },
     {
-        "name": "",
-        "slot": "helm",
+        "name": "Blast diffusion",
+        "slot": "boots",
+        "tier": 80,
+        "magic_bonus": 13.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced blast diffusion",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 14.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Laceration",
+        "slot": "boots",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 13.5,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced laceration",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Fleeting",
+        "slot": "boots",
+        "tier": 80,
+        "magic_bonus": 0,
+        "range_bonus": 13.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Enhanced fleeting",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 14.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Hailfire",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 14.5,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Flarefrost",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 14.5,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Emberkeen",
+        "slot": "boots",
+        "tier": 90,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 14.5,
+        "augment": "False"
+    },
+    {
+        "name": "Achto primeval",
+        "slot": "boots",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -963,26 +1125,8 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "helm",
+        "name": "Achto tempest",
+        "slot": "boots",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -990,26 +1134,8 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "helm",
+        "name": "Achto teralith",
+        "slot": "boots",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
@@ -1017,49 +1143,31 @@
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "legs",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
-    },
-    {
-        "name": "",
-        "slot": "helm",
-        "tier": 90,
-        "magic_bonus": 0,
-        "range_bonus": 0,
-        "melee_bonus": 0,
+        "name": "Silverhawk",
+        "slot": "boots",
+        "tier": 1,
+        "magic_bonus": 0.2,
+        "range_bonus": 0.2,
+        "melee_bonus": 0.2,
         "augment": "False"
     },
     {
-        "name": "",
-        "slot": "body",
-        "tier": 90,
+        "name": "Trimmed masterwork",
+        "slot": "boots",
+        "tier": 92,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
+        "melee_bonus": 15,
+        "augment": "False"
     },
     {
-        "name": "",
-        "slot": "legs",
+        "name": "Masterwork",
+        "slot": "boots",
         "tier": 90,
         "magic_bonus": 0,
         "range_bonus": 0,
-        "melee_bonus": 0,
-        "augment": "True"
+        "melee_bonus": 14.5,
+        "augment": "False"
     }
 ]
 
