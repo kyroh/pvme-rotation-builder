@@ -1411,6 +1411,240 @@
         "range_bonus": 21.0,
         "melee_bonus": 21.0,
         "augment": "False"
+    },
+    {
+        "name": "EOF (or)",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 59.0,
+        "range_bonus": 59.0,
+        "melee_bonus": 59.0,
+        "augment": "False"
+    },
+    {
+        "name": "EOF",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 56.0,
+        "range_bonus": 56.0,
+        "melee_bonus": 56.0,
+        "augment": "False"
+    },
+    {
+        "name": "Souls",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 46.3,
+        "range_bonus": 46.3,
+        "melee_bonus": 46.3,
+        "augment": "False"
+    },
+    {
+        "name": "Souls (or)",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 48.0,
+        "range_bonus": 48.0,
+        "melee_bonus": 48.0,
+        "augment": "False"
+    },
+    {
+        "name": "Reaper",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 36.8,
+        "range_bonus": 36.8,
+        "melee_bonus": 36.8,
+        "augment": "False"
+    },
+    {
+        "name": "Reaper (or)",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 38.4,
+        "range_bonus": 38.4,
+        "melee_bonus": 38.4,
+        "augment": "False"
+    },
+    {
+        "name": "Salve",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Salve (e)",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 4.2,
+        "range_bonus": 4.2,
+        "melee_bonus": 4.2,
+        "augment": "False"
+    },
+    {
+        "name": "Blood fury",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 32.7,
+        "range_bonus": 32.7,
+        "melee_bonus": 32.7,
+        "augment": "False"
+    },
+    {
+        "name": "Desert 4",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 30.2,
+        "range_bonus": 30.2,
+        "melee_bonus": 30.2,
+        "augment": "False"
+    },
+    {
+        "name": "Fury (t)",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 34.2,
+        "range_bonus": 34.2,
+        "melee_bonus": 34.2,
+        "augment": "False"
+    },
+    {
+        "name": "Dragon rider",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 30.2,
+        "range_bonus": 30.2,
+        "melee_bonus": 30.2,
+        "augment": "False"
+    },
+    {
+        "name": "Amulet of the forsaken",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 36.8,
+        "range_bonus": 36.8,
+        "melee_bonus": 36.8,
+        "augment": "False"
+    },
+    {
+        "name": "Berserker",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 30.2,
+        "augment": "False"
+    },
+    {
+        "name": "Zealots",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Farsight",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 44.1,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Arcane",
+        "slot": "neck",
+        "tier": 0,
+        "magic_bonus": 44.1,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Scripture of Jas",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 8,
+        "range_bonus": 8,
+        "melee_bonus": 8,
+        "augment": "False"
+    },
+    {
+        "name": "Scripture of Ful",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 8,
+        "range_bonus": 8,
+        "melee_bonus": 8,
+        "augment": "False"
+    },
+    {
+        "name": "Scripture of Wen",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 8,
+        "range_bonus": 8,
+        "melee_bonus": 8,
+        "augment": "False"
+    },
+    {
+        "name": "Grimoire",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 7,
+        "range_bonus": 7,
+        "melee_bonus": 7,
+        "augment": "False"
+    },
+    {
+        "name": "Berserk blood essence",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Scrimshaw of cruelty",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Superior scrimshaw of cruelty",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Scrimshaw of vampyrism",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
+    },
+    {
+        "name": "Superior scrimshaw of vampyrism",
+        "slot": "pocket",
+        "tier": 0,
+        "magic_bonus": 0,
+        "range_bonus": 0,
+        "melee_bonus": 0,
+        "augment": "False"
     }
 ]
 
