@@ -30,11 +30,18 @@ class Inputs:
             'neck': 'None',
             'pocket': 'None'
         }
-        self.ability_input = 'wrack'
+        self.ability_input = 'asphyxiate'
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
         self.th_input = 'Staff of Sliske'
         self.type = '2h'
+        self.abil_params = self.get_abil_params()
+        self.name = self.abil_params[0]
+        self.fixed_dmg = self.abil_params[1]
+        self.var_dmg = self.abil_params[2]
+        self.style = self.abil_params[3]
+        self.type_n = self.abil_params[4]
+        self.class_n = self.abil_params[5]
         self.bonus = self.compute_bonus()
         self.magic_bonus = self.bonus[0]
         self.range_bonus = self.bonus[1]
@@ -49,15 +56,7 @@ class Inputs:
         self.precise_rank = 6
         self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.dmg_output = 'AVG'
-
-        self.abil_params = self.get_abil_params()
-        self.name = self.abil_params[0]
-        self.fixed_dmg = self.abil_params[1]
-        self.var_dmg = self.abil_params[2]
-        self.style = self.abil_params[3]
-        self.type_n = self.abil_params[4]
-        self.class_n = self.abil_params[5]
+        self.dmg_output = 'MIN'
     
     def get_abil_params(self):
         for a in self.abilities:
@@ -152,7 +151,6 @@ class StandardAbility:
         strength_boost_percent = self.inputs.base_strength_level * boost.get('strength_level_percent', 0)
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent]
-
 
     # Computes your boosted level from potions for ability dmg computation
     def potion_level_boost(self):
@@ -386,18 +384,17 @@ class StandardAbility:
         fixed = dmg_values[0]
         var = dmg_values[1]
     
-        if self.inputs.ability_input != 'BLEED':
-            if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-                boost_multiplier = 0.5
-            elif self.berserk == True and self.inputs.style == 'MELEE':
-                boost_multiplier = 2.0
-            elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-                boost_multiplier = 1.25
-            else:
-                boost_multiplier = 0
+        if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
+            boost_multiplier = 0.5
+        elif self.berserk == True and self.inputs.style == 'MELEE':
+            boost_multiplier = 2.0
+        elif self.zgs_spec == True and self.inputs.style == 'MELEE':
+            boost_multiplier = 1.25
+        else:
+            boost_multiplier = 0
         
-            fixed += int(fixed * boost_multiplier)
-            var += int(var * boost_multiplier)
+        fixed += int(fixed * boost_multiplier)
+        var += int(var * boost_multiplier)
         
         return [fixed, var]
 
@@ -519,29 +516,31 @@ class BleedAbility:
 
 class ChanneledABility:
     def __init__(self):
-        with open(os.path.join('utils', '4_CHANNELS.json'), 'r') as abil:
-            self.abil = json.load(abil)
-            
         self.standard = StandardAbility()
         self.inputs = Inputs()
 
     def hits(self):
-        for abil in self.abil:
-            if abil['name'] == self.inputs.name:
-                abil = abil
-                break
-        fixed = abil['fixed']
-        var = abil['var']
-    pass
+        dmg = self.standard.aura_passive()
+        fixed = dmg[0]
+        var = dmg[1]
+        hits = []
+
+        if self.inputs.dmg_output == 'MIN':
+            hits = [fixed] * 4
+        elif self.inputs.dmg_output == 'AVG':
+            hits = [fixed + int(var / 2)] * 4
+        elif self.inputs.dmg_output == 'MAX':
+            hits = [fixed + var] * 4
+        return [hits]
 
 class OnHitEffects:
     pass
 
 
-test = StandardAbility() 
+test = ChanneledABility() 
 
 
-dmg = test.aura_passive()
+dmg = test.hits()
 
 print(dmg)
 
