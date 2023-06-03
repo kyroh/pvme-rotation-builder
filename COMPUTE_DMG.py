@@ -20,20 +20,19 @@ class Inputs:
         
         self.reaper_crew = True
         self.gear_input = {
-            'helm': 'None',
-            'body': 'None',
-            'legs': 'None',
+            'helm': 'Elite tectonic',
+            'body': 'Elite tectonic',
+            'legs': 'Elite tectonic',
             'boots': 'None',
             'gloves': 'None',
             'cape': 'None',
             'ring': 'None',
-            'neck': 'None'
+            'neck': 'None',
+            'pocket': 'None'
         }
-            
-        self.ability_input = 'blood tendrils'
-        self.mh_input = 'None'
-        self.oh_input = 'None'
-        self.th_input = 'Zaros godsword'
+        self.mh_input = 'Wand of the praesul'
+        self.oh_input = 'Imperium core'
+        self.th_input = 'Staff of Sliske'
         self.type = '2h'
         self.bonus = self.compute_bonus()
         self.magic_bonus = self.bonus[0]
@@ -47,7 +46,7 @@ class Inputs:
         self.potion_input = 'None'
         self.prayer_input = 'None'
         self.precise_rank = 6
-        self.equilibrium_rank = 0
+        self.equilibrium_rank = 2
         self.lunging_rank = 0
         self.dmg_output = 'AVG'
 
