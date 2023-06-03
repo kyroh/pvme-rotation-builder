@@ -20,9 +20,9 @@ class Inputs:
         
         self.reaper_crew = True
         self.gear_input = {
-            'helm': 'Elite tectonic',
-            'body': 'Elite tectonic',
-            'legs': 'Elite tectonic',
+            'helm': 'None',
+            'body': 'None',
+            'legs': 'None',
             'boots': 'None',
             'gloves': 'None',
             'cape': 'None',
@@ -30,6 +30,7 @@ class Inputs:
             'neck': 'None',
             'pocket': 'None'
         }
+        self.ability_input = 'wrack'
         self.mh_input = 'Wand of the praesul'
         self.oh_input = 'Imperium core'
         self.th_input = 'Staff of Sliske'
@@ -46,7 +47,7 @@ class Inputs:
         self.potion_input = 'None'
         self.prayer_input = 'None'
         self.precise_rank = 6
-        self.equilibrium_rank = 2
+        self.equilibrium_rank = 0
         self.lunging_rank = 0
         self.dmg_output = 'AVG'
 
@@ -106,26 +107,8 @@ class StandardAbility:
             self.boosts = json.load(b)
 
         # Variables from GUI inputs
-        inputs = Inputs()
-        self.ability_input = inputs.ability_input
-        self.mh_input = inputs.mh_input
-        self.oh_input = inputs.oh_input
-        self.th_input = inputs.th_input
-        self.type = inputs.type
-        self.magic_bonus = inputs.magic_bonus
-        self.range_bonus = inputs.range_bonus
-        self.melee_bonus = inputs.melee_bonus
-        self.spell_input = inputs.spell_input
-        self.base_magic_level = inputs.base_magic_level
-        self.base_range_level = inputs.base_range_level
-        self.base_strength_level = inputs.base_strength_level
-        self.aura_input = inputs.aura_input
-        self.potion_input = inputs.potion_input
-        self.prayer_input = inputs.prayer_input
-        self.precise_rank = inputs.precise_rank
-        self.equilibrium_rank = inputs.equilibrium_rank
-        self.dmg_output = inputs.dmg_output
-        self.sunshine = True
+        self.inputs = Inputs()
+        self.sunshine = False
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
@@ -137,14 +120,7 @@ class StandardAbility:
         self.boosted_range_level = self.boosted_levels[1]
         self.boosted_strength_level = self.boosted_levels[2]
         
-        self.style = inputs.style
-        self.class_n = inputs.class_n
-        self.type_n = inputs.type_n
-        self.fixed_dmg = inputs.fixed_dmg
-        self.var_dmg = inputs.var_dmg
-        self.ability_name = inputs.name
-        
-        self.ability_dmg = self.base_ability_dmg()
+        self.inputs.ability_dmg = self.base_ability_dmg()
         
         self.prayer_boost = self.prayer_dmg()
         self.magic_prayer = self.prayer_boost[0]
@@ -155,7 +131,7 @@ class StandardAbility:
     def prayer_dmg(self):
         boost = None
         for b in self.boosts:
-            if b['name'] == self.prayer_input:
+            if b['name'] == self.inputs.prayer_input:
                 boost = b
                 break
         if boost is None:
@@ -167,27 +143,27 @@ class StandardAbility:
     
     # Computes your boosted level from aura for ability dmg computation
     def aura_level_boost(self):
-        boost = next((b for b in self.boosts if b['name'] == self.aura_input), None)
+        boost = next((b for b in self.boosts if b['name'] == self.inputs.aura_input), None)
         if boost is None:
             return [0, 0, 0]
 
-        magic_boost_percent = self.base_magic_level * boost.get('magic_level_percent', 0)
-        range_boost_percent = self.base_range_level * boost.get('range_level_percent', 0)
-        strength_boost_percent = self.base_strength_level * boost.get('strength_level_percent', 0)
+        magic_boost_percent = self.inputs.base_magic_level * boost.get('magic_level_percent', 0)
+        range_boost_percent = self.inputs.base_range_level * boost.get('range_level_percent', 0)
+        strength_boost_percent = self.inputs.base_strength_level * boost.get('strength_level_percent', 0)
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent]
 
 
     # Computes your boosted level from potions for ability dmg computation
     def potion_level_boost(self):
-        boost = next((b for b in self.boosts if b['name'] == self.potion_input), None)
+        boost = next((b for b in self.boosts if b['name'] == self.inputs.potion_input), None)
         if boost is None:
             return [0, 0, 0]
 
         boost_values = {
-            'magic_level_percent': self.base_magic_level * boost.get('magic_level_percent', 0),
-            'range_level_percent': self.base_range_level * boost.get('range_level_percent', 0),
-            'strength_level_percent': self.base_strength_level * boost.get('strength_level_percent', 0),
+            'magic_level_percent': self.inputs.base_magic_level * boost.get('magic_level_percent', 0),
+            'range_level_percent': self.inputs.base_range_level * boost.get('range_level_percent', 0),
+            'strength_level_percent': self.inputs.base_strength_level * boost.get('strength_level_percent', 0),
             'magic_level_boost': boost.get('magic_level_boost', 0),
             'range_level_boost': boost.get('range_level_boost', 0),
             'strength_level_boost': boost.get('strength_level_boost', 0)
@@ -203,7 +179,7 @@ class StandardAbility:
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
         potion_boosts = self.potion_level_boost()
-        base_levels = [self.base_magic_level, self.base_range_level, self.base_strength_level]
+        base_levels = [self.inputs.base_magic_level, self.inputs.base_range_level, self.inputs.base_strength_level]
         total_levels = []
         for x, y, z in zip(aura_boosts, potion_boosts, base_levels):
             total_levels.append(int(x + y + z))
@@ -218,17 +194,17 @@ class StandardAbility:
         base_ability_dmg = 0
         
         for w in self.weapons:
-            if w['name'] == self.mh_input:
+            if w['name'] == self.inputs.mh_input:
                 mh = w
                 break
         if mh is None:
             pass
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.magic_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.inputs.spell_input) + self.inputs.magic_bonus)
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.range_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.inputs.spell_input) + self.inputs.range_bonus)
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.melee_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.inputs.melee_bonus)
         else:
             pass
         
@@ -239,11 +215,11 @@ class StandardAbility:
         if oh is None:
             pass
         elif oh['style'] == 'MAGIC':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.magic_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.inputs.spell_input) + self.inputs.magic_bonus)))
         elif oh['style'] == 'RANGE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.spell_input) + self.range_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.inputs.spell_input) + self.inputs.range_bonus)))
         elif oh['style'] == 'MELEE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + self.melee_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + self.inputs.melee_bonus)))
         else:
             pass
         
@@ -256,17 +232,17 @@ class StandardAbility:
         base_ability_dmg = 0 
         
         for w in self.weapons:
-            if w['name'] == self.th_input:
+            if w['name'] == self.inputs.th_input:
                 th = w
                 break
         if th is None:
             pass
         if th['style'] == 'MAGIC':
-            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.magic_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.inputs.spell_input) + 1.5 * self.inputs.magic_bonus)
         elif th['style'] == 'RANGE':
-            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.spell_input) + 1.5 * self.range_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.inputs.spell_input) + 1.5 * self.inputs.range_bonus)
         elif th['style'] == 'MELEE':
-            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * self.melee_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * self.inputs.melee_bonus)
         else:
             pass
         return base_ability_dmg
@@ -277,15 +253,15 @@ class StandardAbility:
         mh_ability_dmg = 0
         
         for w in self.weapons:
-            if w['name'] == self.mh_input:
+            if w['name'] == self.inputs.mh_input:
                 mh = w
                 break
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.magic_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.inputs.spell_input) + self.inputs.magic_bonus)
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.spell_input) + self.range_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.inputs.spell_input) + self.inputs.range_bonus)
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.melee_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.inputs.melee_bonus)
         else:
             pass
         return mh_ability_dmg
@@ -294,11 +270,11 @@ class StandardAbility:
     def base_ability_dmg(self):
         base_ability_dmg = 0
         
-        if self.type == '2h':
+        if self.inputs.type == '2h':
             base_ability_dmg = self.th_ability_dmg()
-        elif self.type == 'dw':
+        elif self.inputs.type == 'dw':
             base_ability_dmg = self.dw_ability_dmg()
-        elif self.type == 'ms':
+        elif self.inputs.type == 'ms':
             base_ability_dmg = self.ms_ability_dmg()
         else:
             pass
@@ -312,8 +288,8 @@ class StandardAbility:
             'MELEE': self.melee_prayer
         }
         
-        if self.style in prayer_map:
-            fixed = int(int(self.ability_dmg * self.fixed_dmg) * (1 + prayer_map[self.style]))
+        if self.inputs.style in prayer_map:
+            fixed = int(int(self.inputs.ability_dmg * self.inputs.fixed_dmg) * (1 + prayer_map[self.inputs.style]))
         else:
             fixed = 0
         return fixed
@@ -326,8 +302,8 @@ class StandardAbility:
             'MELEE': self.melee_prayer
         }
         
-        if self.style in prayer_map:
-            var = int(int(self.ability_dmg * self.var_dmg) * (1 + prayer_map[self.style]))
+        if self.inputs.style in prayer_map:
+            var = int(int(self.inputs.ability_dmg * self.inputs.var_dmg) * (1 + prayer_map[self.inputs.style]))
         else:
             var = 0
         return var
@@ -337,7 +313,7 @@ class StandardAbility:
         dmg_values = self.dpl()
         fixed = dmg_values[0]
         var = dmg_values[1]
-        precise = int(0.015 * (fixed + var) * self.precise_rank)
+        precise = int(0.015 * (fixed + var) * self.inputs.precise_rank)
         fixed += precise
         var -= precise
         return [(fixed), (var)]
@@ -348,12 +324,12 @@ class StandardAbility:
         fixed = precise[0]
         var = precise[1]
         
-        if self.aura_input == 'Equilibrium':
+        if self.inputs.aura_input == 'Equilibrium':
             fixed += 0.25 * var
             var -= 0.5 * var
         else:
-            fixed += 0.03 * var * self.equilibrium_rank
-            var -= 0.04 * var * self.equilibrium_rank
+            fixed += 0.03 * var * self.inputs.equilibrium_rank
+            var -= 0.04 * var * self.inputs.equilibrium_rank
         return [int(fixed), int(var)]
     
     # Computes dmg per level and outputs new fixed and var dmg
@@ -361,15 +337,15 @@ class StandardAbility:
         fixed = self.fixed()
         var = self.var()
     
-        if self.style in ('MAGIC', 'RANGE', 'MELEE'):
-            if self.style == 'MAGIC':
-                base_level = self.base_magic_level
+        if self.inputs.style in ('MAGIC', 'RANGE', 'MELEE'):
+            if self.inputs.style == 'MAGIC':
+                base_level = self.inputs.base_magic_level
                 boosted_level = self.boosted_magic_level
-            elif self.style == 'RANGE':
-                base_level = self.base_range_level
+            elif self.inputs.style == 'RANGE':
+                base_level = self.inputs.base_range_level
                 boosted_level = self.boosted_range_level
-            elif self.style == 'MELEE':
-                base_level = self.base_melee_level
+            elif self.inputs.style == 'MELEE':
+                base_level = self.inputs.base_melee_level
                 boosted_level = self.boosted_melee_level
             else:
                 pass
@@ -379,7 +355,6 @@ class StandardAbility:
             var += int(level_difference * 4)
         
         return [fixed, var]
-
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
@@ -389,35 +364,34 @@ class StandardAbility:
         
         boost = None
         for b in self.boosts:
-            if b['name'] == self.aura_input:
+            if b['name'] == self.inputs.aura_input:
                 boost = b
                 break
-        if self.style == 'MAGIC' and self.sunshine == False:
+        if self.inputs.style == 'MAGIC' and self.sunshine == False:
             fixed += int(fixed * boost['magic_dmg_percent'])
             var += int(var * boost['magic_dmg_percent'])
-        elif self.style == 'RANGE' and self.death_swiftness == False:
+        elif self.inputs.style == 'RANGE' and self.death_swiftness == False:
             fixed += int(fixed * boost['range_dmg_percent'])
             var += int(var * boost['range_dmg_percent'])
-        elif self.style == 'MELEE' and (self.berserk == False or self.zgs_spec == False):
+        elif self.inputs.style == 'MELEE' and (self.berserk == False or self.zgs_spec == False):
             fixed += int(fixed * boost['strength_dmg_percent'])
             var += int(var * boost['strength_dmg_percent'])
         else:
             pass
         return [fixed, var]
 
-    
     # Computes the dmg boost from ultimates and specs
     def dmg_boost(self):
         dmg_values = self.equilibrium()
         fixed = dmg_values[0]
         var = dmg_values[1]
     
-        if self.ability_input != 'BLEED':
-            if (self.sunshine == True and self.style == 'MAGIC') or (self.death_swiftness == True and self.style == 'RANGE'):
+        if self.inputs.ability_input != 'BLEED':
+            if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
                 boost_multiplier = 0.5
-            elif self.berserk == True and self.style == 'MELEE':
+            elif self.berserk == True and self.inputs.style == 'MELEE':
                 boost_multiplier = 2.0
-            elif self.zgs_spec == True and self.style == 'MELEE':
+            elif self.zgs_spec == True and self.inputs.style == 'MELEE':
                 boost_multiplier = 1.25
             else:
                 boost_multiplier = 0
@@ -434,39 +408,17 @@ class BleedAbility:
         with open(os.path.join('utils', 'BLEEDS.json'), 'r') as bleed:
             self.bleeds = json.load(bleed)
             
-        standard = StandardAbility()
-        inputs = Inputs()
-
-        self.dmg_output = inputs.dmg_output
-        self.sim = standard.sim
-        
-        self.lunging_rank = 0
-            
-        self.base_magic_level = inputs.base_magic_level
-        self.base_range_level = inputs.base_range_level
-        self.base_strength_level = inputs.base_strength_level
-
-        self.ability_dmg = standard.base_ability_dmg()
-
-        self.name = inputs.name
-        self.style = inputs.style
-        self.class_n = inputs.class_n
-        self.type_n = inputs.type_n
-        self.fixed_dmg = inputs.fixed_dmg
-        self.var_dmg = inputs.var_dmg
-        
-        self.boosted_magic_level = standard.boosted_magic_level
-        self.boosted_range_level = standard.boosted_range_level
-        self.boosted_strength_level = standard.boosted_strength_level
+        self.standard = StandardAbility()
+        self.inputs = Inputs()
 
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
-        fixed = int(self.ability_dmg * self.fixed_dmg)
+        fixed = int(self.inputs.ability_dmg * self.inputs.fixed_dmg)
         return fixed
     
     # Computes var dmg without prayer because bleeds make sense
     def var(self):
-        var = int(self.ability_dmg * self.var_dmg)
+        var = int(self.inputs.ability_dmg * self.inputs.var_dmg)
         return var
     
     # Simulates the abil n times and returns the average
@@ -477,17 +429,17 @@ class BleedAbility:
         avg_dmg = 0
         total = 0
         
-        if self.name == 'combust' or self.name == 'fragmentation shot' or self.name == 'dismember' or self.name == 'slaughter':
-            for _ in range(self.sim):
+        if self.inputs.name == 'combust' or self.inputs.name == 'fragmentation shot' or self.inputs.name == 'dismember' or self.inputs.name == 'slaughter':
+            for _ in range(self.standard.sim):
                 random_num = random.randint(1,100)
-                dmg = int((self.ability_dmg * max(((random_num * (1.88 + 0.2 * self.lunging_rank)) / 100), 1)) / 5)
+                dmg = int((self.inputs.ability_dmg * max(((random_num * (1.88 + 0.2 * self.inputs.lunging_rank)) / 100), 1)) / 5)
                 total += dmg
-                avg_dmg = int(total / self.sim)
+                avg_dmg = int(total / self.standard.sim)
         else:
-            for _ in range(self.sim):
+            for _ in range(self.standard.sim):
                 random_num = random.randint(fixed, max_dmg)
                 total += random_num
-            avg_dmg = int(total / self.sim)
+            avg_dmg = int(total / self.standard.sim)
         return avg_dmg
     
     def hits(self):
@@ -498,49 +450,49 @@ class BleedAbility:
         hits = []
         
         for bleed in self.bleeds:
-            if bleed['name'] == self.name:
+            if bleed['name'] == self.inputs.name:
                 abil = bleed
                 break
         hit_count = abil['hits']
         dmg_decay = abil['dmg_decay']
         
         if dmg_decay == 0:
-            if self.dmg_output == 'MIN':
+            if self.inputs.dmg_output == 'MIN':
                 hits = [fixed] * hit_count
-            elif self.dmg_output == 'AVG':
+            elif self.inputs.dmg_output == 'AVG':
                 hits = [avg_dmg] * hit_count
-            elif self.dmg_output == 'MAX':
+            elif self.inputs.dmg_output == 'MAX':
                 hits = [max_dmg] * hit_count
             else:
                 pass
         else:
-            if self.name == 'corruption shot' or self.name == 'corruption blast':
-                if self.dmg_output == 'MIN':
-                    last_hit = int(self.ability_dmg * 0.067)
+            if self.inputs.name == 'corruption shot' or self.inputs.name == 'corruption blast':
+                if self.inputs.dmg_output == 'MIN':
+                    last_hit = int(self.inputs.ability_dmg * 0.067)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
-                elif self.dmg_output == 'AVG':
-                    last_hit_min = int(self.ability_dmg * 0.067)
-                    last_hit_max = int(self.ability_dmg * 0.067 * 3)
+                elif self.inputs.dmg_output == 'AVG':
+                    last_hit_min = int(self.inputs.ability_dmg * 0.067)
+                    last_hit_max = int(self.inputs.ability_dmg * 0.067 * 3)
                     last_hit = int((last_hit_min + last_hit_max) / 2)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
-                elif self.dmg_output == 'MAX':
-                    last_hit = int(self.ability_dmg * 0.067 * 3)
+                elif self.inputs.dmg_output == 'MAX':
+                    last_hit = int(self.inputs.ability_dmg * 0.067 * 3)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
                 else:
                     pass
-            elif self.name == 'blood tendrils':
-                if self.dmg_output == 'MIN':
+            elif self.inputs.name == 'blood tendrils':
+                if self.inputs.dmg_output == 'MIN':
                     small_hit = int(36 / 20 * fixed)
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
-                elif self.dmg_output == 'AVG':
+                elif self.inputs.dmg_output == 'AVG':
                     small_hit = int((int((36 / 20 * fixed) + (36 / 20 * var)) + int(36 / 20 * fixed)) / 2)
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
-                elif self.dmg_output == 'MAX':
+                elif self.inputs.dmg_output == 'MAX':
                     small_hit = int((36 / 20 * fixed) + (36 / 20 * var))
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
@@ -554,7 +506,7 @@ class BleedAbility:
         hits = self.hits()
 
         for bleed in self.bleeds:
-            if bleed['name'] == self.name:
+            if bleed['name'] == self.inputs.name:
                 abil = bleed
                 break
         multiplier = abil['walk']  
@@ -566,16 +518,30 @@ class BleedAbility:
         return hits
 
 class ChanneledABility:
-    pass 
+    def __init__(self):
+        with open(os.path.join('utils', '4_CHANNELS.json'), 'r') as abil:
+            self.abil = json.load(abil)
+            
+        self.standard = StandardAbility()
+        self.inputs = Inputs()
+
+    def hits(self):
+        for abil in self.abil:
+            if abil['name'] == self.inputs.name:
+                abil = abil
+                break
+        fixed = abil['fixed']
+        var = abil['var']
+    pass
 
 class OnHitEffects:
     pass
 
 
-test = BleedAbility() 
+test = StandardAbility() 
 
 
-dmg = test.hits()
+dmg = test.aura_passive()
 
 print(dmg)
 

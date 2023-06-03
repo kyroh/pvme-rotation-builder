@@ -418,5 +418,14 @@
         "type_n": "BLEED",
         "style": "MELEE",
         "class_n": "THRESH"
+    },
+    {
+        "name": "vuln bomb",
+        "fixed": 0,
+        "var": 0,
+        "cd": 0,
+        "type_n": "BOOST",
+        "style": "OTHER",
+        "class_n": "OTHER"
     }
 ]
