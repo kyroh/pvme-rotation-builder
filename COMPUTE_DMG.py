@@ -10,6 +10,7 @@ import random
 import os
 import json
 
+
 class Inputs:
     def __init__(self):
         with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
@@ -18,23 +19,31 @@ class Inputs:
         with open(os.path.join('utils', 'GEAR.json'), 'r') as g:
             self.gear = json.load(g)
         
-        self.reaper_crew = True
-        self.gear_input = {
-            'helm': 'None',
-            'body': 'None',
-            'legs': 'None',
-            'boots': 'None',
-            'gloves': 'None',
-            'cape': 'None',
-            'ring': 'None',
-            'neck': 'None',
-            'pocket': 'None'
-        }
-        self.ability_input = 'asphyxiate'
-        self.mh_input = 'Wand of the praesul'
-        self.oh_input = 'Imperium core'
-        self.th_input = 'Staff of Sliske'
+        with open(os.path.join('user_gear.json'), 'r') as i:
+            self.user_gear = json.load(i)
+
+        with open(os.path.join('rotation.json'), 'r') as r:
+            self.rotation = json.load(r)
+
         self.type = '2h'
+        self.reaper_crew = True
+        self.ability_input = 'omnipower'
+        self.gear_input = self.user_gear[2]
+        self.mh_input = self.user_gear[1]["mh"]
+        self.oh_input = self.user_gear[1]["oh"]
+        self.th_input = self.user_gear[1]["2h"]
+        self.shield_input = self.user_gear[1]["shield"]
+        self.spell_input = self.user_gear[0]["spell"]
+        self.base_magic_level = self.user_gear[0]["magic level"]
+        self.base_range_level = self.user_gear[0]["range level"]
+        self.base_strength_level = self.user_gear[0]["strength level"]
+        self.aura_input = self.user_gear[0]["aura"]
+        self.potion_input = self.user_gear[0]["potion"]
+        self.prayer_input = self.user_gear[1]["prayer"]
+        self.precise_rank = 6
+        self.equilibrium_rank = 0
+        self.lunging_rank = 0
+        self.dmg_output = 'MIN'
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
         self.fixed_dmg = self.abil_params[1]
@@ -46,18 +55,7 @@ class Inputs:
         self.magic_bonus = self.bonus[0]
         self.range_bonus = self.bonus[1]
         self.melee_bonus = self.bonus[2]
-        self.spell_input = 99
-        self.base_magic_level = 99
-        self.base_range_level = 99
-        self.base_strength_level = 99
-        self.aura_input = 'None'
-        self.potion_input = 'None'
-        self.prayer_input = 'None'
-        self.precise_rank = 6
-        self.equilibrium_rank = 0
-        self.lunging_rank = 0
-        self.dmg_output = 'MIN'
-    
+
     def get_abil_params(self):
         for a in self.abilities:
             if a['name'] == self.ability_input:
@@ -68,8 +66,8 @@ class Inputs:
         type_n = abil['type_n']
         fixed_dmg = abil['fixed']
         var_dmg = abil['var']
-        name = abil['name']
-        return [name, fixed_dmg, var_dmg, style, type_n, class_n]
+        ability_name = abil['name']
+        return [ability_name, fixed_dmg, var_dmg, style, type_n, class_n]
     
     def compute_bonus(self):
         bonus = [0, 0, 0]
@@ -80,7 +78,9 @@ class Inputs:
             'boots': 'boots',
             'gloves': 'gloves',
             'neck': 'neck',
-            'cape': 'cape'
+            'cape': 'cape',
+            'ring': 'ring',
+            'pocket': 'pocket'        
         }
 
         for item in self.gear:
@@ -107,7 +107,7 @@ class StandardAbility:
 
         # Variables from GUI inputs
         self.inputs = Inputs()
-        self.sunshine = False
+        self.sunshine = True
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
@@ -380,22 +380,24 @@ class StandardAbility:
 
     # Computes the dmg boost from ultimates and specs
     def dmg_boost(self):
-        dmg_values = self.equilibrium()
-        fixed = dmg_values[0]
-        var = dmg_values[1]
+        precise = self.precise()
+        prec_fixed = precise[0]
+        prec_var = precise[1]
+        equilibrium = self.equilibrium()
+        eq_var = equilibrium[1]
     
         if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-            boost_multiplier = 0.5
+            fixed = int(1.5 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((1.5 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
         elif self.berserk == True and self.inputs.style == 'MELEE':
-            boost_multiplier = 2.0
+            fixed = int(2 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((2 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
         elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-            boost_multiplier = 1.25
+            fixed = int(1.25 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((1.25 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
         else:
-            boost_multiplier = 0
-        
-        fixed += int(fixed * boost_multiplier)
-        var += int(var * boost_multiplier)
-        
+            fixed = equilibrium[0]
+            var = equilibrium[1]
         return [fixed, var]
 
 
@@ -536,15 +538,10 @@ class ChanneledABility:
 class OnHitEffects:
     pass
 
-
-test = ChanneledABility() 
-
-
-dmg = test.hits()
+test = StandardAbility()
+dmg = test.dmg_boost()
 
 print(dmg)
-
-
 
 
 

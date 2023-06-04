@@ -425,6 +425,15 @@
         "var": 0,
         "cd": 0,
         "type_n": "BOOST",
+        "style": "MAGIC",
+        "class_n": "OTHER"
+    },
+    {
+        "name": "-",
+        "fixed": 0,
+        "var": 0,
+        "cd": 0,
+        "type_n": "OTHER",
         "style": "OTHER",
         "class_n": "OTHER"
     }

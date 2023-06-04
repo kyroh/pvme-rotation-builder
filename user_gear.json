@@ -1,0 +1,29 @@
+[
+    {
+        "spell": 99,
+        "magic level": 99,
+        "range level": 99,
+        "strength level": 99,
+        "aura": "None",
+        "potion": "None"
+    },
+    {
+        "mh": "Wand of the praesul",
+        "oh": "Imperium core",
+        "shield": "None",
+        "2h": "Staff of Sliske",
+        "prayer": "None"
+    },
+    {
+        "setup": "Magic",
+        "helm": "None",
+        "body": "None",
+        "legs": "None",
+        "boots": "None",
+        "gloves": "None",
+        "cape": "None",
+        "ring": "None",
+        "neck": "None",
+        "pocket": "None"
+    }
+]
