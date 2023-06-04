@@ -1,6 +1,8 @@
+from compute_dmg import Inputs
+
 class fcrit:
     def __init__(self):
-        self.style = 'Melee' #combat style of the player
+        self.inputs = Inputs()
         self.grim = 1 #1 if grim is active
         self.biting = 3 #biting level of the player
         self.bitingarmour = 1 # 1 if level 20 armour
@@ -34,7 +36,7 @@ class fcrit:
         fcrit_chance = (fcrit_chance + self.kalg * 0.05 + self.critikal * 0.01
                         + self.reaver * 0.05 + self.grim * 0.12)
 
-        if self.style == 'Melee':
+        if self.inputs.style == 'Melee':
             fcrit_chance += self.fury * 0.05
             if self.champions == 1:
                 fcrit_chance += 0.03
@@ -43,10 +45,10 @@ class fcrit:
             if self.abil == 'Meteor Strike':
                 fcrit_chance += self.corbicula * 0.2
 
-        elif self.style == 'Magic':
+        elif self.inputs.style == 'Magic':
             fcrit_chance += self.fury * 0.05 + self.channelers * self.channels * 0.04
 
-        elif self.style == 'Ranged':
+        elif self.inputs.style == 'Ranged':
             fcrit_chance += self.deathspore * 0.03
             if self.stalkers == 1:
                 fcrit_chance += 0.03
