@@ -9,10 +9,10 @@
 import random
 import os
 import json
-
+    
 
 class Inputs:
-    def __init__(self):
+    def __init__(self, ability):
         with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
             self.abilities = json.load(a)
 
@@ -22,12 +22,9 @@ class Inputs:
         with open(os.path.join('user_gear.json'), 'r') as i:
             self.user_gear = json.load(i)
 
-        with open(os.path.join('rotation.json'), 'r') as r:
-            self.rotation = json.load(r)
-
+        self.ability_input = ability
         self.type = '2h'
         self.reaper_crew = True
-        self.ability_input = 'omnipower'
         self.gear_input = self.user_gear[2]
         self.mh_input = self.user_gear[1]["mh"]
         self.oh_input = self.user_gear[1]["oh"]
@@ -98,7 +95,7 @@ class Inputs:
             
                 
 class StandardAbility:
-    def __init__(self):
+    def __init__(self, ability_name):
         with open(os.path.join('utils', 'WEAPONS.json'), 'r') as w:
             self.weapons = json.load(w)
         
@@ -106,7 +103,8 @@ class StandardAbility:
             self.boosts = json.load(b)
 
         # Variables from GUI inputs
-        self.inputs = Inputs()
+        
+        self.inputs = Inputs(ability_name)
         self.sunshine = True
         self.death_swiftness = False
         self.berserk = False
@@ -119,7 +117,7 @@ class StandardAbility:
         self.boosted_range_level = self.boosted_levels[1]
         self.boosted_strength_level = self.boosted_levels[2]
         
-        self.inputs.ability_dmg = self.base_ability_dmg()
+        self.ability_dmg = self.base_ability_dmg()
         
         self.prayer_boost = self.prayer_dmg()
         self.magic_prayer = self.prayer_boost[0]
@@ -287,7 +285,7 @@ class StandardAbility:
         }
         
         if self.inputs.style in prayer_map:
-            fixed = int(int(self.inputs.ability_dmg * self.inputs.fixed_dmg) * (1 + prayer_map[self.inputs.style]))
+            fixed = int(int(self.ability_dmg * self.inputs.fixed_dmg) * (1 + prayer_map[self.inputs.style]))
         else:
             fixed = 0
         return fixed
@@ -301,7 +299,7 @@ class StandardAbility:
         }
         
         if self.inputs.style in prayer_map:
-            var = int(int(self.inputs.ability_dmg * self.inputs.var_dmg) * (1 + prayer_map[self.inputs.style]))
+            var = int(int(self.ability_dmg * self.inputs.var_dmg) * (1 + prayer_map[self.inputs.style]))
         else:
             var = 0
         return var
@@ -399,25 +397,40 @@ class StandardAbility:
             fixed = equilibrium[0]
             var = equilibrium[1]
         return [fixed, var]
+    def hits(self):
+        hit = None
+        dmg = self.aura_passive()
+        fixed = dmg[0]
+        var = dmg[1]
+        
+        if self.inputs.dmg_output == 'MIN':
+            hit = fixed
+        elif self.inputs.dmg_output == 'AVG':
+            hit = fixed + int(var / 2)
+        elif self.inputs.dmg_output == 'MAX':
+            hit = fixed + var
+        else:
+            pass
+        return hit
 
 
 class BleedAbility:
     
-    def __init__(self):
+    def __init__(self, ability_name):
         with open(os.path.join('utils', 'BLEEDS.json'), 'r') as bleed:
             self.bleeds = json.load(bleed)
-            
-        self.standard = StandardAbility()
-        self.inputs = Inputs()
+        
+        self.inputs = Inputs(ability_name)
+        self.standard = StandardAbility(ability_name)
 
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
-        fixed = int(self.inputs.ability_dmg * self.inputs.fixed_dmg)
+        fixed = int(self.standard.ability_dmg * self.inputs.fixed_dmg)
         return fixed
     
     # Computes var dmg without prayer because bleeds make sense
     def var(self):
-        var = int(self.inputs.ability_dmg * self.inputs.var_dmg)
+        var = int(self.standard.ability_dmg * self.inputs.var_dmg)
         return var
     
     # Simulates the abil n times and returns the average
@@ -431,7 +444,7 @@ class BleedAbility:
         if self.inputs.name == 'combust' or self.inputs.name == 'fragmentation shot' or self.inputs.name == 'dismember' or self.inputs.name == 'slaughter':
             for _ in range(self.standard.sim):
                 random_num = random.randint(1,100)
-                dmg = int((self.inputs.ability_dmg * max(((random_num * (1.88 + 0.2 * self.inputs.lunging_rank)) / 100), 1)) / 5)
+                dmg = int((self.standard.ability_dmg * max(((random_num * (1.88 + 0.2 * self.inputs.lunging_rank)) / 100), 1)) / 5)
                 total += dmg
                 avg_dmg = int(total / self.standard.sim)
         else:
@@ -467,17 +480,17 @@ class BleedAbility:
         else:
             if self.inputs.name == 'corruption shot' or self.inputs.name == 'corruption blast':
                 if self.inputs.dmg_output == 'MIN':
-                    last_hit = int(self.inputs.ability_dmg * 0.067)
+                    last_hit = int(self.standard.ability_dmg * 0.067)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
                 elif self.inputs.dmg_output == 'AVG':
-                    last_hit_min = int(self.inputs.ability_dmg * 0.067)
-                    last_hit_max = int(self.inputs.ability_dmg * 0.067 * 3)
+                    last_hit_min = int(self.standard.ability_dmg * 0.067)
+                    last_hit_max = int(self.standard.ability_dmg * 0.067 * 3)
                     last_hit = int((last_hit_min + last_hit_max) / 2)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
                 elif self.inputs.dmg_output == 'MAX':
-                    last_hit = int(self.inputs.ability_dmg * 0.067 * 3)
+                    last_hit = int(self.standard.ability_dmg * 0.067 * 3)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
                 else:
@@ -497,7 +510,7 @@ class BleedAbility:
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
             else:
                 pass
-        return [hits]
+        return hits
 
     
     def walk(self):
@@ -517,9 +530,9 @@ class BleedAbility:
         return hits
 
 class ChanneledABility:
-    def __init__(self):
-        self.standard = StandardAbility()
-        self.inputs = Inputs()
+    def __init__(self, ability_name):   
+        self.inputs = Inputs(ability_name)
+        self.standard = StandardAbility(ability_name)
 
     def hits(self):
         dmg = self.standard.aura_passive()
@@ -533,15 +546,40 @@ class ChanneledABility:
             hits = [fixed + int(var / 2)] * 4
         elif self.inputs.dmg_output == 'MAX':
             hits = [fixed + var] * 4
-        return [hits]
+        return hits
+
 
 class OnHitEffects:
     pass
+    
 
-test = StandardAbility()
-dmg = test.dmg_boost()
+class RotationModel:
+    def __init__(self):
+        with open(os.path.join('rotation.json'), 'r') as r:
+            self.rotation = json.load(r)
+        
+    def rotation_data(self):
+        rotation_dict = {}
+        
+        for entry in self.rotation:
+            ability_name = entry['name']
+            inputs = Inputs(ability_name)
+            if  inputs.type_n == 'SINGLE_HIT_ABIL':
+                stand = StandardAbility(ability_name)
+                hit = stand.hits()
+            elif inputs.type_n == 'BLEED':
+                bleed = BleedAbility(ability_name)
+                hit = bleed.hits()
+            elif inputs.type_n == 'CHANNELED':
+                chan = ChanneledABility(ability_name)
+                hit = chan.hits()
+            else:
+                pass
+            rotation_dict[ability_name] = {"dmg": hit}
+        return rotation_dict
+    
+test = RotationModel()
+dmg = test.rotation_data()
 
 print(dmg)
-
-
-
+        

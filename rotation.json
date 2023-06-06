@@ -3,5 +3,15 @@
     "name": "wrack",
     "tick": 0,
     "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
   }
 ]
