@@ -38,7 +38,7 @@ class Inputs:
         self.potion_input = self.user_gear[0]["potion"]
         self.prayer_input = self.user_gear[1]["prayer"]
         self.precise_rank = 6
-        self.equilibrium_rank = 2
+        self.equilibrium_rank = 4
         self.lunging_rank = 0
         self.dmg_output = 'MAX'
         self.abil_params = self.get_abil_params()
@@ -105,9 +105,9 @@ class StandardAbility:
         # Variables from GUI inputs
         
         self.inputs = Inputs(ability_name)
-        self.sunshine = True
+        self.sunshine = False
         self.death_swiftness = False
-        self.berserk = False
+        self.berserk = True
         self.zgs_spec = False
         self.sim = 10000
         
@@ -341,8 +341,8 @@ class StandardAbility:
                 base_level = self.inputs.base_range_level
                 boosted_level = self.boosted_range_level
             elif self.inputs.style == 'MELEE':
-                base_level = self.inputs.base_melee_level
-                boosted_level = self.boosted_melee_level
+                base_level = self.inputs.base_strength_level
+                boosted_level = self.boosted_strength_level
             else:
                 pass
         

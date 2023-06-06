@@ -445,5 +445,14 @@
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
         "class_n": "BASIC"
+    },
+    {
+        "name": "cleave",
+        "fixed": 0.376,
+        "var": 1.504,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MELEE",
+        "class_n": "BASIC"
     }
 ]

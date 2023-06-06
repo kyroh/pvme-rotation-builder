@@ -4,26 +4,26 @@
         "magic level": 99,
         "range level": 99,
         "strength level": 99,
-        "aura": "Maniacal",
+        "aura": "None",
         "potion": "Elder overload"
     },
     {
         "mh": "Wand of the praesul",
         "oh": "Imperium core",
         "shield": "None",
-        "2h": "Staff of Sliske",
-        "prayer": "Affliction"
+        "2h": "Noxious scyth",
+        "prayer": "None"
     },
     {
         "setup": "Magic",
-        "helm": "Elite tectonic",
-        "body": "Elite tectonic",
-        "legs": "Elite tectonic",
-        "boots": "Enhanced blast diffusion",
-        "gloves": "Enhanced Kerapac",
-        "cape": "Igneous",
-        "ring": "Channelers",
-        "neck": "EOF (or)",
-        "pocket": "Grimoire"
+        "helm": "None",
+        "body": "None",
+        "legs": "None",
+        "boots": "None",
+        "gloves": "None",
+        "cape": "None",
+        "ring": "None",
+        "neck": "None",
+        "pocket": "None"
     }
 ]
