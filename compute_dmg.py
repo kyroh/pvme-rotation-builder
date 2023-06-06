@@ -397,6 +397,7 @@ class StandardAbility:
             fixed = equilibrium[0]
             var = equilibrium[1]
         return [fixed, var]
+    
     def hits(self):
         hit = None
         dmg = self.aura_passive()
@@ -559,31 +560,29 @@ class RotationModel:
             self.rotation = json.load(r)
         
     def rotation_data(self):
-        rotation_dict = {}
+        rotation_dict = []
         
         for entry in self.rotation:
             ability_name = entry['name']
             inputs = Inputs(ability_name)
-            if  inputs.type_n == 'SINGLE_HIT_ABIL':
+            params = inputs.get_abil_params()
+
+            if params[4] == 'SINGLE_HIT_ABIL':
                 stand = StandardAbility(ability_name)
                 hit = stand.hits()
-            elif inputs.type_n == 'BLEED':
+                rotation_dict.append(hit)
+            elif params[4] == 'BLEED':
                 bleed = BleedAbility(ability_name)
                 hit = bleed.hits()
-            elif inputs.type_n == 'CHANNELED':
+                rotation_dict.append(hit)
+            elif params[4] == 'CHANNELED':
                 chan = ChanneledABility(ability_name)
                 hit = chan.hits()
-            else:
-                pass
-            rotation_dict[ability_name] = {"dmg": hit}
+                rotation_dict.append(hit)
         return rotation_dict
     
 test = RotationModel()
 dmg = test.rotation_data()
 
-ad = StandardAbility('gstaff')
-x = ad.aura_passive()
-
-print(x)
 print(dmg)
         

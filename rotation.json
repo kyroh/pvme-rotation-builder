@@ -1,5 +1,1760 @@
 [
   {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "omnipower",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "gstaff",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "combust",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 0,
+    "type": "Magic 2h"
+  },
+  {
     "name": "gstaff",
     "tick": 0,
     "type": "Magic 2h"
