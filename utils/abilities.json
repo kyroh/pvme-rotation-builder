@@ -227,7 +227,8 @@
         "var": 1.256,
         "cd": 9,
         "type_n": "SINGLE_HIT_ABIL",
-        "style": "RANGE"
+        "style": "RANGE",
+        "class_n": "BASIC"
     },
     {
         "name": "tight bindings",
