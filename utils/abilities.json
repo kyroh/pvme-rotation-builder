@@ -436,5 +436,14 @@
         "type_n": "OTHER",
         "style": "OTHER",
         "class_n": "OTHER"
+    },
+    {
+        "name": "gstaff",
+        "fixed": 1.4,
+        "var": 1.6,
+        "cd": 0,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MAGIC",
+        "class_n": "BASIC"
     }
 ]

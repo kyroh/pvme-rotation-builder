@@ -38,9 +38,9 @@ class Inputs:
         self.potion_input = self.user_gear[0]["potion"]
         self.prayer_input = self.user_gear[1]["prayer"]
         self.precise_rank = 6
-        self.equilibrium_rank = 0
+        self.equilibrium_rank = 2
         self.lunging_rank = 0
-        self.dmg_output = 'MIN'
+        self.dmg_output = 'MAX'
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]
         self.fixed_dmg = self.abil_params[1]
@@ -205,7 +205,7 @@ class StandardAbility:
             pass
         
         for w in self.weapons:
-            if w['name'] == self.oh_input:
+            if w['name'] == self.inputs.oh_input:
                 oh = w
                 break
         if oh is None:
@@ -385,14 +385,14 @@ class StandardAbility:
         eq_var = equilibrium[1]
     
         if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-            fixed = int(1.5 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
-            var = int((1.5 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.5 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((1.5 * eq_var) - (0.04 * self.inputs.equilibrium_rank * prec_var))
         elif self.berserk == True and self.inputs.style == 'MELEE':
-            fixed = int(2 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
-            var = int((2 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(2 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((2 * eq_var) - (0.04 * self.inputs.equilibrium_rank * prec_var))
         elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-            fixed = int(1.25 * (prec_fixed + (0.3 * self.inputs.equilibrium_rank * prec_var)))
-            var = int((1.25 * eq_var) - (0.4 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.25 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
+            var = int((1.25 * eq_var) - (0.04 * self.inputs.equilibrium_rank * prec_var))
         else:
             fixed = equilibrium[0]
             var = equilibrium[1]
@@ -581,5 +581,9 @@ class RotationModel:
 test = RotationModel()
 dmg = test.rotation_data()
 
+ad = StandardAbility('gstaff')
+x = ad.aura_passive()
+
+print(x)
 print(dmg)
         
