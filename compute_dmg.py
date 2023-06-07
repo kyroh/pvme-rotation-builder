@@ -405,11 +405,11 @@ class StandardAbility:
         var = dmg[1]
         
         if self.inputs.dmg_output == 'MIN':
-            hit = fixed
+            hit = [fixed]
         elif self.inputs.dmg_output == 'AVG':
-            hit = fixed + int(var / 2)
+            hit = [fixed + int(var / 2)]
         elif self.inputs.dmg_output == 'MAX':
-            hit = fixed + var
+            hit = [fixed + var]
         else:
             pass
         return hit
@@ -569,20 +569,37 @@ class RotationModel:
 
             if params[4] == 'SINGLE_HIT_ABIL':
                 stand = StandardAbility(ability_name)
-                hit = stand.hits()
-                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
+                hits = stand.hits()
+                hit_dict = {"name": ability_name}
+                for i, hit in enumerate(hits, start = 1):
+                    hit_dict[f"hit {i}"] = hit
+                rotation_dict.append(hit_dict)
             elif params[4] == 'BLEED':
                 bleed = BleedAbility(ability_name)
-                hit = bleed.hits()
-                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
+                hits = bleed.hits()
+                hit_dict = {"name": ability_name}
+                for i, hit in enumerate(hits, start = 1):
+                    hit_dict[f"hit {i}"] = hit
+                rotation_dict.append(hit_dict)
             elif params[4] == 'CHANNELED':
                 chan = ChanneledABility(ability_name)
-                hit = chan.hits()
-                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
+                hits = chan.hits()
+                hit_dict = {"name": ability_name}
+                for i, hit in enumerate(hits, start = 1):
+                    hit_dict[f"hit {i}"] = hit
+                rotation_dict.append(hit_dict)
         return rotation_dict
     
+    def dmg_json(self):
+        dmg_dict = self.rotation_data()
+        
+        json_data = json.dumps(dmg_dict, indent=4)
+        
+        with open('dmg.json', 'w') as file:
+            file.write(json_data)
+    
 test = RotationModel()
-dmg = test.rotation_data()
+dmg = test.dmg_json()
 
-print(dmg)
+print('Json Saved')
         

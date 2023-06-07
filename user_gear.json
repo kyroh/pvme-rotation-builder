@@ -4,26 +4,26 @@
         "magic level": 99,
         "range level": 99,
         "strength level": 99,
-        "aura": "Reckless",
+        "aura": "None",
         "potion": "Elder overload"
     },
     {
         "mh": "Wand of the praesul",
         "oh": "Imperium core",
         "shield": "None",
-        "2h": "Eldritch crossbow",
+        "2h": "Staff of Sliske",
         "prayer": "None"
     },
     {
         "setup": "Magic",
-        "helm": "None",
-        "body": "None",
-        "legs": "None",
-        "boots": "None",
-        "gloves": "None",
-        "cape": "None",
-        "ring": "None",
-        "neck": "None",
-        "pocket": "None"
+        "helm": "Elite tectonic",
+        "body": "Elite tectonic",
+        "legs": "Elite tectonic",
+        "boots": "Enhanced blast diffusion",
+        "gloves": "Enhanced kerapac",
+        "cape": "Igneous",
+        "ring": "Reavers",
+        "neck": "EOF (or)",
+        "pocket": "Grimoire"
     }
 ]
