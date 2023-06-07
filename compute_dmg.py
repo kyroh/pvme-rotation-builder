@@ -570,15 +570,15 @@ class RotationModel:
             if params[4] == 'SINGLE_HIT_ABIL':
                 stand = StandardAbility(ability_name)
                 hit = stand.hits()
-                rotation_dict.append(hit)
+                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
             elif params[4] == 'BLEED':
                 bleed = BleedAbility(ability_name)
                 hit = bleed.hits()
-                rotation_dict.append(hit)
+                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
             elif params[4] == 'CHANNELED':
                 chan = ChanneledABility(ability_name)
                 hit = chan.hits()
-                rotation_dict.append(hit)
+                rotation_dict.append({"name": ability_name, "hits": {"hit 1": hit, "tick": 0}})
         return rotation_dict
     
 test = RotationModel()
