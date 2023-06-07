@@ -13,10 +13,10 @@ import json
 
 class Inputs:
     def __init__(self, ability):
-        with open(os.path.join('utils', 'ABILITIES.json'), 'r') as a:
+        with open(os.path.join('utils', 'abilities.json'), 'r') as a:
             self.abilities = json.load(a)
 
-        with open(os.path.join('utils', 'GEAR.json'), 'r') as g:
+        with open(os.path.join('utils', 'gear.json'), 'r') as g:
             self.gear = json.load(g)
         
         with open(os.path.join('user_gear.json'), 'r') as i:
@@ -96,10 +96,10 @@ class Inputs:
                 
 class StandardAbility:
     def __init__(self, ability_name):
-        with open(os.path.join('utils', 'WEAPONS.json'), 'r') as w:
+        with open(os.path.join('utils', 'weapons.json'), 'r') as w:
             self.weapons = json.load(w)
         
-        with open(os.path.join('utils', 'BOOSTS.json'), 'r') as b:
+        with open(os.path.join('utils', 'boosts.json'), 'r') as b:
             self.boosts = json.load(b)
 
         # Variables from GUI inputs

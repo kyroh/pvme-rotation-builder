@@ -1,7 +1,42 @@
 [
   {
     "name": "wrack",
-    "tick": 0,
+    "tick": 1,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 2,
+    "type": "2h"
+  },
+  {
+    "name": "-",
+    "tick": 3,
+    "type": "2h"
+  },
+  {
+    "name": "-",
+    "tick": 4,
+    "type": "2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 4,
+    "type": "2h"
+  },
+  {
+    "name": "-",
+    "tick": 5,
+    "type": "2h"
+  },
+  {
+    "name": "-",
+    "tick": 6,
+    "type": "2h"
+  },
+  {
+    "name": "combust",
+    "tick": 7,
     "type": "2h"
   }
 ]
