@@ -552,7 +552,43 @@ class ChanneledABility:
 
 class OnHitEffects:
     pass
-    
+
+
+class HitTiming:
+    def __init__(self, ability_name):
+        with open(os.path.join('rotation.json'), 'r') as r:
+            self.rotation = json.load(r)
+        
+        with open(os.path.join('utils', 'timing.json'), 'r') as t:
+            self.timing = json.load(t)
+        
+    def hit_timings(self):
+        hit_dict = []
+
+        for entry in self.rotation:
+            ability_name = entry['name']
+            inputs = Inputs(ability_name)
+            params = inputs.get_abil_params()
+            cast_tick = entry['tick']
+            cast_type = None
+            
+            for entry in self.timing:
+                if ability_name == entry['name']:
+                    tick = entry['tick']
+            
+            
+            if params[4] == 'SINGLE_HIT_ABIL':
+                tick += cast_tick
+            elif params[4] == 'BLEED':
+                pass
+            elif params[4] == 'CHANNELED':
+                pass
+            else:
+                pass
+        return tick
+            
+            
+            
 
 class RotationModel:
     def __init__(self):
@@ -567,7 +603,7 @@ class RotationModel:
             inputs = Inputs(ability_name)
             params = inputs.get_abil_params()
 
-            if params[4] == 'SINGLE_HIT_ABIL':
+            if params[4] is 'SINGLE_HIT_ABIL':
                 stand = StandardAbility(ability_name)
                 hits = stand.hits()
                 hit_dict = {"name": ability_name}
@@ -588,6 +624,8 @@ class RotationModel:
                 for i, hit in enumerate(hits, start = 1):
                     hit_dict[f"hit {i}"] = hit
                 rotation_dict.append(hit_dict)
+            else:
+                pass
         return rotation_dict
     
     def dmg_json(self):
