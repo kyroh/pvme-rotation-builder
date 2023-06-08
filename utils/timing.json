@@ -1,0 +1,471 @@
+[
+    {
+      "name": "backhand",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "bladed dive",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "bled fury",
+      "2h tick": 2,
+      "dw tick": 3,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "cleave",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "decimate",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dismember",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "fury",
+      "2h tick": 2,
+      "dw tick": 3,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "barge",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "fury",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "havoc",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "kick",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "punish",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "sever",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "slice",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "smash",
+      "2h tick": 1,
+      "dw tick": 0,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "assault",
+      "2h tick": 2,
+      "dw tick": 3,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "bled assault",
+      "2h tick": 2,
+      "dw tick": 3,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 3
+    },
+    {
+      "name": "bled destroy",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "bled flurry",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "blood tendrils",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "destroy",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "forceful backhand",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "greater flurry",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "hurricane",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "quake",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "shatter",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "slaughter",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "dragon 2h (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon claws (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon dagger (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon halberd (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon hatchet (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon long (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "dragon mace (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "ek-zekkil",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "granite maul (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "swh (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "vls (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "frenzy",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "massacre",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "meteor strike",
+      "2h tick": 3,
+      "dw tick": 3,
+      "stalled 2h tick": 3,
+      "stalled dw tick": 3
+    },
+    {
+      "name": "pulverize",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "overpower",
+      "2h tick": 3,
+      "dw tick": 3,
+      "stalled 2h tick": 3,
+      "stalled dw tick": 3
+    },
+    {
+      "name": "igenous overpower",
+      "2h tick": 3,
+      "dw tick": 3,
+      "stalled 2h tick": 3,
+      "stalled dw tick": 3
+    },
+    {
+      "name": "chain",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "concentrated blast",
+      "2h tick": 0,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "combust",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "corruption blast",
+      "2h tick": 2,
+      "dw tick": 2,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "dragon breath",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "greater concentrated blast",
+      "2h tick": 0,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "impact",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "magma tempest",
+      "2h tick": 4,
+      "dw tick": 4,
+      "stalled 2h tick": 4,
+      "stalled dw tick": 4
+    },
+    {
+      "name": "shock",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "sonic wave",
+      "2h tick": 2,
+      "dw tick": 0,
+      "stalled 2h tick": 2,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "tuska's wrath",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "wrack",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "wrack and ruin",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "asphyxiate",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "deep impact",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "detonate",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "horror",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "shatter",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "smoke tendrils",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
+      "name": "wild magic",
+      "2h tick": 1,
+      "dw tick": 2,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 2
+    },
+    {
+      "name": "guthix staff (eof)",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 1,
+      "stalled dw tick": 1
+    },
+    {
+      "name": "omnipower",
+      "2h tick": 3,
+      "dw tick": 3,
+      "stalled 2h tick": 3,
+      "stalled dw tick": 3
+    },
+    {
+      "name": "igneous omnipower",
+      "2h tick": 3,
+      "dw tick": 3,
+      "stalled 2h tick": 3,
+      "stalled dw tick": 3
+    }
+]
