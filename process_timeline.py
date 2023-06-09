@@ -8,11 +8,11 @@
 
 import os
 import json
-from inputs import UserInputs
-from standard import StandardAbility
-from bleeds import BleedAbility
-from channeled import ChanneledAbility
-from fcrit_chance import fcrit
+from components.inputs import UserInputs
+from components.standard import StandardAbility
+from components.bleeds import BleedAbility
+from components.channeled import ChanneledAbility
+from components.fcrit_chance import fcrit
 
 class Rotation:
     def __init__(self):

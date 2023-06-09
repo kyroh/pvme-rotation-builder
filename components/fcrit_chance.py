@@ -1,4 +1,4 @@
-from inputs import UserInputs
+from components.inputs import UserInputs
 
 class fcrit:
     def __init__(self):

@@ -1,6 +1,6 @@
-from inputs import UserInputs
-from standard import StandardAbility
-from ability_dmg import AbilityDmg
+from components.inputs import UserInputs
+from components.standard import StandardAbility
+from components.ability_dmg import AbilityDmg
 import random
 
 

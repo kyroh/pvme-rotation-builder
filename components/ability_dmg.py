@@ -1,4 +1,4 @@
-from inputs import UserInputs
+from components.inputs import UserInputs
 
 class AbilityDmg:
     def __init__(self, ability):

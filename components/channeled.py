@@ -1,6 +1,6 @@
-from inputs import UserInputs
-from ability_dmg import AbilityDmg
-from standard import StandardAbility
+from components.inputs import UserInputs
+from components.ability_dmg import AbilityDmg
+from components.standard import StandardAbility
 
 class ChanneledAbility:
     def __init__(self, ability):

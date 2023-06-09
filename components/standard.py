@@ -1,5 +1,5 @@
-from inputs import UserInputs
-from ability_dmg import AbilityDmg
+from components.inputs import UserInputs
+from components.ability_dmg import AbilityDmg
 
 class StandardAbility:
     def __init__(self, ability):
