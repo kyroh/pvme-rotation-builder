@@ -6,57 +6,43 @@
 # May 2023
 #
 
+import os
 import json
 from inputs import UserInputs
 from standard import StandardAbility
 from bleeds import BleedAbility
 from channeled import ChanneledAbility
-
-
-class OnHitEffects:
-    pass      
-            
-
-class ability_info:
-    def get_abil_params(self):
-        abil = next((a for a in self.abilities if a['name'] == self.ability_input), None)
-        if abil is None:
-            return []
-
-        ability_name = abil['name']
-        fixed_dmg = abil['fixed']
-        var_dmg = abil['var']
-        style = abil['style']
-        type_n = abil['type_n']
-        class_n = abil['class_n']
-
-        return [ability_name, fixed_dmg, var_dmg, style, type_n, class_n]
+from fcrit_chance import fcrit
 
 class Rotation:
+    def __init__(self):
+        with open(os.path.join('user', 'rotation.json'), 'r') as r:
+            self.rotation = json.load(r)
+    
     def rotation_data(self):
         rotation_dict = []
         
-        for entry in self.inputs.rotation:
+        for entry in self.rotation:
             ability_name = entry['name']
-            inputs = UserInputs()
+            inputs = UserInputs(ability_name)
             params = inputs.get_abil_params()
 
             if params[4] == 'SINGLE_HIT_ABIL':
-                stand = StandardAbility()
+                stand = StandardAbility(ability_name)
                 hits = stand.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):
                     hit_dict[f"hit {i}"] = hit
                 rotation_dict.append(hit_dict)
             elif params[4] == 'BLEED':
-                bleed = BleedAbility()
+                bleed = BleedAbility(ability_name)
                 hits = bleed.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):
                     hit_dict[f"hit {i}"] = hit
                 rotation_dict.append(hit_dict)
             elif params[4] == 'CHANNELED':
-                chan = ChanneledAbility()
+                chan = ChanneledAbility(ability_name)
                 hits = chan.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):
@@ -75,6 +61,9 @@ class Rotation:
             file.write(json_data)
         
         print('Json Saved')
+        
+test = Rotation()
+dmg = test.dmg_json()
 
 
         

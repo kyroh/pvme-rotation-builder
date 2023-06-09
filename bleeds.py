@@ -1,18 +1,23 @@
 from inputs import UserInputs
-import standard as StandardAbility
+from standard import StandardAbility
+from ability_dmg import AbilityDmg
 import random
 
-inputs = UserInputs()
 
 class BleedAbility:
+    def __init__(self, ability):
+        self.inputs = UserInputs(ability)
+        self.standard = StandardAbility(ability)
+        self.ad = AbilityDmg(ability)
+        
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
-        fixed = int(self.standard.ability_dmg * inputs.fixed_dmg)
+        fixed = int(self.ad.ability_dmg * self.inputs.fixed_dmg)
         return fixed
     
     # Computes var dmg without prayer because bleeds make sense
     def var(self):
-        var = int(self.standard.ability_dmg * inputs.var_dmg)
+        var = int(self.ad.ability_dmg * self.inputs.var_dmg)
         return var
     
     # Simulates the abil n times and returns the average
@@ -23,10 +28,10 @@ class BleedAbility:
         avg_dmg = 0
         total = 0
         
-        if inputs.name == 'combust' or inputs.name == 'fragmentation shot' or inputs.name == 'dismember' or inputs.name == 'slaughter':
+        if self.inputs.name == 'combust' or self.inputs.name == 'fragmentation shot' or self.inputs.name == 'dismember' or self.inputs.name == 'slaughter':
             for _ in range(self.standard.sim):
                 random_num = random.randint(1,100)
-                dmg = int((self.standard.ability_dmg * max(((random_num * (1.88 + 0.2 * inputs.lunging_rank)) / 100), 1)) / 5)
+                dmg = int((self.ad.ability_dmg * max(((random_num * (1.88 + 0.2 * self.inputs.lunging_rank)) / 100), 1)) / 5)
                 total += dmg
                 avg_dmg = int(total / self.standard.sim)
         else:
@@ -43,50 +48,50 @@ class BleedAbility:
         max_dmg = fixed + var
         hits = []
         
-        for bleed in inputs.bleeds:
-            if bleed['name'] == inputs.name:
+        for bleed in self.inputs.bleeds:
+            if bleed['name'] == self.inputs.name:
                 abil = bleed
                 break
         hit_count = abil['hits']
         dmg_decay = abil['dmg_decay']
         
         if dmg_decay == 0:
-            if inputs.dmg_output == 'MIN':
+            if self.inputs.dmg_output == 'MIN':
                 hits = [fixed] * hit_count
-            elif inputs.dmg_output == 'AVG':
+            elif self.inputs.dmg_output == 'AVG':
                 hits = [avg_dmg] * hit_count
-            elif inputs.dmg_output == 'MAX':
+            elif self.inputs.dmg_output == 'MAX':
                 hits = [max_dmg] * hit_count
             else:
                 pass
         else:
-            if inputs.name == 'corruption shot' or inputs.name == 'corruption blast':
-                if inputs.dmg_output == 'MIN':
-                    last_hit = int(self.standard.ability_dmg * 0.067)
+            if self.inputs.name == 'corruption shot' or self.inputs.name == 'corruption blast':
+                if self.inputs.dmg_output == 'MIN':
+                    last_hit = int(self.ad.ability_dmg * 0.067)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
-                elif inputs.dmg_output == 'AVG':
-                    last_hit_min = int(self.standard.ability_dmg * 0.067)
-                    last_hit_max = int(self.standard.ability_dmg * 0.067 * 3)
+                elif self.inputs.dmg_output == 'AVG':
+                    last_hit_min = int(self.ad.ability_dmg * 0.067)
+                    last_hit_max = int(self.ad.ability_dmg * 0.067 * 3)
                     last_hit = int((last_hit_min + last_hit_max) / 2)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
-                elif inputs.dmg_output == 'MAX':
-                    last_hit = int(self.standard.ability_dmg * 0.067 * 3)
+                elif self.inputs.dmg_output == 'MAX':
+                    last_hit = int(self.ad.ability_dmg * 0.067 * 3)
                     for i in range(1, hit_count + 1):
                         hits.append(last_hit * i)
                 else:
                     pass
-            elif inputs.name == 'blood tendrils':
-                if inputs.dmg_output == 'MIN':
+            elif self.inputs.name == 'blood tendrils':
+                if self.inputs.dmg_output == 'MIN':
                     small_hit = int(36 / 20 * fixed)
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
-                elif inputs.dmg_output == 'AVG':
+                elif self.inputs.dmg_output == 'AVG':
                     small_hit = int((int((36 / 20 * fixed) + (36 / 20 * var)) + int(36 / 20 * fixed)) / 2)
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
-                elif inputs.dmg_output == 'MAX':
+                elif self.inputs.dmg_output == 'MAX':
                     small_hit = int((36 / 20 * fixed) + (36 / 20 * var))
                     large_hit = small_hit * 2
                     hits = [large_hit] + [small_hit] * (hit_count - 1)
@@ -100,7 +105,7 @@ class BleedAbility:
         hits = self.hits()
 
         for bleed in self.bleeds:
-            if bleed['name'] == inputs.name:
+            if bleed['name'] == self.inputs.name:
                 abil = bleed
                 break
         multiplier = abil['walk']  

@@ -1,9 +1,8 @@
 import os
 import json
-from compute_dmg import ability_info
 
 class UserInputs:
-    def __init__(self):
+    def __init__(self, ability):
         self.abilities = self.load_json("utils", "abilities.json")
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")
@@ -13,9 +12,9 @@ class UserInputs:
         self.timing = self.load_json("utils", "timing.json")
         self.boosts = self.load_json("utils", "boosts.json")
         self.rotation = self.load_json("user", "rotation.json")
-        
-        self.ability_input = 'wrack'
 
+        self.ability_input = ability
+        
         self.type = '2h'
         self.reaper_crew = True
         self.gear_input = self.user_gear[2]

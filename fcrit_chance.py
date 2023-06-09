@@ -1,8 +1,8 @@
-from compute_dmg import Inputs
+from inputs import UserInputs
 
 class fcrit:
     def __init__(self):
-        self.inputs = Inputs()
+        self.inputs = UserInputs()
         self.grim = 1 #1 if grim is active
         self.biting = 3 #biting level of the player
         self.bitingarmour = 1 # 1 if level 20 armour
@@ -59,7 +59,3 @@ class fcrit:
             return "you're lying this skill isn't out yet"
 
         return round(fcrit_chance,3)
-            
-test = fcrit()
-crit_chance = test.calc_fcrit()
-print(crit_chance)

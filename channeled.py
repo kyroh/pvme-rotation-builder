@@ -1,20 +1,22 @@
-import inputs as Inputs
-import standard as StandardAbility
+from inputs import UserInputs
+from ability_dmg import AbilityDmg
+from standard import StandardAbility
 
 class ChanneledAbility:
-    def __init__(self):
-        self.inputs = Inputs()
-        self.standard = StandardAbility()
+    def __init__(self, ability):
+        self.inputs = UserInputs(ability)
+        self.ad = AbilityDmg(ability)
+        self.standard = StandardAbility(ability)
         self.count = self.hit_count()
 
     def hit_count(self):
         hit_count = 4
         hit_dict = []
 
-        for entry in self.rotation:
+        for entry in self.inputs.rotation:
             if entry['name'] == self.inputs.name:
                 cast_tick = entry['tick']
-                abil = next((channel for channel in self.channels if channel['name'] == self.inputs.name), None)
+                abil = next((channel for channel in self.inputs.quad_channels if channel['name'] == self.inputs.name), None)
                 if abil is not None:
                     for i in range(1, 5):
                         hit_dict.append(abil[f'hit {i}'] + cast_tick)
@@ -23,7 +25,7 @@ class ChanneledAbility:
         remaining_hits = []
         for hit in hit_dict:
             cancel = False
-            for entry in self.rotation:
+            for entry in self.inputs.rotation:
                 if entry['tick'] < hit and entry['tick'] > cast_tick and entry['name'] != '-':
                     cancel = True
                     break

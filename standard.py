@@ -2,14 +2,14 @@ from inputs import UserInputs
 from ability_dmg import AbilityDmg
 
 class StandardAbility:
-    def __init__(self):
+    def __init__(self, ability):
         self.sunshine = False
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
         self.sim = 10000
-        self.ad = AbilityDmg()
-        self.inputs = UserInputs()
+        self.ad = AbilityDmg(ability)
+        self.inputs = UserInputs(ability)
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
@@ -146,8 +146,3 @@ class StandardAbility:
         elif self.inputs.dmg_output == 'MAX':
             hits = [fixed + var]
         return hits
-
-test = StandardAbility()
-dmg = test.hits()
-
-print(dmg)
