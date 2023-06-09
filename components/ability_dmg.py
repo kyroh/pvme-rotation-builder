@@ -57,9 +57,9 @@ class AbilityDmg:
             'strength_level_boost': boost.get('strength_level_boost', 0)
         }
 
-        net_magic_boost = boost_values['magic_level_percent'] + boost_values['strength_level_boost']
+        net_magic_boost = boost_values['magic_level_percent'] + boost_values['magic_level_boost']
         net_range_boost = boost_values['range_level_percent'] + boost_values['range_level_boost']
-        net_strength_boost = boost_values['strength_level_percent'] + boost_values['magic_level_boost']
+        net_strength_boost = boost_values['strength_level_percent'] + boost_values['strength_level_boost']
 
         return [net_magic_boost, net_range_boost, net_strength_boost]
 
