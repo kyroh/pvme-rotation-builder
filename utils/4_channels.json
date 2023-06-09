@@ -1,62 +1,55 @@
 [
     {
-      "Name": "destroy",
+      "name": "destroy",
+      "hit 1": 1,
+      "hit 2": 3,
+      "hit 3": 5,
+      "hit 4": 7
+    },
+    {
+      "name": "asault",
       "hit 1": 2,
       "hit 2": 4,
       "hit 3": 6,
       "hit 4": 8
     },
     {
-      "Name": "assault 2h",
-      "hit 1": 3,
-      "hit 2": 5,
-      "hit 3": 7,
-      "hit 4": 9
+      "name": "flurry",
+      "hit 1": 1,
+      "hit 2": 3,
+      "hit 3": 5,
+      "hit 4": 7
     },
     {
-      "Name": "asault dw",
-      "hit 1": 4,
-      "hit 2": 6,
-      "hit 3": 8,
-      "hit 4": 10
+      "name": "greater flurry single target",
+      "hit 1": 1,
+      "hit 2": 3,
+      "hit 3": 5,
+      "hit 4": 7
     },
     {
-      "Name": "flurry",
+      "name": "greater flurry aoe",
+      "hit 1": 1,
+      "hit 2": 3,
+      "hit 3": 5,
+      "hit 4": 7
+    },
+    {
+      "name": "asphyxiate",
+      "hit 1": 1,
+      "hit 2": 3,
+      "hit 3": 5,
+      "hit 4": 7
+    },
+    {
+      "name": "frenzy",
       "hit 1": 2,
       "hit 2": 4,
       "hit 3": 6,
       "hit 4": 8
     },
     {
-      "Name": "greater flurry single target",
-      "hit 1": 2,
-      "hit 2": 4,
-      "hit 3": 6,
-      "hit 4": 8
-    },
-    {
-      "Name": "greater flurry aoe",
-      "hit 1": 2,
-      "hit 2": 4,
-      "hit 3": 6,
-      "hit 4": 8
-    },
-    {
-      "Name": "asphyxiate",
-      "hit 1": 2,
-      "hit 2": 4,
-      "hit 3": 6,
-      "hit 4": 8
-    },
-    {
-      "Name": "frenzy",
-      "hit 1": 2,
-      "hit 2": 4,
-      "hit 3": 6,
-      "hit 4": 8
-    },
-    {
-      "Name": "unload",
+      "name": "unload",
       "hit 1": 2,
       "hit 2": 4,
       "hit 3": 6,

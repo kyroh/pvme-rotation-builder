@@ -5,38 +5,28 @@
     "type": "2h"
   },
   {
-    "name": "wrack",
-    "tick": 1,
-    "type": "2h"
-  },
-  {
-    "name": "-",
-    "tick": 2,
-    "type": "2h"
-  },
-  {
-    "name": "-",
+    "name": "asphyxiate",
     "tick": 3,
     "type": "2h"
   },
   {
-    "name": "asphyxiate",
-    "tick": 4,
-    "type": "2h"
-  },
-  {
-    "name": "-",
-    "tick": 5,
-    "type": "2h"
-  },
-  {
-    "name": "-",
+    "name": "wrack",
     "tick": 6,
     "type": "2h"
   },
   {
-    "name": "combust",
-    "tick": 7,
+    "name": "wrack",
+    "tick": 9,
+    "type": "2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 12,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 17,
     "type": "2h"
   }
 ]
