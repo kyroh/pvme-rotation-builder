@@ -54,16 +54,17 @@ class Inputs:
         self.melee_bonus = self.bonus[2]
 
     def get_abil_params(self):
-        for a in self.abilities:
-            if a['name'] == self.ability_input:
-                abil = a
-                break
-        style = abil['style']
-        class_n = abil['class_n']
-        type_n = abil['type_n']
+        abil = next((a for a in self.abilities if a['name'] == self.ability_input), None)
+        if abil is None:
+            return []
+
+        ability_name = abil['name']
         fixed_dmg = abil['fixed']
         var_dmg = abil['var']
-        ability_name = abil['name']
+        style = abil['style']
+        type_n = abil['type_n']
+        class_n = abil['class_n']
+
         return [ability_name, fixed_dmg, var_dmg, style, type_n, class_n]
     
     def compute_bonus(self):
