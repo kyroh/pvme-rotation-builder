@@ -1,71 +1,9 @@
 [
     {
-        "name": "wrack",
-        "hit 1": 899
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "asphyxiate",
-        "hit 1": 932,
-        "hit 2": 932
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "wrack",
-        "hit 1": 899
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "wrack",
-        "hit 1": 899
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "combust",
-        "hit 1": 342,
-        "hit 2": 342,
-        "hit 3": 342,
-        "hit 4": 342,
-        "hit 5": 342
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "-",
-        "hit 1": 0
-    },
-    {
-        "name": "wrack",
-        "hit 1": 899
+        "name": "assault",
+        "hit 1": 3178,
+        "hit 2": 3178,
+        "hit 3": 3178,
+        "hit 4": 3178
     }
 ]

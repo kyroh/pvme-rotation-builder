@@ -5,7 +5,7 @@ class StandardAbility:
     def __init__(self, ability):
         self.sunshine = False
         self.death_swiftness = False
-        self.berserk = False
+        self.berserk = True
         self.zgs_spec = False
         self.sim = 10000
         self.ad = AbilityDmg(ability)

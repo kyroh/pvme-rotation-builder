@@ -455,5 +455,14 @@
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MELEE",
         "class_n": "BASIC"
+    },
+    {
+        "name": "assault",
+        "fixed": 0.438,
+        "var": 1.752,
+        "cd": 34,
+        "type_n": "CHANNELED",
+        "style": "MELEE",
+        "class_n": "THRESH"
     }
 ]

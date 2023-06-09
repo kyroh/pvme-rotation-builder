@@ -5,25 +5,25 @@
         "range level": 99,
         "strength level": 99,
         "aura": "None",
-        "potion": "None"
+        "potion": "Elder overload"
     },
     {
-        "mh": "Khopesh of elidinis",
-        "oh": "Khopesh of tumeken",
+        "mh": "Dark shard of Leng",
+        "oh": "Dark sliver of Leng",
         "shield": "None",
         "2h": "Zaros godsword",
-        "prayer": "None"
+        "prayer": "Malevolence"
     },
     {
         "setup": "Magic",
-        "helm": "None",
-        "body": "None",
-        "legs": "None",
-        "boots": "None",
-        "gloves": "None",
-        "cape": "None",
-        "ring": "None",
-        "neck": "None",
-        "pocket": "None"
+        "helm": "Vestments of havoc",
+        "body": "Vestments of havoc",
+        "legs": "Vestments of havoc",
+        "boots": "Vestments of havoc",
+        "gloves": "Cinderbanes",
+        "cape": "Igneous",
+        "ring": "Reavers",
+        "neck": "EOF (or)",
+        "pocket": "Grimoire"
     }
 ]

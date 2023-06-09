@@ -13,6 +13,7 @@ from components.standard import StandardAbility
 from components.bleeds import BleedAbility
 from components.channeled import ChanneledAbility
 from components.fcrit_chance import fcrit
+from components.ability_dmg import AbilityDmg
 
 class Rotation:
     def __init__(self):
@@ -61,9 +62,10 @@ class Rotation:
             file.write(json_data)
         
         print('Json Saved')
-        
-test = Rotation()
-dmg = test.dmg_json()
 
+x = AbilityDmg('assault')
+dmg = x.base_ability_dmg()
+
+print(dmg)
 
         
