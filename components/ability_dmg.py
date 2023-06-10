@@ -88,11 +88,11 @@ class AbilityDmg:
         if mh is None:
             pass
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + self.input.magic_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + self.input.range_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.input.melee_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + int(self.input.melee_bonus))
         else:
             pass
         
@@ -103,11 +103,11 @@ class AbilityDmg:
         if oh is None:
             pass
         elif oh['style'] == 'MAGIC':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + self.input.magic_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))))
         elif oh['style'] == 'RANGE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + self.input.range_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))))
         elif oh['style'] == 'MELEE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + self.input.melee_bonus)))
+            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + int(self.input.melee_bonus))))
         else:
             pass
         
@@ -126,11 +126,11 @@ class AbilityDmg:
         if th is None:
             pass
         if th['style'] == 'MAGIC':
-            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + 1.5 * self.input.magic_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + int(1.5 * self.input.magic_bonus))
         elif th['style'] == 'RANGE':
-            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + 1.5 * self.input.range_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + int(1.5 * self.input.range_bonus))
         elif th['style'] == 'MELEE':
-            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * self.input.melee_bonus)
+            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + int(1.5 * self.input.melee_bonus))
         else:
             pass
         return base_ability_dmg
@@ -145,11 +145,11 @@ class AbilityDmg:
                 mh = w
                 break
         if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + self.input.magic_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))
         elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + self.input.range_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))
         elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + self.input.melee_bonus)
+            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + int(self.input.melee_bonus))
         else:
             pass
         return mh_ability_dmg
