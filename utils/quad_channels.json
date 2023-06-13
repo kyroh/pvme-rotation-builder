@@ -2,41 +2,49 @@
   {
     "name": "destroy",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "assault",
     "hit_tick": 2,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "flurry",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "greater flurry single target",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "greater flurry aoe",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "asphyxiate",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "frenzy",
-    "hit_tick": -1 ,
-    "hit_delay": 2
+    "hit_tick": -1,
+    "hit_delay": 2,
+    "max_hits": 4
   },
   {
     "name": "unload",
     "hit_tick": -1,
-    "hit_delay": 2
+    "hit_delay": 2,
+    "max_hits": 4
   }
 ]

@@ -32,9 +32,10 @@ class ChanneledAbility:
             
         hit_tick = abil['hit_tick']
         hit_delay = abil['hit_delay']
+        max_hits = abil['max_hits']
         
         if cancel_tick is not None:
-            hit_count = int((cancel_tick - self.cast_tick - hit_tick) / hit_delay)
+            hit_count = min(int((cancel_tick - self.cast_tick - hit_tick) / hit_delay), max_hits)
         else:
             hit_count = 4
         return hit_count
