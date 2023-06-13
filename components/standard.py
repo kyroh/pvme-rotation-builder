@@ -3,9 +3,9 @@ from components.ability_dmg import AbilityDmg
 
 class StandardAbility:
     def __init__(self, ability):
-        self.sunshine = False
+        self.sunshine = True
         self.death_swiftness = False
-        self.berserk = True
+        self.berserk = False
         self.zgs_spec = False
         self.sim = 10000
         self.ad = AbilityDmg(ability)
@@ -65,7 +65,7 @@ class StandardAbility:
     
     # Computes the dmg range of an abil after precise
     def precise(self):
-        dmg_values = self.dpl()
+        dmg_values = self.dmg_boost()
         fixed = dmg_values[0]
         var = dmg_values[1]
         precise = int(0.015 * (fixed + var) * self.inputs.precise_rank)
@@ -89,29 +89,27 @@ class StandardAbility:
 
     # Computes the dmg boost from ultimates and specs
     def dmg_boost(self):
-        precise = self.precise()
-        prec_fixed = precise[0]
-        prec_var = precise[1]
-        equilibrium = self.equilibrium()
-        eq_var = equilibrium[1]
+        dmg = self.dpl()
+        fixed = dmg[0]
+        var = dmg[1]
     
         if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-            fixed = int(1.5 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(1.5 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.5 * fixed)
+            var = int(1.5 * var)
         elif self.berserk == True and self.inputs.style == 'MELEE':
-            fixed = int(2 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(2 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(2 * fixed)
+            var = int(2 * var)
         elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-            fixed = int(1.25 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(1.25 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.25 * fixed)
+            var = int(1.25 * var)
         else:
-            fixed = equilibrium[0]
-            var = equilibrium[1]
+            fixed = fixed
+            var = var
         return [fixed, var]
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
-        dmg = self.dmg_boost()
+        dmg = self.precise()
         fixed = dmg[0]
         var = dmg[1]
         
