@@ -1,8 +1,8 @@
 from components.inputs import UserInputs
 
 class AbilityDmg:
-    def __init__(self, ability):
-        self.input = UserInputs(ability)
+    def __init__(self, ability, cast_tick):
+        self.input = UserInputs(ability, cast_tick)
         
         self.boosted_levels = self.calculate_levels()
         self.boosted_magic_level = self.boosted_levels[0]

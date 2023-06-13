@@ -25,25 +25,26 @@ class Rotation:
         
         for entry in self.rotation:
             ability_name = entry['name']
-            inputs = UserInputs(ability_name)
+            cast_tick = entry['tick']
+            inputs = UserInputs(ability_name, cast_tick)
             params = inputs.get_abil_params()
 
             if params[4] == 'SINGLE_HIT_ABIL':
-                stand = StandardAbility(ability_name)
+                stand = StandardAbility(ability_name, cast_tick)
                 hits = stand.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):
                     hit_dict[f"hit {i}"] = hit
                 rotation_dict.append(hit_dict)
             elif params[4] == 'BLEED':
-                bleed = BleedAbility(ability_name)
+                bleed = BleedAbility(ability_name, cast_tick)
                 hits = bleed.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):
                     hit_dict[f"hit {i}"] = hit
                 rotation_dict.append(hit_dict)
             elif params[4] == 'CHANNELED':
-                chan = ChanneledAbility(ability_name)
+                chan = ChanneledAbility(ability_name, cast_tick)
                 hits = chan.hits()
                 hit_dict = {"name": ability_name}
                 for i, hit in enumerate(hits, start = 1):

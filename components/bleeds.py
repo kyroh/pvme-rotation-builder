@@ -5,7 +5,7 @@ import random
 
 
 class BleedAbility:
-    def __init__(self, ability):
+    def __init__(self, ability, cast_tick):
         self.inputs = UserInputs(ability)
         self.standard = StandardAbility(ability)
         self.ad = AbilityDmg(ability)

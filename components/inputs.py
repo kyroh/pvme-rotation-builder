@@ -2,7 +2,7 @@ import os
 import json
 
 class UserInputs:
-    def __init__(self, ability):
+    def __init__(self, ability, cast_tick):
         self.abilities = self.load_json("utils", "abilities.json")
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")

@@ -2,14 +2,14 @@ from components.inputs import UserInputs
 from components.ability_dmg import AbilityDmg
 
 class StandardAbility:
-    def __init__(self, ability):
+    def __init__(self, ability, cast_tick):
         self.sunshine = True
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
         self.sim = 10000
-        self.ad = AbilityDmg(ability)
-        self.inputs = UserInputs(ability)
+        self.ad = AbilityDmg(ability, cast_tick)
+        self.inputs = UserInputs(ability, cast_tick)
     
     # Computes dmg floor with prayer modifier
     def fixed(self):

@@ -2,5 +2,27 @@
     {
         "name": "wrack",
         "hit 1": 5358
+    },
+    {
+        "name": "asphyxiate",
+        "hit 1": 7106,
+        "hit 2": 7106
+    },
+    {
+        "name": "wrack",
+        "hit 1": 5358
+    },
+    {
+        "name": "asphyxiate",
+        "hit 1": 7106,
+        "hit 2": 7106,
+        "hit 3": 7106,
+        "hit 4": 7106,
+        "hit 5": 7106,
+        "hit 6": 7106
+    },
+    {
+        "name": "wrack",
+        "hit 1": 5358
     }
 ]
