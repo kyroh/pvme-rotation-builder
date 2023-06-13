@@ -62,10 +62,8 @@ class Rotation:
             file.write(json_data)
         
         print('Json Saved')
-
-x = AbilityDmg('assault')
-dmg = x.base_ability_dmg()
-
-print(dmg)
+        
+test = Rotation()
+dmg = test.dmg_json()
 
         
