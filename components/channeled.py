@@ -8,6 +8,15 @@ class ChanneledAbility:
         self.ad = AbilityDmg(ability, cast_tick)
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick
+        
+        for a in self.inputs.quad_channels:
+            if a['name'] == self.inputs.ability_input:
+                abil = a
+                break
+            
+        self.hit_tick = abil['hit_tick']
+        self.hit_delay = abil['hit_delay']
+        self.max_hits = abil['max_hits']
     
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
@@ -22,20 +31,11 @@ class ChanneledAbility:
     
     def hit_count(self):
         cancel_tick = self.cancel()
-        abil = None
-        for a in self.inputs.quad_channels:
-            if a['name'] == self.inputs.ability_input:
-                abil = a
-                break
-            
-        hit_tick = abil['hit_tick']
-        hit_delay = abil['hit_delay']
-        max_hits = abil['max_hits']
         
         if cancel_tick is not None:
-            hit_count = min(int((cancel_tick - self.cast_tick - hit_tick) / hit_delay), max_hits)
+            hit_count = min(int((cancel_tick - self.cast_tick - self.hit_tick) / self.hit_delay), self.max_hits)
         else:
-            hit_count = 4
+            hit_count = self.max_hits
         return hit_count
 
     def hits(self):
@@ -44,15 +44,21 @@ class ChanneledAbility:
         var = dmg[1]
         hits = {}
         hit_count = self.hit_count()
-        
+        tick = self.cast_tick - self.hit_tick
+
         if self.inputs.dmg_output == 'MIN':
-            hits = fixed * hit_count
+            for n in range(1, hit_count + 1):
+                hits[f'tick {tick}'] = fixed
+                tick += self.hit_delay
         elif self.inputs.dmg_output == 'AVG':
-            hits = fixed + int(var / 2) * hit_count
+            for n in range(1, hit_count + 1):
+                hits[f'tick {tick}'] = fixed + int(var / 2)
+                tick += self.hit_delay
         elif self.inputs.dmg_output == 'MAX':
-            hits = fixed + var * hit_count
-        
-        for i in range(1, hit_count + 1):
-            tick = 1 if i == 1 else hits[i - 1] + 2
-            hits[i] = tick
+            for n in range(1, hit_count + 1):
+                hits[f'tick {tick}'] = fixed + var
+                tick += self.hit_delay
+
         return hits
+
+    

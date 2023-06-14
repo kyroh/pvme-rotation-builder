@@ -72,5 +72,4 @@ class Rotation:
         
 test = Rotation()
 dmg = test.dmg_json()
-
         
