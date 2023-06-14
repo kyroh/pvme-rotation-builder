@@ -34,7 +34,7 @@ class fcrit:
         if self.warpriest > 0:
             fcrit_chance += self.warpriest
         else:
-            fcrit_chance += (self.inputs.biting_rank * 0.02) * (1+self.inputs.biting_rankarmour * 0.1)
+            fcrit_chance += (self.inputs.biting_rank * 0.02) * (1+self.biting_20 * 0.1)
 
         fcrit_chance = (fcrit_chance + self.kalg * 0.05 + self.critikal * 0.01
                         + self.reaver * 0.05 + self.grim * 0.12)
