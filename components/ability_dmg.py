@@ -9,6 +9,7 @@ class AbilityDmg:
         
         self.ability_dmg = self.base_ability_dmg()
     
+    #computes the level boost from users active aura
     def aura_level_boost(self):
         boost = next((b for b in self.input.boosts if b['name'] == self.input.aura_input), None)
         if boost is None:
@@ -20,6 +21,7 @@ class AbilityDmg:
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent]
 
+    #computes level boost from users potion
     def potion_level_boost(self):
         boost = next((b for b in self.input.boosts if b['name'] == self.input.potion_input), None)
         if boost is None:
@@ -40,6 +42,7 @@ class AbilityDmg:
 
         return [net_magic_boost, net_range_boost, net_strength_boost]
 
+    #computes total level boost for purpose of computes ability dmg
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
         potion_boosts = self.potion_level_boost()
@@ -48,6 +51,7 @@ class AbilityDmg:
         total_levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
         return total_levels
     
+    #dual wield ability dmg calc
     def dw_ability_dmg(self):
         mh = next((w for w in self.input.weapons if w['name'] == self.input.mh_input), None)
         if mh is None:
@@ -67,6 +71,7 @@ class AbilityDmg:
         
         return base_ability_dmg
 
+    #two handed ability dmg calc
     def th_ability_dmg(self):
         th = next((w for w in self.input.weapons if w['name'] == self.input.th_input), None)
         if th is None:
@@ -86,6 +91,7 @@ class AbilityDmg:
 
         return base_ability_dmg
     
+    #mainhand shielf ability dmg calc
     def ms_ability_dmg(self):
         mh = next((w for w in self.input.weapons if w['name'] == self.input.mh_input), None)
         if mh is None:
@@ -105,6 +111,7 @@ class AbilityDmg:
 
         return base_ability_dmg
 
+    #helper function to use the correct ability dmg based on the casting weapon type from inputs.py
     def base_ability_dmg(self):
         if self.input.type == '2h':
             return self.th_ability_dmg()

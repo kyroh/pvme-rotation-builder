@@ -21,7 +21,7 @@ class BleedAbility:
         var = int(self.ad.ability_dmg * self.inputs.var_dmg)
         return var
     
-    # Simulates the abil n times and returns the average
+    # Simulates the abil n times and returns the average with adjustment for the weirdo bleeds
     def avg_dmg(self):
         fixed = self.fixed()
         var = self.var()
@@ -42,6 +42,7 @@ class BleedAbility:
             avg_dmg = int(total / self.standard.sim)
         return avg_dmg
     
+    # Outputs a dict of hits and tick they land for bleed abilities
     def hits(self):
         avg_dmg = self.avg_dmg()
         var = self.var()
@@ -116,8 +117,8 @@ class BleedAbility:
             else:
                 pass
         return hits
-
     
+    # Walk multiplier for certain bleeds needs to be finished still
     def walk(self):
         walk = False
         hits = self.hits()

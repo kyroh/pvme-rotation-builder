@@ -22,6 +22,7 @@ class ChanneledAbility:
         else:
             self.bleedable = False
     
+    # figures out if an abil was canceled and returns the tick it was canceled
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
             for i, entry in enumerate(self.inputs.rotation):
@@ -32,7 +33,8 @@ class ChanneledAbility:
                         None
         else:
             pass
-        
+    
+    # figures out bled channels
     def bleed(self):
         if not self.bleedable:
             return False
@@ -54,10 +56,7 @@ class ChanneledAbility:
     
         return True
 
-
-
-
-    
+    # figures out how many times a channeled abil hits factoring in cancelations and bleeding
     def hit_count(self):
         cancel_tick = self.cancel()
         bleed = self.bleed()
@@ -70,6 +69,7 @@ class ChanneledAbility:
             hit_count = self.max_hits
         return hit_count
 
+    # returns a dict of the hits for the channeled ability and the tick they land on
     def hits(self):
         dmg = self.standard.aura_passive()
         fixed = dmg[0]
