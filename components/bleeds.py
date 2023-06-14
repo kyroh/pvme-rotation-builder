@@ -6,9 +6,9 @@ import random
 
 class BleedAbility:
     def __init__(self, ability, cast_tick):
-        self.inputs = UserInputs(ability)
-        self.standard = StandardAbility(ability)
-        self.ad = AbilityDmg(ability)
+        self.inputs = UserInputs(ability, cast_tick)
+        self.standard = StandardAbility(ability, cast_tick)
+        self.ad = AbilityDmg(ability, cast_tick)
         
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):

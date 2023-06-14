@@ -1,26 +1,29 @@
 [
     {
-        "name": "wrack",
-        "hit 1": 5358
+        "name": "combust",
+        "tick 2": 434,
+        "tick 3": 434,
+        "tick 4": 434,
+        "tick 5": 434,
+        "tick 6": 434
     },
     {
         "name": "asphyxiate",
-        "hit 1": 7106,
-        "hit 2": 7106
+        "tick 4": 2134,
+        "tick 5": 2134
     },
     {
         "name": "wrack",
-        "hit 1": 5358
+        "tick 7": 2066
     },
     {
         "name": "asphyxiate",
-        "hit 1": 7106,
-        "hit 2": 7106,
-        "hit 3": 7106,
-        "hit 4": 7106
+        "tick 10": 2134,
+        "tick 11": 2134,
+        "tick 12": 2134
     },
     {
         "name": "wrack",
-        "hit 1": 5358
+        "tick 15": 2066
     }
 ]

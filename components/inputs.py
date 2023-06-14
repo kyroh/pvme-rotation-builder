@@ -32,7 +32,7 @@ class UserInputs:
         self.precise_rank = 6
         self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.dmg_output = 'MAX'
+        self.dmg_output = 'MIN'
         
         self.abil_params = self.get_abil_params()
         self.name = self.abil_params[0]

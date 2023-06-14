@@ -130,11 +130,11 @@
         "class_n": "BASIC"
     },
     {
-        "name": "wild MAGIC",
+        "name": "wild magic",
         "fixed": 0.500,
         "var": 1.650,
         "cd": 34,
-        "type_n": "WILD_MAGIC",
+        "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
         "class_n": "THRESH"
     },

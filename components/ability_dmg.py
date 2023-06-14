@@ -5,32 +5,21 @@ class AbilityDmg:
         self.input = UserInputs(ability, cast_tick)
         
         self.boosted_levels = self.calculate_levels()
-        self.boosted_magic_level = self.boosted_levels[0]
-        self.boosted_range_level = self.boosted_levels[1]
-        self.boosted_strength_level = self.boosted_levels[2]
+        self.boosted_magic_level, self.boosted_range_level, self.boosted_strength_level = self.boosted_levels
         
         self.ability_dmg = self.base_ability_dmg()
         
         self.prayer_boost = self.prayer_dmg()
-        self.magic_prayer = self.prayer_boost[0]
-        self.range_prayer = self.prayer_boost[1]
-        self.melee_prayer = self.prayer_boost[2]
+        self.magic_prayer, self.range_prayer, self.melee_prayer = self.prayer_boost
 
-    # Computes the dmg boosts from prayer
     def prayer_dmg(self):
-        boost = None
-        for b in self.input.boosts:
-            if b['name'] == self.input.prayer_input:
-                boost = b
-                break
+        boost = next((b for b in self.input.boosts if b['name'] == self.input.prayer_input), None)
         if boost is None:
-            pass
+            return [0, 0, 0]
         
-        prayer_dmg = [b["magic_dmg_percent"], b["range_dmg_percent"], b["strength_dmg_percent"]]
-        
+        prayer_dmg = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"]]
         return prayer_dmg
     
-    # Computes your boosted level from aura for ability dmg computation
     def aura_level_boost(self):
         boost = next((b for b in self.input.boosts if b['name'] == self.input.aura_input), None)
         if boost is None:
@@ -42,7 +31,6 @@ class AbilityDmg:
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent]
 
-    # Computes your boosted level from potions for ability dmg computation
     def potion_level_boost(self):
         boost = next((b for b in self.input.boosts if b['name'] == self.input.potion_input), None)
         if boost is None:
@@ -63,108 +51,77 @@ class AbilityDmg:
 
         return [net_magic_boost, net_range_boost, net_strength_boost]
 
-    # Takes all boosts and appends it to your magic level for net boosted level
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
         potion_boosts = self.potion_level_boost()
         base_levels = [self.input.base_magic_level, self.input.base_range_level, self.input.base_strength_level]
-        total_levels = []
-        for x, y, z in zip(aura_boosts, potion_boosts, base_levels):
-            total_levels.append(int(x + y + z))
+
+        total_levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
         return total_levels
     
-    # Computes base ability dmg for dual wield weapons
     def dw_ability_dmg(self):
-        mh = None
-        oh = None
-        mh_ability_dmg = 0
-        oh_ability_dmg = 0
-        base_ability_dmg = 0
-        
-        for w in self.input.weapons:
-            if w['name'] == self.input.mh_input:
-                mh = w
-                break
+        mh = next((w for w in self.input.weapons if w['name'] == self.input.mh_input), None)
         if mh is None:
-            pass
-        if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))
-        elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))
-        elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + int(self.input.melee_bonus))
+            return 0
+
+        style = mh['style']
+        dmg_tier = min(mh['dmg_tier'], self.input.spell_input)
+        bonus = 0
+        if style == 'MAGIC':
+            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * dmg_tier + self.input.magic_bonus)
+        elif style == 'RANGE':
+            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * dmg_tier + self.input.range_bonus)
+        elif style == 'MELEE':
+            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * dmg_tier + self.input.melee_bonus)
         else:
-            pass
+            base_ability_dmg = 0
         
-        for w in self.input.weapons:
-            if w['name'] == self.input.oh_input:
-                oh = w
-                break
-        if oh is None:
-            pass
-        elif oh['style'] == 'MAGIC':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))))
-        elif oh['style'] == 'RANGE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))))
-        elif oh['style'] == 'MELEE':
-            oh_ability_dmg = int(0.5 * (int(2.5 * self.boosted_strength_level) + int(9.6 * oh['dmg_tier'] + int(self.input.melee_bonus))))
-        else:
-            pass
-        
-        base_ability_dmg = mh_ability_dmg + oh_ability_dmg
         return base_ability_dmg
-   
-    # Computes base ability dmg for 2h weapon
+
     def th_ability_dmg(self):
-        th = None
-        base_ability_dmg = 0 
-        
-        for w in self.input.weapons:
-            if w['name'] == self.input.th_input:
-                th = w
-                break
+        th = next((w for w in self.input.weapons if w['name'] == self.input.th_input), None)
         if th is None:
-            pass
-        if th['style'] == 'MAGIC':
-            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + 1.5 * int(self.input.magic_bonus))
-        elif th['style'] == 'RANGE':
-            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(1.25 * self.boosted_range_level) + int(14.4 * min(th['dmg_tier'],self.input.spell_input) + 1.5 * int(self.input.range_bonus))
-        elif th['style'] == 'MELEE':
-            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(1.25 * self.boosted_strength_level) + int(14.4 * th['dmg_tier'] + 1.5 * int(self.input.melee_bonus))
+            return 0
+
+        style = th['style']
+        dmg_tier = min(th['dmg_tier'], self.input.spell_input)
+        bonus = 0
+        if style == 'MAGIC':
+            base_ability_dmg = int(3.75 * self.boosted_magic_level) + int(14.4 * dmg_tier + 1.5 * self.input.magic_bonus)
+        elif style == 'RANGE':
+            base_ability_dmg = int(3.75 * self.boosted_range_level) + int(14.4 * dmg_tier + 1.5 * self.input.range_bonus)
+        elif style == 'MELEE':
+            base_ability_dmg = int(3.75 * self.boosted_strength_level) + int(14.4 * dmg_tier + 1.5 * self.input.melee_bonus)
         else:
-            pass
+            base_ability_dmg = 0
+
         return base_ability_dmg
     
-    # Computes base ability dmg for Mainhand + no-offhand
     def ms_ability_dmg(self):
-        mh = None
-        mh_ability_dmg = 0
-        
-        for w in self.input.weapons:
-            if w['name'] == self.input.mh_input:
-                mh = w
-                break
-        if mh['style'] == 'MAGIC':
-            mh_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.magic_bonus))
-        elif mh['style'] == 'RANGE':
-            mh_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * min(mh['dmg_tier'],self.input.spell_input) + int(self.input.range_bonus))
-        elif mh['style'] == 'MELEE':
-            mh_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * mh['dmg_tier'] + int(self.input.melee_bonus))
+        mh = next((w for w in self.input.weapons if w['name'] == self.input.mh_input), None)
+        if mh is None:
+            return 0
+
+        style = mh['style']
+        dmg_tier = min(mh['dmg_tier'], self.input.spell_input)
+        bonus = 0
+        if style == 'MAGIC':
+            base_ability_dmg = int(2.5 * self.boosted_magic_level) + int(9.6 * dmg_tier + self.input.magic_bonus)
+        elif style == 'RANGE':
+            base_ability_dmg = int(2.5 * self.boosted_range_level) + int(9.6 * dmg_tier + self.input.range_bonus)
+        elif style == 'MELEE':
+            base_ability_dmg = int(2.5 * self.boosted_strength_level) + int(9.6 * dmg_tier + self.input.melee_bonus)
         else:
-            pass
-        return mh_ability_dmg
-    
-    # Helper function to identify which weapons you're casting with and return the proper base ability dmg
-    def base_ability_dmg(self):
-        base_ability_dmg = 0
-        
-        if self.input.type == '2h':
-            base_ability_dmg = self.th_ability_dmg()
-        elif self.input.type == 'dw':
-            base_ability_dmg = self.dw_ability_dmg()
-        elif self.input.type == 'ms':
-            base_ability_dmg = self.ms_ability_dmg()
-        else:
-            pass
+            base_ability_dmg = 0
+
         return base_ability_dmg
-    
+
+    def base_ability_dmg(self):
+        if self.input.type == '2h':
+            return self.th_ability_dmg()
+        elif self.input.type == 'dw':
+            return self.dw_ability_dmg()
+        elif self.input.type == 'ms':
+            return self.ms_ability_dmg()
+        else:
+            return 0

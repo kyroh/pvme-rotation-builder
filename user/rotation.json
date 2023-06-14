@@ -1,6 +1,6 @@
 [
   {
-    "name": "wrack",
+    "name": "combust",
     "tick": 0,
     "type": "2h"
   },
@@ -21,7 +21,7 @@
   },
   {
     "name": "wrack",
-    "tick": 20,
+    "tick": 14,
     "type": "2h"
   }
 ]

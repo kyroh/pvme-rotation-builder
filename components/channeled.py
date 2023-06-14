@@ -8,8 +8,6 @@ class ChanneledAbility:
         self.ad = AbilityDmg(ability, cast_tick)
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick
-        
-
     
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
