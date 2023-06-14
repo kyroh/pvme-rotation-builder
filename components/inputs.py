@@ -7,7 +7,7 @@ class UserInputs:
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")
         self.bleeds = self.load_json("utils", "bleeds.json")
-        self.quad_channels = self.load_json("utils", "quad_channels.json")
+        self.channels = self.load_json("utils", "channels.json")
         self.weapons = self.load_json("utils", "weapons.json")
         self.timing = self.load_json("utils", "timing.json")
         self.boosts = self.load_json("utils", "boosts.json")
@@ -29,9 +29,11 @@ class UserInputs:
         self.aura_input = self.user_gear[0]["aura"]
         self.potion_input = self.user_gear[0]["potion"]
         self.prayer_input = self.user_gear[1]["prayer"]
+        self.pocket = self.user_gear[2]["pocket"]
         self.precise_rank = 6
-        self.equilibrium_rank = 0
+        self.equilibrium_rank = 2
         self.lunging_rank = 0
+        self.biting_rank = 4
         self.dmg_output = 'MIN'
         
         self.abil_params = self.get_abil_params()

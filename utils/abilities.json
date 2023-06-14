@@ -130,11 +130,11 @@
         "class_n": "BASIC"
     },
     {
-        "name": "wild MAGIC",
+        "name": "wild magic",
         "fixed": 0.500,
         "var": 1.650,
         "cd": 34,
-        "type_n": "WILD_MAGIC",
+        "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
         "class_n": "THRESH"
     },
@@ -464,5 +464,32 @@
         "type_n": "CHANNELED",
         "style": "MELEE",
         "class_n": "THRESH"
+    },
+    {
+        "name": "claw",
+        "fixed": 0.23,
+        "var": 1.504,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MELEE",
+        "class_n": "BASIC"
+    },
+    {
+        "name": "destroy",
+        "fixed": 0.376,
+        "var": 1.504,
+        "cd": 34,
+        "type_n": "CHANNELED",
+        "style": "MELEE",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "greater barge",
+        "fixed": 0.376,
+        "var": 1.504,
+        "cd": 34,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MELEE",
+        "class_n": "BASIC"
     }
 ]

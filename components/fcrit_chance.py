@@ -1,15 +1,18 @@
 from components.inputs import UserInputs
 
 class fcrit:
-    def __init__(self):
-        self.inputs = UserInputs()
-        self.grim = 1 #1 if grim is active
-        self.biting = 3 #biting level of the player
-        self.bitingarmour = 1 # 1 if level 20 armour
+    def __init__(self, ability):
+        self.inputs = UserInputs(ability)
+        if self.inputs.pocket == 'Grimoire':
+            self.grim = 1
+        else:
+            self.grim = 0
+        self.inputs.biting_rank = 3 #biting level of the player
+        self.biting_20 = 1 # 1 if level 20 armour
         self.kalg = 1 #1 if player uses a kalg familiar
         self.critikal = 1 #1 if kalg scroll is active
         self.corbicula = 1 #number of pens with elder corbiculas
-        self.abil = "Meteor Strike" #which abil is used
+        self.abil = ability
         self.warpriest = 0 #number of pieces
         self.fury = 2 # number of fury/conc hits, 2 for gfury
         self.gfury =  0 #1 if guaranteed crit
@@ -31,7 +34,7 @@ class fcrit:
         if self.warpriest > 0:
             fcrit_chance += self.warpriest
         else:
-            fcrit_chance += (self.biting * 0.02) * (1+self.bitingarmour * 0.1)
+            fcrit_chance += (self.inputs.biting_rank * 0.02) * (1+self.biting_20 * 0.1)
 
         fcrit_chance = (fcrit_chance + self.kalg * 0.05 + self.critikal * 0.01
                         + self.reaver * 0.05 + self.grim * 0.12)

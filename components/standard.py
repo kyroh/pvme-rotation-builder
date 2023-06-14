@@ -2,21 +2,33 @@ from components.inputs import UserInputs
 from components.ability_dmg import AbilityDmg
 
 class StandardAbility:
-    def __init__(self, ability):
+    def __init__(self, ability, cast_tick):
         self.sunshine = False
         self.death_swiftness = False
-        self.berserk = True
+        self.berserk = False
         self.zgs_spec = False
         self.sim = 10000
-        self.ad = AbilityDmg(ability)
+        self.ad = AbilityDmg(ability, cast_tick)
         self.inputs = UserInputs(ability)
+        self.cast_tick = cast_tick
+        
+        self.prayer_boost = self.prayer_dmg()
+        self.magic_prayer, self.range_prayer, self.melee_prayer = self.prayer_boost
+    
+    def prayer_dmg(self):
+        boost = next((b for b in self.inputs.boosts if b['name'] == self.inputs.prayer_input), None)
+        if boost is None:
+            return [0, 0, 0]
+        
+        prayer_dmg = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"]]
+        return prayer_dmg
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
         prayer_map = {
-            'MAGIC': self.ad.magic_prayer,
-            'RANGE': self.ad.range_prayer,
-            'MELEE': self.ad.melee_prayer
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
         }
         
         if self.inputs.style in prayer_map:
@@ -28,9 +40,9 @@ class StandardAbility:
     # Computes var dmg with prayer modifier
     def var(self):
         prayer_map = {
-            'MAGIC': self.ad.magic_prayer,
-            'RANGE': self.ad.range_prayer,
-            'MELEE': self.ad.melee_prayer
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
         }
         
         if self.inputs.style in prayer_map:
@@ -65,7 +77,7 @@ class StandardAbility:
     
     # Computes the dmg range of an abil after precise
     def precise(self):
-        dmg_values = self.dpl()
+        dmg_values = self.dmg_boost()
         fixed = dmg_values[0]
         var = dmg_values[1]
         precise = int(0.015 * (fixed + var) * self.inputs.precise_rank)
@@ -89,29 +101,27 @@ class StandardAbility:
 
     # Computes the dmg boost from ultimates and specs
     def dmg_boost(self):
-        precise = self.precise()
-        prec_fixed = precise[0]
-        prec_var = precise[1]
-        equilibrium = self.equilibrium()
-        eq_var = equilibrium[1]
+        dmg = self.dpl()
+        fixed = dmg[0]
+        var = dmg[1]
     
         if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-            fixed = int(1.5 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(1.5 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.5 * fixed)
+            var = int(1.5 * var)
         elif self.berserk == True and self.inputs.style == 'MELEE':
-            fixed = int(2 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(2 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(2 * fixed)
+            var = int(2 * var)
         elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-            fixed = int(1.25 * (prec_fixed + (0.03 * self.inputs.equilibrium_rank * prec_var)))
-            var = int(1.25 * (prec_var - 0.04 * self.inputs.equilibrium_rank * prec_var))
+            fixed = int(1.25 * fixed)
+            var = int(1.25 * var)
         else:
-            fixed = equilibrium[0]
-            var = equilibrium[1]
+            fixed = fixed
+            var = var
         return [fixed, var]
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
-        dmg = self.dmg_boost()
+        dmg = self.precise()
         fixed = dmg[0]
         var = dmg[1]
         
@@ -137,12 +147,17 @@ class StandardAbility:
         dmg = self.aura_passive()
         fixed = dmg[0]
         var = dmg[1]
-        hits = []
+        hits = None
+        for abil in self.inputs.timing:
+            if abil['name'] == self.inputs.ability_input:
+                ability = abil
+                break
+        hit_tick = ability[f'{self.inputs.type} tick'] + self.cast_tick
 
         if self.inputs.dmg_output == 'MIN':
-            hits = [fixed]
+            hits = fixed
         elif self.inputs.dmg_output == 'AVG':
-            hits = [fixed + int(var / 2)]
+            hits = fixed + int(var / 2)
         elif self.inputs.dmg_output == 'MAX':
-            hits = [fixed + var]
-        return hits
+            hits = fixed + var
+        return {f'tick {hit_tick}' : hits}

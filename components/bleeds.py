@@ -5,10 +5,11 @@ import random
 
 
 class BleedAbility:
-    def __init__(self, ability):
+    def __init__(self, ability, cast_tick):
         self.inputs = UserInputs(ability)
-        self.standard = StandardAbility(ability)
-        self.ad = AbilityDmg(ability)
+        self.standard = StandardAbility(ability, cast_tick)
+        self.ad = AbilityDmg(ability, cast_tick)
+        self.cast_tick = cast_tick
         
     # Conmputes fixed dmg without prayer because bleeds are great
     def fixed(self):
@@ -46,55 +47,72 @@ class BleedAbility:
         var = self.var()
         fixed = self.fixed()
         max_dmg = fixed + var
-        hits = []
+        hits = {}
         
         for bleed in self.inputs.bleeds:
             if bleed['name'] == self.inputs.name:
                 abil = bleed
                 break
         hit_count = abil['hits']
-        dmg_decay = abil['dmg_decay']
+        dot = abil['dot']
+        hit_delay = abil['frequency']
+        tick = self.cast_tick + hit_delay
         
-        if dmg_decay == 0:
+        if dot == 0:
             if self.inputs.dmg_output == 'MIN':
-                hits = [fixed] * hit_count
+                for n in range(1, hit_count + 1):
+                    hits[f'tick {tick}'] = fixed
+                    tick += hit_delay
             elif self.inputs.dmg_output == 'AVG':
-                hits = [avg_dmg] * hit_count
+                for n in range(1, hit_count + 1):
+                    hits[f'tick {tick}'] = avg_dmg
+                    tick += hit_delay
             elif self.inputs.dmg_output == 'MAX':
-                hits = [max_dmg] * hit_count
+                for n in range(1, hit_count + 1):
+                    hits[f'tick {tick}'] = max_dmg
+                    tick += hit_delay
             else:
                 pass
         else:
             if self.inputs.name == 'corruption shot' or self.inputs.name == 'corruption blast':
                 if self.inputs.dmg_output == 'MIN':
                     last_hit = int(self.ad.ability_dmg * 0.067)
-                    for i in range(1, hit_count + 1):
-                        hits.append(last_hit * i)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = last_hit * i
+                        tick += hit_delay
                 elif self.inputs.dmg_output == 'AVG':
                     last_hit_min = int(self.ad.ability_dmg * 0.067)
                     last_hit_max = int(self.ad.ability_dmg * 0.067 * 3)
                     last_hit = int((last_hit_min + last_hit_max) / 2)
-                    for i in range(1, hit_count + 1):
-                        hits.append(last_hit * i)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = last_hit * i
+                        tick += hit_delay
                 elif self.inputs.dmg_output == 'MAX':
                     last_hit = int(self.ad.ability_dmg * 0.067 * 3)
-                    for i in range(1, hit_count + 1):
-                        hits.append(last_hit * i)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = last_hit * i
+                        tick += hit_delay
                 else:
                     pass
             elif self.inputs.name == 'blood tendrils':
                 if self.inputs.dmg_output == 'MIN':
                     small_hit = int(36 / 20 * fixed)
                     large_hit = small_hit * 2
-                    hits = [large_hit] + [small_hit] * (hit_count - 1)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = large_hit if i == hit_count else small_hit
+                        tick += hit_delay
                 elif self.inputs.dmg_output == 'AVG':
                     small_hit = int((int((36 / 20 * fixed) + (36 / 20 * var)) + int(36 / 20 * fixed)) / 2)
                     large_hit = small_hit * 2
-                    hits = [large_hit] + [small_hit] * (hit_count - 1)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = large_hit if i == hit_count else small_hit
+                        tick += hit_delay
                 elif self.inputs.dmg_output == 'MAX':
                     small_hit = int((36 / 20 * fixed) + (36 / 20 * var))
                     large_hit = small_hit * 2
-                    hits = [large_hit] + [small_hit] * (hit_count - 1)
+                    for i in range(hit_count, 0, -1):
+                        hits[f'tick {tick}'] = large_hit if i == hit_count else small_hit
+                        tick += hit_delay
             else:
                 pass
         return hits
