@@ -8,7 +8,7 @@ class fcrit:
         else:
             self.grim = 0
         self.inputs.biting_rank = 3 #biting level of the player
-        self.inputs.biting_rankarmour = 1 # 1 if level 20 armour
+        self.biting_20 = 1 # 1 if level 20 armour
         self.kalg = 1 #1 if player uses a kalg familiar
         self.critikal = 1 #1 if kalg scroll is active
         self.corbicula = 1 #number of pens with elder corbiculas
