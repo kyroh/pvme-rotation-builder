@@ -37,20 +37,22 @@ class ChanneledAbility:
         else:
             hit_count = 4
         return hit_count
-        
-            
-        
 
     def hits(self):
         dmg = self.standard.aura_passive()
         fixed = dmg[0]
         var = dmg[1]
-        hits = []
+        hits = {}
         hit_count = self.hit_count()
+        
         if self.inputs.dmg_output == 'MIN':
-            hits = [fixed] * hit_count
+            hits = fixed * hit_count
         elif self.inputs.dmg_output == 'AVG':
-            hits = [fixed + int(var / 2)] * hit_count
+            hits = fixed + int(var / 2) * hit_count
         elif self.inputs.dmg_output == 'MAX':
-            hits = [fixed + var] * hit_count
+            hits = fixed + var * hit_count
+        
+        for i in range(1, hit_count + 1):
+            tick = 1 if i == 1 else hits[i - 1] + 2
+            hits[i] = tick
         return hits

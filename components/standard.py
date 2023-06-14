@@ -10,6 +10,7 @@ class StandardAbility:
         self.sim = 10000
         self.ad = AbilityDmg(ability, cast_tick)
         self.inputs = UserInputs(ability, cast_tick)
+        self.cast_tick = cast_tick
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
@@ -135,12 +136,17 @@ class StandardAbility:
         dmg = self.aura_passive()
         fixed = dmg[0]
         var = dmg[1]
-        hits = []
+        hits = None
+        for abil in self.inputs.timing:
+            if abil['name'] == self.inputs.ability_input:
+                ability = abil
+                break
+        hit_tick = ability[f'{self.inputs.type} tick'] + self.cast_tick
 
         if self.inputs.dmg_output == 'MIN':
-            hits = [fixed]
+            hits = fixed
         elif self.inputs.dmg_output == 'AVG':
-            hits = [fixed + int(var / 2)]
+            hits = fixed + int(var / 2)
         elif self.inputs.dmg_output == 'MAX':
-            hits = [fixed + var]
-        return hits
+            hits = fixed + var
+        return {f'tick {hit_tick}' : hits}

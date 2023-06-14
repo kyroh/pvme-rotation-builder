@@ -22,7 +22,9 @@ class Rotation:
         
         with open(os.path.join('utils', 'timing.json'), 'r') as t:
             self.timing = json.load(t)
-    
+
+        self.timing_dict = {abil['name']: abil for abil in self.timing}
+
     def rotation_data(self):
         rotation_dict = []
         
@@ -31,31 +33,32 @@ class Rotation:
             cast_tick = entry['tick']
             inputs = UserInputs(ability_name, cast_tick)
             params = inputs.get_abil_params()
-            for abil in self.timing:
-                if  abil['name'] == ability_name and inputs.type == '2h':
+            abil = self.timing_dict.get(ability_name)
+            if abil and abil['name'] == ability_name:
+                if inputs.type == '2h':
                     hit_tick = cast_tick + abil['2h tick']
-                elif  abil['name'] == ability_name and inputs.type == 'dw':
-                    hit_tick = cast_tick + abil['dw tick']
-                elif  abil['name'] == ability_name and inputs.type == 'ms':
+                elif inputs.type in ['dw', 'ms']:
                     hit_tick = cast_tick + abil['dw tick']
                 else:
-                    pass
+                    continue
 
-            if params[4] == 'SINGLE_HIT_ABIL':
-                ability = StandardAbility(ability_name, cast_tick)
-            elif params[4] == 'BLEED':
-                ability = BleedAbility(ability_name, cast_tick)
-            elif params[4] == 'CHANNELED':
-                ability = ChanneledAbility(ability_name, cast_tick)
-            else:
-                pass
+                if params[4] == 'SINGLE_HIT_ABIL':
+                    ability = StandardAbility(ability_name, cast_tick)
+                elif params[4] == 'BLEED':
+                    ability = BleedAbility(ability_name, cast_tick)
+                elif params[4] == 'CHANNELED':
+                    ability = ChanneledAbility(ability_name, cast_tick)
+                else:
+                    continue
 
-            hits = ability.hits()
-            hit_dict = {"name": ability_name}
-            hit_dict.update({f"tick {hit_tick}": hit for hit_tick, hit in enumerate(hits, start=hit_tick)})
-            rotation_dict.append(hit_dict)
+                hits = ability.hits()
+                hit_dict = {"name": ability_name}
+                hit_dict.update(hits)
+                rotation_dict.append(hit_dict)
 
         return rotation_dict
+
+
     
     def dmg_json(self):
         dmg_dict = self.rotation_data()
