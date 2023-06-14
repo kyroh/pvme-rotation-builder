@@ -1,32 +1,10 @@
 [
     {
-        "name": "asphyxiate",
-        "tick 1": 2134,
-        "tick 3": 2134
+        "name": "wrack",
+        "tick 1": 1230
     },
     {
         "name": "wrack",
-        "tick 4": 2066
-    },
-    {
-        "name": "asphyxiate",
-        "tick 7": 2134,
-        "tick 9": 2134,
-        "tick 11": 2134
-    },
-    {
-        "name": "wrack",
-        "tick 12": 2066
-    },
-    {
-        "name": "asphyxiate",
-        "tick 15": 2134,
-        "tick 17": 2134,
-        "tick 19": 2134,
-        "tick 21": 2134
-    },
-    {
-        "name": "wrack",
-        "tick 22": 2066
+        "tick 4": 1230
     }
 ]

@@ -3,7 +3,7 @@ from components.ability_dmg import AbilityDmg
 
 class StandardAbility:
     def __init__(self, ability, cast_tick):
-        self.sunshine = True
+        self.sunshine = False
         self.death_swiftness = False
         self.berserk = False
         self.zgs_spec = False
@@ -11,13 +11,24 @@ class StandardAbility:
         self.ad = AbilityDmg(ability, cast_tick)
         self.inputs = UserInputs(ability, cast_tick)
         self.cast_tick = cast_tick
+        
+        self.prayer_boost = self.prayer_dmg()
+        self.magic_prayer, self.range_prayer, self.melee_prayer = self.prayer_boost
+    
+    def prayer_dmg(self):
+        boost = next((b for b in self.inputs.boosts if b['name'] == self.inputs.prayer_input), None)
+        if boost is None:
+            return [0, 0, 0]
+        
+        prayer_dmg = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"]]
+        return prayer_dmg
     
     # Computes dmg floor with prayer modifier
     def fixed(self):
         prayer_map = {
-            'MAGIC': self.ad.magic_prayer,
-            'RANGE': self.ad.range_prayer,
-            'MELEE': self.ad.melee_prayer
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
         }
         
         if self.inputs.style in prayer_map:
@@ -29,9 +40,9 @@ class StandardAbility:
     # Computes var dmg with prayer modifier
     def var(self):
         prayer_map = {
-            'MAGIC': self.ad.magic_prayer,
-            'RANGE': self.ad.range_prayer,
-            'MELEE': self.ad.melee_prayer
+            'MAGIC': self.magic_prayer,
+            'RANGE': self.range_prayer,
+            'MELEE': self.melee_prayer
         }
         
         if self.inputs.style in prayer_map:

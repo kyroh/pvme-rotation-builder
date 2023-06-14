@@ -8,17 +8,6 @@ class AbilityDmg:
         self.boosted_magic_level, self.boosted_range_level, self.boosted_strength_level = self.boosted_levels
         
         self.ability_dmg = self.base_ability_dmg()
-        
-        self.prayer_boost = self.prayer_dmg()
-        self.magic_prayer, self.range_prayer, self.melee_prayer = self.prayer_boost
-
-    def prayer_dmg(self):
-        boost = next((b for b in self.input.boosts if b['name'] == self.input.prayer_input), None)
-        if boost is None:
-            return [0, 0, 0]
-        
-        prayer_dmg = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"]]
-        return prayer_dmg
     
     def aura_level_boost(self):
         boost = next((b for b in self.input.boosts if b['name'] == self.input.aura_input), None)

@@ -464,5 +464,14 @@
         "type_n": "CHANNELED",
         "style": "MELEE",
         "class_n": "THRESH"
+    },
+    {
+        "name": "claw",
+        "fixed": 0.23,
+        "var": 1.504,
+        "cd": 17,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MELEE",
+        "class_n": "BASIC"
     }
 ]
