@@ -9,7 +9,7 @@ class StandardAbility:
         self.zgs_spec = False
         self.sim = 10000
         self.ad = AbilityDmg(ability, cast_tick)
-        self.inputs = UserInputs(ability, cast_tick)
+        self.inputs = UserInputs(ability)
         self.cast_tick = cast_tick
         
         self.prayer_boost = self.prayer_dmg()

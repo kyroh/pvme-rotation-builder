@@ -4,7 +4,7 @@ from components.standard import StandardAbility
 
 class ChanneledAbility:
     def __init__(self, ability, cast_tick):
-        self.inputs = UserInputs(ability, cast_tick)
+        self.inputs = UserInputs(ability)
         self.ad = AbilityDmg(ability, cast_tick)
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick

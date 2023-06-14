@@ -31,7 +31,7 @@ class Rotation:
         for entry in self.rotation:
             ability_name = entry['name']
             cast_tick = entry['tick']
-            inputs = UserInputs(ability_name, cast_tick)
+            inputs = UserInputs(ability_name)
             params = inputs.get_abil_params()
             abil = self.timing_dict.get(ability_name)
             if abil and abil['name'] == ability_name:

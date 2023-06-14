@@ -2,7 +2,7 @@ import os
 import json
 
 class UserInputs:
-    def __init__(self, ability, cast_tick):
+    def __init__(self, ability):
         self.abilities = self.load_json("utils", "abilities.json")
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")
@@ -29,9 +29,11 @@ class UserInputs:
         self.aura_input = self.user_gear[0]["aura"]
         self.potion_input = self.user_gear[0]["potion"]
         self.prayer_input = self.user_gear[1]["prayer"]
+        self.pocket = self.user_gear[2]["pocket"]
         self.precise_rank = 6
         self.equilibrium_rank = 2
         self.lunging_rank = 0
+        self.biting_rank = 4
         self.dmg_output = 'MIN'
         
         self.abil_params = self.get_abil_params()
