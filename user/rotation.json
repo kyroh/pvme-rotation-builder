@@ -5,8 +5,38 @@
     "type": "2h"
   },
   {
-    "name": "wrack",
+    "name": "asphyxiate",
     "tick": 3,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 8,
+    "type": "2h"
+  },
+  {
+    "name": "combust",
+    "tick": 11,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 14,
+    "type": "2h"
+  },
+  {
+    "name": "corruption blast",
+    "tick": 17,
+    "type": "2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 20,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 27,
     "type": "2h"
   }
 ]
