@@ -473,5 +473,23 @@
         "type_n": "SINGLE_HIT_ABIL",
         "style": "MELEE",
         "class_n": "BASIC"
+    },
+    {
+        "name": "destroy",
+        "fixed": 0.376,
+        "var": 1.504,
+        "cd": 34,
+        "type_n": "CHANNELED",
+        "style": "MELEE",
+        "class_n": "THRESH"
+    },
+    {
+        "name": "greater barge",
+        "fixed": 0.376,
+        "var": 1.504,
+        "cd": 34,
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MELEE",
+        "class_n": "BASIC"
     }
 ]

@@ -1,42 +1,22 @@
 [
   {
-    "name": "wrack",
+    "name": "greater barge",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "asphyxiate",
+    "name": "assault",
     "tick": 3,
     "type": "2h"
   },
   {
-    "name": "wrack",
-    "tick": 8,
+    "name": "destroy",
+    "tick": 6,
     "type": "2h"
   },
   {
-    "name": "combust",
-    "tick": 11,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 14,
-    "type": "2h"
-  },
-  {
-    "name": "corruption blast",
-    "tick": 17,
-    "type": "2h"
-  },
-  {
-    "name": "asphyxiate",
-    "tick": 20,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 27,
+    "name": "cleave",
+    "tick": 9,
     "type": "2h"
   }
 ]

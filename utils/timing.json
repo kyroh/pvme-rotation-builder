@@ -56,6 +56,13 @@
       "stalled dw tick": 0
     },
     {
+      "name": "greater barge",
+      "2h tick": 1,
+      "dw tick": 1,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
+    },
+    {
       "name": "fury",
       "2h tick": 1,
       "dw tick": 1,

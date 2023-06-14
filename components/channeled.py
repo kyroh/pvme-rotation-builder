@@ -17,6 +17,10 @@ class ChanneledAbility:
         self.hit_tick = abil['hit_tick']
         self.hit_delay = abil['hit_delay']
         self.max_hits = abil['max_hits']
+        if abil['bleed'] == 1:
+            self.bleedable = True
+        else:
+            self.bleedable = False
     
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
@@ -28,12 +32,40 @@ class ChanneledAbility:
                         None
         else:
             pass
+        
+    def bleed(self):
+        if not self.bleedable:
+            return False
+    
+        barge_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'greater barge' and self.cast_tick - 10 <= entry['tick']]
+    
+        for barge_entry in barge_entries:
+            barge_tick = barge_entry['tick']
+            for i in self.inputs.rotation:
+                if barge_tick < i['tick'] < self.cast_tick:
+                    check = i['name']
+                    for b in self.inputs.quad_channels:
+                        if check == b['name']:
+                            if b['bleed'] == 1:
+                                return False
+                            break
+                    else:
+                        return True
+    
+        return True
+
+
+
+
     
     def hit_count(self):
         cancel_tick = self.cancel()
-        
+        bleed = self.bleed()
         if cancel_tick is not None:
-            hit_count = min(int((cancel_tick - self.cast_tick - self.hit_tick) / self.hit_delay), self.max_hits)
+            if bleed == True:
+                hit_count = self.max_hits
+            else:
+                hit_count = min(int((cancel_tick - self.cast_tick + self.hit_tick) / self.hit_delay), self.max_hits)
         else:
             hit_count = self.max_hits
         return hit_count
@@ -44,7 +76,7 @@ class ChanneledAbility:
         var = dmg[1]
         hits = {}
         hit_count = self.hit_count()
-        tick = self.cast_tick - self.hit_tick
+        tick = self.cast_tick + self.hit_tick
 
         if self.inputs.dmg_output == 'MIN':
             for n in range(1, hit_count + 1):
@@ -60,5 +92,3 @@ class ChanneledAbility:
                 tick += self.hit_delay
 
         return hits
-
-    

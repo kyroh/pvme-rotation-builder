@@ -1,47 +1,22 @@
 [
     {
-        "name": "wrack",
-        "tick 1": 1230
+        "name": "greater barge",
+        "tick 1": 1327
     },
     {
-        "name": "asphyxiate",
-        "tick 4": 1270,
-        "tick 6": 1270,
-        "tick 8": 1270
+        "name": "assault",
+        "tick 5": 1530,
+        "tick 7": 1530,
+        "tick 9": 1530,
+        "tick 11": 1530
     },
     {
-        "name": "wrack",
-        "tick 9": 1230
+        "name": "destroy",
+        "tick 7": 1327,
+        "tick 9": 1327
     },
     {
-        "name": "combust",
-        "tick 13": 430,
-        "tick 15": 430,
-        "tick 17": 430,
-        "tick 19": 430,
-        "tick 21": 430
-    },
-    {
-        "name": "wrack",
-        "tick 15": 1230
-    },
-    {
-        "name": "corruption blast",
-        "tick 19": 720,
-        "tick 21": 576,
-        "tick 23": 432,
-        "tick 25": 288,
-        "tick 27": 144
-    },
-    {
-        "name": "asphyxiate",
-        "tick 21": 1270,
-        "tick 23": 1270,
-        "tick 25": 1270,
-        "tick 27": 1270
-    },
-    {
-        "name": "wrack",
-        "tick 28": 1230
+        "name": "cleave",
+        "tick 10": 1327
     }
 ]
