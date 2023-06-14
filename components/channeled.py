@@ -9,7 +9,7 @@ class ChanneledAbility:
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick
         
-        for a in self.inputs.quad_channels:
+        for a in self.inputs.channels:
             if a['name'] == self.inputs.ability_input:
                 abil = a
                 break
@@ -44,7 +44,7 @@ class ChanneledAbility:
             for i in self.inputs.rotation:
                 if barge_tick < i['tick'] < self.cast_tick:
                     check = i['name']
-                    for b in self.inputs.quad_channels:
+                    for b in self.inputs.channels:
                         if check == b['name']:
                             if b['bleed'] == 1:
                                 return False

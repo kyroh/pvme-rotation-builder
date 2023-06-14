@@ -7,7 +7,7 @@ class UserInputs:
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")
         self.bleeds = self.load_json("utils", "bleeds.json")
-        self.quad_channels = self.load_json("utils", "quad_channels.json")
+        self.channels = self.load_json("utils", "channels.json")
         self.weapons = self.load_json("utils", "weapons.json")
         self.timing = self.load_json("utils", "timing.json")
         self.boosts = self.load_json("utils", "boosts.json")
