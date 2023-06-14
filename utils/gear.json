@@ -1038,7 +1038,7 @@
         "name": "Blast diffusion",
         "slot": "boots",
         "tier": 80,
-        "magic_bonus": 12.7,
+        "magic_bonus":12.7,
         "range_bonus": 0,
         "melee_bonus": 0,
         "augment": "False"
