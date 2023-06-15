@@ -1,6 +1,6 @@
 from components.inputs import UserInputs
 
-class fcrit:
+class crit_chance:
     def __init__(self, ability):
         self.inputs = UserInputs(ability)
         if self.inputs.pocket == 'Grimoire':
@@ -24,6 +24,9 @@ class fcrit:
         self.stalkers = 0 # 0, 1 or 2
         self.bow = 1 #check if a bow is equipped for stalker's ring
         self.deathspore = 0 #1 if deathspore arrows are equipped
+
+        self.minhit = 2000
+        self.var = 8000
 
 
     def calc_fcrit(self):
@@ -62,3 +65,8 @@ class fcrit:
             return "you're lying this skill isn't out yet"
 
         return round(fcrit_chance,3)
+
+    def calc_ncrit(self):
+        ncrit_min = int(0.95*(self.minhit + self.var))
+        var_roll = ncrit_min - self.minhit
+        return 1 - (var_roll/(self.var+1))
