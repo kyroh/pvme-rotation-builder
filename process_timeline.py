@@ -12,7 +12,7 @@ from components.inputs import UserInputs
 from components.standard import StandardAbility
 from components.bleeds import BleedAbility
 from components.channeled import ChanneledAbility
-from components.crit_chance import crit_chance
+from components.crit_chance import critical_hit_chance
 from components.ability_dmg import AbilityDmg
 
 class Rotation:
