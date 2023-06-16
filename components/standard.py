@@ -11,6 +11,11 @@ class StandardAbility:
         self.ad = AbilityDmg(ability, cast_tick)
         self.inputs = UserInputs(ability)
         self.cast_tick = cast_tick
+        for abil in self.inputs.timing:
+            if abil['name'] == self.inputs.ability_input:
+                ability = abil
+                break
+        self.hit_tick = ability[f'{self.inputs.type} tick'] + self.cast_tick
         
         self.prayer_boost = self.prayer_dmg()
         self.magic_prayer, self.range_prayer, self.melee_prayer = self.prayer_boost
@@ -147,12 +152,7 @@ class StandardAbility:
         dmg = self.aura_passive()
         fixed = dmg[0]
         var = dmg[1]
-        hits = None
-        for abil in self.inputs.timing:
-            if abil['name'] == self.inputs.ability_input:
-                ability = abil
-                break
-        hit_tick = ability[f'{self.inputs.type} tick'] + self.cast_tick
+        hits = {}
 
         if self.inputs.dmg_output == 'MIN':
             hits = fixed
@@ -160,4 +160,4 @@ class StandardAbility:
             hits = fixed + int(var * 0.5)
         elif self.inputs.dmg_output == 'MAX':
             hits = fixed + var
-        return [hit_tick, hits]
+        return {"tick": self.hit_tick, "dmg": hits}

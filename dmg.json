@@ -1,22 +1,7 @@
 [
     {
-        "name": "greater barge",
-        "tick 1": 1327
-    },
-    {
-        "name": "assault",
-        "tick 5": 1530,
-        "tick 7": 1530,
-        "tick 9": 1530,
-        "tick 11": 1530
-    },
-    {
-        "name": "destroy",
-        "tick 7": 1327,
-        "tick 9": 1327
-    },
-    {
-        "name": "cleave",
-        "tick 10": 1327
+        "name": "wrack",
+        "tick": 1,
+        "dmg": 1434
     }
 ]

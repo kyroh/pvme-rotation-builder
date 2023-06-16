@@ -35,7 +35,6 @@ class Rotation:
             inputs = UserInputs(ability_name)
             params = inputs.get_abil_params()
             abil = self.timing_dict.get(ability_name)
-            on_hit = OnHitBuffs(ability_name, cast_tick)
             if abil and abil['name'] == ability_name:
                 if inputs.type == '2h':
                     hit_tick = cast_tick + abil['2h tick']
@@ -45,7 +44,7 @@ class Rotation:
                     continue
 
                 if params[4] == 'SINGLE_HIT_ABIL':
-                    ability = StandardAbility(ability_name, cast_tick)
+                    ability = OnHitBuffs(ability_name, cast_tick)
                 elif params[4] == 'BLEED':
                     ability = BleedAbility(ability_name, cast_tick)
                 elif params[4] == 'CHANNELED':
@@ -54,7 +53,7 @@ class Rotation:
                     continue
 
                 hits = ability.hits()
-                hit_dict = {hits[0]: hits[1]}
+                hit_dict = {"name": ability_name}
                 hit_dict.update(hits)
                 rotation_dict.append(hit_dict)
 
