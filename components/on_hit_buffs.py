@@ -1,14 +1,29 @@
+from inputs import UserInputs
+from standard import StandardAbility
+
 class OnHitBuffs:
     #calcs all on-hit buffs currently known
     #see https://www.overleaf.com/read/vbptcfvfcfkf for explanation
-    def __init__(self,damage):
-        self.base_damage = damage
-        self.style = "Melee" #combat style used
+    def __init__(self,ability,cast_tick):
+        self.inputs = UserInputs(ability, cast_tick)
+        self.standard = StandardAbility(ability, cast_tick)
+        self.cast_tick = cast_tick
+        self.base_damage = self.standard.hits()
+        self.style = self.inputs.style
         self.exsang = 2 #0-12 stacks
-        self.vuln = 1 #0 or 1
-        self.sc = 1 #smoke cloud; 0 if no smoke or no crit, 1 if sc and crit
+        for entry in self.inputs.rotation:
+            if entry['name'] == 'vulnerability' and entry['tick'] >= cast_tick - 99:
+                self.vuln = 1
+            else:
+                self.vuln = 0
+        for entry in self.inputs.rotation:
+            if entry['name'] == 'smoke cloud' and entry['tick'] >= cast_tick - 200:
+                self.sc = 1
+            else:
+                self.sc = 0
         self.Xslayer = 1 #0 or 1
         self.slayersigil = 1 #0 or 1
+        
 
     def damage_calc(self):
         if self.style == "Melee":
