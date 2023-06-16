@@ -68,7 +68,7 @@ class ChanneledAbility:
         else:
             hit_count = self.max_hits
         return hit_count
-
+    
     # returns a dict of the hits for the channeled ability and the tick they land on
     def hits(self):
         dmg = self.standard.aura_passive()
