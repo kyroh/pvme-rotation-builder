@@ -12,6 +12,7 @@ from components.inputs import UserInputs
 from components.standard import StandardAbility
 from components.bleeds import BleedAbility
 from components.channeled import ChanneledAbility
+from components.on_hit_buffs import OnHitBuffs
 from components.crit_chance import CriticalHitChance
 from components.ability_dmg import AbilityDmg
 
@@ -34,6 +35,7 @@ class Rotation:
             inputs = UserInputs(ability_name)
             params = inputs.get_abil_params()
             abil = self.timing_dict.get(ability_name)
+            on_hit = OnHitBuffs(ability_name, cast_tick)
             if abil and abil['name'] == ability_name:
                 if inputs.type == '2h':
                     hit_tick = cast_tick + abil['2h tick']
@@ -52,7 +54,7 @@ class Rotation:
                     continue
 
                 hits = ability.hits()
-                hit_dict = {"name": ability_name}
+                hit_dict = {hits[0]: hits[1]}
                 hit_dict.update(hits)
                 rotation_dict.append(hit_dict)
 

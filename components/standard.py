@@ -157,7 +157,7 @@ class StandardAbility:
         if self.inputs.dmg_output == 'MIN':
             hits = fixed
         elif self.inputs.dmg_output == 'AVG':
-            hits = fixed + int(var / 2)
+            hits = fixed + int(var * 0.5)
         elif self.inputs.dmg_output == 'MAX':
             hits = fixed + var
-        return {f'tick {hit_tick}' : hits}
+        return [hit_tick, hits]

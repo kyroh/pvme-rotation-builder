@@ -421,11 +421,20 @@
         "class_n": "THRESH"
     },
     {
-        "name": "vuln bomb",
+        "name": "vulnerability",
         "fixed": 0,
         "var": 0,
         "cd": 0,
-        "type_n": "BOOST",
+        "type_n": "SINGLE_HIT_ABIL",
+        "style": "MAGIC",
+        "class_n": "OTHER"
+    },
+    {
+        "name": "smoke cloud",
+        "fixed": 0,
+        "var": 0,
+        "cd": 0,
+        "type_n": "SINGLE_HIT_ABIL",
         "style": "MAGIC",
         "class_n": "OTHER"
     },
