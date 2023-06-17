@@ -1,15 +1,12 @@
 [
     {
-        "name": "sunshine",
-        "tick": 0,
-        "dmg": 0
+        "name": "assault",
+        "tick 2": 1530,
+        "tick 4": 1530
     },
     {
-        "name": "combust",
-        "tick 5": 514,
-        "tick 7": 514,
-        "tick 9": 514,
-        "tick 11": 514,
-        "tick 13": 514
+        "name": "cleave",
+        "tick": 4,
+        "dmg": 1327
     }
 ]
