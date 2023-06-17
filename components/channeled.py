@@ -3,8 +3,8 @@ from components.ability_dmg import AbilityDmg
 from components.standard import StandardAbility
 
 class ChanneledAbility:
-    def __init__(self, ability, cast_tick):
-        self.inputs = UserInputs(ability)
+    def __init__(self, ability, cast_tick, weapon):
+        self.inputs = UserInputs(ability, weapon)
         self.ad = AbilityDmg(ability, cast_tick)
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick

@@ -32,7 +32,8 @@ class Rotation:
         for entry in self.rotation:
             ability_name = entry['name']
             cast_tick = entry['tick']
-            inputs = UserInputs(ability_name)
+            weapon = entry['type']
+            inputs = UserInputs(ability_name, weapon)
             params = inputs.get_abil_params()
             abil = self.timing_dict.get(ability_name)
             if abil and abil['name'] == ability_name:
@@ -44,13 +45,13 @@ class Rotation:
                     continue
 
                 if params[4] == 'SINGLE_HIT_ABIL':
-                    ref = OnHitBuffs(ability_name, cast_tick)
+                    ref = OnHitBuffs(ability_name, cast_tick, weapon)
                     ability = ref.hits()
                 elif params[4] == 'BLEED':
-                    ref = BleedAbility(ability_name, cast_tick)
+                    ref = BleedAbility(ability_name, cast_tick, weapon)
                     ability = ref.hits()
                 elif params[4] == 'CHANNELED':
-                    ref = ChanneledAbility(ability_name, cast_tick)
+                    ref = ChanneledAbility(ability_name, cast_tick, weapon)
                     ability = ref.hits()
                 else:
                     ability = {"tick": cast_tick, "dmg": 0}

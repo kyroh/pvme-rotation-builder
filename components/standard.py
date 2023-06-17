@@ -3,15 +3,15 @@ from components.ability_dmg import AbilityDmg
 from components.dmg_boost import CheckDmgBoosts
 
 class StandardAbility:
-    def __init__(self, ability, cast_tick):
-        self.boost = CheckDmgBoosts(ability, cast_tick)
+    def __init__(self, ability, cast_tick, weapon):
+        self.boost = CheckDmgBoosts(ability, cast_tick, weapon)
         self.sunshine = self.boost.sunshine
         self.death_swiftness = self.boost.death_swift
         self.berserk = self.boost.zerk
         self.zgs_spec = self.boost.zgs
         self.sim = 10000
-        self.ad = AbilityDmg(ability, cast_tick)
-        self.inputs = UserInputs(ability)
+        self.ad = AbilityDmg(ability, cast_tick, weapon)
+        self.inputs = UserInputs(ability, weapon)
         self.cast_tick = cast_tick
         for abil in self.inputs.timing:
             if abil['name'] == self.inputs.ability_input:

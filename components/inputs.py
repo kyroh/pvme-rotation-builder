@@ -2,7 +2,7 @@ import os
 import json
 
 class UserInputs:
-    def __init__(self, ability):
+    def __init__(self, ability, weapon):
         self.abilities = self.load_json("utils", "abilities.json")
         self.gear = self.load_json("utils", "gear.json")
         self.user_gear = self.load_json("user", "user_gear.json")
@@ -15,7 +15,7 @@ class UserInputs:
 
         self.ability_input = ability
         
-        self.type = '2h'
+        self.type = weapon
         self.reaper_crew = True
         self.gear_input = self.user_gear[2]
         self.mh_input = self.user_gear[1]["mh"]

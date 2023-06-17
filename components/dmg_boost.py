@@ -1,8 +1,8 @@
 from components.inputs import UserInputs
 
 class CheckDmgBoosts:
-    def __init__(self, ability, cast_tick):
-        self.inputs = UserInputs(ability)
+    def __init__(self, ability, cast_tick, weapon):
+        self.inputs = UserInputs(ability, weapon)
         self.ability = ability
         self.cast_tick = cast_tick
         self.pf = False

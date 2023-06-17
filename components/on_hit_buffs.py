@@ -4,8 +4,8 @@ from components.standard import StandardAbility
 class OnHitBuffs:
     #calcs all on-hit buffs currently known
     #see https://www.overleaf.com/read/vbptcfvfcfkf for explanation
-    def __init__(self, ability, cast_tick):
-        self.inputs = UserInputs(ability)
+    def __init__(self, ability, cast_tick, weapon):
+        self.inputs = UserInputs(ability, weapon)
         self.standard = StandardAbility(ability, cast_tick)
         self.cast_tick = cast_tick
         self.hit = self.standard.hits()

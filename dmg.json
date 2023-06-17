@@ -5,8 +5,11 @@
         "dmg": 0
     },
     {
-        "name": "wrack",
-        "tick": 4,
-        "dmg": 1845
+        "name": "combust",
+        "tick 5": 514,
+        "tick 7": 514,
+        "tick 9": 514,
+        "tick 11": 514,
+        "tick 13": 514
     }
 ]

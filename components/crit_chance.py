@@ -1,8 +1,8 @@
 from components.inputs import UserInputs
 
 class CriticalHitChance:
-    def __init__(self, ability):
-        self.inputs = UserInputs(ability)
+    def __init__(self, ability, weapon):
+        self.inputs = UserInputs(ability, weapon)
         if self.inputs.pocket == 'Grimoire':
             self.grim = 1
         else:
