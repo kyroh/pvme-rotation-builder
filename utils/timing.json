@@ -474,5 +474,12 @@
       "dw tick": 3,
       "stalled 2h tick": 3,
       "stalled dw tick": 3
+    },
+    {
+      "name": "sunshine",
+      "2h tick": 0,
+      "dw tick": 0,
+      "stalled 2h tick": 0,
+      "stalled dw tick": 0
     }
 ]

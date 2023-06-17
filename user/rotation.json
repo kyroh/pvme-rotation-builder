@@ -1,17 +1,12 @@
 [
   {
-    "name": "vulnerability",
-    "tick": 0,
-    "type": "2h"
-  },
-  {
-    "name": "smoke cloud",
+    "name": "sunshine",
     "tick": 0,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 0,
+    "tick": 3,
     "type": "2h"
   }
 ]

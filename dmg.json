@@ -1,7 +1,12 @@
 [
     {
+        "name": "sunshine",
+        "tick": 0,
+        "dmg": 0
+    },
+    {
         "name": "wrack",
-        "tick": 1,
-        "dmg": 1434
+        "tick": 4,
+        "dmg": 1845
     }
 ]

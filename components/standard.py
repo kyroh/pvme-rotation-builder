@@ -1,12 +1,14 @@
 from components.inputs import UserInputs
 from components.ability_dmg import AbilityDmg
+from components.dmg_boost import CheckDmgBoosts
 
 class StandardAbility:
     def __init__(self, ability, cast_tick):
-        self.sunshine = False
-        self.death_swiftness = False
-        self.berserk = False
-        self.zgs_spec = False
+        self.boost = CheckDmgBoosts(ability, cast_tick)
+        self.sunshine = self.boost.sunshine
+        self.death_swiftness = self.boost.death_swift
+        self.berserk = self.boost.zerk
+        self.zgs_spec = self.boost.zgs
         self.sim = 10000
         self.ad = AbilityDmg(ability, cast_tick)
         self.inputs = UserInputs(ability)

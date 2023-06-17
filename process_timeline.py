@@ -44,17 +44,19 @@ class Rotation:
                     continue
 
                 if params[4] == 'SINGLE_HIT_ABIL':
-                    ability = OnHitBuffs(ability_name, cast_tick)
+                    ref = OnHitBuffs(ability_name, cast_tick)
+                    ability = ref.hits()
                 elif params[4] == 'BLEED':
-                    ability = BleedAbility(ability_name, cast_tick)
+                    ref = BleedAbility(ability_name, cast_tick)
+                    ability = ref.hits()
                 elif params[4] == 'CHANNELED':
-                    ability = ChanneledAbility(ability_name, cast_tick)
+                    ref = ChanneledAbility(ability_name, cast_tick)
+                    ability = ref.hits()
                 else:
-                    continue
-
-                hits = ability.hits()
+                    ability = {"tick": cast_tick, "dmg": 0}
+                    
                 hit_dict = {"name": ability_name}
-                hit_dict.update(hits)
+                hit_dict.update(ability)
                 rotation_dict.append(hit_dict)
 
         return rotation_dict
