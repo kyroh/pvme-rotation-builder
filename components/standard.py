@@ -37,11 +37,13 @@ class StandardAbility:
             'RANGE': self.range_prayer,
             'MELEE': self.melee_prayer
         }
-        
-        if self.inputs.style in prayer_map:
-            fixed = int(int(self.ad.ability_dmg * self.inputs.fixed_dmg) * (1 + prayer_map[self.inputs.style]))
+        if self.inputs.type_n != 'BLEED':
+            if self.inputs.style in prayer_map:
+                fixed = int(int(self.ad.ability_dmg * self.inputs.fixed_dmg) * (1 + prayer_map[self.inputs.style]))
+            else:
+                pass
         else:
-            fixed = 0
+            fixed = int(self.ad.ability_dmg * self.inputs.fixed_dmg)
         return fixed
     
     # Computes var dmg with prayer modifier
@@ -52,10 +54,13 @@ class StandardAbility:
             'MELEE': self.melee_prayer
         }
         
-        if self.inputs.style in prayer_map:
-            var = int(int(self.ad.ability_dmg * self.inputs.var_dmg) * (1 + prayer_map[self.inputs.style]))
+        if self.inputs.type_n != 'BLEED':
+            if self.inputs.style in prayer_map:
+                var = int(int(self.ad.ability_dmg * self.inputs.var_dmg) * (1 + prayer_map[self.inputs.style]))
+            else:
+                pass
         else:
-            var = 0
+            var = int(self.ad.ability_dmg * self.inputs.var_dmg)
         return var
     
      # Computes dmg per level and outputs new fixed and var dmg
@@ -87,23 +92,28 @@ class StandardAbility:
         dmg_values = self.dmg_boost()
         fixed = dmg_values[0]
         var = dmg_values[1]
-        precise = int(0.015 * (fixed + var) * self.inputs.precise_rank)
-        fixed += precise
-        var -= precise
-        return [(fixed), (var)]
+        if self.inputs.type_n != 'BLEED':
+            precise = int(0.015 * (fixed + var) * self.inputs.precise_rank)
+            fixed += precise
+            var -= precise
+        else:
+            pass
+        return [fixed, var]
         
     # Computes the dmg range of an abil after equilibrium
     def equilibrium(self):
         precise = self.precise()
         fixed = precise[0]
         var = precise[1]
-        
-        if self.inputs.aura_input == 'Equilibrium':
-            fixed += 0.25 * var
-            var -= 0.5 * var
+        if self.inputs.type_n != 'BLEED':
+            if self.inputs.aura_input == 'Equilibrium':
+                fixed += 0.25 * var
+                var -= 0.5 * var
+            else:
+                fixed += 0.03 * var * self.inputs.equilibrium_rank
+                var -= 0.04 * var * self.inputs.equilibrium_rank
         else:
-            fixed += 0.03 * var * self.inputs.equilibrium_rank
-            var -= 0.04 * var * self.inputs.equilibrium_rank
+            pass
         return [int(fixed), int(var)]
 
     # Computes the dmg boost from ultimates and specs
@@ -111,20 +121,22 @@ class StandardAbility:
         dmg = self.dpl()
         fixed = dmg[0]
         var = dmg[1]
-    
-        if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
-            fixed = int(1.5 * fixed)
-            var = int(1.5 * var)
-        elif self.berserk == True and self.inputs.style == 'MELEE':
-            fixed = int(2 * fixed)
-            var = int(2 * var)
-        elif self.zgs_spec == True and self.inputs.style == 'MELEE':
-            fixed = int(1.25 * fixed)
-            var = int(1.25 * var)
+        if self.inputs.type_n != 'BLEED':
+            if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
+                fixed = int(1.5 * fixed)
+                var = int(1.5 * var)
+            elif self.berserk == True and self.inputs.style == 'MELEE':
+                fixed = int(2 * fixed)
+                var = int(2 * var)
+            elif self.zgs_spec == True and self.inputs.style == 'MELEE':
+                fixed = int(1.25 * fixed)
+                var = int(1.25 * var)
+            else:
+                fixed = fixed
+                var = var
+            return [fixed, var]
         else:
-            fixed = fixed
-            var = var
-        return [fixed, var]
+            return [fixed, var]
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):

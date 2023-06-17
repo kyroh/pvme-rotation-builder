@@ -10,21 +10,12 @@ class BleedAbility:
         self.standard = StandardAbility(ability, cast_tick)
         self.ad = AbilityDmg(ability, cast_tick)
         self.cast_tick = cast_tick
-        
-    # Conmputes fixed dmg without prayer because bleeds are great
-    def fixed(self):
-        fixed = int(self.ad.ability_dmg * self.inputs.fixed_dmg)
-        return fixed
-    
-    # Computes var dmg without prayer because bleeds make sense
-    def var(self):
-        var = int(self.ad.ability_dmg * self.inputs.var_dmg)
-        return var
     
     # Simulates the abil n times and returns the average with adjustment for the weirdo bleeds
     def avg_dmg(self):
-        fixed = self.fixed()
-        var = self.var()
+        dmg = self.standard.aura_passive()
+        fixed = dmg[0]
+        var = dmg[1]
         max_dmg = fixed + var
         avg_dmg = 0
         total = 0
@@ -44,9 +35,10 @@ class BleedAbility:
     
     # Outputs a dict of hits and tick they land for bleed abilities
     def hits(self):
+        dmg = self.standard.aura_passive()
+        fixed = dmg[0]
+        var = dmg[1]
         avg_dmg = self.avg_dmg()
-        var = self.var()
-        fixed = self.fixed()
         max_dmg = fixed + var
         hits = {}
         
