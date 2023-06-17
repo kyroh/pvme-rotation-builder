@@ -6,7 +6,7 @@ class OnHitBuffs:
     #see https://www.overleaf.com/read/vbptcfvfcfkf for explanation
     def __init__(self, ability, cast_tick, weapon):
         self.inputs = UserInputs(ability, weapon)
-        self.standard = StandardAbility(ability, cast_tick)
+        self.standard = StandardAbility(ability, cast_tick, weapon)
         self.cast_tick = cast_tick
         self.hit = self.standard.hits()
         self.base_damage = self.hit["dmg"]

@@ -5,16 +5,29 @@ from components.standard import StandardAbility
 class ChanneledAbility:
     def __init__(self, ability, cast_tick, weapon):
         self.inputs = UserInputs(ability, weapon)
-        self.ad = AbilityDmg(ability, cast_tick)
-        self.standard = StandardAbility(ability, cast_tick)
+        self.ad = AbilityDmg(ability, cast_tick, weapon)
+        self.standard = StandardAbility(ability, cast_tick, weapon)
         self.cast_tick = cast_tick
+        
+        if self.inputs.type == 'dw':
+            for i in self.inputs.timing:
+                if i['name'] == self.inputs.ability_input:
+                    self.hit_tick = i['dw tick']
+        elif self.inputs.type == '2h':
+            for i in self.inputs.timing:
+                if i['name'] == self.inputs.ability_input:
+                    self.hit_tick = i['2h tick']
+        elif self.inputs.type == 'ms':
+            for i in self.inputs.timing:
+                if i['name'] == self.inputs.ability_input:
+                    self.hit_tick = i['dw tick']
+        else:
+            pass
         
         for a in self.inputs.channels:
             if a['name'] == self.inputs.ability_input:
                 abil = a
                 break
-            
-        self.hit_tick = abil['hit_tick']
         self.hit_delay = abil['hit_delay']
         self.max_hits = abil['max_hits']
         if abil['bleed'] == 1:
@@ -52,9 +65,9 @@ class ChanneledAbility:
                                 return False
                             break
                     else:
-                        return True
+                        return False
     
-        return True
+        return False
 
     # figures out how many times a channeled abil hits factoring in cancelations and bleeding
     def hit_count(self):
@@ -64,7 +77,7 @@ class ChanneledAbility:
             if bleed == True:
                 hit_count = self.max_hits
             else:
-                hit_count = min(int((cancel_tick - self.cast_tick + self.hit_tick) / self.hit_delay), self.max_hits)
+                hit_count = min(int((cancel_tick - self.cast_tick + self.hit_delay) / self.hit_delay), self.max_hits)
         else:
             hit_count = self.max_hits
         return hit_count
@@ -76,7 +89,7 @@ class ChanneledAbility:
         var = dmg[1]
         hits = {}
         hit_count = self.hit_count()
-        tick = self.cast_tick + self.hit_tick
+        tick = self.hit_tick
 
         if self.inputs.dmg_output == 'MIN':
             for n in range(1, hit_count + 1):

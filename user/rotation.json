@@ -1,11 +1,11 @@
 [
   {
-    "name": "sunshine",
+    "name": "assault",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "combust",
+    "name": "cleave",
     "tick": 3,
     "type": "2h"
   }

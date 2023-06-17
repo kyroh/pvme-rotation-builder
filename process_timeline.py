@@ -35,30 +35,21 @@ class Rotation:
             weapon = entry['type']
             inputs = UserInputs(ability_name, weapon)
             params = inputs.get_abil_params()
-            abil = self.timing_dict.get(ability_name)
-            if abil and abil['name'] == ability_name:
-                if inputs.type == '2h':
-                    hit_tick = cast_tick + abil['2h tick']
-                elif inputs.type in ['dw', 'ms']:
-                    hit_tick = cast_tick + abil['dw tick']
-                else:
-                    continue
-
-                if params[4] == 'SINGLE_HIT_ABIL':
-                    ref = OnHitBuffs(ability_name, cast_tick, weapon)
-                    ability = ref.hits()
-                elif params[4] == 'BLEED':
-                    ref = BleedAbility(ability_name, cast_tick, weapon)
-                    ability = ref.hits()
-                elif params[4] == 'CHANNELED':
-                    ref = ChanneledAbility(ability_name, cast_tick, weapon)
-                    ability = ref.hits()
-                else:
-                    ability = {"tick": cast_tick, "dmg": 0}
+            if params[4] == 'SINGLE_HIT_ABIL':
+                ref = OnHitBuffs(ability_name, cast_tick, weapon)
+                ability = ref.hits()
+            elif params[4] == 'BLEED':
+                ref = BleedAbility(ability_name, cast_tick, weapon)
+                ability = ref.hits()
+            elif params[4] == 'CHANNELED':
+                ref = ChanneledAbility(ability_name, cast_tick, weapon)
+                ability = ref.hits()
+            else:
+                ability = {"tick": cast_tick, "dmg": 0}
                     
-                hit_dict = {"name": ability_name}
-                hit_dict.update(ability)
-                rotation_dict.append(hit_dict)
+            hit_dict = {"name": ability_name}
+            hit_dict.update(ability)
+            rotation_dict.append(hit_dict)
 
         return rotation_dict
 
@@ -76,4 +67,3 @@ class Rotation:
         
 test = Rotation()
 dmg = test.dmg_json()
-        

@@ -107,7 +107,7 @@
     {
       "name": "smash",
       "2h tick": 1,
-      "dw tick": 0,
+      "dw tick": 1,
       "stalled 2h tick": 1,
       "stalled dw tick": 1
     },
@@ -117,27 +117,6 @@
       "dw tick": 3,
       "stalled 2h tick": 0,
       "stalled dw tick": 0
-    },
-    {
-      "name": "bled assault",
-      "2h tick": 2,
-      "dw tick": 3,
-      "stalled 2h tick": 2,
-      "stalled dw tick": 3
-    },
-    {
-      "name": "bled destroy",
-      "2h tick": 1,
-      "dw tick": 1,
-      "stalled 2h tick": 1,
-      "stalled dw tick": 1
-    },
-    {
-      "name": "bled flurry",
-      "2h tick": 1,
-      "dw tick": 1,
-      "stalled 2h tick": 1,
-      "stalled dw tick": 1
     },
     {
       "name": "blood tendrils",
