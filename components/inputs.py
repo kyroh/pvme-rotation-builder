@@ -30,8 +30,8 @@ class UserInputs:
         self.potion_input = self.user_gear[0]["potion"]
         self.prayer_input = self.user_gear[1]["prayer"]
         self.pocket = self.user_gear[2]["pocket"]
-        self.precise_rank = 0
-        self.equilibrium_rank = 0
+        self.precise_rank = 6
+        self.equilibrium_rank = 4
         self.lunging_rank = 0
         self.biting_rank = 4
         self.dmg_output = 'MAX'

@@ -140,7 +140,7 @@ class StandardAbility:
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
-        dmg = self.precise()
+        dmg = self.equilibrium()
         fixed = dmg[0]
         var = dmg[1]
         
@@ -167,11 +167,15 @@ class StandardAbility:
         fixed = dmg[0]
         var = dmg[1]
         hits = {}
-
-        if self.inputs.dmg_output == 'MIN':
-            hits = fixed
-        elif self.inputs.dmg_output == 'AVG':
-            hits = fixed + int(var * 0.5)
-        elif self.inputs.dmg_output == 'MAX':
-            hits = fixed + var
+        if self.inputs.type_n == 'SINGLE_HIT_ABIL':
+            if self.inputs.dmg_output == 'MIN':
+                hits = fixed
+            elif self.inputs.dmg_output == 'AVG':
+                hits = fixed + int(var * 0.5)
+            elif self.inputs.dmg_output == 'MAX':
+                hits = fixed + var
+        elif self.inputs.type_n == 'BLEED':
+            pass
+        elif self.inputs.type_n == 'CHANNELED':
+            pass
         return {"tick": self.hit_tick, "dmg": hits}

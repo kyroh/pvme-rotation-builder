@@ -1,0 +1,57 @@
+TODO
+
+Release v1.0
+1. Write script for active buffs - kyroh
+    a. exsang and incite stacks
+        i. wrack and ruin 
+    b. gconc and channelers tracking
+    c. champions ring effect
+    d. ruby aurora
+    e. stun/bind for wrack
+    f. needle buffe
+    g. dbreath combust
+    h. scourge
+    i. BOLG
+2. wait for sponge for fixed ult dmg rounding :3
+    a. Test various buffs for different gear at each stage after Sponge gives new math i.e. ovl, perks, armor w/ and w/o - Akritia
+    b. revenge
+3. fix barge bleed logic - kyroh
+4. special attacks and abilities
+    a. deto
+    b. grico
+    c. tendrils
+        i.smoke
+        ii. shadow
+    d. auto attacks
+    e. fsoa
+    f. mds bleed
+    g. magma tempest
+    h. bash
+    i. shards and shatter
+    k. sgb
+5. poison
+    a. cinderbanes
+    b. bik arrows
+    c. weapon poison
+    d. reaver
+6. All of the UI (react JS please help PvME dev team)
+    a. design a UI that can generate a .json output for the rotation to feed to python backend
+    b. take .json input for dmg numbers that is returned from backed and plug it into UI
+7. Adrenaline
+8. Cooldowns
+9. Switches (logic is there to handle but needs to be finished)
+10. Hit timing (mostly done)
+    a. stalling
+    b. range
+    c. Autos delaying hit timings
+
+
+Post v1.0 release
+1. multi-rot support for team encounters
+2. permuations of rots
+3. simulation infrastructure
+4. Dmg per tick optimization suggestions
+5. boss mechs and dynamic phasing
+6. revo support
+    a. simluate boss hits for afk testing
+

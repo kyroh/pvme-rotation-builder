@@ -1,12 +1,17 @@
 [
   {
-    "name": "berserk",
+    "name": "wrack",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "cleave",
+    "name": "asphyxiate",
     "tick": 3,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 6,
     "type": "2h"
   }
 ]

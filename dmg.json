@@ -1,12 +1,17 @@
 [
     {
-        "name": "berserk",
-        "tick": 0,
-        "dmg": 0
+        "name": "wrack",
+        "tick": 1,
+        "dmg": 2610
     },
     {
-        "name": "cleave",
-        "tick": 4,
-        "dmg": 6434
+        "name": "asphyxiate",
+        "tick 4": 3437,
+        "tick 6": 3437
+    },
+    {
+        "name": "wrack",
+        "tick": 7,
+        "dmg": 2610
     }
 ]

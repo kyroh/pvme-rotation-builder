@@ -5,13 +5,13 @@
         "range level": 99,
         "strength level": 99,
         "aura": "None",
-        "potion": "None"
+        "potion": "Elder overload"
     },
     {
         "mh": "Dark shard of Leng",
         "oh": "Dark sliver of Leng",
         "shield": "None",
-        "2h": "Zaros godsword",
+        "2h": "Staff of Sliske",
         "prayer": "None"
     },
     {
@@ -26,4 +26,5 @@
         "neck": "None",
         "pocket": "None"
     }
+    
 ]
