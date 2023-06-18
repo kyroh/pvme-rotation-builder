@@ -1,12 +1,22 @@
 [
   {
-    "name": "assault",
+    "name": "greater barge",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "cleave",
+    "name": "destroy",
     "tick": 3,
+    "type": "2h"
+  },
+  {
+    "name": "assault",
+    "tick": 6,
+    "type": "2h"
+  },
+  {
+    "name": "cleave",
+    "tick": 9,
     "type": "2h"
   }
 ]

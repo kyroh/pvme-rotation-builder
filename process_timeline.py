@@ -65,5 +65,7 @@ class Rotation:
         
         print('Json Saved')
         
-test = Rotation()
-dmg = test.dmg_json()
+test = ChanneledAbility('assault', 6, '2h')
+dmg = test.barge_check()
+
+print(dmg)
