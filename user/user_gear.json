@@ -5,25 +5,25 @@
         "range level": 99,
         "strength level": 99,
         "aura": "None",
-        "potion": "Elder overload"
+        "potion": "None"
     },
     {
         "mh": "Dark shard of Leng",
         "oh": "Dark sliver of Leng",
         "shield": "None",
-        "2h": "Zaros godsword",
-        "prayer": "Malevolence"
+        "2h": "Crystal staff",
+        "prayer": "None"
     },
     {
         "setup": "Magic",
-        "helm": "Elite tectonic",
-        "body": "Elite tectonic",
-        "legs": "Elite tectonic",
-        "boots": "Enhance blast diffusion",
-        "gloves": "Cinderbanes",
-        "cape": "Igneous",
-        "ring": "Reavers",
-        "neck": "EOF (or)",
-        "pocket": "Grimoire"
+        "helm": "None",
+        "body": "None",
+        "legs": "None",
+        "boots": "None",
+        "gloves": "None",
+        "cape": "None",
+        "ring": "None",
+        "neck": "None",
+        "pocket": "None"
     }
 ]
