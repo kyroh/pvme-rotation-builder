@@ -8,7 +8,7 @@ class BleedAbility:
     def __init__(self, ability, cast_tick, weapon):
         self.inputs = UserInputs(ability, weapon)
         self.standard = StandardAbility(ability, cast_tick)
-        self.ad = AbilityDmg(ability, cast_tick)
+        self.ad = AbilityDmg(ability, weapon)
         self.cast_tick = cast_tick
     
     # Simulates the abil n times and returns the average with adjustment for the weirdo bleeds

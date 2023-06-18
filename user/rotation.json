@@ -1,11 +1,11 @@
 [
   {
-    "name": "sunshine",
+    "name": "berserk",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "wrack",
+    "name": "cleave",
     "tick": 3,
     "type": "2h"
   }

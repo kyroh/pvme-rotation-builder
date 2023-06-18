@@ -1,12 +1,12 @@
 [
     {
-        "name": "sunshine",
+        "name": "berserk",
         "tick": 0,
         "dmg": 0
     },
     {
-        "name": "wrack",
+        "name": "cleave",
         "tick": 4,
-        "dmg": 2932
+        "dmg": 6434
     }
 ]

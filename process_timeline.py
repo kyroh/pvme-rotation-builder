@@ -65,7 +65,5 @@ class Rotation:
         
         print('Json Saved')
         
-test = AbilityDmg('wrack', '2h')
-dmg = test.base_ability_dmg()
-
-print(dmg)
+test = Rotation()
+dmg = test.dmg_json()

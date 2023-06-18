@@ -10,7 +10,7 @@ class StandardAbility:
         self.berserk = self.boost.zerk
         self.zgs_spec = self.boost.zgs
         self.sim = 10000
-        self.ad = AbilityDmg(ability, cast_tick, weapon)
+        self.ad = AbilityDmg(ability, weapon)
         self.inputs = UserInputs(ability, weapon)
         self.cast_tick = cast_tick
         for abil in self.inputs.timing:
