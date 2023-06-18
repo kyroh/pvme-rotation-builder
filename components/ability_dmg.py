@@ -1,7 +1,7 @@
 from components.inputs import UserInputs
 
 class AbilityDmg:
-    def __init__(self, ability, cast_tick, weapon):
+    def __init__(self, ability, weapon):
         self.inputs = UserInputs(ability, weapon)
         
         self.boosted_levels = self.calculate_levels()
@@ -55,13 +55,9 @@ class AbilityDmg:
     def dw_ability_dmg(self):
         base_ability_dmg = 0
 
-        for w in self.inputs.weapons:
-            if w['name'] == self.inputs.oh_input:
-                oh = w
-                break
-        if oh is None:
-            pass
-        elif self.inputs.style == 'MAGIC':
+        oh = next((w for w in self.inputs.weapons if w['name'] == self.inputs.oh_input), None)   
+
+        if self.inputs.style == 'MAGIC':
             base_ability_dmg += int(0.5 * (int(2.5 * self.boosted_magic_level) + int(9.6 * min(oh['dmg_tier'],self.inputs.spell_input) + int(self.inputs.magic_bonus))))
         elif self.inputs.style == 'RANGE':
             base_ability_dmg += int(0.5 * (int(2.5 * self.boosted_range_level) + int(9.6 * min(oh['dmg_tier'],self.inputs.spell_input) + int(self.inputs.range_bonus))))
@@ -70,12 +66,7 @@ class AbilityDmg:
         else:
             pass
         
-        for w in self.inputs.weapons:
-            if w['name'] == self.inputs.mh_input:
-                mh = w
-                break
-        if mh is None:
-            pass
+        mh = next((w for w in self.inputs.weapons if w['name'] == self.inputs.mh_input), None)
 
         if self.inputs.style == 'MAGIC':
             base_ability_dmg += int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'], self.inputs.spell_input) + int(self.inputs.magic_bonus))
@@ -92,12 +83,8 @@ class AbilityDmg:
     def th_ability_dmg(self):
         base_ability_dmg = 0 
 
-        for w in self.inputs.weapons:
-            if w['name'] == self.inputs.th_input:
-                th = w
-                break    
-            if th is None:
-                pass
+        th = next((w for w in self.inputs.weapons if w['name'] == self.inputs.th_input), None)
+
         if self.inputs.style == 'MAGIC':
             base_ability_dmg += int(2.5 * self.boosted_magic_level) + int(1.25 * self.boosted_magic_level) + int(14.4 * min(th['dmg_tier'],self.inputs.spell_input) + 1.5 * int(self.inputs.magic_bonus))
         elif self.inputs.style == 'RANGE':
@@ -112,12 +99,7 @@ class AbilityDmg:
     def ms_ability_dmg(self):
         base_ability_dmg = 0
 
-        for w in self.inputs.weapons:
-            if w['name'] == self.inputs.mh_input:
-                mh = w
-                break
-        if mh is None:
-            pass
+        mh = next((w for w in self.inputs.weapons if w['name'] == self.inputs.mh_input), None)
 
         if self.inputs.style == 'MAGIC':
             base_ability_dmg += int(2.5 * self.boosted_magic_level) + int(9.6 * min(mh['dmg_tier'], self.inputs.spell_input) + int(self.inputs.magic_bonus))
@@ -127,7 +109,7 @@ class AbilityDmg:
             base_ability_dmg += int(2.5 * self.boosted_strength_level) + int(9.6 * min(mh['dmg_tier'], self.inputs.spell_input) + int(self.inputs.melee_bonus))
         else:
             pass
-        
+
         return base_ability_dmg
 
     #helper function to use the correct ability dmg based on the casting weapon type from inputs.py
