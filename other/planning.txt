@@ -12,6 +12,7 @@ Release v1.0
     g. dbreath combust
     h. scourge
     i. BOLG
+    j. split soul
 2. wait for sponge for fixed ult dmg rounding :3
     a. Test various buffs for different gear at each stage after Sponge gives new math i.e. ovl, perks, armor w/ and w/o - Akritia
     b. revenge
