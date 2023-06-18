@@ -65,12 +65,10 @@ class ChanneledAbility:
                                     bleed = False
                                 else:
                                     bleed = True
-                        else:
-                            bleed = True
                     break
         else:
             pass
-        return check
+        return bleed
 
     # figures out how many times a channeled abil hits factoring in cancelations and bleeding
     def hit_count(self):

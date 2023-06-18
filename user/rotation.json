@@ -5,18 +5,13 @@
     "type": "2h"
   },
   {
-    "name": "destroy",
+    "name": "assault",
     "tick": 3,
     "type": "2h"
   },
   {
-    "name": "assault",
-    "tick": 6,
-    "type": "2h"
-  },
-  {
     "name": "cleave",
-    "tick": 9,
+    "tick": 6,
     "type": "2h"
   }
 ]
