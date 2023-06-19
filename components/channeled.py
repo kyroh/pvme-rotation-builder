@@ -50,25 +50,31 @@ class ChanneledAbility:
     
     # figures out bled channels
     def barge_check(self):
-        bleed = False
-        if self.bleedable == True:
-            barge_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'greater barge' and self.cast_tick - 10 < entry['tick']]
-    
+        bleed = True
+        check = None
+        barge_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'greater barge' and self.cast_tick - 10 < entry['tick']]
+        if barge_entries != []:
             for barge_entry in barge_entries:
                 barge_tick = barge_entry['tick']
                 if barge_tick > self.cast_tick - 10 and barge_tick <= self.cast_tick:
                     for abil in self.inputs.rotation:
                         if abil['tick'] > barge_tick and abil['tick'] < self.cast_tick:
                             check = abil['name']
-                            for entry in self.inputs.channels:
-                                if entry['name'] == check and entry['bleed'] == 1:
-                                    bleed = False
-                                else:
-                                    bleed = True
-                    break
+                        else:
+                            pass
+                    if check != None:
+                        for channel in self.inputs.channels:
+                            if check == channel['name'] and channel['bleed'] == 1:
+                                bleed = False
+                                break
+                    else:
+                        bleed = True
+                else:
+                    bleed = False
         else:
-            pass
+            bleed = False
         return bleed
+                        
 
     # figures out how many times a channeled abil hits factoring in cancelations and bleeding
     def hit_count(self):

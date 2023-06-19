@@ -1,16 +1,16 @@
 [
   {
-    "name": "wrack",
+    "name": "greater barge",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "asphyxiate",
+    "name": "cleave",
     "tick": 3,
     "type": "2h"
   },
   {
-    "name": "wrack",
+    "name": "assault",
     "tick": 6,
     "type": "2h"
   }
