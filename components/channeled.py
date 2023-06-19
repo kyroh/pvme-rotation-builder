@@ -78,7 +78,6 @@ class ChanneledAbility:
 
     # figures out how many times a channeled abil hits factoring in cancelations and bleeding
     def hit_count(self):
-        
         cancel_tick = self.cancel()
         bleed = self.barge_check()
         if cancel_tick is not None:
