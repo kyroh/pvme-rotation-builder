@@ -15,6 +15,7 @@ from components.channeled import ChanneledAbility
 from components.on_hit_buffs import OnHitBuffs
 from components.crit_chance import CriticalHitChance
 from components.ability_dmg import AbilityDmg
+from components.active_buffs import ActiveBuffs
 
 class Rotation:
     def __init__(self):
@@ -65,5 +66,7 @@ class Rotation:
         
         print('Json Saved')
         
-test = Rotation()
-dmg = test.dmg_json()
+test = ActiveBuffs('wrack', 33 , '2h')
+dmg = test.exsang()
+
+print(dmg)

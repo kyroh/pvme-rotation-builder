@@ -1,22 +1,47 @@
 [
   {
-    "name": "greater barge",
+    "name": "exsang",
     "tick": 0,
     "type": "2h"
   },
   {
-    "name": "destroy",
-    "tick": 3,
+    "name": "asphyxiate",
+    "tick": 0,
     "type": "2h"
   },
   {
-    "name": "assault",
-    "tick": 6,
-    "type": "2h"
-  },
-  {
-    "name": "cleave",
+    "name": "wrack",
     "tick": 9,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 12,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 15,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 18,
+    "type": "2h"
+  },
+  {
+    "name": "asphyxiate",
+    "tick": 21,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 30,
+    "type": "2h"
+  },
+  {
+    "name": "wrack",
+    "tick": 33,
     "type": "2h"
   }
 ]

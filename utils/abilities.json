@@ -688,5 +688,15 @@
       "style": "MELEE",
       "class_n": "BASIC",
       "GCD": 1
+    },
+    {
+      "name": "exsang",
+      "fixed": 0,
+      "var": 0,
+      "cd": 34,
+      "type_n": "OTHER",
+      "style": "MAGIC",
+      "class_n": "AUTO",
+      "GCD": 0
     }
   ]
