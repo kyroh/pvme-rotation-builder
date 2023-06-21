@@ -1,9 +1,7 @@
 #
 # Author - kyroh
 # 
-# This source code is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International license found in the LICENSE file in the root directory of this source tree.
-# 
-# May 2023
+# June 2023
 #
 
 import os
@@ -37,7 +35,7 @@ class Rotation:
             inputs = UserInputs(ability_name, weapon)
             params = inputs.get_abil_params()
             if params[4] == 'SINGLE_HIT_ABIL':
-                ref = OnHitBuffs(ability_name, cast_tick, weapon)
+                ref = StandardAbility(ability_name, cast_tick, weapon)
                 ability = ref.hits()
             elif params[4] == 'BLEED':
                 ref = BleedAbility(ability_name, cast_tick, weapon)

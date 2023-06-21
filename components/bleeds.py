@@ -1,3 +1,9 @@
+#
+# Author - kyroh
+# 
+# June 2023
+#
+
 from components.inputs import UserInputs
 from components.standard import StandardAbility
 from components.ability_dmg import AbilityDmg

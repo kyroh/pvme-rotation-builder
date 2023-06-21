@@ -1,3 +1,9 @@
+#
+# Author - kyroh
+# 
+# June 2023
+#
+
 from components.inputs import UserInputs
 from components.ability_dmg import AbilityDmg
 from components.dmg_boost import CheckDmgBoosts

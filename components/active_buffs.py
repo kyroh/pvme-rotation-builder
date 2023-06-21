@@ -1,3 +1,9 @@
+#
+# Author - kyroh
+# 
+# June 2023
+#
+
 from components.inputs import UserInputs
 from components.channeled import ChanneledAbility
 
@@ -23,16 +29,20 @@ class ActiveBuffs:
                 stacks = 0
                 continue
             
-            if 'cast' not in entry['name']:
-                if style == 'MAGIC' and auto_cast == 'exsanguinate':
+            if style == 'MAGIC' and auto_cast == 'exsanguinate':
+                if type_n == 'SINGLE_HIT_ABIL' or type_n == 'BLEED':
                     stacks += 1
-                    last_tick = cast_tick
-                    if stacks > 12:
-                        stacks = 12
-                else:
-                    consecutive_ticks = cast_tick - last_tick
-                    if consecutive_ticks >= 34:
-                        stacks = 0
+                elif type_n == 'CHANNELED':
+                    pass
+                elif type_n == 'AUTO_CAST':
+                    pass                    
+                elif stacks > 12:
+                    stacks = 12
+                last_tick = cast_tick
+            else:
+                consecutive_ticks = cast_tick - last_tick
+                if consecutive_ticks >= 34:
+                    stacks = 0
             
             if ability == self.ability and cast_tick == self.cast_tick:
                 break
@@ -54,8 +64,8 @@ class ActiveBuffs:
             
             if 'cast' not in entry['name']:
                 if style == 'MAGIC' and auto_cast == 'incite_fear':
-                    stacks += 1
                     last_tick = cast_tick
+                    stacks += 1
                     if stacks > 5:
                         stacks = 5
                 else:
