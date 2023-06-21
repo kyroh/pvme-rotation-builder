@@ -2,38 +2,39 @@ import os
 import json
 
 class UserInputs:
-    def __init__(self, ability, weapon):
-        self.abilities = self.load_json("utils", "abilities.json")
-        self.gear = self.load_json("utils", "gear.json")
-        self.user_gear = self.load_json("user", "user_gear.json")
-        self.bleeds = self.load_json("utils", "bleeds.json")
-        self.channels = self.load_json("utils", "channels.json")
-        self.weapons = self.load_json("utils", "weapons.json")
-        self.timing = self.load_json("utils", "timing.json")
-        self.boosts = self.load_json("utils", "boosts.json")
-        self.rotation = self.load_json("user", "rotation.json")
+    def __init__(self, ability, cast_tick, weapon):
+        self.abilities = self.load_json('utils', 'abilities.json')
+        self.gear = self.load_json('utils', 'gear.json')
+        self.user_gear = self.load_json('user', 'user_gear.json')
+        self.bleeds = self.load_json('utils', 'bleeds.json')
+        self.channels = self.load_json('utils', 'channels.json')
+        self.weapons = self.load_json('utils', 'weapons.json')
+        self.timing = self.load_json('utils', 'timing.json')
+        self.boosts = self.load_json('utils', 'boosts.json')
+        self.rotation = self.load_json('user', 'rotation.json')
 
         self.ability_input = ability
-        
+        self.cast_tick = cast_tick
         self.type = weapon
+        
         self.reaper_crew = True
         self.gear_input = self.user_gear[2]
-        self.mh_input = self.user_gear[1]["mh"]
-        self.oh_input = self.user_gear[1]["oh"]
-        self.th_input = self.user_gear[1]["2h"]
-        self.shield_input = self.user_gear[1]["shield"]
-        self.spell_input = self.user_gear[0]["spell"]
-        self.base_magic_level = self.user_gear[0]["magic level"]
-        self.base_range_level = self.user_gear[0]["range level"]
-        self.base_strength_level = self.user_gear[0]["strength level"]
-        self.aura_input = self.user_gear[0]["aura"]
-        self.potion_input = self.user_gear[0]["potion"]
-        self.prayer_input = self.user_gear[1]["prayer"]
-        self.pocket = self.user_gear[2]["pocket"]
-        self.precise_rank = 6
-        self.equilibrium_rank = 4
+        self.mh_input = self.user_gear[1]['mh']
+        self.oh_input = self.user_gear[1]['oh']
+        self.th_input = self.user_gear[1]['2h']
+        self.shield_input = self.user_gear[1]['shield']
+        self.spell_input = self.user_gear[0]['spell']
+        self.base_magic_level = self.user_gear[0]['magic level']
+        self.base_range_level = self.user_gear[0]['range level']
+        self.base_strength_level = self.user_gear[0]['strength level']
+        self.aura_input = self.user_gear[0]['aura']
+        self.potion_input = self.user_gear[0]['potion']
+        self.prayer_input = self.user_gear[1]['prayer']
+        self.pocket = self.user_gear[2]['pocket']
+        self.precise_rank = 0
+        self.equilibrium_rank = 0
         self.lunging_rank = 0
-        self.biting_rank = 4
+        self.biting_rank = 0
         self.dmg_output = 'MAX'
         
         self.abil_params = self.get_abil_params()
@@ -92,5 +93,16 @@ class UserInputs:
     
     def load_json(self, directory, filename):
         file_path = os.path.join(directory, filename)
-        with open(file_path, "r") as file:
+        with open(file_path, 'r') as file:
             return json.load(file)
+        
+    def get_autocast(self):
+        auto_cast = None
+        for entry in self.rotation:
+            if "cast" in entry["name"]:
+                auto_cast = entry["name"].split(" ")[1]
+            elif entry["tick"] == self.cast_tick:
+                entry["auto_cast"] = auto_cast
+                return auto_cast
+        
+        return None

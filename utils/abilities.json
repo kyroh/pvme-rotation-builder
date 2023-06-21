@@ -690,13 +690,23 @@
       "GCD": 1
     },
     {
-      "name": "exsang",
+      "name": "cast exsanguinate",
       "fixed": 0,
       "var": 0,
       "cd": 34,
-      "type_n": "OTHER",
+      "type_n": "AUTO_CAST",
       "style": "MAGIC",
-      "class_n": "AUTO",
+      "class_n": "AUTO_CAST",
+      "GCD": 0
+    },
+    {
+      "name": "cast incite_fear",
+      "fixed": 0,
+      "var": 0,
+      "cd": 34,
+      "type_n": "AUTO_CAST",
+      "style": "MAGIC",
+      "class_n": "AUTO_CAST",
       "GCD": 0
     }
   ]

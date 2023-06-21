@@ -1,47 +1,32 @@
 [
   {
-    "name": "exsang",
-    "tick": 0,
-    "type": "2h"
-  },
-  {
-    "name": "asphyxiate",
+    "name": "cast exsanguinate",
     "tick": 0,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 9,
+    "tick": 0,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 12,
+    "tick": 3,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 15,
+    "tick": 6,
+    "type": "2h"
+  },
+  {
+    "name": "cast incite_fear",
+    "tick": 7,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 18,
-    "type": "2h"
-  },
-  {
-    "name": "asphyxiate",
-    "tick": 21,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 30,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 33,
+    "tick": 40,
     "type": "2h"
   }
 ]
