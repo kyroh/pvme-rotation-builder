@@ -84,7 +84,7 @@
       "fixed": 0,
       "var": 0,
       "cd": 9,
-      "type_n": "CONC",
+      "type_n": "CHANNELED",
       "style": "MAGIC",
       "class_n": "BASIC",
       "GCD": 1
@@ -94,7 +94,7 @@
       "fixed": 0,
       "var": 0,
       "cd": 9,
-      "type_n": "CONC",
+      "type_n": "CHANNELED",
       "style": "MAGIC",
       "class_n": "BASIC",
       "GCD": 1

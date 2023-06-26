@@ -64,6 +64,6 @@ class Rotation:
         
         print('Json Saved')
         
-test = ActiveBuffs('asphyxiate', 0, '2h')
-dmg = test.exsang()
+test = ActiveBuffs('wrack', 3, 'dw')
+dmg = test.conc()
 print(dmg)

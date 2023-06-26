@@ -14,6 +14,7 @@ class ChanneledAbility:
         self.ad = AbilityDmg(ability, cast_tick, weapon)
         self.standard = StandardAbility(ability, cast_tick, weapon)
         self.cast_tick = cast_tick
+        self.ability = ability
         
         if self.inputs.type == 'dw':
             for i in self.inputs.timing:
@@ -44,10 +45,11 @@ class ChanneledAbility:
     
     # figures out if an abil was canceled and returns the tick it was canceled
     def cancel(self):
+        cancel_tick = None
         if self.inputs.type_n == 'CHANNELED':
             last_tick = self.max_hits * self.frequency - self.coefficient
             for entry in self.inputs.rotation:
-                if self.cast_tick <= entry['tick'] <= last_tick:
+                if self.cast_tick <= entry['tick'] <= last_tick and entry['name'] != self.ability:
                     entry_name = entry['name']
                     for abil in self.inputs.abilities:
                         if entry_name == abil['name']:
@@ -55,7 +57,7 @@ class ChanneledAbility:
                             if type_n != 'AUTO_CAST' or type_n != 'POTION':
                                 cancel_tick = entry['tick']
                             else:
-                                cancel_tick = None
+                                pass
         return cancel_tick
 
     

@@ -57,7 +57,6 @@ class ActiveBuffs:
                 break
                 
         return stacks
-            
     
     def incite(self):
         stacks = 0
@@ -100,13 +99,44 @@ class ActiveBuffs:
                 
         return stacks
     
-    def gconc(self):
-        pass
+    def conc(self):
+        stacks = 0
+        for entry in self.inputs.rotation:
+            if entry['name'] == self.ability and entry['tick'] == self.cast_tick:
+                index = self.inputs.rotation.index(entry) - 1
+                channeled = self.inputs.rotation[index]
+                
+                if channeled['name'] == 'greater concentrated blast' or  channeled['name'] == 'concentrated blast':
+                    chan = ChanneledAbility(channeled['name'], channeled['tick'], channeled['type'])
+                    stacks = chan.hit_count()
+                else:
+                    pass
+        return stacks
     
     def channelers(self):
         pass
     
     def ruby_aurora(self):
-        pass
+        stacks = 0
+        expiration = []
+        
+        for entry in self.inputs.rotation:
+            for tick in expiration:
+                if entry['tick'] > tick:
+                    stacks -= 1
+                    
+            if entry['name'] == 'ruby aurora':
+                stacks += 1
+                expiration += [entry['tick'] + 40]
+            else:
+                pass
+            
+            if stacks > 3:
+                stacks = 3
+            
+            if entry['tick'] == self.cast_tick:
+                break
+                
+        return stacks
     
     

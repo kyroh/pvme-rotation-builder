@@ -1,17 +1,12 @@
 [
   {
-    "name": "cast exsanguinate",
+    "name": "concentrated blast",
     "tick": 0,
-    "type": "2h"
+    "type": "dw"
   },
   {
-    "name": "asphyxiate",
-    "tick": 0,
-    "type": "2h"
-  },
-  {
-    "name": "cast incite_fear",
-    "tick": 4,
-    "type": "2h"
+    "name": "wrack",
+    "tick": 3,
+    "type": "dw"
   }
 ]
