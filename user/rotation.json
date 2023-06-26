@@ -10,8 +10,8 @@
     "type": "2h"
   },
   {
-    "name": "wrack",
-    "tick": 5,
+    "name": "cast incite_fear",
+    "tick": 4,
     "type": "2h"
   }
 ]

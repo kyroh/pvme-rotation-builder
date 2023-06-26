@@ -45,22 +45,18 @@ class ChanneledAbility:
     # figures out if an abil was canceled and returns the tick it was canceled
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
-            skip_next = False
-            for i, entry in enumerate(self.inputs.rotation):
-                if skip_next:
-                    skip_next = False
-                    continue
-                if 'cast' in entry['name']:
-                    skip_next = True
-                    continue
-                if i + 1 < len(self.inputs.rotation):
-                    return self.inputs.rotation[i + 1]['tick']
-                else:
-                    return None
-        else:
-            pass
-
-
+            last_tick = self.max_hits * self.frequency - self.coefficient
+            for entry in self.inputs.rotation:
+                if self.cast_tick <= entry['tick'] <= last_tick:
+                    entry_name = entry['name']
+                    for abil in self.inputs.abilities:
+                        if entry_name == abil['name']:
+                            type_n = abil['type_n']
+                            if type_n != 'AUTO_CAST' or type_n != 'POTION':
+                                cancel_tick = entry['tick']
+                            else:
+                                cancel_tick = None
+        return cancel_tick
 
     
     # figures out bled channels
