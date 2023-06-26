@@ -5,28 +5,13 @@
     "type": "2h"
   },
   {
-    "name": "wrack",
+    "name": "asphyxiate",
     "tick": 0,
     "type": "2h"
   },
   {
     "name": "wrack",
-    "tick": 3,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 6,
-    "type": "2h"
-  },
-  {
-    "name": "cast incite_fear",
-    "tick": 7,
-    "type": "2h"
-  },
-  {
-    "name": "wrack",
-    "tick": 40,
+    "tick": 5,
     "type": "2h"
   }
 ]

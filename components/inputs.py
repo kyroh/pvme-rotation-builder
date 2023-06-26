@@ -99,10 +99,6 @@ class UserInputs:
     def get_autocast(self):
         auto_cast = None
         for entry in self.rotation:
-            if "cast" in entry["name"]:
-                auto_cast = entry["name"].split(" ")[1]
-            elif entry["tick"] == self.cast_tick:
-                entry["auto_cast"] = auto_cast
-                return auto_cast
-        
-        return None
+            if entry['tick'] < self.cast_tick and entry['name'] != self.ability_input:
+                auto_cast = entry['name'][5:]
+        return auto_cast

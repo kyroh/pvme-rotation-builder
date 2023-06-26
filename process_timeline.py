@@ -64,7 +64,6 @@ class Rotation:
         
         print('Json Saved')
         
-test = ActiveBuffs('wrack', 40, '2h')
-dmg = test.exsang()
-
+test = ChanneledAbility('asphyxiate', 0, '2h')
+dmg = test.cancel()
 print(dmg)

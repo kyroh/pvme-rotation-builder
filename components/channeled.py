@@ -45,14 +45,23 @@ class ChanneledAbility:
     # figures out if an abil was canceled and returns the tick it was canceled
     def cancel(self):
         if self.inputs.type_n == 'CHANNELED':
+            skip_next = False
             for i, entry in enumerate(self.inputs.rotation):
-                if entry['tick'] == self.cast_tick:
-                    if i + 1 < len(self.inputs.rotation):
-                        return self.inputs.rotation[i + 1]['tick']
-                    else:
-                        None
+                if skip_next:
+                    skip_next = False
+                    continue
+                if 'cast' in entry['name']:
+                    skip_next = True
+                    continue
+                if i + 1 < len(self.inputs.rotation):
+                    return self.inputs.rotation[i + 1]['tick']
+                else:
+                    return None
         else:
             pass
+
+
+
     
     # figures out bled channels
     def barge_check(self):
@@ -97,24 +106,15 @@ class ChanneledAbility:
     
     # returns a dict of the hits for the channeled ability and the tick they land on
     def hits(self):
-        dmg = self.standard.aura_passive()
-        fixed = dmg[0]
-        var = dmg[1]
-        hits = {}
         hit_count = self.hit_count()
-        tick = self.cast_tick + self.hit_tick
-
-        if self.inputs.dmg_output == 'MIN':
-            for n in range(1, hit_count + 1):
-                hits[f'tick {tick}'] = fixed
-                tick += self.frequency
-        elif self.inputs.dmg_output == 'AVG':
-            for n in range(1, hit_count + 1):
-                hits[f'tick {tick}'] = fixed + int(var / 2)
-                tick += self.frequency
-        elif self.inputs.dmg_output == 'MAX':
-            for n in range(1, hit_count + 1):
-                hits[f'tick {tick}'] = fixed + var
-                tick += self.frequency
-
+        init_tick = self.cast_tick + self.hit_tick
+        hits = [init_tick + i * self.frequency for i in range(hit_count)]
         return hits
+
+
+
+
+
+
+        
+        

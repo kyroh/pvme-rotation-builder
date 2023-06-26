@@ -15,6 +15,7 @@ class ActiveBuffs:
         
     def exsang(self):
         stacks = 0
+        last_tick = 0
         for entry in self.inputs.rotation:
             ability = entry['name']
             cast_tick = entry['tick']
@@ -29,20 +30,28 @@ class ActiveBuffs:
                 stacks = 0
                 continue
             
-            if style == 'MAGIC' and auto_cast == 'exsanguinate':
-                if type_n == 'SINGLE_HIT_ABIL' or type_n == 'BLEED':
-                    stacks += 1
-                elif type_n == 'CHANNELED':
-                    pass
-                elif type_n == 'AUTO_CAST':
-                    pass                    
-                elif stacks > 12:
-                    stacks = 12
-                last_tick = cast_tick
-            else:
-                consecutive_ticks = cast_tick - last_tick
-                if consecutive_ticks >= 34:
-                    stacks = 0
+            if style == 'MAGIC':
+                if auto_cast == 'exsanguinate':
+                    if type_n == 'SINGLE_HIT_ABIL' or type_n == 'BLEED':
+                        stacks += 1
+                    elif type_n == 'AUTO_CAST':
+                        pass                    
+                    elif stacks > 12:
+                        stacks = 12
+                    last_tick = cast_tick
+                else:
+                    if type_n == 'CHANNELED':
+                        chaneled = ChanneledAbility(ability, cast_tick, weapon)
+                        hits = chaneled.hits()
+                        for hit in hits:
+                            chan_inputs = UserInputs(ability, hit, weapon)
+                            chan_auto_cast = chan_inputs.get_autocast()
+                            print(chan_auto_cast)
+                            if chan_auto_cast == 'exsanguinate':
+                                stacks += 1
+                    consecutive_ticks = cast_tick - last_tick
+                    if consecutive_ticks >= 34:
+                        stacks = 0
             
             if ability == self.ability and cast_tick == self.cast_tick:
                 break
