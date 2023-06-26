@@ -11,10 +11,6 @@ from components.dmg_boost import CheckDmgBoosts
 class StandardAbility:
     def __init__(self, ability, cast_tick, weapon):
         self.boost = CheckDmgBoosts(ability, cast_tick, weapon)
-        self.sunshine = self.boost.sunshine
-        self.death_swiftness = self.boost.death_swift
-        self.berserk = self.boost.zerk
-        self.zgs_spec = self.boost.zgs
         self.sim = 10000
         self.ad = AbilityDmg(ability, cast_tick, weapon)
         self.inputs = UserInputs(ability, cast_tick, weapon)
@@ -127,22 +123,24 @@ class StandardAbility:
         dmg = self.dpl()
         fixed = dmg[0]
         var = dmg[1]
-        if self.inputs.type_n != 'BLEED':
-            if (self.sunshine == True and self.inputs.style == 'MAGIC') or (self.death_swiftness == True and self.inputs.style == 'RANGE'):
+        if (self.boost.meta == True and self.inputs.style == 'MAGIC'):
+            fixed = int(1.625 * fixed)
+            var = int(1.625 * var)
+        elif self.inputs.type_n != 'BLEED':
+            if (self.boost.sunshine == True and self.inputs.style == 'MAGIC') or (self.boost.death_swift == True and self.inputs.style == 'RANGE'):
                 fixed = int(1.5 * fixed)
                 var = int(1.5 * var)
-            elif self.berserk == True and self.inputs.style == 'MELEE':
+            elif self.boost.zerk == True and self.inputs.style == 'MELEE':
                 fixed = int(2 * fixed)
                 var = int(2 * var)
-            elif self.zgs_spec == True and self.inputs.style == 'MELEE':
+            elif self.boost.zgs == True and self.inputs.style == 'MELEE':
                 fixed = int(1.25 * fixed)
                 var = int(1.25 * var)
             else:
-                fixed = fixed
-                var = var
-            return [fixed, var]
+                pass
         else:
-            return [fixed, var]
+            pass
+        return [fixed, var]
     
     # Computes the dmg boost from aura passives
     def aura_passive(self):
@@ -155,13 +153,13 @@ class StandardAbility:
             if b['name'] == self.inputs.aura_input:
                 boost = b
                 break
-        if self.inputs.style == 'MAGIC' and self.sunshine == False:
+        if self.inputs.style == 'MAGIC' and self.boost.sunshine == False:
             fixed += int(fixed * boost['magic_dmg_percent'])
             var += int(var * boost['magic_dmg_percent'])
-        elif self.inputs.style == 'RANGE' and self.death_swiftness == False:
+        elif self.inputs.style == 'RANGE' and self.boost.death_swift == False:
             fixed += int(fixed * boost['range_dmg_percent'])
             var += int(var * boost['range_dmg_percent'])
-        elif self.inputs.style == 'MELEE' and (self.berserk == False or self.zgs_spec == False):
+        elif self.inputs.style == 'MELEE' and (self.boost.zerk == False or self.boost.zgs == False):
             fixed += int(fixed * boost['strength_dmg_percent'])
             var += int(var * boost['strength_dmg_percent'])
         else:

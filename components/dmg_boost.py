@@ -17,6 +17,7 @@ class CheckDmgBoosts:
         self.death_swift = self.check_swift()
         self.zerk = self.check_zerk()
         self.zgs = self.check_zgs()
+        self.meta = self.check_meta()
     
     def check_sunshine(self):
         sun = False
@@ -84,11 +85,20 @@ class CheckDmgBoosts:
 
     def check_zgs(self):
         zgs = False
-        zgs_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'zgs spec' and self.cast_tick - 34 < entry['tick']]
+        zgs_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'zgs spec' and self.cast_tick - 35 < entry['tick']]
         for zgs_entry in zgs_entries:
             zgs_tick = zgs_entry['tick']
-            if zgs_tick > self.cast_tick - 34 and zgs_tick <= self.cast_tick:
+            if zgs_tick > self.cast_tick - 35 and zgs_tick <= self.cast_tick:
                     zgs = True
                     break
         return zgs
         
+    def check_meta(self):
+        meta = False
+        meta_entries = [entry for entry in self.inputs.rotation if entry['name'] == 'metamorphasis' and self.cast_tick - 26 < entry['tick']]
+        for meta_entry in meta_entries:
+            meta_tick = meta_entry['tick']
+            if meta_tick > self.cast_tick - 26 and meta_tick <= self.cast_tick:
+                    meta = True
+                    break
+        return meta
