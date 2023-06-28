@@ -16,6 +16,8 @@ class BleedAbility:
         self.standard = StandardAbility(ability, cast_tick)
         self.ad = AbilityDmg(ability, weapon)
         self.cast_tick = cast_tick
+        self.weapon = weapon
+        self.ability = ability
     
     # Simulates the abil n times and returns the average with adjustment for the weirdo bleeds
     def avg_dmg(self):
@@ -38,6 +40,20 @@ class BleedAbility:
                 total += random_num
             avg_dmg = int(total / self.standard.sim)
         return avg_dmg
+    
+    def hit_count(self):
+        for bleed in self.inputs.bleeds:
+            if bleed['name'] == self.inputs.name:
+                abil = bleed
+                break
+            
+            if self.inputs.style == 'MELEE' and self.inputs.th_input == 'masterwork spear' and self.weapon == '2h':
+                hit_count = int(abil['hit_count'] * 1.5)
+            elif self.inputs.style == 'MAGIC' and self.ability == 'wrack and ruin':
+                hit_count = abil['hit_count']
+            else:
+                hit_count = abil['hit_count']
+        return hit_count
     
     # Outputs a dict of hits and tick they land for bleed abilities
     def hits(self):

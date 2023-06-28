@@ -4,11 +4,11 @@ Release v1.0
 1. Write script for active buffs - kyroh
     a. exsang and incite stacks - done
         i. wrack and ruin - done
-    b. gconc and channelers tracking - done
+    b. gconc and channelers tracking - sort of done
     c. champions ring effect
     d. ruby aurora - done
     e. stun/bind for wrack
-    f. needle buffe
+    f. needle buff
     g. dbreath combust
     h. scourge
     i. BOLG

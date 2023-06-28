@@ -1,12 +1,12 @@
 [
   {
-    "name": "concentrated blast",
+    "name": "cleave",
     "tick": 0,
     "type": "dw"
   },
   {
-    "name": "wrack",
-    "tick": 3,
+    "name": "cleave",
+    "tick": 12,
     "type": "dw"
   }
 ]

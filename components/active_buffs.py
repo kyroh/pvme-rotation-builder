@@ -6,6 +6,7 @@
 
 from components.inputs import UserInputs
 from components.channeled import ChanneledAbility
+from components.bleeds import BleedAbility
 
 class ActiveBuffs:
     def __init__(self, ability, cast_tick, weapon):
@@ -87,7 +88,6 @@ class ActiveBuffs:
                         for hit in hits:
                             chan_inputs = UserInputs(ability, hit, weapon)
                             chan_auto_cast = chan_inputs.get_autocast()
-                            print(chan_auto_cast)
                             if chan_auto_cast == 'incite_fear':
                                 stacks += 1
                     consecutive_ticks = cast_tick - last_tick
@@ -135,6 +135,48 @@ class ActiveBuffs:
                 stacks = 3
             
             if entry['tick'] == self.cast_tick:
+                break
+                
+        return stacks
+    
+    def scourge(self):
+        stacks = 0
+        last_tick = 0
+        for entry in self.inputs.rotation:
+            ability = entry['name']
+            cast_tick = entry['tick']
+            weapon = entry['type']
+            inputs = UserInputs(ability, cast_tick, weapon)
+            params = inputs.get_abil_params()
+            style = params[3]
+            type_n = params[4]
+            ChanneledAbility
+            
+            if style == 'MELEE':
+                if weapon == 'dw' or weapon == 'ms':
+                    if self.inputs.mh_input == 'Abyssal scourge':
+                        if type_n == 'SINGLE_HIT_ABIL':
+                            stacks += 1
+                        elif type_n == 'BLEED':                    
+                            bleed = BleedAbility(ability, cast_tick, weapon)
+                            hit_count = bleed.hit_count()
+                            stacks += hit_count
+                        elif stacks > 50:
+                            stacks = 50
+                        elif type_n == 'CHANNELED':
+                            chaneled = ChanneledAbility(ability, cast_tick, weapon)
+                            hits = chaneled.hits()
+                            for hit in hits:
+                                chan_inputs = UserInputs(ability, hit, weapon)
+                                chan_weapon = chan_inputs.mh_input
+                                if chan_weapon == 'Abyssal scourge':
+                                    stacks += 1
+                        last_tick = cast_tick
+                        
+                        consecutive_ticks = cast_tick - last_tick
+                        if consecutive_ticks > 11:
+                            stacks = 0
+            if ability == self.ability and cast_tick == self.cast_tick:
                 break
                 
         return stacks

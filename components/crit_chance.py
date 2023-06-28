@@ -42,19 +42,19 @@ class CriticalHitChance:
         fcrit_chance = (fcrit_chance + self.kalg * 0.05 + self.critikal * 0.01
                         + self.reaver * 0.05 + self.grim * 0.12)
 
-        if self.inputs.style == 'Melee':
+        if self.inputs.style == 'MELEE':
             fcrit_chance += self.fury * 0.05
             if self.champions == 1:
                 fcrit_chance += 0.03
             elif self.champions == 2:
                 fcrit_chance += 0.03 + 0.01 * self.bleeds
-            if self.abil == 'Meteor Strike':
+            if self.abil == 'meteor Strike':
                 fcrit_chance += self.corbicula * 0.2
 
-        elif self.inputs.style == 'Magic':
+        elif self.inputs.style == 'MAGIC':
             fcrit_chance += self.fury * 0.05 + self.channelers * self.channels * 0.04
 
-        elif self.inputs.style == 'Ranged':
+        elif self.inputs.style == 'RANGED':
             fcrit_chance += self.deathspore * 0.03
             if self.stalkers == 1:
                 fcrit_chance += 0.03

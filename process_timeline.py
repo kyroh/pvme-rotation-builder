@@ -64,6 +64,6 @@ class Rotation:
         
         print('Json Saved')
         
-test = ActiveBuffs('wrack', 3, 'dw')
-dmg = test.conc()
+test = ActiveBuffs('cleave', 12, 'dw')
+dmg = test.scourge()
 print(dmg)
