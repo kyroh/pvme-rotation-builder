@@ -7,7 +7,7 @@
       "type_n": "DRAGON_BREATH",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "wrack",
@@ -17,7 +17,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "impact",
@@ -27,7 +27,7 @@
       "type_n": "FLANK_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "omnipower",
@@ -37,7 +37,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "igneous omnipower",
@@ -47,7 +47,7 @@
       "type_n": "IGNEOUS_OMNI",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "deep impact",
@@ -57,7 +57,7 @@
       "type_n": "FLANK_ABIL",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "sonic wave",
@@ -67,7 +67,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "shock",
@@ -77,7 +77,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "concentrated blast",
@@ -87,7 +87,7 @@
       "type_n": "CHANNELED",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater concentrated blast",
@@ -97,7 +97,7 @@
       "type_n": "CHANNELED",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "horror",
@@ -107,7 +107,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "combust",
@@ -117,7 +117,7 @@
       "type_n": "BLEED",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "detonate",
@@ -127,7 +127,7 @@
       "type_n": "DETO",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "chain",
@@ -137,7 +137,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater chain",
@@ -147,7 +147,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "wild magic",
@@ -157,7 +157,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "magma tempest",
@@ -167,7 +167,7 @@
       "type_n": "MAGMA",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "metamorphosis",
@@ -177,7 +177,7 @@
       "type_n": "BUFF_ABIL",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "sunshine",
@@ -187,7 +187,7 @@
       "type_n": "PF_DMG_ULT",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater sunshine",
@@ -197,7 +197,7 @@
       "type_n": "DMG_ULT",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "asphyxiate",
@@ -207,7 +207,7 @@
       "type_n": "CHANNELED",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "tsunami",
@@ -217,7 +217,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "corruption blast",
@@ -227,7 +227,7 @@
       "type_n": "BLEED",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "smoke tendrils",
@@ -237,7 +237,7 @@
       "type_n": "SMOKE_TEND",
       "style": "MAGIC",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "piercing shot",
@@ -247,7 +247,7 @@
       "type_n": "PIERCING",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "binding shot",
@@ -257,7 +257,7 @@
       "type_n": "FLANK_ABIL",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "needle strike",
@@ -267,7 +267,7 @@
       "type_n": "NEEDLE",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "snipe",
@@ -277,7 +277,7 @@
       "type_n": "SNIPE",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "dazing shot",
@@ -287,7 +287,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "mutated dazing shot",
@@ -297,7 +297,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "tight bindings",
@@ -307,7 +307,7 @@
       "type_n": "FLANK_ABIL",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "demoralise",
@@ -317,7 +317,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "rout",
@@ -327,7 +327,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "ricochet",
@@ -337,7 +337,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater ricochet",
@@ -347,7 +347,7 @@
       "type_n": "GRICO",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "snapshot",
@@ -357,7 +357,7 @@
       "type_n": "SNAPSHOT",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "bombardment",
@@ -367,7 +367,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "incendiary shot",
@@ -377,7 +377,7 @@
       "type_n": "INCEND",
       "style": "RANGE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "deadshot",
@@ -387,7 +387,7 @@
       "type_n": "DEADSHOT",
       "style": "RANGE",
       "class_n": "BLEED",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "igneous deadshot",
@@ -397,7 +397,7 @@
       "type_n": "IGNEOUS_DS",
       "style": "RANGE",
       "class_n": "BLEED",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "unload",
@@ -407,7 +407,7 @@
       "type_n": "UNLOAD",
       "style": "RANGE",
       "class_n": "CHANNELED",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "corruption shot",
@@ -417,7 +417,7 @@
       "type_n": "BLEED",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "fragmentation shot",
@@ -427,7 +427,7 @@
       "type_n": "BLEED",
       "style": "RANGE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "death swiftness",
@@ -437,7 +437,7 @@
       "type_n": "PF_DMG_ULT",
       "style": "RANGE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "berserk",
@@ -447,7 +447,7 @@
       "type_n": "DMG_ULT",
       "style": "MELEE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "zgs spec",
@@ -457,7 +457,7 @@
       "type_n": "DMG_ULT",
       "style": "MELEE",
       "class_n": "SPEC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater death swiftness",
@@ -467,7 +467,7 @@
       "type_n": "DMG_ULT",
       "style": "RANGE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "shadow tendrils",
@@ -477,7 +477,7 @@
       "type_n": "SHADOW_TEND",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "rapid fire",
@@ -487,7 +487,7 @@
       "type_n": "RAPID",
       "style": "RANGE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "slice",
@@ -497,7 +497,7 @@
       "type_n": "SLICE",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "smash",
@@ -507,7 +507,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "havoc",
@@ -517,7 +517,7 @@
       "type_n": "HAVOC",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "sever",
@@ -527,7 +527,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "backhand",
@@ -537,7 +537,7 @@
       "type_n": "FLANK_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "forceful backhand",
@@ -547,7 +547,7 @@
       "type_n": "FLANK_ABIL",
       "style": "MELEE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "overpower",
@@ -557,7 +557,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "igneous overpower",
@@ -567,7 +567,7 @@
       "type_n": "CHANNELED",
       "style": "MELEE",
       "class_n": "ULT",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "dismember",
@@ -577,7 +577,7 @@
       "type_n": "BLEED",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "slaughter",
@@ -587,7 +587,7 @@
       "type_n": "BLEED",
       "style": "MELEE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "blood tendrils",
@@ -597,7 +597,7 @@
       "type_n": "BLEED",
       "style": "MELEE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "vulnerability",
@@ -607,7 +607,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "OTHER",
-      "GCD": 0
+      "gcd": 0
     },
     {
       "name": "smoke cloud",
@@ -617,7 +617,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "OTHER",
-      "GCD": 0
+      "gcd": 0
     },
     {
       "name": "-",
@@ -627,7 +627,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "OTHER",
       "class_n": "OTHER",
-      "GCD": 0
+      "gcd": 0
     },
     {
       "name": "gstaff",
@@ -637,7 +637,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MAGIC",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "cleave",
@@ -647,7 +647,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "assault",
@@ -657,7 +657,7 @@
       "type_n": "CHANNELED",
       "style": "MELEE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "claw",
@@ -667,7 +667,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "destroy",
@@ -677,7 +677,7 @@
       "type_n": "CHANNELED",
       "style": "MELEE",
       "class_n": "THRESH",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "greater barge",
@@ -687,7 +687,7 @@
       "type_n": "SINGLE_HIT_ABIL",
       "style": "MELEE",
       "class_n": "BASIC",
-      "GCD": 1
+      "gcd": 1
     },
     {
       "name": "cast exsanguinate",
@@ -697,7 +697,7 @@
       "type_n": "AUTO_CAST",
       "style": "MAGIC",
       "class_n": "AUTO_CAST",
-      "GCD": 0
+      "gcd": 0
     },
     {
       "name": "cast incite_fear",
@@ -707,6 +707,6 @@
       "type_n": "AUTO_CAST",
       "style": "MAGIC",
       "class_n": "AUTO_CAST",
-      "GCD": 0
+      "gcd": 0
     }
   ]
