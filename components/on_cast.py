@@ -75,7 +75,7 @@ class OnCast:
         levels = base_levels
         b_levels = boosted_levels
         
-        if self.style in ('MAGIC', 'RANGE', 'MELEE'):
+        if self.style in ('MAGIC', 'RANGE', 'MELEE', 'NECRO'):
             if self.style == 'MAGIC':
                 base_level = levels[0]
                 boosted_level = b_levels[0]
@@ -174,6 +174,15 @@ class OnCast:
         if self.style == 'MAGIC' and self.sun[0] == False:
             self.fixed += int(self.fixed * boost['magic_dmg_percent'])
             self.variable += int(self.variable * boost['magic_dmg_percent'])
+        elif self.style == 'RANGE' and self.sun[0] == False:
+            self.fixed += int(self.fixed * boost['range_dmg_percent'])
+            self.variable += int(self.variable * boost['range_dmg_percent'])
+        elif self.style == 'MELEE' and self.sun[0] == False:
+            self.fixed += int(self.fixed * boost['strength_dmg_percent'])
+            self.variable += int(self.variable * boost['strength_dmg_percent'])
+        elif self.style == 'NECRO' and self.sun[0] == False:
+            self.fixed += int(self.fixed * boost['necro_dmg_percent'])
+            self.variable += int(self.variable * boost['necro_dmg_percent'])
         else:
             pass
     
