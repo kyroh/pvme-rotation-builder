@@ -8,8 +8,8 @@ class GameState:
         self.autocast = None
         self.exsang = [0,0]
         self.incite = [0,0]
-        self.vuln = [False,0]
-        self.sc = [False,0]
+        self.vuln = [0,0]
+        self.sc = [0,0]
         self.barge = [False,0]
         self.bleed = False
         self.channel = False
@@ -68,7 +68,7 @@ class GameState:
         
     def getVuln(self, ability, tick):
         if ability == 'vuln':
-            self.vuln[0] = True
+            self.vuln[0] = 1
             self.vuln[1] = tick + 100
         else:
             self.vuln[0] = False
@@ -76,7 +76,7 @@ class GameState:
             
     def getSC(self, ability, tick):
         if ability == 'smoke cloud':
-            self.sc[0] = True
+            self.sc[0] = 1
             self.sc[1] = tick + 200
         else:
             self.sc[0] = False

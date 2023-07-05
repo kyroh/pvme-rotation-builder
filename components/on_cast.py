@@ -19,6 +19,7 @@ class OnCast:
         self.variable = 0
         self.type_n = None
         self.tick = 0
+        self.damage = 0
     
     def get_abil(self, ability, tick):
         for abil in self.utils.abilities:
@@ -183,6 +184,16 @@ class OnCast:
         elif self.style == 'NECRO' and self.sun[0] == False:
             self.fixed += int(self.fixed * boost['necro_dmg_percent'])
             self.variable += int(self.variable * boost['necro_dmg_percent'])
+        else:
+            pass
+        
+    def base_damage(self, output):
+        if output == 'MIN':
+            self.damage = self.fixed
+        elif output == 'AVG':
+            self.damage = int(self.fixed + (self.variable * 0.5))
+        elif output == 'MAX':
+            self.damage = self.fixed + self.variable
         else:
             pass
     

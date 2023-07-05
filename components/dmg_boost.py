@@ -1,5 +1,3 @@
-
-
 class CheckDmgBoosts:
     def __init__(self):
         self.pf = False
