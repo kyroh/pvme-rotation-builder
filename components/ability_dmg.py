@@ -22,10 +22,9 @@ class AbilityDmg:
             'ring': None,
             'pocket': None        
         }
-        
+
         self.type = '2h'
         
-        # a list of weapons that may be used order is mh, oh, 2h, shield
         self.mh = None
         self.oh = None
         self.th = None
@@ -68,7 +67,10 @@ class AbilityDmg:
         self.prayer = index[4]
         self.type = type
     
-    #computes the level boost from users active aura
+    # PURPOSE - computes the number of boosted levels derived from aura
+    # boost is the aura name that is looked up in boost.json
+    # boost_percent is the level boost from the json lookup
+    ################
     def aura_level_boost(self):
         boost = next((b for b in self.utils.boosts if b['name'] == self.aura), None)
         if boost is None:
@@ -81,7 +83,11 @@ class AbilityDmg:
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent, necro_boost_percent]
 
-    #computes level boost from users potion
+    # PURPOSE - computes the number of boosted levels derived from potions
+    # boost is the potion name that is looked up in boost.json
+    # boost_values is a map of the results from the json lookup
+    # net_boost is the sum of the int level boost + % level boost
+    ################
     def potion_level_boost(self):
         boost = next((b for b in self.utils.boosts if b['name'] == self.potion), None)
         if boost is None:
@@ -105,7 +111,9 @@ class AbilityDmg:
 
         return [net_magic_boost, net_range_boost, net_strength_boost, net_necro_boost]
 
-    #computes total level boost for purpose of computes ability dmg
+    # PURPOSE - computes total boosted level for each skill
+    # appends the individually computed aura and potion boost to the base levels
+    ################
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
         potion_boosts = self.potion_level_boost()
@@ -118,6 +126,11 @@ class AbilityDmg:
         self.strLvl = total_levels[2]
         self.necroLvl = total_levels[3]
     
+    # PURPOSE - computes the armour bonus portion of ability dmg
+    # gear slots is a map that identifies what piece of gear it is looking up the bonusf or in gear.json
+    # it iterates through all armour slots and adds the net armour bonus
+    # if reaper crew is added
+    ################
     def compute_bonus(self):
         bonus = [0, 0, 0, 0]
         gear_slots = {
@@ -151,7 +164,8 @@ class AbilityDmg:
         self.strBonus = bonus[2]
         self.necroBonus = bonus[3]
     
-    #dual wield ability dmg calc
+    # PURPOSE - compute dual wield ability dmg
+    ################
     def dw_ability_dmg(self):
         base_ability_dmg = 0
 
@@ -179,7 +193,8 @@ class AbilityDmg:
 
         return base_ability_dmg
 
-    #two handed ability dmg calc
+    # PURPOSE - compute two hand ability dmg
+    ################
     def th_ability_dmg(self):
         base_ability_dmg = 0 
 
@@ -195,7 +210,8 @@ class AbilityDmg:
             pass
         return base_ability_dmg
     
-    #mainhand shielf ability dmg calc
+    # PURPOSE - compute mainhand + shield ability dmg
+    ################
     def ms_ability_dmg(self):
         base_ability_dmg = 0
 
@@ -212,7 +228,8 @@ class AbilityDmg:
 
         return base_ability_dmg
 
-    #helper function to use the correct ability dmg based on the casting weapon type from inputs.py
+    # PURPOSE - identify what ability dmg should be calculated based on the user's casting weapon
+    ################
     def base_ability_dmg(self):
         if self.type == '2h':
             return self.th_ability_dmg()
