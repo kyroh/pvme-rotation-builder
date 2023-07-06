@@ -3,11 +3,11 @@ import json
 
 class Utils:
     def __init__(self):
-        self.abilities = self.load_json('v2/utils', 'abilities.json')
-        self.gear = self.load_json('v2/utils', 'gear.json')
-        self.weapons = self.load_json('v2/utils', 'weapons.json')
-        self.timing = self.load_json('v2/utils', 'timing.json')
-        self.boosts = self.load_json('v2/utils', 'boosts.json')
+        self.abilities = self.load_json('utils', 'abilities.json')
+        self.gear = self.load_json('utils', 'gear.json')
+        self.weapons = self.load_json('utils', 'weapons.json')
+        self.timing = self.load_json('utils', 'timing.json')
+        self.boosts = self.load_json('utils', 'boosts.json')
         
     def load_json(self, directory, filename):
         file_path = os.path.join(directory, filename)

@@ -1,39 +1,23 @@
 from resources import Utils
+from settings import Settings
 
 class AbilityDmg:
     def __init__(self): 
         self.utils = Utils()
-        self.baseMagic = 0
-        self.baseRange = 0
-        self.baseStr = 0
-        self.baseNecro = 0
-        self.reaperCrew = False
-        self.potion = None
-        self.aura = None
+        self.settings = Settings()
         
         self.armour = {
-            'helm': None,
-            'body': None,
-            'legs': None,
-            'boots': None,
-            'gloves': None,
-            'neck': None,
-            'cape': None,
-            'ring': None,
-            'pocket': None        
+            'helm': self.settings.helm,
+            'body': self.settings.body,
+            'legs': self.settings.legs,
+            'boots': self.settings.boots,
+            'gloves': self.settings.gloves,
+            'neck': self.settings.neck,
+            'cape': self.settings.cape,
+            'ring': self.settings.ring,
+            'pocket': self.settings.pocket        
         }
-
-        self.type = '2h'
         
-        self.mh = None
-        self.oh = None
-        self.th = None
-        self.sh = None
-        self.prayer = None
-        self.autocast = 99
-        self.ammo = 99
-        
-        self.levels = 0
         self.magicLvl = 0
         self.rangeLvl = 0
         self.strLvl = 0
@@ -44,42 +28,19 @@ class AbilityDmg:
         self.strBonus = 0
         self.necroBonus = 0
     
-    def getLevels(self, levels):
-        index = levels
-        self.baseMagic = index[0]
-        self.baseRange = index[1]
-        self.baseStr= index[2]
-        self.baseNecro = index[3]
-        
-    def getConstants(self, constants):
-        index = constants
-        self.aura = index[0]
-        self.potion= index[1]
-        self.reaperCrew = index[2]
-    
-    def getPreset(self, armour, weapons, type):
-        self.armour = armour
-        index = weapons
-        self.mh = index[0]
-        self.oh = index[1]
-        self.th = index[2]
-        self.sh = index[3]
-        self.prayer = index[4]
-        self.type = type
-    
     # PURPOSE - computes the number of boosted levels derived from aura
     # boost is the aura name that is looked up in boost.json
     # boost_percent is the level boost from the json lookup
     ################
     def aura_level_boost(self):
-        boost = next((b for b in self.utils.boosts if b['name'] == self.aura), None)
+        boost = next((b for b in self.utils.boosts if b['name'] == self.settings.aura), None)
         if boost is None:
             return [0, 0, 0, 0]
 
-        magic_boost_percent = self.baseMagic * boost.get('magic_level_percent', 0)
-        range_boost_percent = self.baseRange * boost.get('range_level_percent', 0)
-        strength_boost_percent = self.baseStr * boost.get('strength_level_percent', 0)
-        necro_boost_percent = self.baseNecro * boost.get('necro_level_percent', 0)
+        magic_boost_percent = self.settings.magic_lvl * boost.get('magic_level_percent', 0)
+        range_boost_percent = self.settings.range_lvl * boost.get('range_level_percent', 0)
+        strength_boost_percent = self.settings.str_lvl * boost.get('strength_level_percent', 0)
+        necro_boost_percent = self.settings.necro_lvl * boost.get('necro_level_percent', 0)
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent, necro_boost_percent]
 
@@ -89,15 +50,15 @@ class AbilityDmg:
     # net_boost is the sum of the int level boost + % level boost
     ################
     def potion_level_boost(self):
-        boost = next((b for b in self.utils.boosts if b['name'] == self.potion), None)
+        boost = next((b for b in self.utils.boosts if b['name'] == self.settings.potion), None)
         if boost is None:
             return [0, 0, 0, 0]
 
         boost_values = {
-            'magic_level_percent': self.baseMagic * boost.get('magic_level_percent', 0),
-            'range_level_percent': self.baseRange * boost.get('range_level_percent', 0),
-            'strength_level_percent': self.baseStr * boost.get('strength_level_percent', 0),
-            'necro_level_percent': self.baseNecro * boost.get('necro_level_percent', 0),
+            'magic_level_percent': self.settings.magic_lvl * boost.get('magic_level_percent', 0),
+            'range_level_percent': self.settings.range_lvl * boost.get('range_level_percent', 0),
+            'strength_level_percent': self.settings.str_lvl * boost.get('strength_level_percent', 0),
+            'necro_level_percent': self.settings.necro_lvl * boost.get('necro_level_percent', 0),
             'magic_level_boost': boost.get('magic_level_boost', 0),
             'range_level_boost': boost.get('range_level_boost', 0),
             'strength_level_boost': boost.get('strength_level_boost', 0),
@@ -117,7 +78,7 @@ class AbilityDmg:
     def calculate_levels(self):
         aura_boosts = self.aura_level_boost()
         potion_boosts = self.potion_level_boost()
-        base_levels = [self.baseMagic, self.baseRange, self.baseStr, self.baseNecro]
+        base_levels = [self.settings.magic_lvl, self.settings.range_lvl, self.settings.str_lvl, self.settings.necro_lvl]
 
         total_levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
         
@@ -153,7 +114,7 @@ class AbilityDmg:
                 bonus[2] += item['melee_bonus']
                 bonus[3] += item['necro_bonus']
            
-        if self.reaperCrew == True:
+        if self.settings.reaper_crew == True:
             bonus[0] += 12
             bonus[1] += 12
             bonus[2] += 12
@@ -169,23 +130,23 @@ class AbilityDmg:
     def dw_ability_dmg(self):
         base_ability_dmg = 0
 
-        oh = next((w for w in self.utils.weapons if w['name'] == self.oh), None)   
+        oh = next((w for w in self.utils.weapons if w['name'] == self.settings.oh['name']), None)   
 
         if oh['style'] == 'MAGIC':
-            base_ability_dmg += int(0.5 * (int(2.5 * self.magicLvl) + int(9.6 * min(oh['dmg_tier'],self.autocast) + int(self.magicBonus))))
+            base_ability_dmg += int(0.5 * (int(2.5 * self.magicLvl) + int(9.6 * min(oh['dmg_tier'],self.settings.auto_cast) + int(self.magicBonus))))
         elif oh['style'] == 'RANGE':
-            base_ability_dmg += int(0.5 * (int(2.5 * self.rangeLvl) + int(9.6 * min(oh['dmg_tier'],self.ammo) + int(self.rangeBonus))))
+            base_ability_dmg += int(0.5 * (int(2.5 * self.rangeLvl) + int(9.6 * min(oh['dmg_tier'],self.settings.ammo) + int(self.rangeBonus))))
         elif oh['style'] == 'MELEE':
             base_ability_dmg += int(0.5 * (int(2.5 * self.strLvl) + int(9.6 * oh['dmg_tier'] + int(self.strBonus))))
         else:
             pass
         
-        mh = next((w for w in self.utils.weapons if w['name'] == self.mh), None)
+        mh = next((w for w in self.utils.weapons if w['name'] == self.settings.mh['name']), None)
 
         if mh['style']== 'MAGIC':
-            base_ability_dmg += int(2.5 * self.magicLvl) + int(9.6 * min(mh['dmg_tier'], self.autocast) + int(self.magicBonus))
+            base_ability_dmg += int(2.5 * self.magicLvl) + int(9.6 * min(mh['dmg_tier'], self.settings.auto_cast) + int(self.magicBonus))
         elif mh['style'] == 'RANGE':
-            base_ability_dmg += int(2.5 * self.rangeLvl) + int(9.6 * min(mh['dmg_tier'], self.ammo) + int(self.rangeBonus))
+            base_ability_dmg += int(2.5 * self.rangeLvl) + int(9.6 * min(mh['dmg_tier'], self.settings.ammo) + int(self.rangeBonus))
         elif mh['style'] == 'MELEE':
             base_ability_dmg += int(2.5 * self.strLvl) + int(9.6 * mh['dmg_tier'] + int(self.strBonus))
         else:
@@ -198,12 +159,12 @@ class AbilityDmg:
     def th_ability_dmg(self):
         base_ability_dmg = 0 
 
-        th = next((w for w in self.utils.weapons if w['name'] == self.th), None)
+        th = next((w for w in self.utils.weapons if w['name'] == self.settings.th['name']), None)
 
         if th['style'] == 'MAGIC':
-            base_ability_dmg += int(2.5 * self.magicLvl) + int(1.25 * self.magicLvl) + int(14.4 * min(th['dmg_tier'], self.autocast) + 1.5 * int(self.magicBonus))
+            base_ability_dmg += int(2.5 * self.magicLvl) + int(1.25 * self.magicLvl) + int(14.4 * min(th['dmg_tier'], self.settings.auto_cast) + 1.5 * int(self.magicBonus))
         elif th['style'] == 'RANGE':
-            base_ability_dmg += int(2.5 * self.rangeLvl) + int(1.25 * self.rangeLvl) + int(14.4 * min(th['dmg_tier'], self.ammo) + 1.5 * int(self.rangeBonus))
+            base_ability_dmg += int(2.5 * self.rangeLvl) + int(1.25 * self.rangeLvl) + int(14.4 * min(th['dmg_tier'], self.settings.ammo) + 1.5 * int(self.rangeBonus))
         elif th['style'] == 'MELEE':
             base_ability_dmg += int(2.5 * self.strLvl) + int(1.25 * self.strLvl) + int(14.4 * th['dmg_tier'] + 1.5 * int(self.strBonus))
         else:
@@ -218,9 +179,9 @@ class AbilityDmg:
         mh = next((w for w in self.utils.weapons if w['name'] == self.inputs.mh_input), None)
 
         if mh['style'] == 'MAGIC':
-            base_ability_dmg += int(2.5 * self.magicLvl) + int(9.6 * min(mh['dmg_tier'], self.autocast) + int(self.magicBonus))
+            base_ability_dmg += int(2.5 * self.magicLvl) + int(9.6 * min(mh['dmg_tier'], self.settings.auto_cast) + int(self.magicBonus))
         elif mh['style'] == 'RANGE':
-            base_ability_dmg += int(2.5 * self.rangeLvl) + int(9.6 * min(mh['dmg_tier'], self.ammo) + int(self.rangeBonus))
+            base_ability_dmg += int(2.5 * self.rangeLvl) + int(9.6 * min(mh['dmg_tier'], self.settings.ammo) + int(self.rangeBonus))
         elif mh['style'] == 'MELEE':
             base_ability_dmg += int(2.5 * self.strLvl) + int(9.6 * mh['dmg_tier'] + int(self.strBonus))
         else:
@@ -231,13 +192,19 @@ class AbilityDmg:
     # PURPOSE - identify what ability dmg should be calculated based on the user's casting weapon
     ################
     def base_ability_dmg(self):
-        if self.type == '2h':
+        if self.settings.preset == '2h':
             return self.th_ability_dmg()
-        elif self.type == 'dw':
+        elif self.settings.preset == 'dw':
             return self.dw_ability_dmg()
-        elif self.type == 'ms':
+        elif self.settings.preset == 'ms':
             return self.ms_ability_dmg()
         else:
             return 0
 
+ad = AbilityDmg()
+ad.calculate_levels()
+ad.compute_bonus()
 
+dmg = ad.base_ability_dmg()
+
+print(dmg)

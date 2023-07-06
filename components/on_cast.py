@@ -1,5 +1,6 @@
 from resources import Utils
 from dmg_boost import CheckDmgBoosts
+from settings import Settings
 
 class OnCast:
     def __init__(self):
@@ -196,22 +197,6 @@ class OnCast:
             self.damage = self.fixed + self.variable
         else:
             pass
-    
-levels = [99, 99, 99, 99]
-constants = [None, None, True]
-weapons = ['Wand of the praesul', 'Imperium core', 'Staff of Sliske', None, None]
-
-armour = {
-    'helm': None,
-    'body': None,
-    'legs': None,
-    'boots': None,
-    'gloves': None,
-    'neck': None,
-    'cape': None,
-    'ring': None,
-    'pocket': None        
-    }
 
 
 
