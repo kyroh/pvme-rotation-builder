@@ -86,7 +86,7 @@ class Settings:
             'name': 'Wand of the praesul',
             'gizmo 1': {
                 'slot 1':{
-                    'perk': None,
+                    'perk': 'precise',
                     'rank': 0
                 },
                 'slot 2': {
@@ -144,7 +144,8 @@ class Settings:
             'equilibrium': 0,
             'biting': 0,
             'lunging': 0,
-            'invig': 0
+            'invig': 0,
+            'turtling': 0
         }
         
     def weapon_switch(self, preset):
@@ -156,7 +157,13 @@ class Settings:
         self.preset = index[4]
         
     def get_perks(self):
-        for gizmo in [self.mh, self.th, self.oh]:
+        presets = {
+            'dw': [self.mh, self.oh],
+            '2h': [self.th],
+            'ms': [self.th]
+        }
+        
+        for gizmo in presets.get(self.preset, []) + [self.body, self.legs]:
             for gizmo_key in ['gizmo 1', 'gizmo 2']:
                 if gizmo_key in gizmo:
                     for slot_key in ['slot 1', 'slot 2']:
@@ -165,3 +172,6 @@ class Settings:
                             if perk in self.perks:
                                 rank = gizmo[gizmo_key][slot_key]['rank']
                                 self.perks[perk] = max(self.perks[perk], rank)
+
+
+
