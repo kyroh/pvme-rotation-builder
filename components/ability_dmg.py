@@ -18,6 +18,7 @@ class AbilityDmg:
             'pocket': self.settings.pocket        
         }
         
+        self.levels = []
         self.magicLvl = 0
         self.rangeLvl = 0
         self.strLvl = 0
@@ -80,12 +81,12 @@ class AbilityDmg:
         potion_boosts = self.potion_level_boost()
         base_levels = [self.settings.magic_lvl, self.settings.range_lvl, self.settings.str_lvl, self.settings.necro_lvl]
 
-        total_levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
+        self.levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
         
-        self.magicLvl = total_levels[0]
-        self.rangeLvl = total_levels[1]
-        self.strLvl = total_levels[2]
-        self.necroLvl = total_levels[3]
+        self.magicLvl = self.levels[0]
+        self.rangeLvl = self.levels[1]
+        self.strLvl = self.levels[2]
+        self.necroLvl = self.levels[3]
     
     # PURPOSE - computes the armour bonus portion of ability dmg
     # gear slots is a map that identifies what piece of gear it is looking up the bonusf or in gear.json
@@ -200,11 +201,3 @@ class AbilityDmg:
             return self.ms_ability_dmg()
         else:
             return 0
-
-ad = AbilityDmg()
-ad.calculate_levels()
-ad.compute_bonus()
-
-dmg = ad.base_ability_dmg()
-
-print(dmg)

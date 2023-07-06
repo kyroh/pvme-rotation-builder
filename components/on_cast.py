@@ -1,11 +1,13 @@
 from resources import Utils
 from dmg_boost import CheckDmgBoosts
 from settings import Settings
+from ability_dmg import AbilityDmg
 
 class OnCast:
     def __init__(self):
         self.utils = Utils()
         self.boost = CheckDmgBoosts()
+        self.settings = Settings()
         self.sun = [False, 0]
         self.meta = [False, 0]
         self.swift = [False, 0]
@@ -34,8 +36,8 @@ class OnCast:
             else:
                 pass
             
-    def prayer_dmg(self, prayer):
-        boost = next((b for b in self.utils.boosts if b['name'] == prayer), None)
+    def prayer_dmg(self):
+        boost = next((b for b in self.utils.boosts if b['name'] == self.settings.prayer), None)
         if boost is None:
             pass
         else:
@@ -73,22 +75,21 @@ class OnCast:
         else:
             self.variable = int(ability_dmg * self.variable)
     
-    def dpl(self, base_levels, boosted_levels):
-        levels = base_levels
+    def dpl(self, boosted_levels):
         b_levels = boosted_levels
         
         if self.style in ('MAGIC', 'RANGE', 'MELEE', 'NECRO'):
             if self.style == 'MAGIC':
-                base_level = levels[0]
+                base_level = self.settings.magic_lvl
                 boosted_level = b_levels[0]
             elif self.style == 'RANGE':
-                base_level = levels[1]
+                base_level = self.settings.range_lvl
                 boosted_level = b_levels[1]
             elif self.style == 'MELEE':
-                base_level = levels[2]
+                base_level = self.settings.str_lvl
                 boosted_level = b_levels[2]
             elif self.style == 'NECRO':
-                base_level = levels[3]
+                base_level = self.settings.necro_lvl
                 boosted_level = b_levels[3]
             else:
                 pass
@@ -148,45 +149,48 @@ class OnCast:
             pass
             
     
-    def precise(self, rank):
+    def precise(self):
         if self.type_n != 'BLEED':
-            precise = int(0.015 * (self.fixed + self.variable) * rank)
+            precise = int(0.015 * (self.fixed + self.variable) * self.settings.perks['precise'])
             self.fixed += precise
             self.variable -= precise
         else:
             pass
     
-    def equilibrium(self, aura, rank):
+    def equilibrium(self):
         if self.type_n != 'BLEED':
-            if aura == 'Equilibrium':
-                self.fixed += 0.25 * self.variable
-                self.variable -= 0.5 * self.variable
+            if self.settings.aura == 'Equilibrium':
+                self.fixed += int(0.25 * self.variable)
+                self.variable -= int(0.5 * self.variable)
             else:
-                self.fixed += 0.03 * self.variable * rank
-                self.variable -= 0.04 * self.variable * rank
+                self.fixed += int(0.03 * self.variable * self.settings.perks['equilibrium'])
+                self.variable -= int(0.04 * self.variable * self.settings.perks['equilibrium'])
         else:
             pass
     
-    def aura_passive(self, aura):
+    def aura_passive(self):
         boost = None
         for b in self.utils.boosts:
-            if b['name'] == aura:
+            if b['name'] == self.settings.aura:
                 boost = b
                 break
-        if self.style == 'MAGIC' and self.sun[0] == False:
-            self.fixed += int(self.fixed * boost['magic_dmg_percent'])
-            self.variable += int(self.variable * boost['magic_dmg_percent'])
-        elif self.style == 'RANGE' and self.sun[0] == False:
-            self.fixed += int(self.fixed * boost['range_dmg_percent'])
-            self.variable += int(self.variable * boost['range_dmg_percent'])
-        elif self.style == 'MELEE' and self.sun[0] == False:
-            self.fixed += int(self.fixed * boost['strength_dmg_percent'])
-            self.variable += int(self.variable * boost['strength_dmg_percent'])
-        elif self.style == 'NECRO' and self.sun[0] == False:
-            self.fixed += int(self.fixed * boost['necro_dmg_percent'])
-            self.variable += int(self.variable * boost['necro_dmg_percent'])
-        else:
+        if boost == None:
             pass
+        else:
+            if self.style == 'MAGIC' and self.sun[0] == False:
+                self.fixed += int(self.fixed * boost['magic_dmg_percent'])
+                self.variable += int(self.variable * boost['magic_dmg_percent'])
+            elif self.style == 'RANGE' and self.sun[0] == False:
+                self.fixed += int(self.fixed * boost['range_dmg_percent'])
+                self.variable += int(self.variable * boost['range_dmg_percent'])
+            elif self.style == 'MELEE' and self.sun[0] == False:
+                self.fixed += int(self.fixed * boost['strength_dmg_percent'])
+                self.variable += int(self.variable * boost['strength_dmg_percent'])
+            elif self.style == 'NECRO' and self.sun[0] == False:
+                self.fixed += int(self.fixed * boost['necro_dmg_percent'])
+                self.variable += int(self.variable * boost['necro_dmg_percent'])
+            else:
+                pass
         
     def base_damage(self, output):
         if output == 'MIN':
@@ -197,6 +201,26 @@ class OnCast:
             self.damage = self.fixed + self.variable
         else:
             pass
+        
+ability_dmg = AbilityDmg()
+cast = OnCast()
+setting = Settings()
+
+ability_dmg.calculate_levels()
+ability_dmg.compute_bonus()
+ad = ability_dmg.base_ability_dmg()
+
+cast.get_abil('wrack', 0)
+cast.prayer_dmg()
+cast.fixedDmg(ad)
+cast.dpl(ability_dmg.levels)
+cast.varDmg(ad)
+cast.dmg_boost()
+cast.precise()
+cast.equilibrium()
+cast.aura_passive()
+
+print(cast.fixed)
 
 
 
