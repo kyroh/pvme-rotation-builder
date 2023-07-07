@@ -1,13 +1,12 @@
 from resources import Utils
 from dmg_boost import CheckDmgBoosts
-from settings import Settings
-from ability_dmg import AbilityDmg
+from settings import SET_INS
+from ability_dmg import AD_INS
 
 class OnCast:
     def __init__(self):
         self.utils = Utils()
         self.boost = CheckDmgBoosts()
-        self.settings = Settings()
         self.sun = [False, 0]
         self.meta = [False, 0]
         self.swift = [False, 0]
@@ -37,14 +36,14 @@ class OnCast:
                 pass
             
     def prayer_dmg(self):
-        boost = next((b for b in self.utils.boosts if b['name'] == self.settings.prayer), None)
+        boost = next((b for b in self.utils.boosts if b['name'] == SET_INS.prayer), None)
         if boost is None:
             pass
         else:
             self.prayer_boost = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"], boost["necro_dmg_percent"]]
         
     
-    def fixedDmg(self, ability_dmg):
+    def fixedDmg(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
             'RANGE': self.prayer_boost[1],
@@ -53,13 +52,13 @@ class OnCast:
         }
         if self.type_n != 'BLEED':
             if self.style in prayer_map:
-                self.fixed = int(int(ability_dmg * self.fixed) * (1 + prayer_map[self.style]))
+                self.fixed = int(int(AD_INS.ad * self.fixed) * (1 + prayer_map[self.style]))
             else:
                 pass
         else:
-            self.fixed = int(ability_dmg * self.fixed)
+            self.fixed = int(AD_INS.ad * self.fixed)
 
-    def varDmg(self, ability_dmg):
+    def varDmg(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
             'RANGE': self.prayer_boost[1],
@@ -69,28 +68,26 @@ class OnCast:
         
         if self.type_n != 'BLEED':
             if self.style in prayer_map:
-                self.variable = int(int(ability_dmg * self.variable) * (1 + prayer_map[self.style]))
+                self.variable = int(int(AD_INS.ad * self.variable) * (1 + prayer_map[self.style]))
             else:
                 pass
         else:
-            self.variable = int(ability_dmg * self.variable)
+            self.variable = int(AD_INS.ad * self.variable)
     
-    def dpl(self, boosted_levels):
-        b_levels = boosted_levels
-        
+    def dpl(self):
         if self.style in ('MAGIC', 'RANGE', 'MELEE', 'NECRO'):
             if self.style == 'MAGIC':
-                base_level = self.settings.magic_lvl
-                boosted_level = b_levels[0]
+                base_level = SET_INS.magic_lvl
+                boosted_level = AD_INS.magicLvl
             elif self.style == 'RANGE':
-                base_level = self.settings.range_lvl
-                boosted_level = b_levels[1]
+                base_level = SET_INS.range_lvl
+                boosted_level = AD_INS.rangeLvl
             elif self.style == 'MELEE':
-                base_level = self.settings.str_lvl
-                boosted_level = b_levels[2]
+                base_level = SET_INS.str_lvl
+                boosted_level = AD_INS.strLvl
             elif self.style == 'NECRO':
-                base_level = self.settings.necro_lvl
-                boosted_level = b_levels[3]
+                base_level = SET_INS.necro_lvl
+                boosted_level = AD_INS.necroLvlLvl
             else:
                 pass
         
@@ -151,7 +148,7 @@ class OnCast:
     
     def precise(self):
         if self.type_n != 'BLEED':
-            precise = int(0.015 * (self.fixed + self.variable) * self.settings.perks['precise'])
+            precise = int(0.015 * (self.fixed + self.variable) * SET_INS.perks['precise'])
             self.fixed += precise
             self.variable -= precise
         else:
@@ -159,19 +156,19 @@ class OnCast:
     
     def equilibrium(self):
         if self.type_n != 'BLEED':
-            if self.settings.aura == 'Equilibrium':
+            if SET_INS.aura == 'Equilibrium':
                 self.fixed += int(0.25 * self.variable)
                 self.variable -= int(0.5 * self.variable)
             else:
-                self.fixed += int(0.03 * self.variable * self.settings.perks['equilibrium'])
-                self.variable -= int(0.04 * self.variable * self.settings.perks['equilibrium'])
+                self.fixed += int(0.03 * self.variable * SET_INS.perks['equilibrium'])
+                self.variable -= int(0.04 * self.variable * SET_INS.perks['equilibrium'])
         else:
             pass
     
     def aura_passive(self):
         boost = None
         for b in self.utils.boosts:
-            if b['name'] == self.settings.aura:
+            if b['name'] == SET_INS.aura:
                 boost = b
                 break
         if boost == None:
@@ -201,28 +198,5 @@ class OnCast:
             self.damage = self.fixed + self.variable
         else:
             pass
-        
-ability_dmg = AbilityDmg()
-cast = OnCast()
-setting = Settings()
 
-ability_dmg.calculate_levels()
-ability_dmg.compute_bonus()
-ad = ability_dmg.base_ability_dmg()
-
-cast.get_abil('wrack', 0)
-cast.prayer_dmg()
-cast.fixedDmg(ad)
-cast.dpl(ability_dmg.levels)
-cast.varDmg(ad)
-cast.dmg_boost()
-cast.precise()
-cast.equilibrium()
-cast.aura_passive()
-
-print(cast.fixed)
-
-
-
-    
-    
+CAST_INS = OnCast()

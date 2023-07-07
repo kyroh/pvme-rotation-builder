@@ -1,0 +1,46 @@
+[
+    {
+      "name": "vuln",
+      "duration": 100
+    },
+    {
+      "name": "sc",
+      "duration": 200
+    },
+    {
+      "name": "natty",
+      "duration": 34
+    },
+    {
+      "name": "fsoa",
+      "duration": 50
+    },
+    {
+      "name": "bolg",
+      "duration": 50
+    },
+    {
+      "name": "ecb",
+      "duration": 25
+    },
+    {
+      "name": "nami",
+      "duration": 51
+    },
+    {
+      "name": "meteor",
+      "duration": 51
+    },
+    {
+      "name": "incend",
+      "duration": 51
+    },
+    {
+      "name": "blood_ess",
+      "duration": 20
+    },
+    {
+      "name": "dba",
+      "duration": 100
+    }
+  ]

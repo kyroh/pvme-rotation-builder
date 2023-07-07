@@ -9,49 +9,44 @@ class GameState:
         self.autocast = None
         self.exsang = [0,0]
         self.incite = [0,0]
-        self.vuln = [0,0]
-        self.sc = [0,0]
         self.barge = [False,0]
         self.bleed = False
         self.rubyAurora = [0,0,0,0]
         self.gconc = 0
-        self.natty = False
-        self.dba = False
         self.needle = False
-        self.bolg = False
         self.channelers = False
 
         self.cooldowns = []
         self.adren = []
         self.damage = []
     
-    def setAutoCast(self, ability):
-            self.autocast = ability.split(' ')[1]
+    def setAutoCast(self):
+            self.autocast = self.cast.ability.split(' ')[1]
         
-    def getExsang(self, ability, tick):
-        if tick > self.exsang[1]:
+    def getExsang(self):
+        if self.cast.tick > self.exsang[1]:
             self.exsang[0] = 0
             self.exsang[1] = 0
         else:
             pass
         
-        if ability == 'wrack' and self.exsang[0] == 12:
+        if self.cast.ability == 'wrack' and self.exsang[0] == 12:
             self.exsang[0] = 0
         
         if self.autocast[0] == 'exsang':
             for abil in self.utils.abilities:
-                if abil['name'] == ability:
+                if abil['name'] == self.cast.ability:
                     break
                 if abil['style'] == 'MAGIC':
                         self.exsang[0] += 1
-                        self.exsang[1] = tick + 34
+                        self.exsang[1] = self.cast.tick + 34
                 if self.exsang[0] > 12:
                     self.exsang[0] = 12
         else:
             pass
             
-    def getIncite(self, ability, tick):
-        if tick > self.incite[1]:
+    def getIncite(self):
+        if self.cast.tick > self.incite[1]:
             self.incite[0] = 0
             self.incite[1] = 0
         else:
@@ -59,37 +54,21 @@ class GameState:
         
         if self.autocast[0] == 'incite':
             for abil in self.utils.abilities:
-                if abil['name'] == ability:
+                if abil['name'] == self.cast.ability:
                     break
                 if abil['style'] == 'MAGIC':
                         self.incite[0] += 1
-                        self.incite[1] = tick + 34
+                        self.incite[1] = self.cast.tick + 34
                 if self.incite[0] > 5:
                     self.incite[0] = 5
         else:
             pass
-        
-    def setVuln(self, ability, tick):
-        if ability == 'vuln':
-            self.vuln[0] = 1
-            self.vuln[1] = tick + 100
-        else:
-            self.vuln[0] = False
-            self.vuln[1] = 0
             
-    def setSC(self, ability, tick):
-        if ability == 'smoke cloud':
-            self.sc[0] = 1
-            self.sc[1] = tick + 200
-        else:
-            self.sc[0] = False
-            self.sc[1] = 0
-            
-    def setBarge(self, ability, tick, buffer):
+    def setBarge(self, buffer):
         if buffer > 8:
-            if ability == 'greater barge':
+            if self.cast.ability == 'greater barge':
                 self.barge[0] = True
-                self.barge[1] = tick + 10
+                self.barge[1] = self.cast.tick + 10
             else:
                 pass
         else:

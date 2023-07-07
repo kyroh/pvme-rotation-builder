@@ -30,3 +30,4 @@ class CheckDmgBoosts:
         else:
             pass
         return [check, end]
+    

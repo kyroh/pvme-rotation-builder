@@ -172,6 +172,9 @@ class Settings:
                             if perk in self.perks:
                                 rank = gizmo[gizmo_key][slot_key]['rank']
                                 self.perks[perk] = max(self.perks[perk], rank)
+                                
+                                
+SET_INS = Settings()
 
 
 

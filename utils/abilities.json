@@ -600,7 +600,7 @@
       "gcd": 1
     },
     {
-      "name": "vulnerability",
+      "name": "vuln",
       "fixed": 0,
       "var": 0,
       "cd": 0,
@@ -610,7 +610,7 @@
       "gcd": 0
     },
     {
-      "name": "smoke cloud",
+      "name": "sc",
       "fixed": 0,
       "var": 0,
       "cd": 0,
