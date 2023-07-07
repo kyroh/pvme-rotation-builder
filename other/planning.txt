@@ -56,3 +56,49 @@ Post v1.0 release
 6. revo support
     a. simluate boss hits for afk testing
 
+
+
+Logic
+
+1. Check input type
+    a. if damaging abil
+        i. check gear switches and re-calc AD_INS
+        ii. check abil type ('SINGLE_HIT', 'BLEED', 'CHANNELED') and run secondary script if 'OTHER'
+        iii. run on-cast dmg calc
+        iv. run on-hit dmg calc
+            1. if magic
+                - spell stacks, auto-cast, gconc, ults, fsoa, drider, kerapac gloves, deto boots, auto cd
+            2. if range
+                - bolg stacks, ecb, ammo, fleeting, nightmare gaunt, ?
+            3. if melee
+                - scourge, spear, vestments, leng
+        v. run on-npc dmg calc
+        vi. update game-state
+            1. clear expiring buffs
+            2. set Cooldowns
+            3. allocate damage_store
+            4. calculate Adrenaline
+            5. store game-state in object
+        vii. add damage from prior game-stat
+    b. if effect
+        i. run script to update effect status
+        ii. update game-state
+            1. clear expiring buffs
+            2. set Cooldowns
+            3. calculate Adrenaline
+            4. store game-state in object
+        iii. add damage from prior game-state
+    c. if defensive
+        i. update game-state
+            1. clear expiring buffs
+            2. set Cooldowns
+            3. calculate Adrenaline
+            4. store game-state in object
+        ii. add damage from prior game-state
+    d. if None
+        i. update game-state
+            1. clear expiring buffs
+            2. set Cooldowns
+            3. calculate Adrenaline
+            4. store game-state in object
+        ii. add damage from prior game-state

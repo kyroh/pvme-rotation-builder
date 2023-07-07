@@ -2,32 +2,38 @@ class CheckDmgBoosts:
     def __init__(self):
         self.pf = False
         self.vestments = False
+        self.sun = [False, 0]
+        self.meta = [False, 0]
+        self.swift = [False, 0]
+        self.zerk = [False, 0]
+        self.zgs = [False, 0]
     
     def check_boost(self, ability, tick):
         check = False
         end = 0
         if ability == 'greater sunshine' or ability == 'greater death swiftness':
-            check = True
-            end = tick + 64
+            self.sun[0] = True
+            self.sun[1] = tick + 64
         elif ability == 'sunshine' or ability == 'death swiftness':
-            check = True
+            self.sun[0] = True
             if self.pf == True:
-                end = tick + 64
+                self.sun[1] = tick + 64
             else:
-                end = tick + 50
+                self.sun[1] = tick + 50
         elif ability == 'metamorphosis':
-            check = True
-            end = tick + 26
+            self.meta[0] = True
+            self.meta[1] = tick + 26
         elif ability == 'berserk':
-            check = True
+            self.zerk[0] = True
             if self.vestments == True:
-                end = tick + 64
+                self.zerk[1] = tick + 64
             else:
-                end = tick + 50
+                self.zerk[1] = tick + 50
         elif ability == 'zgs':
-            check = True
-            end = tick + 26
+            self.zgs[0] = True
+            self.zgs[1] = tick + 26
         else:
             pass
-        return [check, end]
+
+DMG_BOOST_INS = CheckDmgBoosts()
     

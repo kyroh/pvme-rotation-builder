@@ -1,12 +1,11 @@
 from resources import Utils
-from dmg_boost import CheckDmgBoosts
+from dmg_boost import DMG_BOOST_INS
 from settings import SET_INS
 from ability_dmg import AD_INS
 
 class OnCast:
     def __init__(self):
         self.utils = Utils()
-        self.boost = CheckDmgBoosts()
         self.sun = [False, 0]
         self.meta = [False, 0]
         self.swift = [False, 0]
@@ -40,7 +39,12 @@ class OnCast:
         if boost is None:
             pass
         else:
-            self.prayer_boost = [boost["magic_dmg_percent"], boost["range_dmg_percent"], boost["strength_dmg_percent"], boost["necro_dmg_percent"]]
+            self.prayer_boost = [
+                boost["magic_dmg_percent"], 
+                boost["range_dmg_percent"], 
+                boost["strength_dmg_percent"], 
+                boost["necro_dmg_percent"]
+            ]
         
     
     def fixedDmg(self):
@@ -97,51 +101,29 @@ class OnCast:
     
     def dmg_boost(self):
         if self.style == 'MAGIC':
-            if self.ability == 'sunshine' or self.ability == 'greater sunshine' or self.tick > self.sun[1]:
-                    self.sun = self.boost.check_boost(self.ability, self.tick)
-            if self.ability == 'metamorphosis' or self.tick > self.meta[1]:
-                    self.meta = self.boost.check_boost(self.ability, self.tick)
-            else:
-                pass
-            
-            if self.sun[0] == True and self.type_n != 'BLEED':
+            if DMG_BOOST_INS.sun[0] == True and self.type_n != 'BLEED':
                 self.fixed = int(1.5 * self.fixed)
                 self.variable = int(1.5 * self.variable)
-            if self.meta[0] == True:
+            if DMG_BOOST_INS.meta[0] == True:
                 self.fixed = int(1.625 * self.fixed)
                 self.variable = int(1.625 * self.variable)
             else:
                 pass
-        
         elif self.style == 'RANGE':
-            if self.ability == 'death swiftness' or self.ability == 'greater death swiftness' or self.tick > self.swift[1]:
-                    self.swift = self.boost.check_boost(self.ability, self.tick)
-            else:
-                pass
-            
-            if self.swift[0] == True and self.type_n != 'BLEED':
+            if DMG_BOOST_INS.swift[0] == True and self.type_n != 'BLEED':
                 self.fixed = int(1.5 * self.fixed)
                 self.variable = int(1.5 * self.variable)
             else:
                 pass
-            
         elif self.style == 'MELEE':
-            if self.ability == 'berserk' or self.tick > self.sun[1]:
-                    self.zerk = self.boost.check_boost(self.ability, self.tick)
-            if self.ability == 'zgs' or self.tick > self.meta[1]:
-                    self.zgs = self.boost.check_boost(self.ability, self.tick)
-            else:
-                pass
-            
-            if self.zerk[0] == True and self.type_n != 'BLEED':
+            if DMG_BOOST_INS.zerk[0] == True and self.type_n != 'BLEED':
                 self.fixed = int(2 * self.fixed)
                 self.variable = int(2 * self.variable)
-            if self.zgs[0] == True:
+            if DMG_BOOST_INS.zgs[0] == True:
                 self.fixed = int(1.25 * self.fixed)
                 self.variable = int(1.25 * self.variable)
             else:
                 pass
-        
         else:
             pass
             
