@@ -14,7 +14,6 @@ class Effects:
         self.nami = [False,0]
         self.meteor = [False,0]
         self.incend = [False,0]
-        self.blood_ess = [False,0]
         self.stun = [False,0]
         self.bind = [False,0]
         self.dba = [False,0]

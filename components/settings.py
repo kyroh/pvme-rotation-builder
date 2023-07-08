@@ -1,6 +1,9 @@
+from resources import Utils
+
 class Settings:
     def __init__(self):
         #general
+        self.utils = Utils()
         self.dmg_mode = 'MIN'
         self.starting_adren = 100
         self.starting_tick = 0
@@ -82,7 +85,7 @@ class Settings:
         self.pocket = None
         
         #weapons
-        self.mh ={
+        self.mh = {
             'name': 'Wand of the praesul',
             'gizmo 1': {
                 'slot 1':{
@@ -148,6 +151,8 @@ class Settings:
             'turtling': 0
         }
         
+        self.style = None
+        
     def weapon_switch(self, preset):
         index = preset
         self.mh = index[0]
@@ -172,6 +177,16 @@ class Settings:
                             if perk in self.perks:
                                 rank = gizmo[gizmo_key][slot_key]['rank']
                                 self.perks[perk] = max(self.perks[perk], rank)
+                                
+    def get_weapon_style(self):
+        if self.preset == 'dw' or self.preset == 'ms':
+            for weapon in self.utils.weapons:
+                if weapon == self.mh:
+                    self.style = weapon['style']
+        if self.preset == '2h':
+            for weapon in self.utils.weapons:
+                if weapon == self.th:
+                    self.style = weapon['style']
                                 
                                 
 SET_INS = Settings()

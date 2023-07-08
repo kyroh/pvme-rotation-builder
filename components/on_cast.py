@@ -47,7 +47,7 @@ class OnCast:
             ]
         
     
-    def fixedDmg(self):
+    def get_fixed(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
             'RANGE': self.prayer_boost[1],
@@ -62,7 +62,7 @@ class OnCast:
         else:
             self.fixed = int(AD_INS.ad * self.fixed)
 
-    def varDmg(self):
+    def get_var(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
             'RANGE': self.prayer_boost[1],
