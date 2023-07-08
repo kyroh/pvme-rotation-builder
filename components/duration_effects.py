@@ -1,11 +1,10 @@
 from resources import Utils
-from on_cast import CAST_INS
+from get_entry import ENTRY_INS
 from settings import SET_INS
 
 class Effects:
     def __init__(self):
         self.utils = Utils()
-        self.cast = CAST_INS
         self.vuln = [False,0]
         self.sc = [False,0]
         self.natty = [False,0]
@@ -18,21 +17,22 @@ class Effects:
         self.stun = [False,0]
         self.bind = [False,0]
         self.dba = [False,0]
+        self.blood_ess = [False, 0, None]
         
     def setEffect(self, check):
         for entry in self.utils.buffs:
             if check == entry['name']:
                 duration = entry['duration']
         
-        if CAST_INS.ability == check:
-            setattr(self, check, [True, duration + CAST_INS.tick])
+        if ENTRY_INS.ability == check:
+            setattr(self, check, [True, duration + ENTRY_INS.tick])
         else:
             setattr(self, check, [False, 0])
-            
+    
     def set_blood_ess(self):
-        if CAST_INS.ability == 'blood essence':
+        if ENTRY_INS.ability == 'blood essence':
             self.blood_ess[0] = True
-            self.blood_ess[1] = CAST_INS.tick + 34
+            self.blood_ess[1] = ENTRY_INS.tick + 34
             self.blood_ess[2] = SET_INS.style
 
 EFF_INS = Effects()

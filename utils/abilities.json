@@ -610,6 +610,16 @@
       "gcd": 0
     },
     {
+      "name": "blood essence",
+      "fixed": 0,
+      "var": 0,
+      "cd": 0,
+      "type_n": "EFFECT",
+      "style": "MAGIC",
+      "class_n": "OTHER",
+      "gcd": 0
+    },
+    {
       "name": "sc",
       "fixed": 0,
       "var": 0,

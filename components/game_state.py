@@ -11,7 +11,6 @@ class GameState:
         self.exsang = [0,0]
         self.incite = [0,0]
         self.barge = [False,0]
-        self.blood_ess = [False, 0, None]
         self.bleed = False
         self.bolg = 0
         self.rubyAurora = [0,0,0,0]
@@ -112,12 +111,6 @@ class GameState:
     
     def set_channelers(self):
         pass
-    
-    def set_blood_ess(self):
-        if CAST_INS.ability == 'blood essence':
-            self.blood_ess[0] = True
-            self.blood_ess[1] = CAST_INS.tick + 34
-            self.blood_ess[2] = SET_INS.style
         
 STATE_INS = GameState()
     

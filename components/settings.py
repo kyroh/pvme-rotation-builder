@@ -181,12 +181,14 @@ class Settings:
     def get_weapon_style(self):
         if self.preset == 'dw' or self.preset == 'ms':
             for weapon in self.utils.weapons:
-                if weapon == self.mh:
+                if weapon['name'] == self.mh['name']:
                     self.style = weapon['style']
-        if self.preset == '2h':
+        elif self.preset == '2h':
             for weapon in self.utils.weapons:
-                if weapon == self.th:
+                if weapon['name'] == self.th['name']:
                     self.style = weapon['style']
+        else:
+            pass
                                 
                                 
 SET_INS = Settings()
