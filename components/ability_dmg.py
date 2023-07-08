@@ -1,7 +1,5 @@
 from resources import Utils
 from settings import SET_INS
-from duration_effects import EFF_INS
-from game_state import STATE_INS
 
 class AbilityDmg:
     def __init__(self): 
@@ -84,25 +82,25 @@ class AbilityDmg:
         base_levels = [SET_INS.magic_lvl, SET_INS.range_lvl, SET_INS.str_lvl, SET_INS.necro_lvl]
 
         levels = [int(x + y + z) for x, y, z in zip(aura_boosts, potion_boosts, base_levels)]
-        if (STATE_INS.blood_ess[0] == True and STATE_INS.blood_ess[2] == 'MAGIC') and 'verload' not in SET_INS.potion:
-            self.magicLvl = int((1.14 * levels[0]) + 2)
-        else:
-            self.magicLvl = levels[0]
+        #if (EFF_INS.blood_ess[0] == True and EFF_INS.blood_ess[2] == 'MAGIC') and 'verload' not in SET_INS.potion:
+        #    self.magicLvl = int((1.14 * levels[0]) + 2)
+        #else:
+        self.magicLvl = levels[0]
             
-        if (STATE_INS.blood_ess[0] == True and STATE_INS.blood_ess[2] == 'RANGE') and 'verload' not in SET_INS.potion:
-            self.rangeLvl = int((1.14 * levels[1]) + 2)
-        else:
-            self.rangeLvl = levels[1]
+        #if (EFF_INS.blood_ess[0] == True and EFF_INS.blood_ess[2] == 'RANGE') and 'verload' not in SET_INS.potion:
+        #    self.rangeLvl = int((1.14 * levels[1]) + 2)
+        #else:
+        self.rangeLvl = levels[1]
             
-        if (STATE_INS.blood_ess[0] == True and STATE_INS.blood_ess[2] == 'MELEE') and 'verload' not in SET_INS.potion:
-            self.strLvl = int((1.14 * levels[2]) + 2)
-        else:
-            self.strLvl = levels[2]
+        #if (EFF_INS.blood_ess[0] == True and EFF_INS.blood_ess[2] == 'MELEE') and 'verload' not in SET_INS.potion:
+        #    self.strLvl = int((1.14 * levels[2]) + 2)
+        #else:
+        self.strLvl = levels[2]
             
-        if (STATE_INS.blood_ess[0] == True and STATE_INS.blood_ess[2] == 'NECRO') and 'verload' not in SET_INS.potion:
-            self.necroLvl = int((1.14 * levels[3]) + 2)
-        else:
-            self.necroLvl = levels[3]
+        #if (EFF_INS.blood_ess[0] == True and EFF_INS.blood_ess[2] == 'NECRO') and 'verload' not in SET_INS.potion:
+        #    self.necroLvl = int((1.14 * levels[3]) + 2)
+        #else:
+        self.necroLvl = levels[3]
     
     # PURPOSE - computes the armour bonus portion of ability dmg
     # gear slots is a map that identifies what piece of gear it is looking up the bonusf or in gear.json

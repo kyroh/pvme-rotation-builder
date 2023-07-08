@@ -1,5 +1,6 @@
 from resources import Utils
 from on_cast import CAST_INS
+from settings import SET_INS
 
 class Effects:
     def __init__(self):
@@ -28,4 +29,10 @@ class Effects:
         else:
             setattr(self, check, [False, 0])
             
+    def set_blood_ess(self):
+        if CAST_INS.ability == 'blood essence':
+            self.blood_ess[0] = True
+            self.blood_ess[1] = CAST_INS.tick + 34
+            self.blood_ess[2] = SET_INS.style
+
 EFF_INS = Effects()
