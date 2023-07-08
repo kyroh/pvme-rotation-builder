@@ -30,9 +30,13 @@ class Effects:
             setattr(self, check, [False, 0])
     
     def set_blood_ess(self):
-        if ENTRY_INS.ability == 'blood essence':
+        if ENTRY_INS.ability == 'blood essence' and SET_INS.pocket == 'Berserk blood essence':
             self.blood_ess[0] = True
             self.blood_ess[1] = ENTRY_INS.tick + 34
             self.blood_ess[2] = SET_INS.style
+        else:
+            self.blood_ess[0] = False
+            self.blood_ess[1] = 0
+            self.blood_ess[2] = None
 
 EFF_INS = Effects()
