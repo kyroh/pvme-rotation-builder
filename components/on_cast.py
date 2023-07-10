@@ -23,7 +23,9 @@ class OnCast:
         self.fixed = 0
         ENTRY_INS.variable = 0
         self.damage = 0
-            
+    
+    # PURPOSE - gets the prayer modifier for the current active
+    ################
     def prayer_dmg(self):
         boost = next((b for b in self.utils.boosts if b['name'] == SET_INS.prayer), None)
         if boost is None:
@@ -36,7 +38,9 @@ class OnCast:
                 boost["necro_dmg_percent"]
             ]
         
-    
+    # PURPOSE - computes fixed damage from ability damage and the AD % from the abilities dict
+    # need to update to get AD from OnCast instead of from AD
+    ################
     def get_fixed(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
@@ -52,6 +56,9 @@ class OnCast:
         else:
             self.fixed = int(AD_INS.ad * ENTRY_INS.fixed)
 
+    # PURPOSE - computes variable damage from ability damage and the AD % from the abilities dict
+    # need to update to get AD from OnCast instead of from AD
+    ################
     def get_var(self):
         prayer_map = {
             'MAGIC': self.prayer_boost[0],
@@ -68,6 +75,9 @@ class OnCast:
         else:
             ENTRY_INS.variable = int(AD_INS.ad * ENTRY_INS.variable)
     
+    
+    # PURPOSE - computes DPL might need to remove if Mod Sponge removes DPL
+    ################
     def dpl(self):
         if ENTRY_INS.style in ('MAGIC', 'RANGE', 'MELEE', 'NECRO'):
             if ENTRY_INS.style == 'MAGIC':
@@ -89,6 +99,8 @@ class OnCast:
             ENTRY_INS.fixed += int(level_difference * 4)
             ENTRY_INS.variable += int(level_difference * 4)
     
+    # PURPOSE - checks if dmg boosting effect like sun zerk etc are active and computes fixed and variable dmg
+    ################
     def dmg_boost(self):
         if ENTRY_INS.style == 'MAGIC':
             if DMG_BOOST_INS.sun[0] == True and ENTRY_INS.type_n != 'BLEED':
@@ -115,8 +127,7 @@ class OnCast:
             else:
                 pass
         else:
-            pass
-            
+            pass   
     
     def precise(self):
         if ENTRY_INS.type_n != 'BLEED':
