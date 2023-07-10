@@ -1,9 +1,13 @@
+
+
 from resources import Utils
 from dmg_boost import DMG_BOOST_INS
 from settings import SET_INS
 from ability_dmg import AD_INS
 from get_entry import ENTRY_INS
 from game_state import STATE_INS
+
+# TODO: Change OnCast to OnHit for the class name, file name, and all reference to the instance
 
 class OnCast:
     def __init__(self):
