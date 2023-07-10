@@ -18,6 +18,7 @@ class Entry:
                 self.fixed = abil['fixed']
                 self.variable = abil['var']
                 self.type_n = abil['type_n']
+                self.class_n = abil['class_n']
                 self.tick = tick
             else:
                 pass

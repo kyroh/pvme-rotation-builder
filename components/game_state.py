@@ -1,7 +1,7 @@
 from resources import Utils
-from on_cast import CAST_INS
 from settings import SET_INS
 from duration_effects import EFF_INS
+from get_entry import ENTRY_INS
 from damage_store import DamageStore
 
 class GameState:
@@ -23,10 +23,10 @@ class GameState:
         self.damage = []
     
     def set_autocast(self):
-            self.autocast = CAST_INS.ability.split(' ')[1]
+            self.autocast = ENTRY_INS.ability.split(' ')[1]
         
     def get_exsang(self):
-        if CAST_INS.tick > self.exsang[1]:
+        if ENTRY_INS.tick > self.exsang[1]:
             self.exsang[0] = 0
             self.exsang[1] = 0
         else:
@@ -34,13 +34,13 @@ class GameState:
         
         if self.autocast[0] == 'exsang':
             for abil in self.utils.abilities:
-                if abil['name'] == CAST_INS.ability:
+                if abil['name'] == ENTRY_INS.ability:
                     break
                 if abil['style'] == 'MAGIC':
                         self.exsang[0] += 1
-                        self.exsang[1] = CAST_INS.tick + 34
+                        self.exsang[1] = ENTRY_INS.tick + 34
                 
-                if CAST_INS.ability == 'wrack' and self.exsang[0] == 13:
+                if ENTRY_INS.ability == 'wrack' and self.exsang[0] == 13:
                     self.exsang[0] = 0
                     
                 if self.exsang[0] > 12:
@@ -49,7 +49,7 @@ class GameState:
             pass
             
     def get_incite(self):
-        if CAST_INS.tick > self.incite[1]:
+        if ENTRY_INS.tick > self.incite[1]:
             self.incite[0] = 0
             self.incite[1] = 0
         else:
@@ -57,11 +57,11 @@ class GameState:
         
         if self.autocast[0] == 'incite':
             for abil in self.utils.abilities:
-                if abil['name'] == CAST_INS.ability:
+                if abil['name'] == ENTRY_INS.ability:
                     break
                 if abil['style'] == 'MAGIC':
                         self.incite[0] += 1
-                        self.incite[1] = CAST_INS.tick + 34
+                        self.incite[1] = ENTRY_INS.tick + 34
                 if self.incite[0] > 5:
                     self.incite[0] = 5
         else:
@@ -69,9 +69,9 @@ class GameState:
             
     def set_barge(self, buffer):
         if buffer > 8:
-            if CAST_INS.ability == 'greater barge':
+            if ENTRY_INS.ability == 'greater barge':
                 self.barge[0] = True
-                self.barge[1] = CAST_INS.tick + 10
+                self.barge[1] = ENTRY_INS.tick + 10
             else:
                 pass
         else:
@@ -79,9 +79,9 @@ class GameState:
             self.barge[1] = 0
     
     def set_bleed(self):
-        if CAST_INS.type_n == 'BLEED':
+        if ENTRY_INS.type_n == 'BLEED':
             self.bleed = True
-        elif CAST_INS.type_n == 'CHANNELED' and self.barge[0] == True:
+        elif ENTRY_INS.type_n == 'CHANNELED' and self.barge[0] == True:
             self.bleed = True
             self.barge[0] = False
         else:
