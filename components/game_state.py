@@ -81,7 +81,7 @@ class GameState:
     def set_bleed(self):
         if ENTRY_INS.type_n == 'BLEED':
             self.bleed = True
-        elif ENTRY_INS.type_n == 'CHANNELED' and self.barge[0] == True:
+        elif ENTRY_INS.type_n == 'CHANNELED' and self.barge[0] == True and SET_INS.style == 'MELEE':
             self.bleed = True
             self.barge[0] = False
         else:
