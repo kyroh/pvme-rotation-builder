@@ -6,6 +6,7 @@ from settings import SET_INS
 from ability_dmg import AD_INS
 from get_entry import ENTRY_INS
 from game_state import STATE_INS
+from duration_effects import EFF_INS
 
 # TODO: Change OnCast to OnHit for the class name, file name, and all reference to the instance
 
@@ -24,7 +25,7 @@ class OnCast:
         ENTRY_INS.variable = 0
         self.damage = 0
     
-    # PURPOSE - gets the prayer modifier for the current active
+    # gets the prayer modifier for the current active
     ################
     def prayer_dmg(self):
         boost = next((b for b in self.utils.boosts if b['name'] == SET_INS.prayer), None)
@@ -38,8 +39,7 @@ class OnCast:
                 boost["necro_dmg_percent"]
             ]
         
-    # PURPOSE - computes fixed damage from ability damage and the AD % from the abilities dict
-    # need to update to get AD from OnCast instead of from AD
+    # computes fixed damage from ability damage and the AD % from the abilities dict
     ################
     def get_fixed(self):
         prayer_map = {
@@ -56,8 +56,7 @@ class OnCast:
         else:
             self.fixed = int(AD_INS.ad * ENTRY_INS.fixed)
 
-    # PURPOSE - computes variable damage from ability damage and the AD % from the abilities dict
-    # need to update to get AD from OnCast instead of from AD
+    # computes variable damage from ability damage and the AD % from the abilities dict
     ################
     def get_var(self):
         prayer_map = {
@@ -76,7 +75,7 @@ class OnCast:
             ENTRY_INS.variable = int(AD_INS.ad * ENTRY_INS.variable)
     
     
-    # PURPOSE - computes DPL might need to remove if Mod Sponge removes DPL
+    # computes DPL might need to remove if Mod Sponge removes DPL
     ################
     def dpl(self):
         if ENTRY_INS.style in ('MAGIC', 'RANGE', 'MELEE', 'NECRO'):
@@ -99,7 +98,7 @@ class OnCast:
             ENTRY_INS.fixed += int(level_difference * 4)
             ENTRY_INS.variable += int(level_difference * 4)
     
-    # PURPOSE - checks if dmg boosting effect like sun zerk etc are active and computes fixed and variable dmg
+    # checks if dmg boosting effect like sun zerk etc are active and computes fixed and variable dmg
     ################
     def dmg_boost(self):
         if ENTRY_INS.style == 'MAGIC':
@@ -130,23 +129,17 @@ class OnCast:
             pass   
     
     def precise(self):
-        if ENTRY_INS.type_n != 'BLEED':
-            precise = int(0.015 * (ENTRY_INS.fixed + ENTRY_INS.variable) * SET_INS.perks['precise'])
-            ENTRY_INS.fixed += precise
-            ENTRY_INS.variable -= precise
-        else:
-            pass
+        precise = int(0.015 * (ENTRY_INS.fixed + ENTRY_INS.variable) * SET_INS.perks['precise'])
+        ENTRY_INS.fixed += precise
+        ENTRY_INS.variable -= precise
     
     def equilibrium(self):
-        if ENTRY_INS.type_n != 'BLEED':
-            if SET_INS.aura == 'Equilibrium':
-                ENTRY_INS.fixed += int(0.25 * ENTRY_INS.variable)
-                ENTRY_INS.variable -= int(0.5 * ENTRY_INS.variable)
-            else:
-                ENTRY_INS.fixed += int(0.03 * ENTRY_INS.variable * SET_INS.perks['equilibrium'])
-                ENTRY_INS.variable -= int(0.04 * ENTRY_INS.variable * SET_INS.perks['equilibrium'])
+        if SET_INS.aura == 'Equilibrium':
+            ENTRY_INS.fixed += int(0.25 * ENTRY_INS.variable)
+            ENTRY_INS.variable -= int(0.5 * ENTRY_INS.variable)
         else:
-            pass
+            ENTRY_INS.fixed += int(0.03 * ENTRY_INS.variable * SET_INS.perks['equilibrium'])
+            ENTRY_INS.variable -= int(0.04 * ENTRY_INS.variable * SET_INS.perks['equilibrium'])
     
     def aura_passive(self):
         boost = None
@@ -173,42 +166,39 @@ class OnCast:
                 pass
         
     def exsang_damage(self):
-        if ENTRY_INS.type_n != 'BLEED' and ENTRY_INS.class_n == 'BASIC':
+        if ENTRY_INS.class_n == 'BASIC':
             exsang = int(0.01 * STATE_INS.exsang[0])
             ENTRY_INS.fixed = int(ENTRY_INS.fixed * exsang)
             ENTRY_INS.variable = int(ENTRY_INS.variable * exsang)
         else:
             pass
     
-    def ful_damage(self):
-        if ENTRY_INS.type_n != 'BLEED':
+    def scriptue_of_ful(self):
+        if STATE_INS.needle == True:
+            pass
+        else:
             ENTRY_INS.fixed = int(ENTRY_INS.fixed * 1.2)
             ENTRY_INS.variable = int(ENTRY_INS.variable * 1.2)
-        else:
-            pass
+
     
     def ruby_aurora_damage(self):
-        if ENTRY_INS.type_n != 'BLEED':
-            ruby_aurora = int(0.01 * STATE_INS.rubyAurora[0])
-            ENTRY_INS.fixed = int(ENTRY_INS.fixed * ruby_aurora)
-            ENTRY_INS.variable = int(ENTRY_INS.variable * ruby_aurora)
-        else:
-            pass
+        ruby_aurora = int(0.01 * STATE_INS.rubyAurora[0])
+        ENTRY_INS.fixed = int(ENTRY_INS.fixed * ruby_aurora)
+        ENTRY_INS.variable = int(ENTRY_INS.variable * ruby_aurora)
         
     def needle_damage(self):
-        if ENTRY_INS.type_n != 'BLEED' and STATE_INS.needle == True:
+        if EFF_INS.scripture_ful[0] == True:
+            ENTRY_INS.fixed = int(ENTRY_INS.fixed * 1.27)
+            ENTRY_INS.variable = int(ENTRY_INS.variable * 1.27)
+            STATE_INS.needle = False
+        else:
             ENTRY_INS.fixed = int(ENTRY_INS.fixed * 1.07)
             ENTRY_INS.variable = int(ENTRY_INS.variable * 1.07)
             STATE_INS.needle = False
-        else:
-            pass
         
     def ful_arrow_damage(self):
-        if ENTRY_INS.type_n != 'BLEED':
             ENTRY_INS.fixed = int(ENTRY_INS.fixed * 1.15)
             ENTRY_INS.variable = int(ENTRY_INS.variable * 1.15)
-        else:
-            pass
         
     def base_damage(self, output):
         if output == 'MIN':

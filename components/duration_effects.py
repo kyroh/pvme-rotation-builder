@@ -17,6 +17,7 @@ class Effects:
         self.stun = [False,0]
         self.bind = [False,0]
         self.dba = [False,0]
+        self.scripture_ful = [False,0]
         self.blood_ess = [False, 0, None]
         
     def setEffect(self, check):

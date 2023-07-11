@@ -30,7 +30,7 @@ class AbilityDmg:
         
         self.ad = 0
     
-    # PURPOSE - computes the number of boosted levels derived from aura
+    # computes the number of boosted levels derived from aura
     # boost is the aura name that is looked up in boost.json
     # boost_percent is the level boost from the json lookup
     ################
@@ -46,7 +46,7 @@ class AbilityDmg:
 
         return [magic_boost_percent, range_boost_percent, strength_boost_percent, necro_boost_percent]
 
-    # PURPOSE - computes the number of boosted levels derived from potions
+    # computes the number of boosted levels derived from potions
     # boost is the potion name that is looked up in boost.json
     # boost_values is a map of the results from the json lookup
     # net_boost is the sum of the int level boost + % level boost
@@ -74,7 +74,7 @@ class AbilityDmg:
 
         return [net_magic_boost, net_range_boost, net_strength_boost, net_necro_boost]
 
-    # PURPOSE - computes total boosted level for each skill
+    # computes total boosted level for each skill
     # appends the individually computed aura and potion boost to the base levels
     ################
     def calculate_levels(self):
@@ -103,7 +103,7 @@ class AbilityDmg:
         else:
             self.necroLvl = levels[3]
     
-    # PURPOSE - computes the armour bonus portion of ability dmg
+    # computes the armour bonus portion of ability dmg
     # gear slots is a map that identifies what piece of gear it is looking up the bonusf or in gear.json
     # it iterates through all armour slots and adds the net armour bonus
     # if reaper crew is added
@@ -141,7 +141,7 @@ class AbilityDmg:
         self.strBonus = bonus[2]
         self.necroBonus = bonus[3]
     
-    # PURPOSE - compute dual wield ability dmg
+    # compute dual wield ability dmg
     ################
     def dw_ability_dmg(self):
         base_ability_dmg = 0
@@ -170,7 +170,7 @@ class AbilityDmg:
 
         return base_ability_dmg
 
-    # PURPOSE - compute two hand ability dmg
+    # compute two hand ability dmg
     ################
     def th_ability_dmg(self):
         base_ability_dmg = 0 
@@ -187,7 +187,7 @@ class AbilityDmg:
             pass
         return base_ability_dmg
     
-    # PURPOSE - compute mainhand + shield ability dmg
+    # compute mainhand + shield ability dmg
     ################
     def ms_ability_dmg(self):
         base_ability_dmg = 0
@@ -205,7 +205,7 @@ class AbilityDmg:
 
         return base_ability_dmg
 
-    # PURPOSE - identify what ability dmg should be calculated based on the user's casting weapon
+    # identify what ability dmg should be calculated based on the user's casting weapon
     ################
     def base_ability_dmg(self):
         if SET_INS.preset == '2h':
