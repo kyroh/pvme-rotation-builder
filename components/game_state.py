@@ -12,7 +12,7 @@ class GameState:
         self.incite = [0,0]
         self.barge = [False,0]
         self.bleed = False
-        self.bolg = 0
+        self.bolg = [0, False]
         self.rubyAurora = [0,0,0,0]
         self.gconc = 0
         self.needle = False
@@ -89,14 +89,16 @@ class GameState:
         
     def get_bolg(self):
         if SET_INS.th == 'Bow of the last guardian' and SET_INS.preset == '2h':
-            self.bolg += 1
+            self.bolg[0] += 1
         else:
             pass
         
         if EFF_INS.bolg == True and self.bolg == 4:
-            self.bolg = 0
+            self.bolg[0] = 0
+            self.bolg[1] = True
         elif self.bolg == 8:
-            self.bolg = 0
+            self.bolg[0] = 0
+            self.bolg[1] = True
         else:
             pass
     
