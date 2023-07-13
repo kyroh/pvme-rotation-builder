@@ -10,7 +10,7 @@ from duration_effects import EFF_INS
 
 # TODO: Change OnCast to OnHit for the class name, file name, and all reference to the instance
 
-class OnCast:
+class OnHit:
     def __init__(self):
         self.utils = Utils()
         self.sun = [False, 0]
@@ -210,4 +210,4 @@ class OnCast:
         else:
             pass
 
-CAST_INS = OnCast()
+HIT_INS = OnHit()

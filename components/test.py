@@ -1,5 +1,5 @@
 from ability_dmg import AD_INS
-from on_cast import CAST_INS
+from on_hit import HIT_INS
 from dmg_boost import DMG_BOOST_INS
 from get_entry import ENTRY_INS
 from settings import SET_INS
